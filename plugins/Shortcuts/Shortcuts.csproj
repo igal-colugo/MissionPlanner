@@ -8,7 +8,7 @@
     <ProjectReference Include="..\..\ExtLibs\Utilities\MissionPlanner.Utilities.csproj">
       <Private>false</Private>
     </ProjectReference>
-    <ProjectReference Include="..\..\MissionPlanner.csproj">
+    <ProjectReference Include="..\..\MyigPlanner.csproj">
       <Private>false</Private>
     </ProjectReference>
   </ItemGroup>

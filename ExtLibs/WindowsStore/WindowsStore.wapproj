@@ -38,9 +38,9 @@
     <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <EntryPointProjectUniqueName>..\..\MissionPlanner.csproj</EntryPointProjectUniqueName>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>   <AppxBundlePlatforms>AnyCPU</AppxBundlePlatforms>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>AnyCPU</AppxBundlePlatforms>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -48,6 +48,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateKeyFile>WindowsStore_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <EntryPointProjectUniqueName>..\..\MyigPlanner.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -123,7 +124,7 @@
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MissionPlanner.csproj">
+    <ProjectReference Include="..\..\MyigPlanner.csproj">
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
     </ProjectReference>
   </ItemGroup>
