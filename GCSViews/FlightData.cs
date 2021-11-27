@@ -5567,5 +5567,15 @@ namespace MissionPlanner.GCSViews
                 XPDRConnect_btn.Text = "Connect to Transponder";
             }
         }
+
+        private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (ModifierKeys == (Keys.Shift | Keys.Control))
+
+             {
+                MainV2.instance.myDebug = !MainV2.instance.myDebug;
+
+             }
+        }
     }
 }

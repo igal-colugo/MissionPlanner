@@ -48,7 +48,7 @@ namespace MissionPlanner
 
         public static menuicons displayicons; //do not initialize to allow update of custom icons
         public static string running_directory = Settings.GetRunningDirectory();
-        
+
         public abstract class menuicons
         {
             public abstract Image fd { get; }
@@ -204,7 +204,7 @@ namespace MissionPlanner
         public class highcontrastmenuicons : menuicons
         {
             private string running_directory = Settings.GetRunningDirectory();
-            
+
             public override Image fd
             {
                 get
@@ -489,6 +489,17 @@ namespace MissionPlanner
         /// hud background image grabber from a video stream - not realy that efficent. ie no hardware overlays etc.
         /// </summary>
         public static WebCamService.Capture cam { get; set; }
+
+        bool _myDebug = false;
+        public bool myDebug {
+            get {
+                return _myDebug;
+            }
+            set { 
+                _myDebug = value;
+                menu.Visible = _myDebug;
+                }
+            }
 
         /// <summary>
         /// controls the main serial reader thread
@@ -4387,7 +4398,7 @@ namespace MissionPlanner
                 MainMenu.MouseLeave += MainMenu_MouseLeave;
                 panel1.MouseLeave += MainMenu_MouseLeave;
                 toolStripConnectionControl.MouseLeave += MainMenu_MouseLeave;
-                menu.Visible = true;
+                menu.Visible = true && myDebug;
                 menu.SendToBack();
                 this.ResumeLayout();
             }
