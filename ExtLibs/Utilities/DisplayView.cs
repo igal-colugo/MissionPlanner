@@ -103,7 +103,7 @@ namespace MissionPlanner.Utilities
         public bool displayUserParam { get; set; } = true;
         public bool displayPlannerSettings { get; set; } = true;
         public bool displayFFTSetup { get; set; } = true;
-        public bool displayPreFlightTabEdit { get; set; } = true;
+        public bool displayPreFlightTabEdit { get; set; } = false;
         public bool displayPlannerLayout { get; set; } = true;
 
         public DisplayView()
@@ -122,7 +122,7 @@ namespace MissionPlanner.Utilities
             //flight Data view
             displayAnenometer = true;
             displayQuickTab = true;
-            displayPreFlightTab = true;
+            displayPreFlightTab = false;
             displayAdvActionsTab = false;
             displaySimpleActionsTab = true;
             displayGaugesTab = true;
@@ -248,7 +248,7 @@ namespace MissionPlanner.Utilities
                 //flight Data view
                 displayAnenometer = true,
                 displayQuickTab = true,
-                displayPreFlightTab = true,
+                displayPreFlightTab = false,
                 displayAdvActionsTab = false,
                 displaySimpleActionsTab = true,
                 displayGaugesTab = true,
@@ -330,7 +330,7 @@ namespace MissionPlanner.Utilities
                 //flight Data view
                 displayAnenometer = true,
                 displayQuickTab = true,
-                displayPreFlightTab = true,
+                displayPreFlightTab = false,
                 displayAdvActionsTab = true,
                 displaySimpleActionsTab = false,
                 displayGaugesTab = true,

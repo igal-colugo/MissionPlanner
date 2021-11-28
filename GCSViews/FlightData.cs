@@ -5574,6 +5574,7 @@ namespace MissionPlanner.GCSViews
 
              {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
+                checkListControl2.but
 
              }
         }

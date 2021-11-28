@@ -73,9 +73,8 @@
         }
 
         #endregion
-
-        private MyButton BUT_edit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timer1;
+        public MyButton BUT_edit;
     }
 }

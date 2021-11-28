@@ -817,6 +817,9 @@
     <EmbeddedResource Include="Controls\EKFStatus.ko-KR.resx">
       <DependentUpon>EKFStatus.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PreFlight\CheckListControl.resx">
+      <DependentUpon>CheckListControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PropagationSettings.ko-KR.resx">
       <DependentUpon>PropagationSettings.cs</DependentUpon>
     </EmbeddedResource>
