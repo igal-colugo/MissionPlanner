@@ -5574,9 +5574,42 @@ namespace MissionPlanner.GCSViews
 
              {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
-                checkListControl2.but
+                checkListControl2.BUT_edit.Visible = MainV2.instance.myDebug;
 
              }
+        }
+
+        private void btnMyConnect_Click(object sender, EventArgs e)
+        {
+            // decide if this is a connect or disconnect
+            if (MainV2.comPort.BaseStream.IsOpen)
+            {
+                MainV2.instance.doDisconnect(MainV2.comPort);
+            }
+            else {
+                //read from file.....
+
+                //display list by name...
+
+
+                //connect
+
+
+                var mav = new MAVLinkInterface();
+
+                try
+                {
+             //       MainV2.instance.doConnect(mav, CMB_serialport.Text, CMB_baudrate.Text);
+
+               //     MainV2.Comports.Add(mav);
+
+                //    MainV2._connectionControl.UpdateSysIDS();
+                }
+                catch (Exception)
+                {
+                }
+            }
+            
         }
     }
 }

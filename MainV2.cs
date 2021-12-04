@@ -722,6 +722,9 @@ namespace MissionPlanner
             // load config
             LoadConfig();
 
+            //load connections
+            loadConnections();
+
             // force language to be loaded
             L10N.GetConfigLang();
 
@@ -1152,6 +1155,19 @@ namespace MissionPlanner
 
             // save config to test we have write access
             SaveConfig();
+        }
+
+        private void loadConnections()
+        {
+            string connectionsfile = Settings.GetUserDataDirectory() + "myConnections.txt";
+
+
+
+            if (File.Exists(connectionsfile))
+            {
+                
+            }     
+
         }
 
         void cmb_sysid_Click(object sender, EventArgs e)
@@ -4679,11 +4695,12 @@ namespace MissionPlanner
             {
                 var lines = File.ReadAllLines(openFileDialog.FileName);
 
-                Regex tcp = new Regex("tcp://(.*):([0-9]+)");
-                Regex udp = new Regex("udp://(.*):([0-9]+)");
-                Regex udpcl = new Regex("udpcl://(.*):([0-9]+)");
+                Regex tcp    = new Regex("tcp://(.*):([0-9]+)");
+                Regex udp    = new Regex("udp://(.*):([0-9]+)");
+                Regex udpcl  = new Regex("udpcl://(.*):([0-9]+)");
                 Regex serial = new Regex("serial:(.*):([0-9]+)");
-
+                Regex serial2 = new Regex(@"(\w+)=serial:(.*):([0-9]+)");
+                
                 ConcurrentBag<MAVLinkInterface> mavs = new ConcurrentBag<MAVLinkInterface>();
 
                 Parallel.ForEach(lines, line =>
