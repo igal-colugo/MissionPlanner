@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
-   <TargetFramework>net461; netstandard2.0</TargetFramework>
+   <TargetFramework>net509; netstandard2.0</TargetFramework>
 
 
     <RazorLangVersion>3.0</RazorLangVersion>

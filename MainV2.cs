@@ -566,7 +566,7 @@ namespace MissionPlanner
             MissionPlanner.Controls.BackstageView.BackstageView.Advanced = DisplayConfiguration.isAdvancedMode;
 
             // force autohide on
-            if (DisplayConfiguration.autoHideMenuForce)
+            if (DisplayConfiguration.autoHideMenuForce || !myDebug)
             {
                 AutoHideMenu(true);
                 Settings.Instance["menu_autohide"] = true.ToString();
