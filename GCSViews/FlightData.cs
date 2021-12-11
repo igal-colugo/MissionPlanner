@@ -32,6 +32,7 @@ using ZedGraph;
 using LogAnalyzer = MissionPlanner.Utilities.LogAnalyzer;
 using TableLayoutPanelCellPosition = System.Windows.Forms.TableLayoutPanelCellPosition;
 using UnauthorizedAccessException = System.UnauthorizedAccessException;
+using MissionPlanner.MyCode;
 
 // written by michael oborne
 
@@ -58,6 +59,13 @@ namespace MissionPlanner.GCSViews
         internal string selectedscript = "";
 
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        //my code paths 
+        private static readonly string myBasePath = 
+        Path.Combine(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(Settings.GetRunningDirectory().ToString()).ToString()).ToString()).ToString(),"Resources");
+        private readonly string myConnectionsPath = Path.Combine(myBasePath, "connections.txt");
+        //end my code
+
         AviWriter aviwriter;
         private bool CameraOverlap;
         GMapMarker center = new GMarkerGoogle(new PointLatLng(0.0, 0.0), GMarkerGoogleType.none);
@@ -344,6 +352,16 @@ namespace MissionPlanner.GCSViews
             myhud.skyColor2 = ThemeManager.HudSkyBot;
             myhud.hudcolor = ThemeManager.HudText;
 
+            initMyData();
+
+        }
+
+        private void initMyData()
+        {
+            if (File.Exists(myConnectionsPath)) {
+                new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer);
+            }
+            
         }
 
         public void Activate()
@@ -5587,8 +5605,28 @@ namespace MissionPlanner.GCSViews
                 MainV2.instance.doDisconnect(MainV2.comPort);
             }
             else {
-                //read from file.....
 
+                //read from file.....
+                if (File.Exists(myConnectionsPath))
+                {
+
+                    //display list 
+
+                 //   new ConnectHelper(myConnectionsPath).connectToPlane();
+                    
+
+                }
+                else {
+                    CustomMessageBox.Show("CANT FIND CONNECTIONS FILE!");
+                }
+                string path = Settings.GetRunningDirectory();// + "connections.txt";
+               // path = Path.Combine(path, @"..\..\Resources\connections.txt");
+
+                path = System.IO.Directory.GetParent(path).ToString();
+
+                string path2 = Settings.GetUserDataDirectory() + "connections.txt";
+                Console.WriteLine(path);
+                Console.WriteLine(path2);
                 //display list by name...
 
 
