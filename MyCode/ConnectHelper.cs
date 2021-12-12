@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -10,7 +12,7 @@ namespace MissionPlanner.MyCode
     {
 
 
-        public void decorateGui(string connetPath, TableLayoutPanel connectContainer)
+        public void decorateGui(string connetPath, TableLayoutPanel connectContainer, EventHandler connectClickHandler)
         {
             if (File.Exists(connetPath))
             {
@@ -27,40 +29,28 @@ namespace MissionPlanner.MyCode
                 for (int i = 0; i < lines.Length; i++)
                 {
                     string line = lines[i];
-                    string name;
-                    string data;
+                    
+                    
                     if (tcp.IsMatch(line))
                     {
-                        Match matches = tcp.Match(line);
-                        name = matches.Groups[0].Value;
-                        data = line;
-                        addConnectionToList(connectContainer, name, data, i);
+                        Match matches = tcp.Match(line);                        
+                        addConnectionToList(connectContainer, fillConnectionDataList("tcp", matches), i, connectClickHandler);
 
                     }
                     else if (udp.IsMatch(line))
                     {
                         var matches = udp.Match(line);
-                        name = matches.Groups[0].Value;
-                        data = line;
-                        addConnectionToList(connectContainer, name, data, i);
+                        addConnectionToList(connectContainer, fillConnectionDataList("udp", matches), i, connectClickHandler);
                     }
                     else if (udpcl.IsMatch(line))
                     {
                         var matches = udpcl.Match(line);
-                        name = matches.Groups[0].Value;
-                        data = line;
-                        addConnectionToList(connectContainer, name, data, i);
+                        addConnectionToList(connectContainer, fillConnectionDataList("udpcl", matches), i, connectClickHandler);
                     }
                     else if (serial.IsMatch(line))
                     {
                         var matches = serial.Match(line);
-                        name = matches.Groups[0].Value;
-                        data = line;
-                        addConnectionToList(connectContainer, name, data, i);
-
-
-
-
+                        addConnectionToList(connectContainer, fillConnectionDataList("serial", matches), i, connectClickHandler);
                     }
                 }
                 /*
@@ -136,7 +126,19 @@ namespace MissionPlanner.MyCode
             }
         }
 
+        private List<string> fillConnectionDataList(string connectionType, Match matches)
+        {
+            List<string> res = new List<string>();
+            res.Add(connectionType);
 
+            for (int imatchIndex = 1; imatchIndex < matches.Groups.Count; imatchIndex++)
+            {
+                res.Add(matches.Groups[imatchIndex].Value);
+            }
+
+            
+            return res;
+        }
 
         internal void connectToPlane(string connectType, string connectMetaData)
         {
@@ -155,14 +157,16 @@ namespace MissionPlanner.MyCode
         }
 
 
-        private void addConnectionToList(TableLayoutPanel container, string name, string data, int i)
+        private void addConnectionToList(TableLayoutPanel container, List<string> connectionData, int i, EventHandler connectHandler)
         {
             RadioButton connect = new RadioButton();
             connect.Font = new Font("Times New Roman", 14);
             connect.Dock = DockStyle.Fill;
-            connect.Text = name;
-            connect.Tag = data;
+            connect.Text = connectionData[1];
+            connect.CheckedChanged += connectHandler;           
+            connect.Tag = connectionData;
             container.Controls.Add(connect, 0, i);
+
         }
     }
 }

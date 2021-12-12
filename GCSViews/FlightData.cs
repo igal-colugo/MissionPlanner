@@ -33,6 +33,7 @@ using LogAnalyzer = MissionPlanner.Utilities.LogAnalyzer;
 using TableLayoutPanelCellPosition = System.Windows.Forms.TableLayoutPanelCellPosition;
 using UnauthorizedAccessException = System.UnauthorizedAccessException;
 using MissionPlanner.MyCode;
+using System.Net.Sockets;
 
 // written by michael oborne
 
@@ -359,9 +360,66 @@ namespace MissionPlanner.GCSViews
         private void initMyData()
         {
             if (File.Exists(myConnectionsPath)) {
-                new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer);
+                new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer, handleMonnectMy);
             }
             
+        }
+
+        private void handleMonnectMy(object sender, EventArgs e)
+        {
+            try
+            {
+                object ls = ((RadioButton)sender).Tag;
+                List<string> connectData = (List<string>)ls;
+                MAVLinkInterface mav = new MAVLinkInterface();
+
+                if (connectData[0] == "tcp") {
+                    var client = new Comms.TcpSerial();
+
+                    client.client = new TcpClient(connectData[2], Int32.Parse(connectData[3]));
+
+                    mav.BaseStream = client;
+                }
+
+
+                if (connectData[0] == "serial")
+                {
+                    Comms.SerialPort port = new Comms.SerialPort();
+                    port.PortName = connectData[2];
+                    port.BaudRate = int.Parse(connectData[3]);
+                    mav.BaseStream = port;
+                    mav.BaseStream.Open();
+
+
+
+                 //   var client = new Comms.TcpSerial();
+
+             //       client.client = new TcpClient(connectData[2], Int32.Parse(connectData[3]));
+
+               //     mav.BaseStream = client;
+                }
+
+
+
+
+
+
+                MainV2.instance.doConnect(mav, "preset", "0", false, false);
+                MainV2.Comports.Add(mav);
+
+
+
+             //   MainV2.instance.doConnect(mav, connectData[1], connectData[2]);
+
+              //  MainV2.Comports.Add(mav);
+
+                MainV2._connectionControl.UpdateSysIDS();
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show("cant connect.\n" + ex);
+                log.Debug(ex);
+            }
         }
 
         public void Activate()
@@ -5609,7 +5667,7 @@ namespace MissionPlanner.GCSViews
                 //read from file.....
                 if (File.Exists(myConnectionsPath))
                 {
-
+                    tlConnectionContainer.Visible = true;
                     //display list 
 
                  //   new ConnectHelper(myConnectionsPath).connectToPlane();
@@ -5619,14 +5677,7 @@ namespace MissionPlanner.GCSViews
                 else {
                     CustomMessageBox.Show("CANT FIND CONNECTIONS FILE!");
                 }
-                string path = Settings.GetRunningDirectory();// + "connections.txt";
-               // path = Path.Combine(path, @"..\..\Resources\connections.txt");
 
-                path = System.IO.Directory.GetParent(path).ToString();
-
-                string path2 = Settings.GetUserDataDirectory() + "connections.txt";
-                Console.WriteLine(path);
-                Console.WriteLine(path2);
                 //display list by name...
 
 
@@ -5648,6 +5699,11 @@ namespace MissionPlanner.GCSViews
                 }
             }
             
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
