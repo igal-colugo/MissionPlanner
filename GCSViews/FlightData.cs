@@ -367,9 +367,11 @@ namespace MissionPlanner.GCSViews
 
         private void handleMonnectMy(object sender, EventArgs e)
         {
+            tlConnectionContainer.Visible = false;
             try
             {
                 object ls = ((RadioButton)sender).Tag;
+                ((RadioButton)sender).Checked = false;
                 List<string> connectData = (List<string>)ls;
                 MAVLinkInterface mav = new MAVLinkInterface();
 
@@ -384,36 +386,44 @@ namespace MissionPlanner.GCSViews
 
                 if (connectData[0] == "serial")
                 {
-                    Comms.SerialPort port = new Comms.SerialPort();
-                    port.PortName = connectData[2];
-                    port.BaudRate = int.Parse(connectData[3]);
-                    mav.BaseStream = port;
-                    mav.BaseStream.Open();
+                  //  Comms.SerialPort port = new Comms.SerialPort();
+                  //  port.PortName = connectData[2];
+                  //  port.BaudRate = int.Parse(connectData[3]);
+                  //  mav.BaseStream = port;
+                   // mav.BaseStream.Open();
+
+
+                    MainV2.instance.doConnect(mav, connectData[2], connectData[3]);
+
+                    MainV2.Comports.Add(mav);
+
+                    MainV2._connectionControl.UpdateSysIDS();
 
 
 
-                 //   var client = new Comms.TcpSerial();
+                    //   var client = new Comms.TcpSerial();
 
-             //       client.client = new TcpClient(connectData[2], Int32.Parse(connectData[3]));
+                    //       client.client = new TcpClient(connectData[2], Int32.Parse(connectData[3]));
 
-               //     mav.BaseStream = client;
+                    //     mav.BaseStream = client;
                 }
+               
 
 
 
 
 
-
-                MainV2.instance.doConnect(mav, "preset", "0", false, false);
-                MainV2.Comports.Add(mav);
-
+             //   MainV2.instance.doConnect(mav, "preset", "0", false, false);
+             //    MainV2.Comports.Add(mav);
 
 
-             //   MainV2.instance.doConnect(mav, connectData[1], connectData[2]);
 
-              //  MainV2.Comports.Add(mav);
+                //   MainV2.instance.doConnect(mav, connectData[1], connectData[2]);
+
+                //  MainV2.Comports.Add(mav);
 
                 MainV2._connectionControl.UpdateSysIDS();
+                btnMyConnect.Text = "DICONNECT";
             }
             catch (Exception ex)
             {
@@ -5660,7 +5670,9 @@ namespace MissionPlanner.GCSViews
             // decide if this is a connect or disconnect
             if (MainV2.comPort.BaseStream.IsOpen)
             {
+                
                 MainV2.instance.doDisconnect(MainV2.comPort);
+                btnMyConnect.Text = "CONNECT";
             }
             else {
 
@@ -5684,7 +5696,7 @@ namespace MissionPlanner.GCSViews
                 //connect
 
 
-                var mav = new MAVLinkInterface();
+               // var mav = new MAVLinkInterface();
 
                 try
                 {
