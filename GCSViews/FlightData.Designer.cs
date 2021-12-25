@@ -217,6 +217,7 @@ namespace MissionPlanner.GCSViews
             this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnMyConnect = new System.Windows.Forms.Button();
+            this.finalConnect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -272,6 +273,7 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.tlpMyMainPnl.SuspendLayout();
             this.pnlMap.SuspendLayout();
+            this.tlConnectionContainer.SuspendLayout();
             this.pnlCheckList.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -2400,7 +2402,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 1980D;
+            this.windDir1.Direction = 2160D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2626,6 +2628,7 @@ namespace MissionPlanner.GCSViews
             // tlConnectionContainer
             // 
             resources.ApplyResources(this.tlConnectionContainer, "tlConnectionContainer");
+            this.tlConnectionContainer.Controls.Add(this.finalConnect, 0, 0);
             this.tlConnectionContainer.Name = "tlConnectionContainer";
             // 
             // pnlCheckList
@@ -2651,6 +2654,13 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect.Name = "btnMyConnect";
             this.btnMyConnect.UseVisualStyleBackColor = true;
             this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
+            // 
+            // finalConnect
+            // 
+            resources.ApplyResources(this.finalConnect, "finalConnect");
+            this.finalConnect.Name = "finalConnect";
+            this.finalConnect.UseVisualStyleBackColor = true;
+            this.finalConnect.Click += new System.EventHandler(this.finalConnect_Click);
             // 
             // FlightData
             // 
@@ -2730,6 +2740,7 @@ namespace MissionPlanner.GCSViews
             this.tlpMyMainPnl.ResumeLayout(false);
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
+            this.tlConnectionContainer.ResumeLayout(false);
             this.pnlCheckList.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -2946,5 +2957,6 @@ namespace MissionPlanner.GCSViews
         private TableLayoutPanel tableLayoutPanel3;
         private Button btnMyConnect;
         private TableLayoutPanel tlConnectionContainer;
+        private Button finalConnect;
     }
 }

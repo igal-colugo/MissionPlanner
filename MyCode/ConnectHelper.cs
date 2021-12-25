@@ -163,7 +163,7 @@ namespace MissionPlanner.MyCode
             connect.Font = new Font("Times New Roman", 14);
             connect.Dock = DockStyle.Fill;
             connect.Text = connectionData[1];
-            connect.CheckedChanged += connectHandler;           
+           // connect.CheckedChanged += connectHandler;           
             connect.Tag = connectionData;
             container.Controls.Add(connect, 0, i);
 

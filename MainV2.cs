@@ -2567,7 +2567,7 @@ namespace MissionPlanner
                         this.BeginInvoke((MethodInvoker) delegate { _connectionControl.IsConnected(true); });
                     }
                 }
-
+                FlightData.UpdateConnectIcon();
                 connectButtonUpdate = DateTime.Now;
             }
         }
