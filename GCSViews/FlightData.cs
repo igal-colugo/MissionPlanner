@@ -353,8 +353,37 @@ namespace MissionPlanner.GCSViews
             myhud.skyColor2 = ThemeManager.HudSkyBot;
             myhud.hudcolor = ThemeManager.HudText;
 
+            initMyGui();
             initMyData();
 
+        }
+
+        private void initMyGui()
+        {
+            int baseWidth = btnZoomIn.Parent.Width;
+            btnZoomIn.Location = new Point(970, 3);
+            btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
+            btnLock.Location = new Point(btnZoomOut.Left - 20 - btnZoomOut.Width, 3);
+            btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
+
+            //left columb...
+            int baseTop = btnMyConnect.Bottom;
+            int leftColumb = baseWidth - 3 - btnMyConnect.Width;
+            btnNavToCmd.Location = new Point(leftColumb, btnMyConnect.Top);
+            btnAltCmd.Location = new Point(3, baseTop + 60);
+            btnLoiterCmd.Location = new Point(leftColumb, btnAltCmd.Top);
+
+            btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + 60);
+            btnPinPoint.Location = new Point(leftColumb, btnIasCmd.Top);
+
+            btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + 60);
+            btnPointToCmd.Location = new Point(leftColumb, btnRtlCmd.Top);
+
+            btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + 60);
+            btnCamGuideCmd.Location = new Point(leftColumb, btnLandCmd.Top);
+
+            btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + 60);
+            btnPoinToLatlngCmd.Location = new Point(leftColumb, btnBatDispaly.Top);
         }
 
         private void initMyData()
@@ -5685,9 +5714,11 @@ namespace MissionPlanner.GCSViews
             
         }
 
-        private void finalConnect_Click(object sender, EventArgs e)
+        
+
+        private void gMapControl1_Resize_1(object sender, EventArgs e)
         {
-           
+            initMyGui();
         }
     }
 }
