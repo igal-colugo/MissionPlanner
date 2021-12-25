@@ -394,7 +394,7 @@
     <value>checkListControl1</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Parent" xml:space="preserve">
     <value>tabPagePreFlight</value>
@@ -1681,7 +1681,7 @@
     <value>modifyandSetLoiterRad</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1741,7 +1741,7 @@
     <value>modifyandSetAlt</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1753,7 +1753,7 @@
     <value>modifyandSetSpeed</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2017,7 +2017,7 @@
     <value>modifyandSetLoiterRad</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2176,7 +2176,7 @@
     <value>modifyandSetAlt</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2212,7 +2212,7 @@
     <value>modifyandSetSpeed</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2803,7 +2803,7 @@
     <value>checkListControl1</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Parent" xml:space="preserve">
     <value>tabPagePreFlight</value>
@@ -4166,7 +4166,7 @@
     <value>servoOptions1</value>
   </data>
   <data name="&gt;&gt;servoOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4178,7 +4178,7 @@
     <value>servoOptions2</value>
   </data>
   <data name="&gt;&gt;servoOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4190,7 +4190,7 @@
     <value>servoOptions3</value>
   </data>
   <data name="&gt;&gt;servoOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4202,7 +4202,7 @@
     <value>servoOptions4</value>
   </data>
   <data name="&gt;&gt;servoOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4214,7 +4214,7 @@
     <value>servoOptions5</value>
   </data>
   <data name="&gt;&gt;servoOptions5.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions5.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4226,7 +4226,7 @@
     <value>servoOptions6</value>
   </data>
   <data name="&gt;&gt;servoOptions6.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions6.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4238,7 +4238,7 @@
     <value>servoOptions7</value>
   </data>
   <data name="&gt;&gt;servoOptions7.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions7.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4250,7 +4250,7 @@
     <value>servoOptions8</value>
   </data>
   <data name="&gt;&gt;servoOptions8.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions8.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4262,7 +4262,7 @@
     <value>servoOptions9</value>
   </data>
   <data name="&gt;&gt;servoOptions9.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions9.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4274,7 +4274,7 @@
     <value>servoOptions10</value>
   </data>
   <data name="&gt;&gt;servoOptions10.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions10.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4286,7 +4286,7 @@
     <value>relayOptions1</value>
   </data>
   <data name="&gt;&gt;relayOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4298,7 +4298,7 @@
     <value>relayOptions2</value>
   </data>
   <data name="&gt;&gt;relayOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4310,7 +4310,7 @@
     <value>relayOptions3</value>
   </data>
   <data name="&gt;&gt;relayOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4322,7 +4322,7 @@
     <value>relayOptions4</value>
   </data>
   <data name="&gt;&gt;relayOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4370,7 +4370,7 @@
     <value>servoOptions1</value>
   </data>
   <data name="&gt;&gt;servoOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4391,7 +4391,7 @@
     <value>servoOptions2</value>
   </data>
   <data name="&gt;&gt;servoOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4412,7 +4412,7 @@
     <value>servoOptions3</value>
   </data>
   <data name="&gt;&gt;servoOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4433,7 +4433,7 @@
     <value>servoOptions4</value>
   </data>
   <data name="&gt;&gt;servoOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4454,7 +4454,7 @@
     <value>servoOptions5</value>
   </data>
   <data name="&gt;&gt;servoOptions5.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions5.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4475,7 +4475,7 @@
     <value>servoOptions6</value>
   </data>
   <data name="&gt;&gt;servoOptions6.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions6.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4496,7 +4496,7 @@
     <value>servoOptions7</value>
   </data>
   <data name="&gt;&gt;servoOptions7.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions7.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4517,7 +4517,7 @@
     <value>servoOptions8</value>
   </data>
   <data name="&gt;&gt;servoOptions8.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions8.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4538,7 +4538,7 @@
     <value>servoOptions9</value>
   </data>
   <data name="&gt;&gt;servoOptions9.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions9.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4559,7 +4559,7 @@
     <value>servoOptions10</value>
   </data>
   <data name="&gt;&gt;servoOptions10.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions10.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4580,7 +4580,7 @@
     <value>relayOptions1</value>
   </data>
   <data name="&gt;&gt;relayOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4601,7 +4601,7 @@
     <value>relayOptions2</value>
   </data>
   <data name="&gt;&gt;relayOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4622,7 +4622,7 @@
     <value>relayOptions3</value>
   </data>
   <data name="&gt;&gt;relayOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4643,7 +4643,7 @@
     <value>relayOptions4</value>
   </data>
   <data name="&gt;&gt;relayOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -6287,7 +6287,7 @@
     <value>distanceBar1</value>
   </data>
   <data name="&gt;&gt;distanceBar1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.DistanceBar, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.DistanceBar, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;distanceBar1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -6934,33 +6934,6 @@
   <data name="&gt;&gt;CB_tuning.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="gMapControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="gMapControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gMapControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="gMapControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>663, 441</value>
-  </data>
-  <data name="gMapControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;gMapControl1.Name" xml:space="preserve">
-    <value>gMapControl1</value>
-  </data>
-  <data name="&gt;&gt;gMapControl1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.myGMAP, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;gMapControl1.Parent" xml:space="preserve">
-    <value>pnlMap</value>
-  </data>
-  <data name="&gt;&gt;gMapControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="ZedGraphTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>171, 17</value>
   </metadata>
@@ -6979,41 +6952,73 @@
   <metadata name="bindingSourceStatusTab.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 57</value>
   </metadata>
-  <data name="tlpMyMainPnl.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="btnMyConnect.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
-  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="btnMyConnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
-  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="btnMyConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>792, 3</value>
+  <data name="btnMyConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="btnMyConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 107</value>
   </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 441</value>
-  </data>
-  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
-    <value>tlpMyMainPnl</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
+  <data name="btnMyConnect.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Percent,100,Absolute,20" /&gt;&lt;Rows Styles="Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="btnMyConnect.Text" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.Name" xml:space="preserve">
+    <value>btnMyConnect</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tlConnectionContainer.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7021,38 +7026,11 @@
   <data name="tlConnectionContainer.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="finalConnect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="finalConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="finalConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 202</value>
-  </data>
-  <data name="finalConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 56</value>
-  </data>
-  <data name="finalConnect.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="finalConnect.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;finalConnect.Name" xml:space="preserve">
-    <value>finalConnect</value>
-  </data>
-  <data name="&gt;&gt;finalConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;finalConnect.Parent" xml:space="preserve">
-    <value>tlConnectionContainer</value>
-  </data>
-  <data name="&gt;&gt;finalConnect.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tlConnectionContainer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="tlConnectionContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 59</value>
+    <value>143, 3</value>
   </data>
   <data name="tlConnectionContainer.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7076,16 +7054,16 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;tlConnectionContainer.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tlConnectionContainer.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="finalConnect" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,50" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Absolute,50" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
     <value>checkListControl2</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -7115,16 +7093,43 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlCheckList.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="gMapControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gMapControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gMapControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="gMapControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>909, 447</value>
+  </data>
+  <data name="gMapControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;gMapControl1.Name" xml:space="preserve">
+    <value>gMapControl1</value>
+  </data>
+  <data name="&gt;&gt;gMapControl1.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.myGMAP, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gMapControl1.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;gMapControl1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="pnlMap.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="pnlMap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 3</value>
+    <value>0, 0</value>
   </data>
   <data name="pnlMap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>663, 441</value>
+    <value>909, 447</value>
   </data>
   <data name="pnlMap.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7136,85 +7141,10 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pnlMap.Parent" xml:space="preserve">
-    <value>tlpMyMainPnl</value>
-  </data>
-  <data name="&gt;&gt;pnlMap.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Name" xml:space="preserve">
-    <value>btnMyConnect</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 441</value>
-  </data>
-  <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
-    <value>tlpMyMainPnl</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnMyConnect" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,20" /&gt;&lt;Rows Styles="Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571,Percent,14.28571" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tlpMyMainPnl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tlpMyMainPnl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tlpMyMainPnl.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tlpMyMainPnl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>909, 447</value>
-  </data>
-  <data name="tlpMyMainPnl.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="&gt;&gt;tlpMyMainPnl.Name" xml:space="preserve">
-    <value>tlpMyMainPnl</value>
-  </data>
-  <data name="&gt;&gt;tlpMyMainPnl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlpMyMainPnl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tlpMyMainPnl.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tlpMyMainPnl.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel4" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="pnlMap" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,120,Percent,100,Absolute,120" /&gt;&lt;Rows Styles="Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;pnlMap.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -7232,7 +7162,7 @@
     <value>checkListControl2</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8022.32647, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8029.23177, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -7240,35 +7170,142 @@
   <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnMyConnect.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="btnMyConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnMyConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="btnMyConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 56</value>
-  </data>
-  <data name="btnMyConnect.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnMyConnect.Text" xml:space="preserve">
-    <value>Connect</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Name" xml:space="preserve">
-    <value>btnMyConnect</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <metadata name="ilMyImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1096, 57</value>
+  </metadata>
+  <data name="ilMyImages.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACY
+        HQAAAk1TRnQBSQFMAgEBAgEAAQgBAAEIAQABhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
+        AQICAAFrAwABAQEAARgFAAEYAaABAiwAA/v/51TnA+88AP/nV+cD+/8A/wD/AFQAA/YDkQM2/wBdAANm
+        A9ED+yQAA/sDwwNP/wBdAAM2A6MD9v8A/wD/AEUAA/sDkf8AbAADGgPcHgADwwMa/wBsAAOjA/v/AP8A
+        /wA8AAPvAzYPAAMj/y5RLgMXDwADkRgAA5EPAAMX/y5RLgMjDwADTwP2/wD/AP8ANgAD9gMaCQADLgOB
+        /7xavAOkA14DCwkAA5ESAAORCQADCwNeA6T/vFq8A3UDIwkAAzYD+/8A/wD/ADMAA08JAANp/7xmvAOk
+        AyMJAAPcDAADwwkAAy4DsP+8ZrwDXgkAA2b/AP8A/wAwAAPDCQADdf+8bLwDsAMjBgADGgP7BgAD+wMa
+        BgADOv+8b7wDdQkAA9H/AP8A/wAtAAM2BgADUv+8crwDsAMLBgADwwYAA7QGAAMLA7D/vHK8AzoGAAM2
+        /wD/AP8AKgAD5wYAAwsDsP+8dbwDXgYAA08GAAM2BgADdf+8dbwDpAkAA+//AP8A/wAnAAO0BgADRv+8
+        eLwDpAwAA/YJAAOw/7x4vAM6BgADw/8A/wD/ACcAA3wGAAN1/7x7vAMXBgAG5wYAAy7/vHu8A14GAAOj
+        /wD/AP8AJwADZgYAA43/vHu8Ay4GAAbnBgADLv+8e7wDgQYAA2b/AP8A/wAnAANmBgADjf+8e7wDLgYA
+        BucGAAMu/7x7vAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy4/vAOZA1IDIw8AAxcDRgOB
+        /7wbvAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy45vAOBAxchAAMXA17/vBW8A40GAANm
+        /wD/AP8AJwADZgYAA43/vHu8Ay4GAAbnBgADLjO8A7ADLi0AAyMDmf+8D7wDjQYAA2b/AP8A/wAnAANm
+        BgADjf+8e7wDLgYABucGAAMuMLwDmQMLMwADCwN1/7wMvAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMu
+        BgAG5wYAAy4tvAOZAws8AAN1/7wJvAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy4qvAOZ
+        AwsSAAMXA2kDpAm8A7ADdQMuFQADdf+8BrwDjQYAA2b/AP8A/wAnAANmBgADjf+8e7wDLgYABucGAAMu
+        J7wDmQMLDwADCwNpG7wDjQMXEgADdf+8A7wDjQYAA2b/AP8A/wAnAANmBgADjf+8e7wDLgYABucGAAMu
+        JLwDmQMLDwADCwOZIbwDsAMjEgADdf+8A40GAANm/wD/AP8AJwADZgYAA43/vHu8Ay4GAAbnBgADLiG8
+        A7ADCw8AAwsDmSe8A7ADIxIAA3X8vAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy4hvAM6
+        DwADCwOZLbwDsAMjEgADdfm8A40GAANm/wD/AP8AJwADZgYAA43/vHu8Ay4GAAbnBgADLh68A40PAAML
+        A5kzvAOwAyMSAAN19rwDjQYAA2b/AP8A/wAnAANmBgADjf+8e7wDLgYABucGAAMuHrwDIwwAAwsDmTm8
+        A7ADIxIAA3XzvAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy4bvAOZDwADaT+8A7ADIxIA
+        A3XwvAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy4bvANSDAADF0W8A7ADIxIAA3XtvAON
+        BgADZv8A/wD/ACcAA2YGAAON/7x7vAMuBgAG5wYAAy4bvAMuDAADaUi8A7ADIxIAA3XqvAONBgADZv8A
+        /wD/ACcAA2YGAAONbLwDsAN1A0YDIwwAAy4DRgOB7bwDLgYABucGAAMuG7wPAAOZS7wDsAMjEgADdee8
+        A40GAANm/wD/AP8AJwADZgYAA41mvAOwA14DCx4AAwsDXgOw5LwDLgYABucGAAMuG7wPAFG8A7ADIxIA
+        A3XkvAONBgADZv8A/wD/ACcAA2YGAAONY7wDgQMLKgADCwOB4bwDLgYABucGAAMuG7wPAFS8A7ADIxIA
+        A5nhvAONBgADZv8A/wD/ACcAA2YGAAONYLwDRjYAA17evAMuBgAG5wYAAy4bvA8AV7wDsAMjDwADCwOZ
+        3rwDjQYAA2b/AP8A/wAnAANmBgADjV28A0Y8AANGJLwDjQleA4EDpKW8Ay4GAAbnBgADLhu8DwADmVe8
+        A7ADIw8AAwsDmdu8A40GAANm/wD/AP8AJwADZgYAA41avANGFQADRgOBA6QGvAOkA3UDOhUAA0YYvAOk
+        A0YVAAMjA3UDsJy8Ay4GAAbnBgADLhu8Ay4MAANpWrwDsAMjDwADCwOZ2LwDjQYAA2b/AP8A/wAnAANm
+        BgADjVe8A2kSAAMuA6QYvAOZAyMSAAMjA7APvANpAwseAAMLA3WZvAMuBgAG5wYAAy4bvANSDAADF128
+        A7ADIw8AAwsDpNW8A40GAANm/wD/AP8AJwADZgYAA41UvAN1EgADRiS8A0YSAAMjA7AJvANGKgADLgOw
+        k7wDLgYABucGAAMuG7wDmQ8AA3VdvAOwAyMPAAMu1bwDjQYAA2b/AP8A/wAnAANmBgADjVG8A5kSAANG
+        KrwDRhIAAyMDpAO8A6QDCy0AAwsDmZC8Ay4GAAbnBgADLh68AxcMAAMLA5ldvAOwAyMPAAN10rwDjQYA
+        A2b/AP8A/wAnAANmBgADjVG8Ay4PAANGMLwDaRIAAwsDmQO8A5kDCwwAAzoDXgNGAxcVAAMLA3WNvAMu
+        BgAG5wYAAy4evAN1DwADCwOZXbwDmQMLDAADF9K8A40GAANm/wD/AP8AJwADZgYAA41OvAN1DwADIza8
+        A3USAAMLA5kDvAOkAyMDAAM6A7AMvAONAy4VAAN1irwDLgYABucGAAMuIbwDLg8AAwsDmV28A4EPAAOB
+        z7wDjQYAA2b/AP8A/wAnAANmBgADjU68Ay4MAAMLA7A5vAN1EgADCwOBA7wDsANpGLwDaQMLEgADaYe8
+        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
+        A2YGAAON/7x7vAMuBgAG5wYAAy7/vAm8A7ADIzkAA3UwvAONBgADZv8A/wD/ACcAA2YGAAON/7x7vAMu
+        BgAG5wYAAy7/vAy8A7ADRjAAAwsDdTO8A40GAANm/wD/AP8AJwADZgYAA43/vHu8Ay4GAAbnBgADLv+8
+        ErwDgQMXJwADLgOkNrwDjQYAA2b/AP8A/wAnAANmBgADjf+8e7wDLgYABucGAAMu/7wYvAN1AyMYAAML
+        A0YDjTy8A40GAANm/wD/AP8AJwADZgYAA43/vHu8Ay4GAAbnBgADLv+8HrwDpAOBDF4DaQONRbwDjQYA
+        A2b/AP8A/wAnAANmBgADjf+8e7wDLgYABucGAAMu/7x7vANpBgADfP8A/wD/ACcAA5EGAANe/7x7vAML
+        BgAD7wPnBgADF/+8e7wDUgYAA7T/AP8A/wAnAAPDBgADI/+8eLwDjQYAAxoPAAOZ/7x4vAMXBgAD0f8A
+        /wD/ACcAA/YJAAON/7x1vAMuBgADkQYAA3wGAANG/7x1vAOBCQAD+/8A/wD/ACoAA2YGAAMjA7D/vG+8
+        A3UJAAPnBgAD0QkAA43/vG+8A7ADFwYAA5H/AP8A/wAtAAPvCQADIwOw/7xpvAONAwsGAANmDAADZgYA
+        AwsDmf+8abwDsAMjBgADGgP2/wD/AP8AMAADtAkAAyMDjf+8YLwDsANeCQADGgP2DAAD7wMaCQADaf+8
+        Y7wDjQMXCQADw/8A/wD/ADYAA5EMAAMuA2n/jVSNA4EDUgMLCQADGgPvEgAD7wMaCQADFwNSA4H/jVSN
+        A14DIwwAA5H/AP8A/wA8AAO0/wByAAM2A+8YAAPvAzb/AHIAA8P/AP8A/wBCAAPvA2b/AGYAAxoDtAP7
+        HgAD+wO0Axr/AGYAA2YD7/8A/wD/AEsAA/YDwwN8/2ZXZgOjA9wtAAP7A9EDo/9mV2YDkQPDA/b/AP8A
+        /wA8AAFCAU0BPgcAAT4DAAEoAwABGAECAgABawMAAQEBAAEBBQABbAEcFgAD/wEAAf8BgA0AAQ8C/w4A
+        AR8B8CIAAfwPAAH/AfAOAAEDAfAiAAHwDwABfwHgDwAB8CIAAeAPAAE/AcAPAAFwIgABwA8AAR8BgA8A
+        ATAiAAHADwABDxAAATAiAAGADwABBhAAARAiAAGADwABBhAAARAyAAEGQwABBP8A/wD/AP8A/wD/AP8A
+        /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wC6AAEGQwABBjMAAYAPAAEGEAABECIAAYAPAAEP
+        EAABECIAAcAPAAEPEAABMCIAAeAPAAEfAYAPAAFwIgAB8A8AAT8BwA8AAfAiAAH4DwABfwHgDgABAQHw
+        IgAB/g4AAQMB/wH4DgABBwHwIgAL
+</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -7557,6 +7594,12 @@
   </data>
   <data name="&gt;&gt;bindingSourceStatusTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ilMyImages.Name" xml:space="preserve">
+    <value>ilMyImages</value>
+  </data>
+  <data name="&gt;&gt;ilMyImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FlightData</value>

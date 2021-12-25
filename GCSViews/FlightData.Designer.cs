@@ -202,22 +202,19 @@ namespace MissionPlanner.GCSViews
             this.label1 = new MissionPlanner.Controls.MyLabel();
             this.CHK_autopan = new System.Windows.Forms.CheckBox();
             this.CB_tuning = new System.Windows.Forms.CheckBox();
-            this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
             this.ZedGraphTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.scriptChecker = new System.Windows.Forms.Timer(this.components);
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
-            this.tlpMyMainPnl = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnMyConnect = new System.Windows.Forms.Button();
             this.pnlMap = new System.Windows.Forms.Panel();
-            this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
             this.pnlCheckList = new System.Windows.Forms.Panel();
             this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnMyConnect = new System.Windows.Forms.Button();
-            this.finalConnect = new System.Windows.Forms.Button();
+            this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -271,11 +268,8 @@ namespace MissionPlanner.GCSViews
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
-            this.tlpMyMainPnl.SuspendLayout();
             this.pnlMap.SuspendLayout();
-            this.tlConnectionContainer.SuspendLayout();
             this.pnlCheckList.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainH
@@ -2402,7 +2396,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 2160D;
+            this.windDir1.Direction = 180D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2545,6 +2539,49 @@ namespace MissionPlanner.GCSViews
             this.CB_tuning.UseVisualStyleBackColor = true;
             this.CB_tuning.CheckedChanged += new System.EventHandler(this.CB_tuning_CheckedChanged);
             // 
+            // ZedGraphTimer
+            // 
+            this.ZedGraphTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(226)))), ((int)(((byte)(150)))));
+            this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(148)))), ((int)(((byte)(41)))));
+            // 
+            // openScriptDialog
+            // 
+            resources.ApplyResources(this.openScriptDialog, "openScriptDialog");
+            // 
+            // scriptChecker
+            // 
+            this.scriptChecker.Tick += new System.EventHandler(this.scriptChecker_Tick);
+            // 
+            // Messagetabtimer
+            // 
+            this.Messagetabtimer.Interval = 200;
+            this.Messagetabtimer.Tick += new System.EventHandler(this.Messagetabtimer_Tick);
+            // 
+            // bindingSourceStatusTab
+            // 
+            this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
+            // 
+            // btnMyConnect
+            // 
+            resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
+            this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMyConnect.Name = "btnMyConnect";
+            this.btnMyConnect.UseVisualStyleBackColor = true;
+            this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
+            // 
+            // pnlMap
+            // 
+            this.pnlMap.Controls.Add(this.btnMyConnect);
+            this.pnlMap.Controls.Add(this.tlConnectionContainer);
+            this.pnlMap.Controls.Add(this.pnlCheckList);
+            this.pnlMap.Controls.Add(this.gMapControl1);
+            resources.ApplyResources(this.pnlMap, "pnlMap");
+            this.pnlMap.Name = "pnlMap";
+            // 
             // gMapControl1
             // 
             this.gMapControl1.BackColor = System.Drawing.Color.Black;
@@ -2578,59 +2615,6 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseMove);
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             // 
-            // ZedGraphTimer
-            // 
-            this.ZedGraphTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(226)))), ((int)(((byte)(150)))));
-            this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(148)))), ((int)(((byte)(41)))));
-            // 
-            // openScriptDialog
-            // 
-            resources.ApplyResources(this.openScriptDialog, "openScriptDialog");
-            // 
-            // scriptChecker
-            // 
-            this.scriptChecker.Tick += new System.EventHandler(this.scriptChecker_Tick);
-            // 
-            // Messagetabtimer
-            // 
-            this.Messagetabtimer.Interval = 200;
-            this.Messagetabtimer.Tick += new System.EventHandler(this.Messagetabtimer_Tick);
-            // 
-            // bindingSourceStatusTab
-            // 
-            this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
-            // 
-            // tlpMyMainPnl
-            // 
-            resources.ApplyResources(this.tlpMyMainPnl, "tlpMyMainPnl");
-            this.tlpMyMainPnl.Controls.Add(this.tableLayoutPanel4, 2, 0);
-            this.tlpMyMainPnl.Controls.Add(this.pnlMap, 1, 0);
-            this.tlpMyMainPnl.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tlpMyMainPnl.Name = "tlpMyMainPnl";
-            // 
-            // tableLayoutPanel4
-            // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // pnlMap
-            // 
-            this.pnlMap.Controls.Add(this.tlConnectionContainer);
-            this.pnlMap.Controls.Add(this.pnlCheckList);
-            this.pnlMap.Controls.Add(this.gMapControl1);
-            resources.ApplyResources(this.pnlMap, "pnlMap");
-            this.pnlMap.Name = "pnlMap";
-            // 
-            // tlConnectionContainer
-            // 
-            resources.ApplyResources(this.tlConnectionContainer, "tlConnectionContainer");
-            this.tlConnectionContainer.Controls.Add(this.finalConnect, 0, 0);
-            this.tlConnectionContainer.Name = "tlConnectionContainer";
-            // 
             // pnlCheckList
             // 
             this.pnlCheckList.Controls.Add(this.checkListControl2);
@@ -2642,29 +2626,21 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.checkListControl2, "checkListControl2");
             this.checkListControl2.Name = "checkListControl2";
             // 
-            // tableLayoutPanel3
+            // tlConnectionContainer
             // 
-            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.btnMyConnect, 0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            resources.ApplyResources(this.tlConnectionContainer, "tlConnectionContainer");
+            this.tlConnectionContainer.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tlConnectionContainer.Name = "tlConnectionContainer";
             // 
-            // btnMyConnect
+            // ilMyImages
             // 
-            resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
-            this.btnMyConnect.Name = "btnMyConnect";
-            this.btnMyConnect.UseVisualStyleBackColor = true;
-            this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
-            // 
-            // finalConnect
-            // 
-            resources.ApplyResources(this.finalConnect, "finalConnect");
-            this.finalConnect.Name = "finalConnect";
-            this.finalConnect.UseVisualStyleBackColor = true;
-            this.finalConnect.Click += new System.EventHandler(this.finalConnect_Click);
+            this.ilMyImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMyImages.ImageStream")));
+            this.ilMyImages.Images.SetKeyName(0, "link.png");
+            this.ilMyImages.Images.SetKeyName(1, "un_link.png");
             // 
             // FlightData
             // 
-            this.Controls.Add(this.tlpMyMainPnl);
+            this.Controls.Add(this.pnlMap);
             this.Controls.Add(this.MainH);
             resources.ApplyResources(this, "$this");
             this.Name = "FlightData";
@@ -2737,12 +2713,9 @@ namespace MissionPlanner.GCSViews
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
-            this.tlpMyMainPnl.ResumeLayout(false);
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
-            this.tlConnectionContainer.ResumeLayout(false);
             this.pnlCheckList.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2773,7 +2746,6 @@ namespace MissionPlanner.GCSViews
         private System.Windows.Forms.NumericUpDown Zoomlevel;
         private Controls.MyLabel label1;
         private System.Windows.Forms.CheckBox CHK_autopan;
-        public Controls.myGMAP gMapControl1;
         private ZedGraph.ZedGraphControl zg1;
         public System.Windows.Forms.TabControl tabControlactions;
         public System.Windows.Forms.TabPage tabGauges;
@@ -2949,14 +2921,12 @@ namespace MissionPlanner.GCSViews
         private System.Windows.Forms.Label NIC_lbl;
         private System.Windows.Forms.TextBox NACp_tb;
         private System.Windows.Forms.TextBox NIC_tb;
-        private TableLayoutPanel tlpMyMainPnl;
+        private Button btnMyConnect;
         private Panel pnlMap;
+        private TableLayoutPanel tlConnectionContainer;
         private Panel pnlCheckList;
         private Controls.PreFlight.CheckListControl checkListControl2;
-        private TableLayoutPanel tableLayoutPanel4;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Button btnMyConnect;
-        private TableLayoutPanel tlConnectionContainer;
-        private Button finalConnect;
+        public Controls.myGMAP gMapControl1;
+        private ImageList ilMyImages;
     }
 }

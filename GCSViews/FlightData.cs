@@ -3686,9 +3686,11 @@ namespace MissionPlanner.GCSViews
                 if (MainV2.comPort.BaseStream.IsOpen)
                 {
                     btnMyConnect.Text = "Disconnect";
+                    btnMyConnect.ImageIndex = 0;
                 }
                 else {
                     btnMyConnect.Text = "Connect";
+                    btnMyConnect.ImageIndex = 1;
                 }
 
             });
@@ -5685,13 +5687,7 @@ namespace MissionPlanner.GCSViews
 
         private void finalConnect_Click(object sender, EventArgs e)
         {
-            tlConnectionContainer.Visible = false;
-            var mav = new MAVLinkInterface();
-            MainV2.instance.doConnect(mav, "COM3", "115200");
-
-            MainV2.Comports.Add(mav);
-
-            MainV2._connectionControl.UpdateSysIDS();
+           
         }
     }
 }
