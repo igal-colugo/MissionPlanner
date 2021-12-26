@@ -82,10 +82,10 @@ namespace MissionPlanner.GCSViews
     { "calibration",        Calibration::create },
              */
 
-        ///tmp/.build/ArduCopter.elf -M+ -O-34.98106,117.85201,40,0
-        ///tmp/.build/APMrover2.elf -Mrover -O-34.98106,117.85201,40,0
+        ///tmp/.build/ArduCopter.elf -M+ -O-34.98106,117.85201,40,0 
+        ///tmp/.build/APMrover2.elf -Mrover -O-34.98106,117.85201,40,0 
         ///tmp/.build/ArduPlane.elf -Mjsbsim -O-34.98106,117.85201,40,0 --autotest-dir ./
-        ///tmp/.build/ArduCopter.elf -Mheli -O-34.98106,117.85201,40,0
+        ///tmp/.build/ArduCopter.elf -Mheli -O-34.98106,117.85201,40,0 
         ~SITL()
         {
             try
@@ -318,7 +318,7 @@ namespace MissionPlanner.GCSViews
                     return path;
                 }
             }
-
+            
             if (RuntimeInformation.OSArchitecture == Architecture.Arm ||
                RuntimeInformation.OSArchitecture == Architecture.Arm64)
             {
@@ -358,22 +358,6 @@ namespace MissionPlanner.GCSViews
 
             if (!chk_skipdownload.Checked)
             {
-                // kill old session - so we can overwrite if needed
-                try
-                {
-                    simulator.ForEach(a =>
-                    {
-                        try
-                        {
-                            a.Kill();
-                        }
-                        catch { }
-                    });
-                }
-                catch
-                {
-                }
-
                 var url = sitlmasterurl;
                 var result = CustomMessageBox.Show("Select the version you want to use?", "Select your version", CustomMessageBox.MessageBoxButtons.YesNo, CustomMessageBox.MessageBoxIcon.Question, "Latest(Dev)", "Stable");
 
@@ -389,11 +373,6 @@ namespace MissionPlanner.GCSViews
                         url = sitlroverstableurl;
                     if (filename.ToLower().Contains("plane"))
                         url = sitlplanestableurl;
-                    if (filename.ToLower().Contains("heli"))
-                        url = sitlcopterstableurl;
-                } else
-                {
-                    return null;
                 }
 
                 Uri fullurl = new Uri(url, filename);
@@ -421,9 +400,7 @@ namespace MissionPlanner.GCSViews
                     var depurl = new Uri(url, a);
                     var t2 = Download.getFilefromNet(depurl.ToString(), sitldirectory + depurl.Segments[depurl.Segments.Length - 1]);
                 });
-
-                await t1;
-
+                 
                 load.Close();
             }
 
@@ -578,10 +555,6 @@ namespace MissionPlanner.GCSViews
 
         private async void StartSITL(string exepath, string model, string homelocation, string extraargs = "", int speedup = 1)
         {
-
-            //If we got null, it means that the verison selection box was canceled.
-            if (exepath == null) return;
-
             if (String.IsNullOrEmpty(homelocation))
             {
                 CustomMessageBox.Show(Strings.Invalid_home_location, Strings.ERROR);
@@ -826,7 +799,7 @@ namespace MissionPlanner.GCSViews
             {
                 exepath = CheckandGetSITLImage("ArduPlane.elf");
                 model = "plane";
-            } else
+            } else 
             if (firmware == Firmwares.ArduRover)
             {
                 exepath = CheckandGetSITLImage("ArduRover.elf");
@@ -837,9 +810,9 @@ namespace MissionPlanner.GCSViews
                 exepath = CheckandGetSITLImage("ArduCopter.elf");
                 model = "+";
             }
-
+            
             var config = await GetDefaultConfig(model);
-
+            
             max--;
 
             for (int a = (int)max; a >= 0; a--)
@@ -947,7 +920,7 @@ SIM_DRIFT_TIME=0
         }
 
         public async void StartSwarmChain()
-        {
+        {  
             var max = 10;
 
             if (InputBox.Show("how many?", "how many?", ref max) != DialogResult.OK)

@@ -652,7 +652,7 @@ namespace MissionPlanner.Grid
             List<PointLatLng> segment = new List<PointLatLng>();
             double maxgroundelevation = double.MinValue;
             double mingroundelevation = double.MaxValue;
-            double startalt = plugin.Host.cs.PlannedHomeLocation.Alt;
+            double startalt = plugin.Host.cs.HomeAlt;
 
             foreach (var item in grid)
             {

@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "NMEA2000": {
-      "commandName": "Project",
-      "commandLineArgs": "> ..\\..\\..\\NMEA2000pgns.cs"
-    }
-  }
-}

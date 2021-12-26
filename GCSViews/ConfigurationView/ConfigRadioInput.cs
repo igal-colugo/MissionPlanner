@@ -106,12 +106,6 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             BAR15.DataBindings.Add(new Binding("Value", currentStateBindingSource, "ch15in", true));
             BAR16.DataBindings.Add(new Binding("Value", currentStateBindingSource, "ch16in", true));
 
-            //Add channel to pitch/roll/throttle/yaw bars labels
-            BARroll.Label = BARroll.Label + " (ch" + chroll.ToString() + ")";
-            BARpitch.Label = BARpitch.Label + " (ch" + chpitch.ToString() + ")";
-            BARthrottle.Label = BARthrottle.Label + " (ch" + chthro.ToString() + ")";
-            BARyaw.Label = BARyaw.Label + " (ch" + chyaw.ToString() + ")";
-
             try
             {
                 // force this screen to work
@@ -137,16 +131,16 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             }
 
             // this controls the direction of the output, not the input.
-            CHK_revroll.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC" + chroll + "_REV", "RC" + chroll + "_REVERSED" },
+            CHK_revch1.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC1_REV", "RC1_REVERSED" },
                 MainV2.comPort.MAV.param);
-            CHK_revpitch.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC" + chpitch + "_REV", "RC" + chpitch + "_REVERSED" },
+            CHK_revch2.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC2_REV", "RC2_REVERSED" },
                 MainV2.comPort.MAV.param);
-            CHK_revthr.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC" + chthro + "_REV", "RC" + chthro + "_REVERSED" },
+            CHK_revch3.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC3_REV", "RC3_REVERSED" },
                 MainV2.comPort.MAV.param);
-            CHK_revyaw.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC" + chyaw + "_REV", "RC" + chyaw + "_REVERSED" },
+            CHK_revch4.setup(new double[] { -1, 1 }, new double[] { 1, 0 }, new string[] { "RC4_REV", "RC4_REVERSED" },
                 MainV2.comPort.MAV.param);
 
-            if (MainV2.comPort.MAV.param["RC"+ chroll + "_REVERSED"]?.Value == 1)
+            if(MainV2.comPort.MAV.param["RC"+ chroll + "_REVERSED"]?.Value == 1)
             {
                 reverseChannel(true, BARroll);
             }
@@ -167,10 +161,10 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             // run after to ensure they are disabled on copter
             if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
             {
-                CHK_revroll.Visible = false;
-                CHK_revpitch.Visible = false;
-                CHK_revthr.Visible = false;
-                CHK_revyaw.Visible = false;
+                CHK_revch1.Visible = false;
+                CHK_revch2.Visible = false;
+                CHK_revch3.Visible = false;
+                CHK_revch4.Visible = false;
             }
 
             startup = false;

@@ -598,23 +598,17 @@ namespace MissionPlanner
         [GroupText("Sensor")]
         public float magfield3 => (float)Math.Sqrt(Math.Pow(mx3, 2) + Math.Pow(my3, 2) + Math.Pow(mz3, 2));
 
-        // hygrometer1
-        [DisplayText("hygrotemp1 (cdegC)")]
+        // hygrometer
+        [DisplayText("hygrotemp (cdegC)")]
         [GroupText("Sensor")]
-        public short hygrotemp1 { get; set; }
+        public short hygrotemp { get; set; }
 
-        [DisplayText("hygrohumi1 (c%)")]
+        [DisplayText("hygrohumi (c%)")]
         [GroupText("Sensor")]
-        public ushort hygrohumi1 { get; set; }
+        public ushort hygrohumi { get; set; }
 
-        // hygrometer2
-        [DisplayText("hygrotemp2 (cdegC)")]
         [GroupText("Sensor")]
-        public short hygrotemp2 { get; set; }
-
-        [DisplayText("hygrohumi2 (c%)")]
-        [GroupText("Sensor")]
-        public ushort hygrohumi2 { get; set; }
+        public byte hygro_id { get; set; }
 
         //radio
         [GroupText("RadioIn")] public float ch1in { get; set; }
@@ -3310,17 +3304,10 @@ namespace MissionPlanner
 
                         {
                             var hygrometer = mavLinkMessage.ToStructure<MAVLink.mavlink_hygrometer_sensor_t>();
-                            
-                            if (hygrometer.id == 0)
-                            {
-                                hygrotemp1 = hygrometer.temperature;
-                                hygrohumi1 = hygrometer.humidity;
-                            }
-                            else if (hygrometer.id == 1)
-                            {
-                                hygrotemp2 = hygrometer.temperature;
-                                hygrohumi2 = hygrometer.humidity;
-                            }
+
+                            hygrotemp = hygrometer.temperature;
+                            hygrohumi = hygrometer.humidity;
+                            hygro_id = hygrometer.id;
                         }
 
                         break;
@@ -3379,7 +3366,7 @@ namespace MissionPlanner
                         {
                             var named_float = mavLinkMessage.ToStructure<MAVLink.mavlink_named_value_float_t>();
 
-                            string mav_value_name = Encoding.UTF8.GetString(named_float.name);
+                            string mav_value_name = Encoding.ASCII.GetString(named_float.name);
 
                             int ind = mav_value_name.IndexOf('\0');
                             if (ind != -1)

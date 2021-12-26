@@ -4708,7 +4708,6 @@ namespace MissionPlanner
                     {
                         try
                         {
-                            Console.WriteLine("Process port " + line);
                             MAVLinkInterface mav = new MAVLinkInterface();
 
                             if (tcp.IsMatch(line))
@@ -4768,7 +4767,6 @@ namespace MissionPlanner
 
                 Parallel.ForEach(mavs, mav => 
                 {
-                    Console.WriteLine("Process connect " + mav);
                     doConnect(mav, "preset", "0", false, false);
                     Comports.Add(mav);
                 });

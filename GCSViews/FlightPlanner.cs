@@ -973,11 +973,7 @@ namespace MissionPlanner.GCSViews
             try
             {
                 var cmds = WaypointFile.ReadWaypointFile(file);
-                if ((MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue == MAVLink.MAV_MISSION_TYPE.FENCE ||
-                    (MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue == MAVLink.MAV_MISSION_TYPE.RALLY)
-                {
-                    cmds.RemoveAt(0);
-                }
+
                 processToScreen(cmds, append);
 
                 writeKML();
@@ -2015,7 +2011,6 @@ namespace MissionPlanner.GCSViews
         public void chk_grid_CheckedChanged(object sender, EventArgs e)
         {
             grid = chk_grid.Checked;
-            this.MainMap.Refresh();
         }
 
         public void CHK_splinedefault_CheckedChanged(object sender, EventArgs e)
@@ -3018,16 +3013,6 @@ namespace MissionPlanner.GCSViews
                 }
 
                 temp.p1 = float.Parse(Commands.Rows[a].Cells[Param1.Index].Value.ToString());
-
-                if (Commands.Rows[a].Cells[Command.Index].Value.Equals("WAYPOINT"))
-                {
-                    if (temp.p1 < 0)
-                    {
-                        temp.p1 = 0;
-                        DataGridViewTextBoxCell cell = Commands.Rows[a].Cells[Param1.Index] as DataGridViewTextBoxCell;
-                        cell.Value = temp.p1;
-                    }
-                }
 
                 temp.alt =
                     (float)
@@ -6280,9 +6265,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 prop.Update(MainV2.comPort.MAV.cs.PlannedHomeLocation, MainV2.comPort.MAV.cs.Location,
                     MainV2.comPort.MAV.cs.battery_kmleft);
 
-                // clear every 10 seconds
-                if(DateTime.Now.Second % 10 == 0)
-                    routesoverlay.Markers.Clear();
+                //routesoverlay.Markers.Clear();
 
                 if (MainV2.comPort.MAV.cs.TrackerLocation != MainV2.comPort.MAV.cs.PlannedHomeLocation &&
                     MainV2.comPort.MAV.cs.TrackerLocation.Lng != 0)

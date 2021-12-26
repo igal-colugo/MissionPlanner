@@ -341,34 +341,7 @@ namespace MissionPlanner.Log
 
             CreateChart(zg1);
 
-            // try and grab vehicle version from messages
-            string vehicle_msg = null;
-            foreach (var item in logdata.GetEnumeratorType("MSG"))
-            {
-               if (new string[] { "AntennaTracker V", "ArduCopter V", "ArduPlane V", "ArduSub V", "Blimp V" }.Any(s => item.items[2].Contains(s)))
-               {
-                    if (vehicle_msg != null)
-                    {
-                        // should not find multiple vehicle messages
-                        if (vehicle_msg == item.items[2])
-                        {
-                            // allow if both are the same
-                            continue;
-                        }
-                        vehicle_msg = null;
-                        break;
-                    }
-                    vehicle_msg = item.items[2];
-               }
-            }
-            var VehicleType = "";
-            if (vehicle_msg != null)
-            {
-                this.Text += " - " + vehicle_msg;
-                VehicleType = vehicle_msg.Split()[0];
-            }
-
-            ResetTreeView(logdata.SeenMessageTypes, VehicleType);
+            ResetTreeView(logdata.SeenMessageTypes);
 
             
 
@@ -461,142 +434,10 @@ namespace MissionPlanner.Log
             }
         }
 
-        private string get_param_value_string(string param_name, string VehicleType)
-        {
-            var param = MainV2.comPort.MAV.param[param_name];
-            if (param == null)
-            {
-                return "";
-            }
-            var value_list = ParameterMetaDataRepository.GetParameterOptionsInt(param.Name, VehicleType);
-            foreach (var item in value_list)
-            {
-                if (item.Key == Convert.ToInt32(param.Value))
-                {
-                    return item.Value;
-                }
-            }
-            return "";
-        }
-
-        // get extra info derived from paramters
-        private string get_extra_info(string LogMSG, string felid, string VehicleType)
-        {
-            switch(LogMSG)
-            {
-                case "RCOU":
-                    {
-                        return get_param_value_string("SERVO" + Regex.Match(felid, @"\d+").Value + "_FUNCTION", VehicleType);
-                    }
-
-                case "RCIN":
-                    {
-                        var rc_in_num = Regex.Match(felid, @"\d+").Value;
-                        if (rc_in_num.Length == 0)
-                        {
-                            return "";
-                        }
-                        var ret = "";
-
-                        // Check RCMAP values
-                        var rc_map = new[] { "ROLL", "PITCH", "THROTTLE", "YAW", "FORWARD", "LATERAL" };
-                        foreach (string map in rc_map)
-                        {
-                            var map_param = MainV2.comPort.MAV.param["RCMAP_" + map];
-                            if ((map_param != null) && (map_param.Value == Convert.ToDouble(rc_in_num)))
-                            {
-                                if (ret.Length > 0)
-                                {
-                                    ret += " + ";
-                                }
-                                ret += map;
-                            }
-                        }
-
-                        // Check flight mode switch
-                        var mode_param = MainV2.comPort.MAV.param["FLTMODE_CH"];
-                        if ((mode_param != null) && (mode_param.Value == Convert.ToDouble(rc_in_num)))
-                        {
-                            if (ret.Length > 0)
-                            {
-                                ret += " + ";
-                            }
-                            ret += "FlightMode";
-                        }
-
-                        // Check RCx_OPTION
-                        var opt = get_param_value_string("RC" + rc_in_num + "_OPTION", VehicleType);
-                        if (opt.Length > 0)
-                        {
-                            if (ret.Length > 0)
-                            {
-                                ret += " + ";
-                            }
-                            return ret + opt;
-                        }
-                        return ret;
-                    }
-            }
-
-            return "";
-        }
-
-        // Get per intance info
-        private string get_instance_info(string LogMSG, string instance, string VehicleType)
-        {
-            switch (LogMSG)
-            {
-                case "BARO":
-                    {
-                        // convert to 1 indexed
-                        var param = "BARO" + (Convert.ToUInt32(instance) + 1).ToString() + "_DEVID";
-                        var dev_id = MainV2.comPort.MAV.param[param];
-                        if (dev_id == null)
-                        {
-                            return "";
-                        }
-                        Device.DeviceStructure baro = new Device.DeviceStructure(param, Convert.ToUInt32(dev_id.Value));
-                        return baro.ToString();
-                    }
-
-                case "GPS":
-                case "GPA":
-                    {
-                        var param = "GPS_TYPE";
-                        if (Convert.ToUInt32(instance) > 0)
-                        {
-                            // GPS instance 1 is GPS_TPYE2
-                            param += (Convert.ToUInt32(instance) + 2).ToString();
-                        }
-                        return get_param_value_string(param, VehicleType);
-                    }
-
-                case "MAG":
-                    {
-                        var param = "COMPASS_PRIO" + (Convert.ToUInt32(instance) + 1).ToString() + "_ID";
-                        var dev_id = MainV2.comPort.MAV.param[param];
-                        if (dev_id == null)
-                        {
-                            return "";
-                        }
-                        Device.DeviceStructure mag = new Device.DeviceStructure(param, Convert.ToUInt32(dev_id.Value));
-                        return mag.ToString();
-                    }
-            }
-            return "";
-        }
-
-        private void ResetTreeView(List<string> seenmessagetypes, string VehicleType)
+        private void ResetTreeView(List<string> seenmessagetypes)
         {
             treeView1.Nodes.Clear();
-            treeView1.ShowNodeToolTips = true;
             dataModifierHash = new Hashtable();
-
-            var parmdata = logdata.GetEnumeratorType("PARM").Select(a =>
-                new MAVLink.MAVLinkParam(a["Name"], double.Parse(a["Value"], CultureInfo.InvariantCulture),
-                    MAVLink.MAV_PARAM_TYPE.REAL32));
-            MainV2.comPort.MAV.param.Clear();
-            MainV2.comPort.MAV.param.AddRange(parmdata);
 
             var sorted = new SortedList(dflog.logformat);
             // go through all fmt's
@@ -613,11 +454,9 @@ namespace MissionPlanner.Log
                         foreach (var instanceinfo in logdata.InstanceType[item.Id].value)
                         {
                             var instNode = msgNode.Nodes.Add(instanceinfo);
-                            instNode.ToolTipText = get_instance_info(item.Name, instanceinfo, VehicleType);
                             foreach (var item1 in item.FieldNames)
                             {
-                                var new_node = instNode.Nodes.Add(item1);
-                                new_node.ToolTipText = get_extra_info(item.Name, item1, VehicleType);
+                                instNode.Nodes.Add(item1);
                             }
                         }
                     }
@@ -626,8 +465,7 @@ namespace MissionPlanner.Log
                         // no instance add the fields
                         foreach (var item1 in item.FieldNames)
                         {
-                            var new_node = msgNode.Nodes.Add(item1);
-                            new_node.ToolTipText = get_extra_info(item.Name, item1, VehicleType);
+                            msgNode.Nodes.Add(item1);
                         }
                     }
                     treeView1.Nodes.Add(msgNode);
@@ -1021,7 +859,6 @@ namespace MissionPlanner.Log
             }
 
             // ensure we tick the treeview
-            string extra_label = "";
             foreach (TreeNode node in treeView1.Nodes)
             {
                 if (node.Text == type)
@@ -1034,13 +871,9 @@ namespace MissionPlanner.Log
                             {
                                 foreach (TreeNode subsubnode in subnode.Nodes)
                                 {
-                                    if (subsubnode.Text == fieldname)
+                                    if (subsubnode.Text == fieldname && subsubnode.Checked != true)
                                     {
-                                        if (subsubnode.Checked != true)
-                                        {
-                                            subsubnode.Checked = true;
-                                        }
-                                        extra_label = " " + subsubnode.ToolTipText;
+                                        subsubnode.Checked = true;
                                         break;
                                     }
                                 }
@@ -1048,13 +881,9 @@ namespace MissionPlanner.Log
                         }
                         else
                         {
-                            if (subnode.Text == fieldname)
+                            if (subnode.Text == fieldname && subnode.Checked != true)
                             {
-                                if (subnode.Checked != true)
-                                {
-                                    subnode.Checked = true;
-                                }
-                                extra_label = " " + subnode.ToolTipText;
+                                subnode.Checked = true;
                                 break;
                             }
                         }
@@ -1082,7 +911,7 @@ namespace MissionPlanner.Log
                 {
                     try
                     {
-                        GraphItem_GetList(fieldname, type, dflog, dataModifier, left, instance, extra_label);
+                        GraphItem_GetList(fieldname, type, dflog, dataModifier, left, instance);
                     }
                     catch (Exception ex)
                     {
@@ -1112,7 +941,7 @@ namespace MissionPlanner.Log
                     else
                         newlist.Add(new PointPair(a.Item1.lineno, a.Item2));
                 });
-                GraphItem_AddCurve(newlist, type, fieldname, left, instance, isexpression, extra_label);
+                GraphItem_AddCurve(newlist, type, fieldname, left, instance, isexpression);
             }
         }
 
@@ -1298,7 +1127,7 @@ main()
             }
         }
 
-        void GraphItem_GetList(string fieldname, string type, DFLog dflog, DataModifer dataModifier, bool left, string instance, string extra_label)
+        void GraphItem_GetList(string fieldname, string type, DFLog dflog, DataModifer dataModifier, bool left, string instance)
         {
             log.Info("GraphItem_GetList " + type + " " + fieldname + " " + instance);
             int col = dflog.FindMessageOffset(type, fieldname);
@@ -1392,7 +1221,7 @@ main()
                 a++;
             }
 
-            Invoke((Action)delegate { GraphItem_AddCurve(list1, type, fieldname, left, instance, false, extra_label); });
+            Invoke((Action)delegate { GraphItem_AddCurve(list1, type, fieldname, left, instance); });
         }
 
         Color pickColour()
@@ -1412,7 +1241,7 @@ main()
             return colours[zg1.GraphPane.CurveList.Count % colours.Length];
         }
 
-        void GraphItem_AddCurve(PointPairList list1, string type, string header, bool left, string instance, bool isexpression, string extra_label)
+        void GraphItem_AddCurve(PointPairList list1, string type, string header, bool left, string instance, bool isexpression = false)
         {
             if (list1.Count < 1)
             {
@@ -1442,7 +1271,7 @@ main()
 
             LineItem myCurve;
 
-            myCurve = zg1.GraphPane.AddCurve(type + (instance != "" ? "[" + instance + "]" : "") + "." + header + extra_label, list1,
+            myCurve = zg1.GraphPane.AddCurve(type + (instance != "" ? "[" + instance + "]" : "") + "." + header, list1,
                 pickColour(), SymbolType.None);
 
             var rightclick = !left;

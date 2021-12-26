@@ -9,8 +9,8 @@ using System.Text;
 using System.Windows.Forms;
 using MissionPlanner.Controls;
 using Newtonsoft.Json;
-using DroneCAN;
-//loadassembly: DroneCAN
+using UAVCAN;
+//loadassembly: UAVCAN
 
 namespace CANLogExtract
 {
@@ -57,8 +57,8 @@ namespace CANLogExtract
                 sfd.InitialDirectory = Path.GetDirectoryName(ofd.FileName);
 
                 if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    DroneCAN.DroneCAN can = new DroneCAN.DroneCAN();
+                { 
+                    UAVCAN.uavcan can = new uavcan();
 
                     using (var stream = sfd.OpenFile())
                     {

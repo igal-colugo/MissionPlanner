@@ -443,8 +443,6 @@ MissionPlanner.GCSViews.ConfigurationView.ConfigFirmware.ExtraDeviceInfo += () =
                             return;
 
                         var focusctl = Control.FromHandle(_focusWindow);
-                        if (focusctl == null)
-                            return;
                         var p = focusctl.PointToClient(Form.MousePosition);
 
                         var handlectl = Control.FromHandle(handle);

@@ -7,8 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MissionPlanner.Controls;
-using DroneCAN;
-//loadassembly: DroneCAN
+using UAVCAN;
+//loadassembly: UAVCAN
 
 namespace CANRTCMExtract
 {
@@ -55,8 +55,8 @@ namespace CANRTCMExtract
                 sfd.InitialDirectory = Path.GetDirectoryName(ofd.FileName);
 
                 if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    DroneCAN.DroneCAN can = new DroneCAN.DroneCAN();
+                { 
+                    UAVCAN.uavcan can = new uavcan();
 
                     using (var stream = sfd.OpenFile())
                     {
@@ -64,9 +64,9 @@ namespace CANRTCMExtract
                         
                         can.MessageReceived += (frame, msg, id) =>
                         {
-                            if (frame.MsgTypeID == (ushort)DroneCAN.DroneCAN.UAVCAN_EQUIPMENT_GNSS_RTCMSTREAM_DT_ID)
+                            if (frame.MsgTypeID == (ushort) uavcan.UAVCAN_EQUIPMENT_GNSS_RTCMSTREAM_DT_ID)
                             {
-                                var rtcm = (DroneCAN.DroneCAN.uavcan_equipment_gnss_RTCMStream) msg;
+                                var rtcm = (uavcan.uavcan_equipment_gnss_RTCMStream) msg;
 
                                 stream.Write(rtcm.data, 0, rtcm.data_len);
                             }
