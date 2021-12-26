@@ -161,6 +161,33 @@ namespace MissionPlanner.GCSViews
             ADSB_Out_Ident
         }
 
+        private enum connectStates
+        {
+            csNone,
+            csDisconnected,
+            csConnected,
+            csPreFlightDone,
+            csLaunched
+        }
+
+        private connectStates connectState
+        {
+            get { return _connectState; }
+            set {
+                if (value == _connectState) {
+                    return;
+                }
+                _connectState = value;
+                btnAltCmd.ImageIndex = _connectState == connectStates.csConnected ? 2 : btnAltCmd.ImageIndex;
+                btnAltCmd.ImageIndex = _connectState == connectStates.csPreFlightDone ? 3 : btnAltCmd.ImageIndex;
+                btnAltCmd.ImageIndex = _connectState == connectStates.csLaunched ? 4 : btnAltCmd.ImageIndex;
+                btnAltCmd.Visible = _connectState == connectStates.csConnected;
+                btnIasCmd.Visible = _connectState == connectStates.csLaunched;
+                btnRtlCmd.Visible = _connectState == connectStates.csLaunched;
+                btnLandCmd.Visible = _connectState == connectStates.csLaunched;
+            }
+        }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -360,6 +387,7 @@ namespace MissionPlanner.GCSViews
 
         private void initMyGui()
         {
+            pnlMap.Dock = DockStyle.Fill;
             int baseWidth = btnZoomIn.Parent.Width;
             btnZoomIn.Location = new Point(970, 3);
             btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
@@ -3722,6 +3750,8 @@ namespace MissionPlanner.GCSViews
                     btnMyConnect.ImageIndex = 1;
                 }
 
+                connectState = MainV2.comPort.BaseStream.IsOpen ? connectStates.csConnected : connectStates.csDisconnected;
+
             });
         }
 
@@ -5378,6 +5408,7 @@ namespace MissionPlanner.GCSViews
             hud1.batterycellcount = iCellCount;
         }
         private bool tabQuickDetached = false;
+        private connectStates _connectState = connectStates.csNone;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -5719,6 +5750,16 @@ namespace MissionPlanner.GCSViews
         private void gMapControl1_Resize_1(object sender, EventArgs e)
         {
             initMyGui();
+        }
+
+        private void btnZoomIn_Click(object sender, EventArgs e)
+        {
+            gMapControl1.Zoom = gMapControl1.Zoom + 1;
+        }
+
+        private void btnZoomOut_Click(object sender, EventArgs e)
+        {
+            gMapControl1.Zoom = gMapControl1.Zoom - 1;
         }
     }
 }
