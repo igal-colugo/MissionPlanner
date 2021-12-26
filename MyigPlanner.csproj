@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <ProjectGuid>{A2E22272-95FE-47B6-B050-9AE7E2055BF5}</ProjectGuid>
-    <ApplicationIcon>defaultMyPlanner.ico</ApplicationIcon>
+    <ApplicationIcon>mpdesktop.ico</ApplicationIcon>
     <OutputType>Exe</OutputType>
     <StartupObject>MissionPlanner.Program</StartupObject>
     <Authors>Michael Oborne</Authors>
@@ -18,6 +18,11 @@
     <Copyright>Copyright © Michael Oborne 2010-2018</Copyright>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <ProjectTypeGuids>{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzers>false</RunAnalyzers>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -32,11 +37,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <ProjectTypeGuids>{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
-    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <RunAnalyzers>false</RunAnalyzers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <OutputPath>bin\Debug\net461\</OutputPath>
@@ -60,9 +60,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyName>MyPlanner</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="APMPlannerXplanes\**" />
@@ -287,9 +284,9 @@
       <Project>{B6054E5B-362C-4298-8F20-6BA5BF1A859E}</Project>
       <Name>Transitions</Name>
     </ProjectReference>
-    <ProjectReference Include="ExtLibs\UAVCAN\UAVCAN.csproj">
+    <ProjectReference Include="ExtLibs\DroneCAN\DroneCAN.csproj">
       <Project>{3A413E59-A20E-477C-997E-64B1398E0E80}</Project>
-      <Name>UAVCAN</Name>
+      <Name>DroneCAN</Name>
     </ProjectReference>
     <ProjectReference Include="ExtLibs\Utilities\MissionPlanner.Utilities.csproj">
       <Project>{1378A66C-38E4-46F5-A05F-DC04EF7D4D16}</Project>
@@ -420,7 +417,7 @@
   <ItemGroup>
     <Compile Include="Antenna\TrackerGeneric.cs" />
     <Compile Include="Common.cs" />
-    <Compile Include="Controls\UAVCANSubscriber.cs">
+    <Compile Include="Controls\DroneCANSubscriber.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ConnectionOptions.cs">
@@ -476,11 +473,11 @@
     <Compile Include="Controls\ThemeEditor.Designer.cs">
       <DependentUpon>ThemeEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UAVCANFileUI.cs">
+    <Compile Include="Controls\DroneCANFileUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\UAVCANFileUI.Designer.cs">
-      <DependentUpon>UAVCANFileUI.cs</DependentUpon>
+    <Compile Include="Controls\DroneCANFileUI.Designer.cs">
+      <DependentUpon>DroneCANFileUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\RelayOptions.cs">
       <SubType>UserControl</SubType>
@@ -494,7 +491,7 @@
     <Compile Include="Controls\MavFTPUI.Designer.cs">
       <DependentUpon>MavFTPUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UAVCANInspector.cs">
+    <Compile Include="Controls\DroneCANInspector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controls\PropagationSettings.cs">
@@ -546,17 +543,23 @@
     <Compile Include="GCSViews\ConfigurationView\ConfigAdvanced.Designer.cs">
       <DependentUpon>ConfigAdvanced.cs</DependentUpon>
     </Compile>
+    <Compile Include="GCSViews\ConfigurationView\ConfigInitialParams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GCSViews\ConfigurationView\ConfigInitialParams.Designer.cs">
+      <DependentUpon>ConfigInitialParams.cs</DependentUpon>
+    </Compile>
     <Compile Include="GCSViews\ConfigurationView\ConfigOSD.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GCSViews\ConfigurationView\ConfigOSD.Designer.cs">
       <DependentUpon>ConfigOSD.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UAVCANParams.cs">
+    <Compile Include="Controls\DroneCANParams.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\UAVCANParams.Designer.cs">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <Compile Include="Controls\DroneCANParams.Designer.cs">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </Compile>
     <Compile Include="GCSViews\ConfigurationView\ConfigParamLoading.cs">
       <SubType>UserControl</SubType>
@@ -579,11 +582,11 @@
     <Compile Include="GCSViews\ConfigurationView\ConfigTradHeli4.Designer.cs">
       <DependentUpon>ConfigTradHeli4.cs</DependentUpon>
     </Compile>
-    <Compile Include="GCSViews\ConfigurationView\ConfigUAVCAN.cs">
+    <Compile Include="GCSViews\ConfigurationView\ConfigDroneCAN.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GCSViews\ConfigurationView\ConfigUAVCAN.Designer.cs">
-      <DependentUpon>ConfigUAVCAN.cs</DependentUpon>
+    <Compile Include="GCSViews\ConfigurationView\ConfigDroneCAN.Designer.cs">
+      <DependentUpon>ConfigDroneCAN.cs</DependentUpon>
     </Compile>
     <Compile Include="GCSViews\ConfigurationView\ConfigUserDefined.cs">
       <SubType>UserControl</SubType>
@@ -592,9 +595,8 @@
       <DependentUpon>ConfigUserDefined.cs</DependentUpon>
     </Compile>
     <Compile Include="GCSViews\ConfigurationView\DeviceInfo.cs" />
-    <Compile Include="GCSViews\ConfigurationView\UAVCANModel.cs" />
+    <Compile Include="GCSViews\ConfigurationView\DroneCANModel.cs" />
     <Compile Include="GCSViews\ConfigurationView\uitype.cs" />
-    <Compile Include="MyCode\ConnectHelper.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Joystick\JoystickAxis.cs">
       <SubType>UserControl</SubType>
@@ -628,6 +630,9 @@
     <None Include="plugins\example13-herelink2.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="plugins\example14-mass.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="Utilities\AirMarket.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -647,9 +652,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="plugins\example7-canrtcm.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="plugins\InitialParamsCalculator.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="plugins\example8-modechange.cs">
@@ -818,9 +820,6 @@
     <EmbeddedResource Include="Controls\EKFStatus.ko-KR.resx">
       <DependentUpon>EKFStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PreFlight\CheckListControl.resx">
-      <DependentUpon>CheckListControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PropagationSettings.ko-KR.resx">
       <DependentUpon>PropagationSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -839,8 +838,8 @@
     <EmbeddedResource Include="Controls\ThemeEditor.resx">
       <DependentUpon>ThemeEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANFileUI.resx">
-      <DependentUpon>UAVCANFileUI.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANFileUI.resx">
+      <DependentUpon>DroneCANFileUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RelayOptions.ar.resx">
       <DependentUpon>RelayOptions.cs</DependentUpon>
@@ -875,8 +874,8 @@
     <EmbeddedResource Include="Controls\MavFTPUI.resx">
       <DependentUpon>MavFTPUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANInspector.resx">
-      <DependentUpon>UAVCANInspector.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANInspector.resx">
+      <DependentUpon>DroneCANInspector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PropagationSettings.resx">
       <DependentUpon>PropagationSettings.cs</DependentUpon>
@@ -884,8 +883,8 @@
     <EmbeddedResource Include="Controls\ProximityControl.resx">
       <DependentUpon>ProximityControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANSubscriber.resx">
-      <DependentUpon>UAVCANSubscriber.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANSubscriber.resx">
+      <DependentUpon>DroneCANSubscriber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Vibration.ko-KR.resx">
       <DependentUpon>Vibration.cs</DependentUpon>
@@ -918,53 +917,56 @@
       <DependentUpon>ConfigAdvanced.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigInitialParams.resx">
+      <DependentUpon>ConfigInitialParams.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigOSD.resx">
       <DependentUpon>ConfigOSD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.ar.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.ar.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.az-Latn-AZ.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.az-Latn-AZ.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.de-DE.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.de-DE.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.fr.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.fr.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.id-ID.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.id-ID.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.it-IT.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.it-IT.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.ja-JP.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.ja-JP.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.ko-KR.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.ko-KR.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.pt.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.pt.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.ru-KZ.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.ru-KZ.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.tr.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.tr.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.zh-Hans.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.zh-Hans.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.zh-Hant.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.zh-Hant.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UAVCANParams.zh-TW.resx">
-      <DependentUpon>UAVCANParams.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\DroneCANParams.zh-TW.resx">
+      <DependentUpon>DroneCANParams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigParamLoading.resx">
       <DependentUpon>ConfigParamLoading.cs</DependentUpon>
@@ -978,8 +980,8 @@
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigTradHeli4.resx">
       <DependentUpon>ConfigTradHeli4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigUAVCAN.resx">
-      <DependentUpon>ConfigUAVCAN.cs</DependentUpon>
+    <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigDroneCAN.resx">
+      <DependentUpon>ConfigDroneCAN.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigUserDefined.resx">
@@ -3150,6 +3152,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigFlightModes.resx">
       <DependentUpon>ConfigFlightModes.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigFlightModes.ar.resx">
       <DependentUpon>ConfigFlightModes.cs</DependentUpon>
@@ -4572,7 +4575,6 @@
     <Content Include="aircraft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="defaultMyPlanner.ico" />
     <Content Include="mavutil.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

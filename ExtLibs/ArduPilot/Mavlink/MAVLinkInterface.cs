@@ -69,7 +69,7 @@ namespace MissionPlanner
         {
             add
             {
-                log.Info("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value?.Method?.Name +
+                log.Debug("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value?.Method?.Name +
                          " " + value?.Target?.GetType()?.Name +
                          " " + value);
                 _OnPacketReceived += value;
@@ -77,7 +77,7 @@ namespace MissionPlanner
 
             remove
             {
-                log.Info("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " +
+                log.Debug("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " +
                          value?.Method?.Name + " " + value?.Target?.GetType()?.Name +
                          " " + value);
                 _OnPacketReceived -= value;
@@ -88,7 +88,7 @@ namespace MissionPlanner
         {
             add
             {
-                log.Info("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value?.Method?.Name +
+                log.Debug("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value?.Method?.Name +
                          " " + value?.Target?.GetType()?.Name +
                          " " + value);
                 _MAVDetected += value;
@@ -96,7 +96,7 @@ namespace MissionPlanner
 
             remove
             {
-                log.Info("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " +
+                log.Debug("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " +
                          value?.Method?.Name + " " + value?.Target?.GetType()?.Name +
                          " " + value);
                 _MAVDetected -= value;
@@ -114,14 +114,14 @@ namespace MissionPlanner
         {
             add
             {
-                log.Info("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
+                log.Debug("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
                          " " + value.Target.GetType().Name +
                          " " + value);
                 _OnPacketSent += value;
             }
             remove
             {
-                log.Info("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
+                log.Debug("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
                          " " + value.Target.GetType().Name +
                          " " + value);
                 _OnPacketSent -= value;
@@ -171,14 +171,14 @@ namespace MissionPlanner
         {
             add
             {
-                log.Info("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
+                log.Debug("Subscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
                          " " + value.Target.GetType().Name +
                          " " + value);
                 _ParamListChanged += value;
             }
             remove
             {
-                log.Info("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
+                log.Debug("UnSubscribed " + new StackTrace(1, true)?.GetFrame(0)?.ToString() + " " + value.Method.Name +
                          " " + value.Target.GetType().Name +
                          " " + value);
                 _ParamListChanged -= value;
@@ -1491,7 +1491,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                 {
                     mavlink_param_value_t par = buffer.ToStructure<mavlink_param_value_t>();
 
-                    string st = Encoding.ASCII.GetString(par.param_id);
+                    string st = Encoding.UTF8.GetString(par.param_id);
 
                     int pos = st.IndexOf('\0');
 
@@ -1622,7 +1622,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                 {
                     var msg = buffer.ToStructure<mavlink_statustext_t>();
 
-                    string logdata = Encoding.ASCII.GetString(msg.text);
+                    string logdata = Encoding.UTF8.GetString(msg.text);
 
                     int ind = logdata.IndexOf('\0');
                     if (ind != -1)
@@ -1667,7 +1667,12 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                     var cancel = new CancellationTokenSource();
                     var paramfileTask = Task.Run<MemoryStream>(() =>
                     {
-                        return new MAVFtp(this, sysid, compid).GetFile(
+                        var ftp = new MAVFtp(this, sysid, compid);
+                        ftp.Progress += (s,i) => {
+                            if (frmProgressReporter != null)
+                                frmProgressReporter.UpdateProgressAndStatus(i, $"Getting Param MAVFTP {sysid}-{compid}");
+                        };
+                        return ftp.GetFile(
                             "@PARAM/param.pck", cancel, false, 110);
                     });
                     while (!paramfileTask.IsCompleted)
@@ -1772,7 +1777,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                 {
                     var msg = buffer.ToStructure<mavlink_statustext_t>();
 
-                    string logdata = Encoding.ASCII.GetString(msg.text);
+                    string logdata = Encoding.UTF8.GetString(msg.text);
 
                     int ind = logdata.IndexOf('\0');
                     if (ind != -1)
@@ -1823,7 +1828,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                     if (param_total == 0)
                         return true;
 
-                    string paramID = Encoding.ASCII.GetString(par.param_id);
+                    string paramID = Encoding.UTF8.GetString(par.param_id);
 
                     int pos = paramID.IndexOf('\0');
                     if (pos != -1)
@@ -2115,7 +2120,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                     {
                         mavlink_param_value_t par = buffer.ToStructure<mavlink_param_value_t>();
 
-                        string st = Encoding.ASCII.GetString(par.param_id);
+                        string st = Encoding.UTF8.GetString(par.param_id);
 
                         int pos = st.IndexOf('\0');
 
@@ -2128,8 +2133,8 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                         if (!(par.param_index == index || st == name))
                         {
                             log.ErrorFormat("Wrong Answer {0} - {1} - {2}    --- '{3}' vs '{4}'", par.param_index,
-                                Encoding.ASCII.GetString(par.param_id), par.param_value,
-                                Encoding.ASCII.GetString(req.param_id).TrimEnd(), st);
+                                Encoding.UTF8.GetString(par.param_id), par.param_value,
+                                Encoding.UTF8.GetString(req.param_id).TrimEnd(), st);
                             continue;
                         }
 
@@ -4856,7 +4861,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                                         adsb.altitude / 1000.0, adsb.heading * 0.01f, adsb.hor_velocity * 0.01f, id,
                                         DateTime.Now)
                                     {
-                                        CallSign = Encoding.ASCII.GetString(adsb.callsign),
+                                        CallSign = Encoding.UTF8.GetString(adsb.callsign),
                                         Squawk = adsb.squawk,
                                         Raw = adsb
                                     }
@@ -4908,7 +4913,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                     {
                         var cannode = message.ToStructure<mavlink_uavcan_node_info_t>();
 
-                        var name = Encoding.ASCII.GetString(cannode.name);
+                        var name = Encoding.UTF8.GetString(cannode.name);
 
                         MAVlist[sysid, compid].VersionString = name;
 
@@ -4945,6 +4950,31 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                         }
                     }
 
+                    try
+                    {
+                        // this is to ensure the log is in packet order, as the events on Received may send a packet. (ie mavftp)
+                        SaveToTlog(new Span<byte>(buffer));
+
+                        if (logfile != null)
+                        {
+                            lock (logfile)
+                            {
+                                if (msgid == 0)
+                                {
+                                    // flush on heartbeat - 1 seconds
+                                    if (logfile != null)
+                                        logfile.Flush();
+                                    if (rawlogfile != null)
+                                        rawlogfile.Flush();
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
+                    }
+
                     // only process for active mav
                     if (sysidcurrent == sysid && compidcurrent == compid)
                         PacketReceived(message);
@@ -4960,7 +4990,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
 
                         byte sev = msg.severity;
 
-                        string logdata = Encoding.ASCII.GetString(msg.text);
+                        string logdata = Encoding.UTF8.GetString(msg.text);
                         int ind = logdata.IndexOf('\0');
                         if (ind != -1)
                             logdata = logdata.Substring(0, ind);
@@ -5041,30 +5071,6 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
                                     false);
                             }
                         }
-                    }
-
-                    try
-                    {
-                        SaveToTlog(new Span<byte>(buffer));
-
-                        if (logfile != null)
-                        {
-                            lock (logfile)
-                            {
-                                if (msgid == 0)
-                                {
-                                    // flush on heartbeat - 1 seconds
-                                    if (logfile != null)
-                                        logfile.Flush();
-                                    if (rawlogfile != null)
-                                        rawlogfile.Flush();
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        log.Error(ex);
                     }
 
                     try
@@ -5372,7 +5378,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
             {
                 mavlink_param_value_t value = buffer.ToStructure<mavlink_param_value_t>();
 
-                string st = Encoding.ASCII.GetString(value.param_id);
+                string st = Encoding.UTF8.GetString(value.param_id);
 
                 int pos = st.IndexOf('\0');
 
