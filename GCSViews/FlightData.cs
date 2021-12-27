@@ -3949,18 +3949,17 @@ namespace MissionPlanner.GCSViews
                 return;
             }
 
-
-            var altdata = srtm.getAltitude(MouseDownStart.Lat, MouseDownStart.Lng, gMapControl1.Zoom);
-         //   string alt = "0";
-       //     if (DialogResult.Cancel == InputBox.Show("Enter Alt",
+            srtm.altresponce altdata = srtm.getAltitude(MouseDownStart.Lat, MouseDownStart.Lng, gMapControl1.Zoom);
+            //   string alt = "0";
+            //     if (DialogResult.Cancel == InputBox.Show("Enter Alt",
             //    "Enter Target Alt (Relative to home)", ref alt))
             //    return;
 
-         //   if (!float.TryParse(alt, out var intalt))
-         //   {
-          //      CustomMessageBox.Show("Bad Alt");
-          //      return;
-          //  }
+            //   if (!float.TryParse(alt, out var intalt))
+            //   {
+            //      CustomMessageBox.Show("Bad Alt");
+            //      return;
+            //  }
 
             if (MouseDownStart.Lat == 0.0 || MouseDownStart.Lng == 0.0)
             {
@@ -3972,7 +3971,7 @@ namespace MissionPlanner.GCSViews
             {
                 MainV2.comPort.doCommandInt((byte) MainV2.comPort.sysidcurrent, (byte) MainV2.comPort.compidcurrent,
                     MAVLink.MAV_CMD.DO_SET_ROI, 0, 0, 0, 0, (int) (MouseDownStart.Lat * 1e7),
-                    (int) (MouseDownStart.Lng * 1e7),  ((altdata / CurrentState.multiplieralt)),
+                    (int) (MouseDownStart.Lng * 1e7), (float)((altdata.alt / CurrentState.multiplieralt)),
                     frame: MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT);
             }
             catch
