@@ -188,6 +188,8 @@ namespace MissionPlanner.GCSViews
             }
         }
 
+        public bool setPointTo { get; private set; }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -389,28 +391,29 @@ namespace MissionPlanner.GCSViews
         {
             pnlMap.Dock = DockStyle.Fill;
             int baseWidth = btnZoomIn.Parent.Width;
-            btnZoomIn.Location = new Point(970, 3);
+            btnZoomIn.Location = new Point((baseWidth / 2) + 10, 3);
             btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
             btnLock.Location = new Point(btnZoomOut.Left - 20 - btnZoomOut.Width, 3);
             btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
 
-            //left columb...
+            //left columb... and right...
             int baseTop = btnMyConnect.Bottom;
+            int gap = (btnZoomIn.Parent.Height - (btnZoomIn.Height * 6) - 6) / 5;
             int leftColumb = baseWidth - 3 - btnMyConnect.Width;
             btnNavToCmd.Location = new Point(leftColumb, btnMyConnect.Top);
-            btnAltCmd.Location = new Point(3, baseTop + 60);
+            btnAltCmd.Location = new Point(3, baseTop + gap);
             btnLoiterCmd.Location = new Point(leftColumb, btnAltCmd.Top);
 
-            btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + 60);
+            btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + gap);
             btnPinPoint.Location = new Point(leftColumb, btnIasCmd.Top);
 
-            btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + 60);
+            btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + gap);
             btnPointToCmd.Location = new Point(leftColumb, btnRtlCmd.Top);
 
-            btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + 60);
+            btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + gap);
             btnCamGuideCmd.Location = new Point(leftColumb, btnLandCmd.Top);
 
-            btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + 60);
+            btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + gap);
             btnPoinToLatlngCmd.Location = new Point(leftColumb, btnBatDispaly.Top);
         }
 
@@ -2490,14 +2493,19 @@ namespace MissionPlanner.GCSViews
                 (float) trackBarYaw.Value * 100.0f, false);
         }
 
-        private void gMapControl1_Click(object sender, EventArgs e)
-        {
-        }
 
         private void gMapControl1_MouseDown(object sender, MouseEventArgs e)
         {
+            
             MouseDownStart = gMapControl1.FromLocalToLatLng(e.X, e.Y);
             Console.WriteLine("gMapControl1_MouseDown "+ MouseDownStart);
+
+            if (setPointTo) {
+                setPointTo = false;
+                pointCameraHereToolStripMenuItem_Click(null, null);
+                return;
+            }
+
 
             if (ModifierKeys == Keys.Control)
             {
@@ -3941,16 +3949,18 @@ namespace MissionPlanner.GCSViews
                 return;
             }
 
-            string alt = "0";
-            if (DialogResult.Cancel == InputBox.Show("Enter Alt",
-                "Enter Target Alt (Relative to home)", ref alt))
-                return;
 
-            if (!float.TryParse(alt, out var intalt))
-            {
-                CustomMessageBox.Show("Bad Alt");
-                return;
-            }
+            var altdata = srtm.getAltitude(MouseDownStart.Lat, MouseDownStart.Lng, gMapControl1.Zoom);
+         //   string alt = "0";
+       //     if (DialogResult.Cancel == InputBox.Show("Enter Alt",
+            //    "Enter Target Alt (Relative to home)", ref alt))
+            //    return;
+
+         //   if (!float.TryParse(alt, out var intalt))
+         //   {
+          //      CustomMessageBox.Show("Bad Alt");
+          //      return;
+          //  }
 
             if (MouseDownStart.Lat == 0.0 || MouseDownStart.Lng == 0.0)
             {
@@ -3962,7 +3972,7 @@ namespace MissionPlanner.GCSViews
             {
                 MainV2.comPort.doCommandInt((byte) MainV2.comPort.sysidcurrent, (byte) MainV2.comPort.compidcurrent,
                     MAVLink.MAV_CMD.DO_SET_ROI, 0, 0, 0, 0, (int) (MouseDownStart.Lat * 1e7),
-                    (int) (MouseDownStart.Lng * 1e7),  ((intalt / CurrentState.multiplieralt)),
+                    (int) (MouseDownStart.Lng * 1e7),  ((altdata / CurrentState.multiplieralt)),
                     frame: MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT);
             }
             catch
@@ -5719,6 +5729,11 @@ namespace MissionPlanner.GCSViews
 
         private void btnMyConnect_Click(object sender, EventArgs e)
         {
+            if (tlConnectionContainer.Visible) {
+                //scnd click - just want to remove connections...
+                tlConnectionContainer.Visible = false;
+                return;
+            }
             // decide if this is a connect or disconnect
             if (MainV2.comPort.BaseStream.IsOpen)
             {
@@ -5760,6 +5775,16 @@ namespace MissionPlanner.GCSViews
         private void btnZoomOut_Click(object sender, EventArgs e)
         {
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
+        }
+
+        private void btnLock_Click(object sender, EventArgs e)
+        {
+            CHK_autopan.Checked = !CHK_autopan.Checked;
+        }
+
+        private void btnCamGuideCmd_Click(object sender, EventArgs e)
+        {
+            setPointTo = true;
         }
     }
 }

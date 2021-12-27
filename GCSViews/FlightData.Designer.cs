@@ -230,6 +230,10 @@ namespace MissionPlanner.GCSViews
             this.pnlCheckList = new System.Windows.Forms.Panel();
             this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2411,7 +2415,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 1800D;
+            this.windDir1.Direction = 1980D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2601,6 +2605,10 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.label7);
+            this.pnlMap.Controls.Add(this.label8);
+            this.pnlMap.Controls.Add(this.label9);
+            this.pnlMap.Controls.Add(this.label10);
             this.pnlMap.Controls.Add(this.btnPoinToLatlngCmd);
             this.pnlMap.Controls.Add(this.btnCamGuideCmd);
             this.pnlMap.Controls.Add(this.btnPointToCmd);
@@ -2636,6 +2644,7 @@ namespace MissionPlanner.GCSViews
             this.btnCamGuideCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCamGuideCmd.Name = "btnCamGuideCmd";
             this.btnCamGuideCmd.UseVisualStyleBackColor = true;
+            this.btnCamGuideCmd.Click += new System.EventHandler(this.btnCamGuideCmd_Click);
             // 
             // btnPointToCmd
             // 
@@ -2714,6 +2723,7 @@ namespace MissionPlanner.GCSViews
             this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLock.Name = "btnLock";
             this.btnLock.UseVisualStyleBackColor = true;
+            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 
             // btnZoomIn
             // 
@@ -2774,13 +2784,41 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.ShowTileGridLines = false;
             this.gMapControl1.Zoom = 3D;
             this.gMapControl1.OnPositionChanged += new GMap.NET.PositionChanged(this.gMapControl1_OnPositionChanged);
-            this.gMapControl1.Click += new System.EventHandler(this.gMapControl1_Click);
             this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
             this.gMapControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDown);
             this.gMapControl1.MouseLeave += new System.EventHandler(this.gMapControl1_MouseLeave);
             this.gMapControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseMove);
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.BackColor = System.Drawing.Color.Black;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Name = "label7";
+            this.label7.Tag = "custom";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.ForeColor = System.Drawing.Color.Green;
+            this.label8.Name = "label8";
+            this.label8.Tag = "custom";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label9.Name = "label9";
+            this.label9.Tag = "custom";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Name = "label10";
+            this.label10.Tag = "custom";
             // 
             // FlightData
             // 
@@ -3087,5 +3125,9 @@ namespace MissionPlanner.GCSViews
         private Button btnPointToCmd;
         private Button btnPinPoint;
         private Button btnLoiterCmd;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
     }
 }
