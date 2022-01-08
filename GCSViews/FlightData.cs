@@ -238,8 +238,6 @@ namespace MissionPlanner.GCSViews
             myhud = hud1;
             MainHcopy = MainH;
 
-            mymap.Paint += mymap_Paint;
-
             // populate the unmodified base list
             tabControlactions.TabPages.ForEach(i => { TabListOriginal.Add((TabPage) i); });
 
@@ -426,7 +424,7 @@ namespace MissionPlanner.GCSViews
             if (File.Exists(myConnectionsPath)) {
                 new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer, handleMonnectMy);
             }
-            _myRuller = new MyRullerhelper(_rullerOverlay);
+            _myRuller = new MyRullerhelper(_rullerOverlay, lblRullerDistance);
         }
 
         private void handleMonnectMy(object sender, EventArgs e)
@@ -3886,10 +3884,7 @@ namespace MissionPlanner.GCSViews
         {
         }
 
-        void mymap_Paint(object sender, PaintEventArgs e)
-        {
-            distanceBar1.DoPaintRemote(e);
-        }
+      
 
         void NoFly_NoFlyEvent(object sender, NoFly.NoFly.NoFlyEventArgs e)
         {

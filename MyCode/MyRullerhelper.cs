@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MissionPlanner.MyCode
 {
@@ -21,17 +22,20 @@ namespace MissionPlanner.MyCode
                 if (_mode == RullerMode.rmNone) {
                     //clear all
                     _rullerOverlay.Markers.Clear();
+                    _lblDisplay.Visible = false;
                 }
             } 
         }
 
+        private Label _lblDisplay;
         private PointLatLngAlt _p1;
         private PointLatLngAlt _p2;
 
-        public MyRullerhelper(GMapOverlay rullerOverlay)
+        public MyRullerhelper(GMapOverlay rullerOverlay, System.Windows.Forms.Label lblRullerDistance)
         {
             this._rullerOverlay = rullerOverlay;
             Mode = RullerMode.rmNone;
+            _lblDisplay = lblRullerDistance;
         }
 
 
@@ -51,6 +55,8 @@ namespace MissionPlanner.MyCode
                     Mode = RullerMode.rmSecond;
                     _p2 = new PointLatLngAlt(mouseDownLoc);
                     _rullerOverlay.Markers.Add(new GMarkerGoogle(mouseDownLoc, GMarkerGoogleType.white_small));
+                    _lblDisplay.Text = doMeasure();
+                    _lblDisplay.Visible = true;
                     break;
                 case RullerMode.rmSecond:
                     Mode = RullerMode.rmNone;
