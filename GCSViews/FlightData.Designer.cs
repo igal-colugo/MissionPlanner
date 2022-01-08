@@ -193,6 +193,7 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.lblRullerDistance = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -216,7 +217,6 @@ namespace MissionPlanner.GCSViews
             this.pnlCheckList = new System.Windows.Forms.Panel();
             this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
-            this.lblRullerDistance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2202,7 +2202,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 2160D;
+            this.windDir1.Direction = 2340D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2419,6 +2419,11 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
             // 
+            // lblRullerDistance
+            // 
+            resources.ApplyResources(this.lblRullerDistance, "lblRullerDistance");
+            this.lblRullerDistance.Name = "lblRullerDistance";
+            // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
@@ -2533,6 +2538,7 @@ namespace MissionPlanner.GCSViews
             this.btnRuller.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRuller.Name = "btnRuller";
             this.btnRuller.UseVisualStyleBackColor = true;
+            this.btnRuller.Click += new System.EventHandler(this.btnRuller_Click);
             // 
             // btnLock
             // 
@@ -2607,11 +2613,6 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseMove);
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
-            // 
-            // lblRullerDistance
-            // 
-            resources.ApplyResources(this.lblRullerDistance, "lblRullerDistance");
-            this.lblRullerDistance.Name = "lblRullerDistance";
             // 
             // FlightData
             // 

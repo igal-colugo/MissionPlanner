@@ -397,6 +397,7 @@ namespace MissionPlanner.GCSViews
             btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
             btnLock.Location = new Point(btnZoomOut.Left - 20 - btnZoomOut.Width, 3);
             btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
+            lblRullerDistance.Location = new Point(btnRuller.Left, btnRuller.Bottom + 3);
 
             //left columb... and right...
             int baseTop = btnMyConnect.Bottom;
@@ -2500,6 +2501,7 @@ namespace MissionPlanner.GCSViews
         {
             
             MouseDownStart = gMapControl1.FromLocalToLatLng(e.X, e.Y);
+            _myRuller.mouseClickOnMap(MouseDownStart);
             Console.WriteLine("gMapControl1_MouseDown "+ MouseDownStart);
 
             if (setPointTo) {
@@ -5785,6 +5787,19 @@ namespace MissionPlanner.GCSViews
         private void btnCamGuideCmd_Click(object sender, EventArgs e)
         {
             setPointTo = true;
+        }
+
+        private void btnRuller_Click(object sender, EventArgs e)
+        {
+            if (_myRuller.Mode == RullerMode.rmNone)
+            {
+                _myRuller.Mode = RullerMode.rmSet;
+            }
+            else {
+                _myRuller.Mode = RullerMode.rmNone;
+            }
+
+            
         }
     }
 }

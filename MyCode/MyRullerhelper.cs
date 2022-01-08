@@ -17,7 +17,7 @@ namespace MissionPlanner.MyCode
 
         private RullerMode _mode;
         public RullerMode Mode { get{ return _mode; } 
-            private set { if (value == _mode) return;
+             set { if (value == _mode) return;
                 _mode = value;
                 if (_mode == RullerMode.rmNone) {
                     //clear all
@@ -73,7 +73,7 @@ namespace MissionPlanner.MyCode
 
             double dist = _p1.GetDistance(_p2);
             string sDist = (dist > 1000) ? string.Format("{0:0.0} Km", dist / 1000) : string.Format("{0:0} m", dist);
-            return sDist;
+            return sDist = "Distance: " + sDist;
         }
     }
 }
