@@ -341,6 +341,10 @@ namespace MissionPlanner.GCSViews
             gMapControl1.RoutesEnabled = true;
             gMapControl1.PolygonsEnabled = true;
 
+
+            _rullerOverlay = new GMapOverlay("my ruller Overlay"); // two point ruller layer
+            gMapControl1.Overlays.Add(_rullerOverlay);
+
             tfrpolygons = new GMapOverlay("tfrpolygons");
             gMapControl1.Overlays.Add(tfrpolygons);
 
@@ -422,7 +426,7 @@ namespace MissionPlanner.GCSViews
             if (File.Exists(myConnectionsPath)) {
                 new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer, handleMonnectMy);
             }
-            
+            _myRuller = new MyRullerhelper(_rullerOverlay);
         }
 
         private void handleMonnectMy(object sender, EventArgs e)
@@ -5418,6 +5422,8 @@ namespace MissionPlanner.GCSViews
         }
         private bool tabQuickDetached = false;
         private connectStates _connectState = connectStates.csNone;
+        private GMapOverlay _rullerOverlay;
+        private MyRullerhelper _myRuller;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
