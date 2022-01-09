@@ -3756,6 +3756,8 @@ namespace MissionPlanner.GCSViews
                 {
                     btnMyConnect.Text = "Disconnect";
                     btnMyConnect.ImageIndex = 0;
+                    btnAltCmd.Visible = true;
+                    btnAltCmd.Click += showMyCL;
                 }
                 else {
                     btnMyConnect.Text = "Connect";
@@ -3765,6 +3767,11 @@ namespace MissionPlanner.GCSViews
                 connectState = MainV2.comPort.BaseStream.IsOpen ? connectStates.csConnected : connectStates.csDisconnected;
 
             });
+        }
+
+        private void showMyCL(object sender, EventArgs e)
+        {
+            pnlCheckList.Visible = true;
         }
 
         public void updateMarkersAsNeeded<TBuilder, TMarker>(IEnumerable<TBuilder> list, GMapOverlay gMapOverlay,
@@ -5800,6 +5807,24 @@ namespace MissionPlanner.GCSViews
             }
 
             
+        }
+
+        private void btnClDone_Click(object sender, EventArgs e)
+        {
+            pnlCheckList.Visible = false;
+            btnAltCmd.ImageIndex = 3;
+            btnAltCmd.Click += TOCmd;
+        }
+
+        private void TOCmd(object sender, EventArgs e)
+        {
+
+            MainV2.comPort.doARM(true);
+        }
+
+        private void btnAltCmd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
