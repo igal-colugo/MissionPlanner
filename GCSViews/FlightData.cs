@@ -186,11 +186,16 @@ namespace MissionPlanner.GCSViews
                 btnIasCmd.Visible = _connectState == connectStates.csLaunched;
                 btnRtlCmd.Visible = _connectState == connectStates.csLaunched;
                 btnLandCmd.Visible = _connectState == connectStates.csLaunched;
-                pnlCheckList.Visible = _connectState == connectStates.csConnected;
+                if (pnlCheckList.Visible)
+                {
+                    pnlCheckList.Visible = _connectState == connectStates.csConnected;
+                }
+                
             }
         }
 
         public bool setPointTo { get; private set; }
+        public bool setNavTo { get; private set; }
 
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
@@ -401,6 +406,10 @@ namespace MissionPlanner.GCSViews
             btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
             lblRullerDistance.Location = new Point(btnRuller.Left, btnRuller.Bottom + 3);
 
+            int ClWidth = btnZoomIn.Right - btnZoomOut.Left;
+            pnlCheckList.Width = ClWidth;
+            pnlCheckList.Location = new Point(btnZoomOut.Left, btnZoomOut.Bottom + 3);
+
             //left columb... and right...
             int baseTop = btnMyConnect.Bottom;
             int gap = (btnZoomIn.Parent.Height - (btnZoomIn.Height * 6) - 6) / 5;
@@ -431,6 +440,7 @@ namespace MissionPlanner.GCSViews
                 new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer, handleMonnectMy);
             }
             _myRuller = new MyRullerhelper(_rullerOverlay, lblRullerDistance);
+            setNavTo = false;
         }
 
         private void handleMonnectMy(object sender, EventArgs e)
@@ -2510,6 +2520,11 @@ namespace MissionPlanner.GCSViews
             MouseDownStart = gMapControl1.FromLocalToLatLng(e.X, e.Y);
             _myRuller.mouseClickOnMap(MouseDownStart);
             Console.WriteLine("gMapControl1_MouseDown " + MouseDownStart);
+            if (setNavTo)
+            {
+                setNavTo = false;
+                myNavTo();
+            }
 
             if (setPointTo)
             {
@@ -2533,6 +2548,40 @@ namespace MissionPlanner.GCSViews
                     var plla = marker.Tag as adsb.PointLatLngAltHdg;
                     plla.DisplayICAO = !plla.DisplayICAO;
                 }
+            }
+        }
+
+        private void myNavTo()
+        {
+            float alt = MainV2.comPort.MAV.cs.alt == 0 ? 100 : MainV2.comPort.MAV.cs.alt;
+            MainV2.comPort.MAV.GuidedMode.z = alt;
+
+            Locationwp gotohere = new Locationwp();
+
+            gotohere.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+            gotohere.alt = MainV2.comPort.MAV.GuidedMode.z; // back to m
+            gotohere.lat = (MouseDownStart.Lat);
+            gotohere.lng = (MouseDownStart.Lng);
+
+            try
+            {
+                MainV2.comPort.setGuidedModeWP(gotohere);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Strings.CommandFailed + ex.Message, Strings.ERROR);
+            }
+
+            // intalt / CurrentState.multiplieralt;
+
+            if (MainV2.comPort.MAV.cs.mode == "Guided")
+            {
+                MainV2.comPort.setGuidedModeWP(new Locationwp
+                {
+                    alt = MainV2.comPort.MAV.GuidedMode.z,
+                    lat = MainV2.comPort.MAV.GuidedMode.x / 1e7,
+                    lng = MainV2.comPort.MAV.GuidedMode.y / 1e7
+                });
             }
         }
 
@@ -5835,6 +5884,9 @@ namespace MissionPlanner.GCSViews
             try
             {
                 bool ans = MainV2.comPort.doARM(true);
+                MainV2.comPort.setMode("TAKEOFF");
+
+                connectState = connectStates.csLaunched;
             }
             catch (Exception)
             {
@@ -5845,6 +5897,43 @@ namespace MissionPlanner.GCSViews
         private void btnClDone_Click(object sender, EventArgs e)
         {
             connectState = connectStates.csPreFlightDone;
+        }
+
+        private void btnNavToCmd_Click(object sender, EventArgs e)
+        {
+            setNavTo = !setNavTo;
+        }
+
+        private void btnRtlCmd_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+
+            // arm the MAV
+            try
+            {
+                MainV2.comPort.setMode("RTL");
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnLoiterCmd_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+
+            // arm the MAV
+            try
+            {
+                MainV2.comPort.setMode("LOITER");
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

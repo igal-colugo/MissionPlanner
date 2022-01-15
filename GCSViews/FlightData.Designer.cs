@@ -72,6 +72,7 @@ namespace MissionPlanner.GCSViews
             this.myButton2 = new MissionPlanner.Controls.MyButton();
             this.myButton3 = new MissionPlanner.Controls.MyButton();
             this.tabPagePreFlight = new System.Windows.Forms.TabPage();
+            this.checkListControl1 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.tabGauges = new System.Windows.Forms.TabPage();
             this.Gvspeed = new AGaugeApp.AGauge();
             this.bindingSourceGaugesTab = new System.Windows.Forms.BindingSource(this.components);
@@ -192,6 +193,9 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.btnClDone = new System.Windows.Forms.Button();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnTO = new System.Windows.Forms.Button();
             this.btnCheckList = new System.Windows.Forms.Button();
             this.btnSim = new System.Windows.Forms.Button();
@@ -217,10 +221,6 @@ namespace MissionPlanner.GCSViews
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
-            this.pnlCheckList = new System.Windows.Forms.Panel();
-            this.btnClDone = new System.Windows.Forms.Button();
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.checkListControl1 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetAlt = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetSpeed = new MissionPlanner.Controls.ModifyandSet();
@@ -974,6 +974,11 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.tabPagePreFlight, "tabPagePreFlight");
             this.tabPagePreFlight.Name = "tabPagePreFlight";
             this.tabPagePreFlight.UseVisualStyleBackColor = true;
+            // 
+            // checkListControl1
+            // 
+            resources.ApplyResources(this.checkListControl1, "checkListControl1");
+            this.checkListControl1.Name = "checkListControl1";
             // 
             // tabGauges
             // 
@@ -2203,7 +2208,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 4860D;
+            this.windDir1.Direction = 5940D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2423,6 +2428,26 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
             // 
+            // pnlCheckList
+            // 
+            resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
+            this.pnlCheckList.Controls.Add(this.btnClDone);
+            this.pnlCheckList.Controls.Add(this.checkListControl2);
+            this.pnlCheckList.Name = "pnlCheckList";
+            // 
+            // btnClDone
+            // 
+            resources.ApplyResources(this.btnClDone, "btnClDone");
+            this.btnClDone.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnClDone.Name = "btnClDone";
+            this.btnClDone.UseVisualStyleBackColor = true;
+            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
+            // 
+            // checkListControl2
+            // 
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
+            // 
             // btnTO
             // 
             resources.ApplyResources(this.btnTO, "btnTO");
@@ -2515,6 +2540,7 @@ namespace MissionPlanner.GCSViews
             this.btnLoiterCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoiterCmd.Name = "btnLoiterCmd";
             this.btnLoiterCmd.UseVisualStyleBackColor = true;
+            this.btnLoiterCmd.Click += new System.EventHandler(this.btnLoiterCmd_Click);
             // 
             // btnNavToCmd
             // 
@@ -2522,6 +2548,7 @@ namespace MissionPlanner.GCSViews
             this.btnNavToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNavToCmd.Name = "btnNavToCmd";
             this.btnNavToCmd.UseVisualStyleBackColor = true;
+            this.btnNavToCmd.Click += new System.EventHandler(this.btnNavToCmd_Click);
             // 
             // btnBatDispaly
             // 
@@ -2536,6 +2563,7 @@ namespace MissionPlanner.GCSViews
             this.btnRtlCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRtlCmd.Name = "btnRtlCmd";
             this.btnRtlCmd.UseVisualStyleBackColor = true;
+            this.btnRtlCmd.Click += new System.EventHandler(this.btnRtlCmd_Click);
             // 
             // btnLandCmd
             // 
@@ -2628,31 +2656,6 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseMove);
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
-            // 
-            // pnlCheckList
-            // 
-            resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
-            this.pnlCheckList.Controls.Add(this.btnClDone);
-            this.pnlCheckList.Controls.Add(this.checkListControl2);
-            this.pnlCheckList.Name = "pnlCheckList";
-            // 
-            // btnClDone
-            // 
-            resources.ApplyResources(this.btnClDone, "btnClDone");
-            this.btnClDone.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnClDone.Name = "btnClDone";
-            this.btnClDone.UseVisualStyleBackColor = true;
-            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
-            // 
-            // checkListControl2
-            // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
-            // 
-            // checkListControl1
-            // 
-            resources.ApplyResources(this.checkListControl1, "checkListControl1");
-            this.checkListControl1.Name = "checkListControl1";
             // 
             // modifyandSetLoiterRad
             // 
