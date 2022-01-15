@@ -498,7 +498,9 @@ namespace MissionPlanner
             set { 
                 _myDebug = value;
                 menu.Visible = _myDebug;
-                }
+                FlightData.btnSim.Visible = _myDebug;
+
+            }
             }
 
         /// <summary>
@@ -545,7 +547,7 @@ namespace MissionPlanner
         public GCSViews.FlightData FlightData;
 
         public GCSViews.FlightPlanner FlightPlanner;
-        GCSViews.SITL Simulation;
+        public GCSViews.SITL Simulation;
 
         private Form connectionStatsForm;
         private ConnectionStats _connectionStats;

@@ -137,6 +137,24 @@ namespace MissionPlanner.GCSViews
 
             MissionPlanner.Utilities.Tracking.AddPage(this.GetType().ToString(), this.Text);
         }
+        public async void startMyPlaneSim()
+        {
+
+            var exepath = CheckandGetSITLImage("ArduPlane.elf");
+
+            try
+            {
+                PointLatLng home = new PointLatLng(31.8986651, 34.7405023);
+
+                StartSITL(await exepath, "plane",
+                    BuildHomeLocation(home, (int)NUM_heading.Value), "",
+                    (int)num_simspeed.Value);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show("Failed to download and start sitl\n" + ex.ToString());
+            }
+        }
 
         private async void pictureBoxplane_Click(object sender, EventArgs e)
         {
