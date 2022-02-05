@@ -65,6 +65,7 @@ namespace MissionPlanner.GCSViews
         private static readonly string myBasePath =
         Path.Combine(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(Settings.GetRunningDirectory().ToString()).ToString()).ToString()).ToString(), "Resources");
         private readonly string myConnectionsPath = Path.Combine(myBasePath, "connections.txt");
+        private readonly string myPlaneIconPathBase = Path.Combine(myBasePath, "planeIcons");
         //end my code
 
         AviWriter aviwriter;
@@ -398,6 +399,9 @@ namespace MissionPlanner.GCSViews
 
         private void initMyGui()
         {
+            Common.myNAIcon = new Bitmap( Image.FromFile(myPlaneIconPathBase + "\\greyPlane.png"));
+            Common.myGroundIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\greenPlane.png"));
+            Common.myABIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\bluePlane.png"));
             pnlMap.Dock = DockStyle.Fill;
             int baseWidth = btnZoomIn.Parent.Width;
             btnZoomIn.Location = new Point((baseWidth / 2) + 10, 3);
@@ -5929,6 +5933,22 @@ namespace MissionPlanner.GCSViews
             try
             {
                 MainV2.comPort.setMode("LOITER");
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnLandCmd_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+
+            // arm the MAV
+            try
+            {
+                MainV2.comPort.setMode("LAND");
             }
             catch (Exception)
             {

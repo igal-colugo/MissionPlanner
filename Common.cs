@@ -4,6 +4,7 @@ using GMap.NET.WindowsForms.Markers;
 using log4net;
 using MissionPlanner.ArduPilot;
 using MissionPlanner.Maps;
+using MissionPlanner.MyCode;
 using MissionPlanner.Utilities;
 using System;
 using System.Drawing;
@@ -17,7 +18,9 @@ namespace MissionPlanner
     public static class Common
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
+        public static Bitmap myGroundIcon;
+        public static Bitmap myABIcon;
+        public static Bitmap myNAIcon;
         public static GMapMarker getMAVMarker(MAVState MAV, GMapOverlay overlay = null)
         {
             PointLatLng portlocation = MAV.cs.Location;
@@ -71,14 +74,35 @@ namespace MissionPlanner
 
             if (MAV.aptype == MAVLink.MAV_TYPE.FIXED_WING || MAV.aptype >= MAVLink.MAV_TYPE.VTOL_DUOROTOR && MAV.aptype <= MAVLink.MAV_TYPE.VTOL_RESERVED5)
             {
-                return (new GMapMarkerPlane(MAV.sysid - 1, portlocation, MAV.cs.yaw,
+                /*
+                return (new GMyMapMarkerPlane(null, MAV.sysid - 1, portlocation, MAV.cs.yaw,
                     MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,
                     MAV.cs.radius * CurrentState.multiplierdist)
                 {
                     ToolTipText = ArduPilot.Common.speechConversion(MAV, "" + Settings.Instance["mapicondesc"]),
-                    ToolTipMode = String.IsNullOrEmpty(Settings.Instance["mapicondesc"]) ? MarkerTooltipMode.Never : MarkerTooltipMode.Always,
+                    ToolTipMode = MarkerTooltipMode.Always,
                     Tag = MAV
                 });
+                */
+                Bitmap ic = myNAIcon;
+                if (MAV.cs.armed) {
+                    ic = myABIcon;
+                }
+                string stats = "IAS: "+(int)MAV.cs.airspeed+"m/s\r\n";
+                stats += "ALT: " + (int)MAV.cs.alt + "m\r\n";
+                stats += "MODE: " + MAV.cs.mode;
+                
+                return (new GMapMarkerMyPlane(ic, 0, portlocation, MAV.cs.HomeLocation, MAV.cs.yaw,
+                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,
+                    MAV.cs.radius * CurrentState.multiplierdist)
+                {
+                   
+
+                    ToolTipText = stats, //ArduPilot.Common.speechConversion(MAV, "" + Settings.Instance["mapicondesc"]),
+                    ToolTipMode =  MarkerTooltipMode.Always,
+                    Tag = MAV
+                });
+                
             }
             else if (MAV.aptype == MAVLink.MAV_TYPE.GROUND_ROVER)
             {

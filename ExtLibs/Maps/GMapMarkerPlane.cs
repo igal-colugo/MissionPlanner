@@ -9,7 +9,8 @@ namespace MissionPlanner.Maps
     [Serializable]
     public class GMapMarkerPlane : GMapMarkerBase
     {
-        private readonly Bitmap icon = global::MissionPlanner.Maps.Resources.planeicon;
+        private PointLatLng hompPos;
+        private Bitmap icon = global::MissionPlanner.Maps.Resources.boat;//global::MissionPlanner.Maps.Resources.planeicon;
 
         static SolidBrush shadow = new SolidBrush(Color.FromArgb(50, Color.Black));
 
@@ -53,9 +54,24 @@ namespace MissionPlanner.Maps
         float target = -1;
         int which = 0;
 
+        public GMapMarkerPlane(Bitmap myIcon, int which, PointLatLng p, PointLatLng h, float heading, float cog, float nav_bearing, float target,
+            float radius)
+            : base(p)
+        {
+            this.hompPos = h;
+            this.icon = myIcon;
+            Initilaize(which, heading, cog, nav_bearing, target, radius);
+        }
+
         public GMapMarkerPlane(int which, PointLatLng p, float heading, float cog, float nav_bearing, float target,
             float radius)
             : base(p)
+        {
+            Initilaize(which, heading, cog, nav_bearing, target, radius);
+        }
+
+        private void Initilaize(int which, float heading, float cog, float nav_bearing, float target,
+            float radius)
         {
             this.heading = heading;
             this.cog = cog;
@@ -65,6 +81,10 @@ namespace MissionPlanner.Maps
             this.which = which;
             Size = icon.Size;
         }
+
+
+
+
 
         public float Cog { get => cog; set => cog = value; }
         public float Heading { get => heading; set => heading = value; }
@@ -90,6 +110,24 @@ namespace MissionPlanner.Maps
             catch
             {
             }
+
+            // anti NaN
+            try
+            {
+                GPoint p1 = Overlay.Control.FromLatLngToLocal(Position);
+                GPoint p2 = Overlay.Control.FromLatLngToLocal(hompPos);
+                int x1, y1, x2, y2;
+                x1 = (int)p1.X;
+                y1 = (int)p1.Y;
+                x2 = (int)p2.X;
+                y2 = (int)p2.Y;
+                g.DrawLine(new Pen(Color.Aqua, 2), x1, y1, x2, y2);
+            }
+            catch
+            {
+            }
+
+
 
             if (DisplayNavBearing)
                 g.DrawLine(new Pen(Color.Green, 2), 0.0f, 0.0f,

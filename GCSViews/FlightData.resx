@@ -1429,7 +1429,7 @@
     <value>checkListControl1</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8050.37263, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8071.30267, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Parent" xml:space="preserve">
     <value>tabPagePreFlight</value>
@@ -5091,7 +5091,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABE
-        HwEAAk1TRnQBSQFMAgEBBQEAAQgBAQEIAQEBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
+        HwEAAk1TRnQBSQFMAgEBBQEAASABAQEgAQEBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
         AQICAAHWAwABAQEAARgFAAEwAUABBSkAA+kDuf+1V7UDtgPIA/f/AP8A/wD/AN4AA/wDuwMrAwf/BGAE
         Aw0DcwPp/wD/AP8A/wDVAAPwA0oDCQMCAxUDQQNZ/1tUWwNZAzUDAAMEAw8DigP7/wD/AP8A/wDMAAPx
         AzADBAMKA2sDsgO4/7lauQO2A6UDVgMAAwkDYQP8/wD/AP8A/wDGAAP2AzEDAgMgA6IDt/+8Y7wDuwO1
@@ -6398,7 +6398,7 @@
     <value>checkListControl2</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8050.37263, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8071.30267, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -8214,7 +8214,7 @@
     <value>modifyandSetLoiterRad</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8050.37263, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8071.30267, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="modifyandSetAlt.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 100</value>
@@ -8235,7 +8235,7 @@
     <value>modifyandSetAlt</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8050.37263, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8071.30267, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="modifyandSetSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -8256,13 +8256,13 @@
     <value>modifyandSetSpeed</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8050.37263, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, MyPlanner, Version=1.3.8071.30267, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>33</value>
+    <value>215</value>
   </metadata>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
