@@ -17,41 +17,7 @@ namespace MissionPlanner.MyCode
             new System.Drawing.Size(global::MissionPlanner.Maps.Resources.boat.Width,
                 global::MissionPlanner.Maps.Resources.boat.Height);
         static SolidBrush shadow = new SolidBrush(Color.FromArgb(50, Color.Black));
-        /*
-        static Point[] plane = new Point[] {
-            new Point(28,0),
-            new Point(32,13),
-            new Point(53,27),
-            new Point(55,32),
-            new Point(31,28),
-            new Point(30,35),
-            new Point(30,43),
-            new Point(37,48),
-            new Point(37,50),
-            new Point(29,50),
-            new Point(29,53),
-            // inverse
-            new Point(inv(29,28),53),
-            new Point(inv(29,28),50),
-            new Point(inv(37,28),50),
-            new Point(inv(37,28),48),
-            new Point(inv(30,28),43),
-            new Point(inv(30,28),35),
-            new Point(inv(31,28),28),
-            new Point(inv(55,28),32),
-            new Point(inv(53,28),27),
-            new Point(inv(32,28),13),
-            new Point(inv(28,28),0),
-            };
-        */
-        /*
-        private static int inv(int input, int mid)
-        {
-            var delta = input - mid;
-
-            return mid - delta;
-        }
-        */
+       
         float cog = -1;
         float heading = 0;
         float nav_bearing = -1;
@@ -109,7 +75,7 @@ namespace MissionPlanner.MyCode
             {
             }
 
-            // anti NaN
+            // line to home...
             try
             {
                 GPoint p1 = Overlay.Control.FromLatLngToLocal(Position);
@@ -196,29 +162,7 @@ namespace MissionPlanner.MyCode
             }
 
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            // the shadow
-       //     g.TranslateTransform(-26, -26);
-
-         //   g.FillPolygon(shadow, plane);
-
-            // the plane
-          //  g.TranslateTransform(-2, -2);
-          /*
-            if (which % 7 == 0)
-                g.FillPolygon(Brushes.Red, plane);
-            if (which % 7 == 1)
-                g.FillPolygon(Brushes.Black, plane);
-            if (which % 7 == 2)
-                g.FillPolygon(Brushes.Blue, plane);
-            if (which % 7 == 3)
-                g.FillPolygon(Brushes.LimeGreen, plane);
-            if (which % 7 == 4)
-                g.FillPolygon(Brushes.Yellow, plane);
-            if (which % 7 == 5)
-                g.FillPolygon(Brushes.Orange, plane);
-            if (which % 7 == 6)
-                g.FillPolygon(Brushes.Pink, plane);
-          */
+            
             g.DrawImageUnscaled(icon, Size.Width / -2,
                 Size.Height / -2);
 

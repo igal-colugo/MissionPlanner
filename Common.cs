@@ -88,6 +88,9 @@ namespace MissionPlanner
                 if (MAV.cs.armed) {
                     ic = myABIcon;
                 }
+                else{
+                    ic = myGroundIcon;
+                }
                 string stats = "IAS: "+(int)MAV.cs.airspeed+"m/s\r\n";
                 stats += "ALT: " + (int)MAV.cs.alt + "m\r\n";
                 stats += "MODE: " + MAV.cs.mode;
