@@ -50,6 +50,7 @@ namespace MissionPlanner.GCSViews
         internal static GMapOverlay geofence;
         internal static GMapOverlay photosoverlay;
         internal static GMapOverlay poioverlay = new GMapOverlay("POI");
+        internal static GMapOverlay myTargetsoverlay = new GMapOverlay("MyTargets");
         internal static GMapOverlay rallypointoverlay;
         internal static GMapOverlay tfrpolygons;
         internal GMapMarker CurrentGMapMarker;
@@ -62,10 +63,10 @@ namespace MissionPlanner.GCSViews
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         //my code paths 
-        private static readonly string myBasePath =
-        Path.Combine(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(Settings.GetRunningDirectory().ToString()).ToString()).ToString()).ToString(), "Resources");
-        private readonly string myConnectionsPath = Path.Combine(myBasePath, "connections.txt");
-        private readonly string myPlaneIconPathBase = Path.Combine(myBasePath, "planeIcons");
+        
+        private readonly string myConnectionsPath = Path.Combine(MySettings.myBasePath, "connections.txt");
+        private readonly string myPlaneIconPathBase = Path.Combine(MySettings.myBasePath, "planeIcons");
+        private readonly string myTargetsPathBase = Path.Combine(MySettings.myBasePath, "targets");
         //end my code
 
         AviWriter aviwriter;
@@ -169,6 +170,26 @@ namespace MissionPlanner.GCSViews
             csConnected,
             csPreFlightDone,
             csLaunched
+        }
+
+        private enum PoiStates
+        {
+            psNone,
+            psDisplayAll,
+            psCreateNew
+        }
+        private PoiStates _poiState = PoiStates.psNone;
+
+        PoiStates poiState { 
+            get { return _poiState; }
+            set {
+                if (value == _poiState) return;
+                _poiState = value;
+                btnAddPoi.Visible     = _poiState != PoiStates.psNone;
+                btnDeletePois.Visible = _poiState != PoiStates.psNone;
+                btnLoadPois.Visible   = _poiState != PoiStates.psNone;
+                btnSaveAllPoi.Visible = _poiState != PoiStates.psNone;
+            }
         }
 
         private connectStates connectState
@@ -376,6 +397,7 @@ namespace MissionPlanner.GCSViews
             gMapControl1.Overlays.Add(rallypointoverlay);
 
             gMapControl1.Overlays.Add(poioverlay);
+            gMapControl1.Overlays.Add(myTargetsoverlay);
 
             float gspeedMax = Settings.Instance.GetFloat("GspeedMAX");
             if (gspeedMax != 0)
@@ -402,45 +424,21 @@ namespace MissionPlanner.GCSViews
             Common.myNAIcon = new Bitmap( Image.FromFile(myPlaneIconPathBase + "\\greyPlane.png"));
             Common.myGroundIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\greenPlane.png"));
             Common.myABIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\bluePlane.png"));
+            
+            for (int i = 1; i < 7; i++)
+            {
+                ilMyTargets.Images.Add(Image.FromFile(myTargetsPathBase + "\\"+i.ToString() +".png"));
+            }
+
+            toolStripMenuItem2.Image = ilMyTargets.Images[0];
+            toolStripMenuItem3.Image = ilMyTargets.Images[1];
+            toolStripMenuItem4.Image = ilMyTargets.Images[2];
+            toolStripMenuItem5.Image = ilMyTargets.Images[3];
+            toolStripMenuItem6.Image = ilMyTargets.Images[4];
+            toolStripMenuItem7.Image = ilMyTargets.Images[5];
+
             pnlMap.Dock = DockStyle.Fill;
-            int baseWidth = btnZoomIn.Parent.Width;
-            btnZoomIn.Location = new Point((baseWidth / 2) + 10, 3);
-            btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
-            btnLock.Location = new Point(btnZoomOut.Left - 20 - btnZoomOut.Width, 3);
-            btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
-            lblRullerDistance.Location = new Point(btnRuller.Left, btnRuller.Bottom + 3);
-
-            int ClWidth = btnZoomIn.Right - btnZoomOut.Left;
-            pnlCheckList.Width = ClWidth;
-            pnlCheckList.Location = new Point(btnZoomOut.Left, btnZoomOut.Bottom + 3);
-
-            //left columb... and right...
-            int baseTop = btnMyConnect.Bottom;
-            int gap = (btnZoomIn.Parent.Height - (btnZoomIn.Height * 6) - 6) / 5;
-            int rightColumb = baseWidth - 3 - btnMyConnect.Width;
-            btnNavToCmd.Location = new Point(rightColumb, btnMyConnect.Top);
-            btnAltCmd.Location = new Point(3, baseTop + gap);
-            btnTO.Location = btnAltCmd.Location;
-            btnCheckList.Location = btnAltCmd.Location;
-            btnLoiterCmd.Location = new Point(rightColumb, btnAltCmd.Top);
-
-            btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + gap);
-            btnPinPoint.Location = new Point(rightColumb, btnIasCmd.Top);
-
-            //poi buttons
-            btnAddPoi.Location     = new Point(rightColumb - btnAddPoi.Width -1, btnPinPoint.Top);
-            btnLoadPois.Location   = new Point(btnAddPoi.Left - 2 - btnLoadPois.Width, btnAddPoi.Top);
-            btnDeletePois.Location = new Point(btnAddPoi.Left, btnPinPoint.Bottom - btnDeletePois.Height);
-            btnSaveAllPoi.Location = new Point(btnLoadPois.Left, btnDeletePois.Top);
-
-            btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + gap);
-            btnPointToCmd.Location = new Point(rightColumb, btnRtlCmd.Top);
-
-            btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + gap);
-            btnCamGuideCmd.Location = new Point(rightColumb, btnLandCmd.Top);
-
-            btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + gap);
-            btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
+            adjustMyGui();
         }
 
         private void initMyData()
@@ -2280,6 +2278,7 @@ namespace MissionPlanner.GCSViews
         private void FlightData_Load(object sender, EventArgs e)
         {
             POI.POIModified += POI_POIModified;
+            MyMarkersLayer.POIModified += myMarkersModified;
 
             tfr.GotTFRs += tfr_GotTFRs;
 
@@ -2346,6 +2345,11 @@ namespace MissionPlanner.GCSViews
             {
                 mainloop();
             }
+        }
+
+        private void myMarkersModified(object sender, EventArgs e)
+        {
+            MyMarkersLayer.UpdateOverlay(myTargetsoverlay, ilMyTargets);
         }
 
         private void FlightData_ParentChanged(object sender, EventArgs e)
@@ -2528,6 +2532,11 @@ namespace MissionPlanner.GCSViews
         {
 
             MouseDownStart = gMapControl1.FromLocalToLatLng(e.X, e.Y);
+            if(poiState == PoiStates.psCreateNew)
+            {
+                MyMarkersLayer.POIAdd(MouseDownStart, "my test");
+                return;
+            }
             _myRuller.mouseClickOnMap(MouseDownStart);
             Console.WriteLine("gMapControl1_MouseDown " + MouseDownStart);
             if (setNavTo)
@@ -2666,11 +2675,21 @@ namespace MissionPlanner.GCSViews
         void gMapControl1_OnMarkerEnter(GMapMarker item)
         {
             CurrentGMapMarker = item;
+            if (CurrentGMapMarker == null || !(CurrentGMapMarker is GMyMarkerGoogle))
+            {
+                gMapControl1.ContextMenuStrip = contextMenuStripMap;
+            }
+            else
+            {
+                gMapControl1.ContextMenuStrip = contextMenuPoi;
+            }
+            
         }
 
         void gMapControl1_OnMarkerLeave(GMapMarker item)
         {
             CurrentGMapMarker = null;
+            gMapControl1.ContextMenuStrip = contextMenuStripMap;
         }
 
         private void gMapControl1_OnPositionChanged(PointLatLng point)
@@ -5835,7 +5854,49 @@ namespace MissionPlanner.GCSViews
 
         private void gMapControl1_Resize_1(object sender, EventArgs e)
         {
-            initMyGui();
+            adjustMyGui();
+        }
+
+        private void adjustMyGui()
+        {
+            int baseWidth = btnZoomIn.Parent.Width;
+            btnZoomIn.Location = new Point((baseWidth / 2) + 10, 3);
+            btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
+            btnLock.Location = new Point(btnZoomOut.Left - 20 - btnZoomOut.Width, 3);
+            btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
+            lblRullerDistance.Location = new Point(btnRuller.Left, btnRuller.Bottom + 3);
+
+            int ClWidth = btnZoomIn.Right - btnZoomOut.Left;
+            pnlCheckList.Width = ClWidth;
+            pnlCheckList.Location = new Point(btnZoomOut.Left, btnZoomOut.Bottom + 3);
+
+            //left columb... and right...
+            int baseTop = btnMyConnect.Bottom;
+            int gap = (btnZoomIn.Parent.Height - (btnZoomIn.Height * 6) - 6) / 5;
+            int rightColumb = baseWidth - 3 - btnMyConnect.Width;
+            btnNavToCmd.Location = new Point(rightColumb, btnMyConnect.Top);
+            btnAltCmd.Location = new Point(3, baseTop + gap);
+            btnTO.Location = btnAltCmd.Location;
+            btnCheckList.Location = btnAltCmd.Location;
+            btnLoiterCmd.Location = new Point(rightColumb, btnAltCmd.Top);
+
+            btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + gap);
+            btnPinPoint.Location = new Point(rightColumb, btnIasCmd.Top);
+
+            //poi buttons
+            btnAddPoi.Location = new Point(rightColumb - btnAddPoi.Width - 1, btnPinPoint.Top);
+            btnLoadPois.Location = new Point(btnAddPoi.Left - 2 - btnLoadPois.Width, btnAddPoi.Top);
+            btnDeletePois.Location = new Point(btnAddPoi.Left, btnPinPoint.Bottom - btnDeletePois.Height);
+            btnSaveAllPoi.Location = new Point(btnLoadPois.Left, btnDeletePois.Top);
+
+            btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + gap);
+            btnPointToCmd.Location = new Point(rightColumb, btnRtlCmd.Top);
+
+            btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + gap);
+            btnCamGuideCmd.Location = new Point(rightColumb, btnLandCmd.Top);
+
+            btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + gap);
+            btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
@@ -5893,10 +5954,13 @@ namespace MissionPlanner.GCSViews
             // arm the MAV
             try
             {
-                bool ans = MainV2.comPort.doARM(true);
-                MainV2.comPort.setMode("TAKEOFF");
-
-                connectState = connectStates.csLaunched;
+                bool ans = MainV2.comPort.doARM(true, true);
+                if (ans)
+                {
+                    MainV2.comPort.setMode("TAKEOFF");
+                    connectState = connectStates.csLaunched;
+                }
+                
             }
             catch (Exception)
             {
@@ -5954,12 +6018,51 @@ namespace MissionPlanner.GCSViews
             // arm the MAV
             try
             {
-                MainV2.comPort.setMode("LAND");
+                MainV2.comPort.setMode("QLAND");
             }
             catch (Exception)
             {
 
             }
+        }
+
+        private void btnPinPoint_Click(object sender, EventArgs e)
+        {
+            //
+            poiState = poiState == PoiStates.psNone ? PoiStates.psDisplayAll : PoiStates.psNone;
+        }
+
+        private void btnAddPoi_Click(object sender, EventArgs e)
+        {
+            // add mypoi state
+            poiState = PoiStates.psCreateNew;
+
+        }
+
+        private void btnLoadPois_Click(object sender, EventArgs e)
+        {
+            MyMarkersLayer.LoadFile();
+            poiState = PoiStates.psNone;
+        }
+
+        private void btnSaveAllPoi_Click(object sender, EventArgs e)
+        {
+            MyMarkersLayer.POISave();
+            poiState = PoiStates.psNone;
+        }
+
+        private void btnDeletePois_Click(object sender, EventArgs e)
+        {
+            MyMarkersLayer.ClearAll();
+            poiState = PoiStates.psNone;
+        }
+
+        private void deletePOIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CurrentGMapMarker == null || !(CurrentGMapMarker is GMyMarkerGoogle))
+                return;
+
+            MyMarkersLayer.POIDelete((GMyMarkerGoogle)CurrentGMapMarker);
         }
     }
 }

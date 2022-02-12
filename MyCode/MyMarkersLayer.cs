@@ -1,6 +1,7 @@
 ﻿using GMap.NET.WindowsForms;
 using MissionPlanner.Controls;
 using MissionPlanner.Maps;
+using MissionPlanner.MyCode;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -27,8 +28,8 @@ namespace MissionPlanner.Utilities
                 _POIModified += value;
                 try
                 {
-                    if (File.Exists(filename))
-                        LoadFile(filename);
+                   // if (File.Exists(filename))
+                    //    LoadFile(filename);
                 }
                 catch
                 {
@@ -37,7 +38,7 @@ namespace MissionPlanner.Utilities
             remove { _POIModified -= value; }
         }
 
-        private static string filename = Settings.GetUserDataDirectory() + "poi.txt";
+        private static string filename = Path.Combine(MySettings.myBasePath, "targets") + "\\targets.txt";
         private static bool loading;
 
         static MyMarkersLayer()
@@ -69,22 +70,8 @@ namespace MissionPlanner.Utilities
                 _POIModified(null, null);
         }
 
-        public static void POIAdd(PointLatLngAlt Point)
-        {
-            if (Point == null)
-                return;
 
-            PointLatLngAlt pnt = Point;
-
-            string output = "";
-
-            if (DialogResult.OK != InputBox.Show("POI", "Enter ID", ref output))
-                return;
-
-            POIAdd(Point, output);
-        }
-
-        public static void POIDelete(GMapMarkerPOI Point)
+        public static void POIDelete(GMyMarkerGoogle Point)
         {
             if (Point == null)
                 return;
@@ -101,14 +88,14 @@ namespace MissionPlanner.Utilities
             }
         }
 
-        public static void POIEdit(GMapMarkerPOI Point)
+        public static void POIEdit(GMyMarkerGoogle Point)
         {
             if (Point == null)
                 return;
 
             string output = "";
 
-            if (DialogResult.OK != InputBox.Show("POI", "Enter ID", ref output))
+            if (DialogResult.OK != InputBox.Show("My Target", "Enter ID", ref output))
                 return;
 
             for (int a = 0; a < MyMarkersLayer.myMarkers.Count; a++)
@@ -123,7 +110,7 @@ namespace MissionPlanner.Utilities
             }
         }
 
-        public static void POIMove(GMapMarkerPOI Point)
+        public static void POIMove(GMyMarkerGoogle Point)
         {
             for (int a = 0; a < MyMarkersLayer.myMarkers.Count; a++)
             {
@@ -142,15 +129,7 @@ namespace MissionPlanner.Utilities
 
         public static void POISave()
         {
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.Filter = "Poi File|*.txt";
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    SaveFile(sfd.FileName);
-                }
-            }
+            SaveFile(filename);                
         }
 
         private static void SaveFile(string fileName)
@@ -168,23 +147,11 @@ namespace MissionPlanner.Utilities
         }
 
 
-        public static void POILoad()
-        {
-            using (OpenFileDialog sfd = new OpenFileDialog())
-            {
-                sfd.Filter = "Poi File|*.txt";
 
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    LoadFile(sfd.FileName);
-                }
-            }
-        }
-
-        private static void LoadFile(string fileName)
+        public static void LoadFile()
         {
             loading = true;
-            using (Stream file = File.Open(fileName, FileMode.Open))
+            using (Stream file = File.Open(filename, FileMode.Open))
             {
                 using (StreamReader sr = new StreamReader(file))
                 {
@@ -206,7 +173,7 @@ namespace MissionPlanner.Utilities
                 _POIModified(null, null);
         }
 
-        public static void UpdateOverlay(GMap.NET.WindowsForms.GMapOverlay poioverlay)
+        public static void UpdateOverlay(GMap.NET.WindowsForms.GMapOverlay poioverlay, ImageList ilMyImages)
         {
             if (poioverlay == null)
                 return;
@@ -215,12 +182,20 @@ namespace MissionPlanner.Utilities
 
             foreach (var pnt in myMarkers)
             {
-                poioverlay.Markers.Add(new GMapMarkerPOI(pnt)
+                poioverlay.Markers.Add(new GMyMarkerGoogle(pnt, ilMyImages)
                 {
                     ToolTipMode = MarkerTooltipMode.OnMouseOver,
                     ToolTipText = pnt.Tag
                 });
             }
+        }
+
+        internal static void ClearAll()
+        {
+            myMarkers.Clear();
+            // redraw now
+            if (_POIModified != null)
+                _POIModified(null, null);
         }
     }
 }

@@ -72,7 +72,6 @@ namespace MissionPlanner.GCSViews
             this.myButton2 = new MissionPlanner.Controls.MyButton();
             this.myButton3 = new MissionPlanner.Controls.MyButton();
             this.tabPagePreFlight = new System.Windows.Forms.TabPage();
-            this.checkListControl1 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.tabGauges = new System.Windows.Forms.TabPage();
             this.Gvspeed = new AGaugeApp.AGauge();
             this.bindingSourceGaugesTab = new System.Windows.Forms.BindingSource(this.components);
@@ -193,12 +192,12 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.btnSaveAllPoi = new System.Windows.Forms.Button();
             this.btnDeletePois = new System.Windows.Forms.Button();
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
             this.pnlCheckList = new System.Windows.Forms.Panel();
             this.btnClDone = new System.Windows.Forms.Button();
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnTO = new System.Windows.Forms.Button();
             this.btnCheckList = new System.Windows.Forms.Button();
             this.btnSim = new System.Windows.Forms.Button();
@@ -224,10 +223,22 @@ namespace MissionPlanner.GCSViews
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
+            this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
+            this.changeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
+            this.checkListControl1 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetAlt = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetSpeed = new MissionPlanner.Controls.ModifyandSet();
-            this.btnSaveAllPoi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -282,6 +293,7 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.pnlMap.SuspendLayout();
             this.pnlCheckList.SuspendLayout();
+            this.contextMenuPoi.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainH
@@ -978,11 +990,6 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.tabPagePreFlight, "tabPagePreFlight");
             this.tabPagePreFlight.Name = "tabPagePreFlight";
             this.tabPagePreFlight.UseVisualStyleBackColor = true;
-            // 
-            // checkListControl1
-            // 
-            resources.ApplyResources(this.checkListControl1, "checkListControl1");
-            this.checkListControl1.Name = "checkListControl1";
             // 
             // tabGauges
             // 
@@ -2212,7 +2219,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 6840D;
+            this.windDir1.Direction = 9900D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2396,9 +2403,6 @@ namespace MissionPlanner.GCSViews
             this.ilMyImages.TransparentColor = System.Drawing.Color.Transparent;
             this.ilMyImages.Images.SetKeyName(0, "link.png");
             this.ilMyImages.Images.SetKeyName(1, "un_link.png");
-            this.ilMyImages.Images.SetKeyName(2, "checklist.png");
-            this.ilMyImages.Images.SetKeyName(3, "takeOff.png");
-            this.ilMyImages.Images.SetKeyName(4, "plane_hight.png");
             // 
             // pnlMap
             // 
@@ -2436,12 +2440,21 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
             // 
+            // btnSaveAllPoi
+            // 
+            resources.ApplyResources(this.btnSaveAllPoi, "btnSaveAllPoi");
+            this.btnSaveAllPoi.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSaveAllPoi.Name = "btnSaveAllPoi";
+            this.btnSaveAllPoi.UseVisualStyleBackColor = true;
+            this.btnSaveAllPoi.Click += new System.EventHandler(this.btnSaveAllPoi_Click);
+            // 
             // btnDeletePois
             // 
             resources.ApplyResources(this.btnDeletePois, "btnDeletePois");
             this.btnDeletePois.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnDeletePois.Name = "btnDeletePois";
             this.btnDeletePois.UseVisualStyleBackColor = true;
+            this.btnDeletePois.Click += new System.EventHandler(this.btnDeletePois_Click);
             // 
             // btnLoadPois
             // 
@@ -2449,6 +2462,7 @@ namespace MissionPlanner.GCSViews
             this.btnLoadPois.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoadPois.Name = "btnLoadPois";
             this.btnLoadPois.UseVisualStyleBackColor = true;
+            this.btnLoadPois.Click += new System.EventHandler(this.btnLoadPois_Click);
             // 
             // btnAddPoi
             // 
@@ -2456,6 +2470,7 @@ namespace MissionPlanner.GCSViews
             this.btnAddPoi.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAddPoi.Name = "btnAddPoi";
             this.btnAddPoi.UseVisualStyleBackColor = true;
+            this.btnAddPoi.Click += new System.EventHandler(this.btnAddPoi_Click);
             // 
             // pnlCheckList
             // 
@@ -2471,11 +2486,6 @@ namespace MissionPlanner.GCSViews
             this.btnClDone.Name = "btnClDone";
             this.btnClDone.UseVisualStyleBackColor = true;
             this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
-            // 
-            // checkListControl2
-            // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
             // 
             // btnTO
             // 
@@ -2562,6 +2572,7 @@ namespace MissionPlanner.GCSViews
             this.btnPinPoint.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPinPoint.Name = "btnPinPoint";
             this.btnPinPoint.UseVisualStyleBackColor = true;
+            this.btnPinPoint.Click += new System.EventHandler(this.btnPinPoint_Click);
             // 
             // btnLoiterCmd
             // 
@@ -2687,6 +2698,90 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
             // 
+            // contextMenuPoi
+            // 
+            this.contextMenuPoi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deletePOIToolStripMenuItem,
+            this.editLocationToolStripMenuItem,
+            this.changeTypeToolStripMenuItem});
+            this.contextMenuPoi.Name = "contextMenuPoi";
+            resources.ApplyResources(this.contextMenuPoi, "contextMenuPoi");
+            // 
+            // deletePOIToolStripMenuItem
+            // 
+            this.deletePOIToolStripMenuItem.Name = "deletePOIToolStripMenuItem";
+            resources.ApplyResources(this.deletePOIToolStripMenuItem, "deletePOIToolStripMenuItem");
+            this.deletePOIToolStripMenuItem.Click += new System.EventHandler(this.deletePOIToolStripMenuItem_Click);
+            // 
+            // editLocationToolStripMenuItem
+            // 
+            this.editLocationToolStripMenuItem.Name = "editLocationToolStripMenuItem";
+            resources.ApplyResources(this.editLocationToolStripMenuItem, "editLocationToolStripMenuItem");
+            // 
+            // ilMyTargets
+            // 
+            this.ilMyTargets.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.ilMyTargets, "ilMyTargets");
+            this.ilMyTargets.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // changeTypeToolStripMenuItem
+            // 
+            this.changeTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.changeTypeToolStripMenuItem.Name = "changeTypeToolStripMenuItem";
+            resources.ApplyResources(this.changeTypeToolStripMenuItem, "changeTypeToolStripMenuItem");
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.Tag = "1";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.toolStripMenuItem3.Tag = "2";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            this.toolStripMenuItem4.Tag = "3";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+            this.toolStripMenuItem5.Tag = "4";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+            this.toolStripMenuItem6.Tag = "5";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
+            this.toolStripMenuItem7.Tag = "6";
+            // 
+            // checkListControl2
+            // 
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
+            // 
+            // checkListControl1
+            // 
+            resources.ApplyResources(this.checkListControl1, "checkListControl1");
+            this.checkListControl1.Name = "checkListControl1";
+            // 
             // modifyandSetLoiterRad
             // 
             this.modifyandSetLoiterRad.ButtonText = "Set Loiter Rad";
@@ -2772,13 +2867,6 @@ namespace MissionPlanner.GCSViews
             this.modifyandSetSpeed.Click += new System.EventHandler(this.modifyandSetSpeed_Click);
             this.modifyandSetSpeed.ParentChanged += new System.EventHandler(this.modifyandSetSpeed_ParentChanged);
             // 
-            // btnSaveAllPoi
-            // 
-            resources.ApplyResources(this.btnSaveAllPoi, "btnSaveAllPoi");
-            this.btnSaveAllPoi.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSaveAllPoi.Name = "btnSaveAllPoi";
-            this.btnSaveAllPoi.UseVisualStyleBackColor = true;
-            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -2855,6 +2943,7 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
             this.pnlCheckList.ResumeLayout(false);
+            this.contextMenuPoi.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3095,5 +3184,16 @@ namespace MissionPlanner.GCSViews
         private Button btnLoadPois;
         private Button btnAddPoi;
         private Button btnSaveAllPoi;
+        private ContextMenuStrip contextMenuPoi;
+        private ToolStripMenuItem deletePOIToolStripMenuItem;
+        private ToolStripMenuItem editLocationToolStripMenuItem;
+        private ImageList ilMyTargets;
+        private ToolStripMenuItem changeTypeToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripMenuItem toolStripMenuItem6;
+        private ToolStripMenuItem toolStripMenuItem7;
     }
 }

@@ -624,8 +624,10 @@
       <DependentUpon>MainV2.cs</DependentUpon>
     </Compile>
     <Compile Include="MyCode\GMapMarkerMyPlane.cs" />
+    <Compile Include="MyCode\GMyMarkerGoogle.cs" />
     <Compile Include="MyCode\MyRullerhelper.cs" />
     <Compile Include="MyCode\MyMarkersLayer.cs" />
+    <Compile Include="MyCode\MySettings.cs" />
     <Compile Include="NativeMethods.cs" />
     <None Include="arm64\libSkiaSharp.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
