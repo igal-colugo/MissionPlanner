@@ -193,6 +193,9 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.btnDeletePois = new System.Windows.Forms.Button();
+            this.btnLoadPois = new System.Windows.Forms.Button();
+            this.btnAddPoi = new System.Windows.Forms.Button();
             this.pnlCheckList = new System.Windows.Forms.Panel();
             this.btnClDone = new System.Windows.Forms.Button();
             this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
@@ -224,6 +227,7 @@ namespace MissionPlanner.GCSViews
             this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetAlt = new MissionPlanner.Controls.ModifyandSet();
             this.modifyandSetSpeed = new MissionPlanner.Controls.ModifyandSet();
+            this.btnSaveAllPoi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2208,7 +2212,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 6480D;
+            this.windDir1.Direction = 6840D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2398,6 +2402,10 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.btnSaveAllPoi);
+            this.pnlMap.Controls.Add(this.btnDeletePois);
+            this.pnlMap.Controls.Add(this.btnLoadPois);
+            this.pnlMap.Controls.Add(this.btnAddPoi);
             this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.btnTO);
             this.pnlMap.Controls.Add(this.btnCheckList);
@@ -2427,6 +2435,27 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // btnDeletePois
+            // 
+            resources.ApplyResources(this.btnDeletePois, "btnDeletePois");
+            this.btnDeletePois.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeletePois.Name = "btnDeletePois";
+            this.btnDeletePois.UseVisualStyleBackColor = true;
+            // 
+            // btnLoadPois
+            // 
+            resources.ApplyResources(this.btnLoadPois, "btnLoadPois");
+            this.btnLoadPois.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLoadPois.Name = "btnLoadPois";
+            this.btnLoadPois.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPoi
+            // 
+            resources.ApplyResources(this.btnAddPoi, "btnAddPoi");
+            this.btnAddPoi.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddPoi.Name = "btnAddPoi";
+            this.btnAddPoi.UseVisualStyleBackColor = true;
             // 
             // pnlCheckList
             // 
@@ -2743,6 +2772,13 @@ namespace MissionPlanner.GCSViews
             this.modifyandSetSpeed.Click += new System.EventHandler(this.modifyandSetSpeed_Click);
             this.modifyandSetSpeed.ParentChanged += new System.EventHandler(this.modifyandSetSpeed_ParentChanged);
             // 
+            // btnSaveAllPoi
+            // 
+            resources.ApplyResources(this.btnSaveAllPoi, "btnSaveAllPoi");
+            this.btnSaveAllPoi.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSaveAllPoi.Name = "btnSaveAllPoi";
+            this.btnSaveAllPoi.UseVisualStyleBackColor = true;
+            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -3055,5 +3091,9 @@ namespace MissionPlanner.GCSViews
         private Panel pnlCheckList;
         private Button btnClDone;
         private Controls.PreFlight.CheckListControl checkListControl2;
+        private Button btnDeletePois;
+        private Button btnLoadPois;
+        private Button btnAddPoi;
+        private Button btnSaveAllPoi;
     }
 }

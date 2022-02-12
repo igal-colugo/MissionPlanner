@@ -417,24 +417,30 @@ namespace MissionPlanner.GCSViews
             //left columb... and right...
             int baseTop = btnMyConnect.Bottom;
             int gap = (btnZoomIn.Parent.Height - (btnZoomIn.Height * 6) - 6) / 5;
-            int leftColumb = baseWidth - 3 - btnMyConnect.Width;
-            btnNavToCmd.Location = new Point(leftColumb, btnMyConnect.Top);
+            int rightColumb = baseWidth - 3 - btnMyConnect.Width;
+            btnNavToCmd.Location = new Point(rightColumb, btnMyConnect.Top);
             btnAltCmd.Location = new Point(3, baseTop + gap);
             btnTO.Location = btnAltCmd.Location;
             btnCheckList.Location = btnAltCmd.Location;
-            btnLoiterCmd.Location = new Point(leftColumb, btnAltCmd.Top);
+            btnLoiterCmd.Location = new Point(rightColumb, btnAltCmd.Top);
 
             btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + gap);
-            btnPinPoint.Location = new Point(leftColumb, btnIasCmd.Top);
+            btnPinPoint.Location = new Point(rightColumb, btnIasCmd.Top);
+
+            //poi buttons
+            btnAddPoi.Location     = new Point(rightColumb - btnAddPoi.Width -1, btnPinPoint.Top);
+            btnLoadPois.Location   = new Point(btnAddPoi.Left - 2 - btnLoadPois.Width, btnAddPoi.Top);
+            btnDeletePois.Location = new Point(btnAddPoi.Left, btnPinPoint.Bottom - btnDeletePois.Height);
+            btnSaveAllPoi.Location = new Point(btnLoadPois.Left, btnDeletePois.Top);
 
             btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + gap);
-            btnPointToCmd.Location = new Point(leftColumb, btnRtlCmd.Top);
+            btnPointToCmd.Location = new Point(rightColumb, btnRtlCmd.Top);
 
             btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + gap);
-            btnCamGuideCmd.Location = new Point(leftColumb, btnLandCmd.Top);
+            btnCamGuideCmd.Location = new Point(rightColumb, btnLandCmd.Top);
 
             btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + gap);
-            btnPoinToLatlngCmd.Location = new Point(leftColumb, btnBatDispaly.Top);
+            btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
         }
 
         private void initMyData()
@@ -3498,7 +3504,7 @@ namespace MissionPlanner.GCSViews
                                     (float)MainV2.comPort.MAV.param["MNT_TYPE"] == 4) // storm driver
                                 {
                                     var marker = GimbalPoint.ProjectPoint(MainV2.comPort);
-
+                                   // IGDAL todo - addHudUserItem your cam guide here...
                                     if (marker != PointLatLngAlt.Zero)
                                     {
                                         MainV2.comPort.MAV.cs.GimbalPoint = marker;
