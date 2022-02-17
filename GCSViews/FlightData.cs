@@ -6171,7 +6171,7 @@ namespace MissionPlanner.GCSViews
             //if valid location....
             float lat = float.Parse(tbxLat.Text);
             float lng = float.Parse(tbxLng.Text);
-            MyMarkersLayer.POIMove(myTargetsoverlay, (GMyMarkerGoogle)CurrentGMapMarker, lat, lng);
+            MyMarkersLayer.POIMove((GMyMarkerGoogle)CurrentGMapMarker, lat, lng);
         }
     }
 }
