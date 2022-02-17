@@ -15,6 +15,7 @@ namespace MissionPlanner.MyCode
     using GMap.NET.WindowsForms;
     using GMap.NET;
     using System.Windows.Forms;
+    using MissionPlanner.Utilities;
 #else
    using GMap.NET.WindowsMobile.Properties;
 #endif
@@ -31,11 +32,11 @@ namespace MissionPlanner.MyCode
       Image Bitmap;
         private ImageList _im;
 
-        public GMyMarkerGoogle(PointLatLng p, ImageList im)
+        public GMyMarkerGoogle(PointLatLng p, ImageList im, int id)
          : base(p)
       {
             _im = im;
-            LoadBitmap(1);
+            LoadBitmap(id);
       }
 
       void LoadBitmap(int id)

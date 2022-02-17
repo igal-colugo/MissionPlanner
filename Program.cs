@@ -227,7 +227,6 @@ namespace MissionPlanner
             if (SplashBG != null)
             {
                 Splash.BackgroundImage = SplashBG;
-                Splash.pictureBox1.Visible = false;
             }
 
             Console.WriteLine("IconFile");

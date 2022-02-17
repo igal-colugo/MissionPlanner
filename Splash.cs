@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MissionPlanner.MyCode;
+using System;
+using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -15,13 +18,9 @@ namespace MissionPlanner
             TXT_version.Text = "Version: " + Application.ProductVersion; // +" Build " + strVersion;
 
             Console.WriteLine(strVersion);
-
-            if (Program.Logo != null)
-            {
-                pictureBox1.BackgroundImage = MissionPlanner.Properties.Resources.bgdark;
-                pictureBox1.Image = Program.Logo;
-                pictureBox1.Visible = true;
-            }
+            this.BackgroundImage = Image.FromFile(Path.Combine(MySettings.myBasePath, "general\\splashscreen.png"));
+            
+           
 
             Console.WriteLine("Splash .ctor");
         }

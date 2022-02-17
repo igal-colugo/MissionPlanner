@@ -219,6 +219,26 @@ namespace MissionPlanner.GCSViews
         public bool setPointTo { get; private set; }
         public bool setNavTo { get; private set; }
 
+        bool _camGuideMode = false;
+         bool camGuideMode { get
+            {
+                return _camGuideMode;
+            }
+             set { 
+                if(value == _camGuideMode)
+                {
+                    return;
+                }
+                _camGuideMode = value;
+                tmrCamGuide.Enabled = _camGuideMode;
+
+                //in any case - start with safe mode...
+              //  if (!MainV2.comPort.BaseStream.IsOpen)
+                 // return;
+              //  MainV2.comPort.setMode("QLOITER");
+            }
+         }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -2532,9 +2552,9 @@ namespace MissionPlanner.GCSViews
         {
 
             MouseDownStart = gMapControl1.FromLocalToLatLng(e.X, e.Y);
-            if(poiState == PoiStates.psCreateNew)
+            if(poiState == PoiStates.psCreateNew && e.Button == MouseButtons.Left)
             {
-                MyMarkersLayer.POIAdd(MouseDownStart, "my test");
+                MyMarkersLayer.POIAdd(MouseDownStart, "0");
                 return;
             }
             _myRuller.mouseClickOnMap(MouseDownStart);
@@ -2542,7 +2562,7 @@ namespace MissionPlanner.GCSViews
             if (setNavTo)
             {
                 setNavTo = false;
-                myNavTo();
+                myNavTo(MouseDownStart.Lat, MouseDownStart.Lng);
             }
 
             if (setPointTo)
@@ -2559,6 +2579,16 @@ namespace MissionPlanner.GCSViews
                 return;
             }
 
+            if (CurrentGMapMarker is GMyMarkerGoogle)
+            {
+                gMapControl1.ContextMenuStrip = contextMenuPoi; 
+            }
+            else
+            {
+                gMapControl1.ContextMenuStrip = contextMenuStripMap;
+            }
+            
+
             if (CurrentGMapMarker is GMapMarkerADSBPlane)
             {
                 var marker = CurrentGMapMarker as GMapMarkerADSBPlane;
@@ -2570,7 +2600,7 @@ namespace MissionPlanner.GCSViews
             }
         }
 
-        private void myNavTo()
+        private void myNavTo(double lat, double lng)
         {
             float alt = MainV2.comPort.MAV.cs.alt == 0 ? 100 : MainV2.comPort.MAV.cs.alt;
             MainV2.comPort.MAV.GuidedMode.z = alt;
@@ -2579,8 +2609,8 @@ namespace MissionPlanner.GCSViews
 
             gotohere.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
             gotohere.alt = MainV2.comPort.MAV.GuidedMode.z; // back to m
-            gotohere.lat = (MouseDownStart.Lat);
-            gotohere.lng = (MouseDownStart.Lng);
+            gotohere.lat = lat;//(MouseDownStart.Lat);
+            gotohere.lng = lng;//(MouseDownStart.Lng);
 
             try
             {
@@ -5916,7 +5946,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnCamGuideCmd_Click(object sender, EventArgs e)
         {
-            setPointTo = true;
+            camGuideMode = !camGuideMode;
         }
 
         private void btnRuller_Click(object sender, EventArgs e)
@@ -5951,6 +5981,8 @@ namespace MissionPlanner.GCSViews
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
 
+            //safety...
+            camGuideMode = false;
             // arm the MAV
             try
             {
@@ -5983,6 +6015,8 @@ namespace MissionPlanner.GCSViews
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
 
+            //safety...
+            camGuideMode = false;
             // arm the MAV
             try
             {
@@ -5999,6 +6033,8 @@ namespace MissionPlanner.GCSViews
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
 
+            //safety...
+            camGuideMode = false;
             // arm the MAV
             try
             {
@@ -6015,6 +6051,8 @@ namespace MissionPlanner.GCSViews
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
 
+            //safety...
+            camGuideMode = false;
             // arm the MAV
             try
             {
@@ -6063,6 +6101,77 @@ namespace MissionPlanner.GCSViews
                 return;
 
             MyMarkersLayer.POIDelete((GMyMarkerGoogle)CurrentGMapMarker);
+        }
+
+        private void toolStripMenuItemPOIChange_Click(object sender, EventArgs e)
+        {
+            //
+            if (CurrentGMapMarker == null || !(CurrentGMapMarker is GMyMarkerGoogle))
+                return;
+
+            ToolStripMenuItem tmp = (ToolStripMenuItem)sender;
+            
+            MyMarkersLayer.POIEdit((GMyMarkerGoogle)CurrentGMapMarker, tmp.Tag.ToString());
+        }
+
+        private void btnPointToCmd_Click(object sender, EventArgs e)
+        {
+            setPointTo = true;
+        }
+
+        private void tmrCamGuide_Tick(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+            //
+            if (MainV2.comPort.MAV.cs.gimballng != 0
+                && MainV2.comPort.MAV.cs.gimballat != 0)
+            {
+                //sender navto
+                myNavTo(MainV2.comPort.MAV.cs.gimballat, MainV2.comPort.MAV.cs.gimballng);
+            }
+            else {
+                //go to qloiter mode
+               
+
+                // arm the MAV
+                try
+                {
+                    if (MainV2.comPort.MAV.cs.mode.ToUpper() != "QLOITER")
+                        MainV2.comPort.setMode("QLOITER");
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            gbPoiCoords.Visible = false;
+        }
+
+        private void editLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //change location
+            Point point = pnlMap.PointToClient(Cursor.Position);
+            gbPoiCoords.Location = point;
+            tbxLat.Text = CurrentGMapMarker.Position.Lat.ToString();
+            tbxLng.Text = CurrentGMapMarker.Position.Lng.ToString();
+            tbxLat.Focus();
+            //update coordinates
+            //Visible...
+            gbPoiCoords.Visible = true;
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            //if valid location....
+            float lat = float.Parse(tbxLat.Text);
+            float lng = float.Parse(tbxLng.Text);
+            MyMarkersLayer.POIMove(myTargetsoverlay, (GMyMarkerGoogle)CurrentGMapMarker, lat, lng);
         }
     }
 }

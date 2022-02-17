@@ -1,4 +1,5 @@
-﻿using GMap.NET.WindowsForms;
+﻿using GMap.NET;
+using GMap.NET.WindowsForms;
 using MissionPlanner.Controls;
 using MissionPlanner.Maps;
 using MissionPlanner.MyCode;
@@ -52,17 +53,18 @@ namespace MissionPlanner.Utilities
             {
                 if (loading)
                     return;
-                SaveFile(filename);
+            //    SaveFile(filename);
             }
             catch { }
         }
 
-        public static void POIAdd(PointLatLngAlt Point, string tag)
+        public static void POIAdd(PointLatLngAlt Point, string imageIndex)
         {
             // local copy
             PointLatLngAlt pnt = Point;
 
-            pnt.Tag = tag + "\n" + pnt.ToString();
+            pnt.Tag = pnt.ToString();
+            pnt.Tag2 = imageIndex+"\n";
 
             MyMarkersLayer.myMarkers.Add(pnt);
 
@@ -88,21 +90,18 @@ namespace MissionPlanner.Utilities
             }
         }
 
-        public static void POIEdit(GMyMarkerGoogle Point)
+        public static void POIEdit(GMyMarkerGoogle Point, string imageIndex)
         {
             if (Point == null)
                 return;
 
-            string output = "";
-
-            if (DialogResult.OK != InputBox.Show("My Target", "Enter ID", ref output))
-                return;
-
+       
             for (int a = 0; a < MyMarkersLayer.myMarkers.Count; a++)
             {
                 if (MyMarkersLayer.myMarkers[a].Point() == Point.Position)
                 {
-                    MyMarkersLayer.myMarkers[a].Tag = output + "\n" + Point.Position.ToString();
+                    MyMarkersLayer.myMarkers[a].Tag = imageIndex + "\n" + Point.Position.ToString();
+                    MyMarkersLayer.myMarkers[a].Tag2 = imageIndex + "\n";
                     if (_POIModified != null)
                         _POIModified(null, null);
                     return;
@@ -110,19 +109,37 @@ namespace MissionPlanner.Utilities
             }
         }
 
-        public static void POIMove(GMyMarkerGoogle Point)
+        public static void POIMove(GMyMarkerGoogle marker, double newLat, double newLng)
         {
+
+           
             for (int a = 0; a < MyMarkersLayer.myMarkers.Count; a++)
             {
-                if (myMarkers[a].Tag == Point.ToolTipText)
+                if (MyMarkersLayer.myMarkers[a].Point() == marker.Position)
                 {
-                    myMarkers[a].Lat = Point.Position.Lat;
-                    myMarkers[a].Lng = Point.Position.Lng;
-                    myMarkers[a].Tag = myMarkers[a].Tag.Substring(0, myMarkers[a].Tag.IndexOf('\n')) + "\n" + Point.Position.ToString();
-                    break;
+                    MyMarkersLayer.myMarkers[a].Lat = newLat;
+                    MyMarkersLayer.myMarkers[a].Lng = newLng;
+
+                    MyMarkersLayer.myMarkers[a].Tag = "rrr" + "\n" + marker.Position.ToString();
+                    MyMarkersLayer.myMarkers[a].Tag2 = "1" + "\n";
+                    if (_POIModified != null)
+                        _POIModified(null, null);
+                    return;
                 }
             }
 
+/*
+                for (int a = 0; a < poioverlay.Markers.Count; a++)
+            {
+                if (myMarkers[a] == marker)
+                {
+                    myMarkers[a].Lat = newLat;
+                    myMarkers[a].Lng = newLng;
+                    myMarkers[a].Tag = myMarkers[a].Tag.Substring(0, myMarkers[a].Tag.IndexOf('\n')) + "\n" + marker.Position.ToString();
+                    break;
+                }
+            }
+*/
             if (_POIModified != null)
                 _POIModified(null, null);
         }
@@ -139,7 +156,7 @@ namespace MissionPlanner.Utilities
                 foreach (var item in MyMarkersLayer.myMarkers)
                 {
                     string line = item.Lat.ToString(CultureInfo.InvariantCulture) + "\t" +
-                                  item.Lng.ToString(CultureInfo.InvariantCulture) + "\t" + item.Tag.Substring(0, item.Tag.IndexOf('\n')) + "\r\n";
+                                  item.Lng.ToString(CultureInfo.InvariantCulture) + "\t" + item.Tag2.Substring(0, item.Tag2.IndexOf('\n')) + "\r\n";
                     byte[] buffer = ASCIIEncoding.ASCII.GetBytes(line);
                     file.Write(buffer, 0, buffer.Length);
                 }
@@ -182,10 +199,10 @@ namespace MissionPlanner.Utilities
 
             foreach (var pnt in myMarkers)
             {
-                poioverlay.Markers.Add(new GMyMarkerGoogle(pnt, ilMyImages)
+                poioverlay.Markers.Add(new GMyMarkerGoogle(pnt, ilMyImages, int.Parse(pnt.Tag2))
                 {
                     ToolTipMode = MarkerTooltipMode.OnMouseOver,
-                    ToolTipText = pnt.Tag
+                    ToolTipText = pnt.Tag + " Type(" + pnt.Tag2 +")"
                 });
             }
         }

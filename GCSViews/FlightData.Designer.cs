@@ -192,12 +192,19 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.gbPoiCoords = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbxLng = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbxLat = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.btnSaveAllPoi = new System.Windows.Forms.Button();
             this.btnDeletePois = new System.Windows.Forms.Button();
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
             this.pnlCheckList = new System.Windows.Forms.Panel();
-            this.btnClDone = new System.Windows.Forms.Button();
             this.btnTO = new System.Windows.Forms.Button();
             this.btnCheckList = new System.Windows.Forms.Button();
             this.btnSim = new System.Windows.Forms.Button();
@@ -223,10 +230,10 @@ namespace MissionPlanner.GCSViews
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
+            this.btnClDone = new System.Windows.Forms.Button();
             this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.changeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -234,11 +241,9 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.checkListControl1 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.modifyandSetLoiterRad = new MissionPlanner.Controls.ModifyandSet();
-            this.modifyandSetAlt = new MissionPlanner.Controls.ModifyandSet();
-            this.modifyandSetSpeed = new MissionPlanner.Controls.ModifyandSet();
+            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
+            this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
+            this.btnApply = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -259,7 +264,6 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPagemessages.SuspendLayout();
             this.tabActionsSimple.SuspendLayout();
-            this.tabPagePreFlight.SuspendLayout();
             this.tabGauges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGaugesTab)).BeginInit();
             this.tabTransponder.SuspendLayout();
@@ -292,7 +296,8 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.pnlMap.SuspendLayout();
-            this.pnlCheckList.SuspendLayout();
+            this.gbPoiCoords.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.contextMenuPoi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -986,7 +991,6 @@ namespace MissionPlanner.GCSViews
             // 
             // tabPagePreFlight
             // 
-            this.tabPagePreFlight.Controls.Add(this.checkListControl1);
             resources.ApplyResources(this.tabPagePreFlight, "tabPagePreFlight");
             this.tabPagePreFlight.Name = "tabPagePreFlight";
             this.tabPagePreFlight.UseVisualStyleBackColor = true;
@@ -2219,7 +2223,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 9900D;
+            this.windDir1.Direction = 10620D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2406,6 +2410,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.gbPoiCoords);
             this.pnlMap.Controls.Add(this.btnSaveAllPoi);
             this.pnlMap.Controls.Add(this.btnDeletePois);
             this.pnlMap.Controls.Add(this.btnLoadPois);
@@ -2439,6 +2444,59 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // gbPoiCoords
+            // 
+            this.gbPoiCoords.Controls.Add(this.tableLayoutPanel3);
+            this.gbPoiCoords.Controls.Add(this.lblStatus);
+            resources.ApplyResources(this.gbPoiCoords, "gbPoiCoords");
+            this.gbPoiCoords.Name = "gbPoiCoords";
+            this.gbPoiCoords.TabStop = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.btnApply, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tbxLng, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tbxLat, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnCancel, 0, 2);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            // 
+            // tbxLng
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.tbxLng, 2);
+            resources.ApplyResources(this.tbxLng, "tbxLng");
+            this.tbxLng.Name = "tbxLng";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // tbxLat
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.tbxLat, 2);
+            resources.ApplyResources(this.tbxLat, "tbxLat");
+            this.tbxLat.Name = "tbxLat";
+            // 
+            // btnCancel
+            // 
+            resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // lblStatus
+            // 
+            resources.ApplyResources(this.lblStatus, "lblStatus");
+            this.lblStatus.Name = "lblStatus";
             // 
             // btnSaveAllPoi
             // 
@@ -2475,17 +2533,7 @@ namespace MissionPlanner.GCSViews
             // pnlCheckList
             // 
             resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
-            this.pnlCheckList.Controls.Add(this.btnClDone);
-            this.pnlCheckList.Controls.Add(this.checkListControl2);
             this.pnlCheckList.Name = "pnlCheckList";
-            // 
-            // btnClDone
-            // 
-            resources.ApplyResources(this.btnClDone, "btnClDone");
-            this.btnClDone.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnClDone.Name = "btnClDone";
-            this.btnClDone.UseVisualStyleBackColor = true;
-            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
             // 
             // btnTO
             // 
@@ -2565,6 +2613,7 @@ namespace MissionPlanner.GCSViews
             this.btnPointToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPointToCmd.Name = "btnPointToCmd";
             this.btnPointToCmd.UseVisualStyleBackColor = true;
+            this.btnPointToCmd.Click += new System.EventHandler(this.btnPointToCmd_Click);
             // 
             // btnPinPoint
             // 
@@ -2698,6 +2747,14 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
             // 
+            // btnClDone
+            // 
+            resources.ApplyResources(this.btnClDone, "btnClDone");
+            this.btnClDone.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnClDone.Name = "btnClDone";
+            this.btnClDone.UseVisualStyleBackColor = true;
+            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
+            // 
             // contextMenuPoi
             // 
             this.contextMenuPoi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2717,12 +2774,7 @@ namespace MissionPlanner.GCSViews
             // 
             this.editLocationToolStripMenuItem.Name = "editLocationToolStripMenuItem";
             resources.ApplyResources(this.editLocationToolStripMenuItem, "editLocationToolStripMenuItem");
-            // 
-            // ilMyTargets
-            // 
-            this.ilMyTargets.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            resources.ApplyResources(this.ilMyTargets, "ilMyTargets");
-            this.ilMyTargets.TransparentColor = System.Drawing.Color.Transparent;
+            this.editLocationToolStripMenuItem.Click += new System.EventHandler(this.editLocationToolStripMenuItem_Click);
             // 
             // changeTypeToolStripMenuItem
             // 
@@ -2740,132 +2792,61 @@ namespace MissionPlanner.GCSViews
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.Tag = "1";
+            this.toolStripMenuItem2.Tag = "0";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.Tag = "2";
+            this.toolStripMenuItem3.Tag = "1";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Tag = "3";
+            this.toolStripMenuItem4.Tag = "2";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Tag = "4";
+            this.toolStripMenuItem5.Tag = "3";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
-            this.toolStripMenuItem6.Tag = "5";
+            this.toolStripMenuItem6.Tag = "4";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
-            this.toolStripMenuItem7.Tag = "6";
+            this.toolStripMenuItem7.Tag = "5";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
             // 
-            // checkListControl2
+            // ilMyTargets
             // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
+            this.ilMyTargets.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.ilMyTargets, "ilMyTargets");
+            this.ilMyTargets.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // checkListControl1
+            // tmrCamGuide
             // 
-            resources.ApplyResources(this.checkListControl1, "checkListControl1");
-            this.checkListControl1.Name = "checkListControl1";
+            this.tmrCamGuide.Interval = 2000;
+            this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
-            // modifyandSetLoiterRad
+            // btnApply
             // 
-            this.modifyandSetLoiterRad.ButtonText = "Set Loiter Rad";
-            this.modifyandSetLoiterRad.DecimalPlaces = 0;
-            this.modifyandSetLoiterRad.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.modifyandSetLoiterRad, "modifyandSetLoiterRad");
-            this.modifyandSetLoiterRad.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.modifyandSetLoiterRad.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            -2147483648});
-            this.modifyandSetLoiterRad.Name = "modifyandSetLoiterRad";
-            this.modifyandSetLoiterRad.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.modifyandSetLoiterRad.Click += new System.EventHandler(this.modifyandSetLoiterRad_Click);
-            // 
-            // modifyandSetAlt
-            // 
-            this.modifyandSetAlt.ButtonText = "Change Alt";
-            this.modifyandSetAlt.DecimalPlaces = 1;
-            this.modifyandSetAlt.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.modifyandSetAlt, "modifyandSetAlt");
-            this.modifyandSetAlt.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.modifyandSetAlt.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.modifyandSetAlt.Name = "modifyandSetAlt";
-            this.modifyandSetAlt.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.modifyandSetAlt.Click += new System.EventHandler(this.modifyandSetAlt_Click);
-            // 
-            // modifyandSetSpeed
-            // 
-            this.modifyandSetSpeed.ButtonText = "Change Speed";
-            this.modifyandSetSpeed.DecimalPlaces = 1;
-            this.modifyandSetSpeed.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.modifyandSetSpeed, "modifyandSetSpeed");
-            this.modifyandSetSpeed.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.modifyandSetSpeed.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.modifyandSetSpeed.Name = "modifyandSetSpeed";
-            this.modifyandSetSpeed.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.modifyandSetSpeed.Click += new System.EventHandler(this.modifyandSetSpeed_Click);
-            this.modifyandSetSpeed.ParentChanged += new System.EventHandler(this.modifyandSetSpeed_ParentChanged);
+            resources.ApplyResources(this.btnApply, "btnApply");
+            this.btnApply.Name = "btnApply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // FlightData
             // 
@@ -2898,7 +2879,6 @@ namespace MissionPlanner.GCSViews
             this.tabPagemessages.ResumeLayout(false);
             this.tabPagemessages.PerformLayout();
             this.tabActionsSimple.ResumeLayout(false);
-            this.tabPagePreFlight.ResumeLayout(false);
             this.tabGauges.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGaugesTab)).EndInit();
             this.tabTransponder.ResumeLayout(false);
@@ -2942,7 +2922,10 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
-            this.pnlCheckList.ResumeLayout(false);
+            this.gbPoiCoords.ResumeLayout(false);
+            this.gbPoiCoords.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.contextMenuPoi.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -3195,5 +3178,15 @@ namespace MissionPlanner.GCSViews
         private ToolStripMenuItem toolStripMenuItem5;
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolStripMenuItem toolStripMenuItem7;
+        private Timer tmrCamGuide;
+        private GroupBox gbPoiCoords;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Label lblStatus;
+        private Label label12;
+        private Label label11;
+        private TextBox tbxLat;
+        private TextBox tbxLng;
+        private Button btnCancel;
+        private Button btnApply;
     }
 }
