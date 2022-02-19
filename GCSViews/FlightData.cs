@@ -2426,7 +2426,7 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-                    modifyandSetSpeed.Value = (decimal)((float)MainV2.comPort.MAV.param["TRIM_ARSPD_CM"] / 100.0);
+               //     modifyandSetSpeed.Value = (decimal)((float)MainV2.comPort.MAV.param["TRIM_ARSPD_CM"] / 100.0);
                 }
                 catch
                 {
@@ -2465,8 +2465,8 @@ namespace MissionPlanner.GCSViews
             {
                 if (MainV2.comPort.MAV.param.ContainsKey("WP_LOITER_RAD"))
                 {
-                    modifyandSetLoiterRad.Value =
-                        (decimal)((float)MainV2.comPort.MAV.param["WP_LOITER_RAD"] * CurrentState.multiplierdist);
+                //    modifyandSetLoiterRad.Value =
+                    //    (decimal)((float)MainV2.comPort.MAV.param["WP_LOITER_RAD"] * CurrentState.multiplierdist);
                 }
             }
             catch
@@ -3882,8 +3882,13 @@ namespace MissionPlanner.GCSViews
         {
             if (pnlAlt.Visible)
             {
-               
-                txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0}m");
+                AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
+                txtAltCmd.BeginInvokeIfRequired(() =>
+                {
+                    txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0}m");
+                });
+                
+                
             }
         }
 
@@ -5567,6 +5572,7 @@ namespace MissionPlanner.GCSViews
         private GMapOverlay _rullerOverlay;
         private MyRullerhelper _myRuller;
         private GMyMarkerGoogle myCurrentToMoveMarker = null;
+        private int AltTargetRprt;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -5870,7 +5876,7 @@ namespace MissionPlanner.GCSViews
 
             {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
-             //ig   checkListControl2.BUT_edit.Visible = MainV2.instance.myDebug;
+                clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
 
             }
         }
@@ -5937,6 +5943,7 @@ namespace MissionPlanner.GCSViews
             int rightColumb = baseWidth - 3 - btnMyConnect.Width;
             btnNavToCmd.Location = new Point(rightColumb, btnMyConnect.Top);
             btnAltCmd.Location = new Point(3, baseTop + gap);
+            pnlAlt.Location = new Point(btnAltCmd.Right + 2, (btnAltCmd.Top + (btnAltCmd.Height - pnlAlt.Height) / 2));
             btnTO.Location = btnAltCmd.Location;
             btnCheckList.Location = btnAltCmd.Location;
             btnLoiterCmd.Location = new Point(rightColumb, btnAltCmd.Top);
@@ -6248,6 +6255,30 @@ namespace MissionPlanner.GCSViews
         private void btnAltCmd_Click(object sender, EventArgs e)
         {
             altCmdDisplay = !altCmdDisplay;
+        }
+
+        private void btnAltup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetRprt + 5) });
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.ErrorCommunicating, Strings.ERROR);
+            }
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetRprt - 5) });
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.ErrorCommunicating, Strings.ERROR);
+            }
         }
     }
 }

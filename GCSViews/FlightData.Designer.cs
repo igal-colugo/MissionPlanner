@@ -211,6 +211,7 @@ namespace MissionPlanner.GCSViews
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
             this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.clcPreFlight = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnTO = new System.Windows.Forms.Button();
             this.btnCheckList = new System.Windows.Forms.Button();
             this.btnSim = new System.Windows.Forms.Button();
@@ -236,7 +237,6 @@ namespace MissionPlanner.GCSViews
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
-            this.btnClDone = new System.Windows.Forms.Button();
             this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -249,6 +249,7 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
+            this.btnClDone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -304,6 +305,7 @@ namespace MissionPlanner.GCSViews
             this.pnlAlt.SuspendLayout();
             this.gbPoiCoords.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.pnlCheckList.SuspendLayout();
             this.contextMenuPoi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2229,7 +2231,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 11880D;
+            this.windDir1.Direction = 12960D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2416,13 +2418,13 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.pnlAlt);
             this.pnlMap.Controls.Add(this.gbPoiCoords);
             this.pnlMap.Controls.Add(this.btnSaveAllPoi);
             this.pnlMap.Controls.Add(this.btnDeletePois);
             this.pnlMap.Controls.Add(this.btnLoadPois);
             this.pnlMap.Controls.Add(this.btnAddPoi);
-            this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.btnTO);
             this.pnlMap.Controls.Add(this.btnCheckList);
             this.pnlMap.Controls.Add(this.btnSim);
@@ -2466,6 +2468,7 @@ namespace MissionPlanner.GCSViews
             this.btnAltup.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAltup.Name = "btnAltup";
             this.btnAltup.UseVisualStyleBackColor = true;
+            this.btnAltup.Click += new System.EventHandler(this.btnAltup_Click);
             // 
             // btnDown
             // 
@@ -2473,6 +2476,7 @@ namespace MissionPlanner.GCSViews
             this.btnDown.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnDown.Name = "btnDown";
             this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // txtAltCmd
             // 
@@ -2583,7 +2587,14 @@ namespace MissionPlanner.GCSViews
             // pnlCheckList
             // 
             resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
+            this.pnlCheckList.Controls.Add(this.btnClDone);
+            this.pnlCheckList.Controls.Add(this.clcPreFlight);
             this.pnlCheckList.Name = "pnlCheckList";
+            // 
+            // clcPreFlight
+            // 
+            resources.ApplyResources(this.clcPreFlight, "clcPreFlight");
+            this.clcPreFlight.Name = "clcPreFlight";
             // 
             // btnTO
             // 
@@ -2798,14 +2809,6 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
             this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
             // 
-            // btnClDone
-            // 
-            resources.ApplyResources(this.btnClDone, "btnClDone");
-            this.btnClDone.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnClDone.Name = "btnClDone";
-            this.btnClDone.UseVisualStyleBackColor = true;
-            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
-            // 
             // contextMenuPoi
             // 
             this.contextMenuPoi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2892,6 +2895,13 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
+            // btnClDone
+            // 
+            resources.ApplyResources(this.btnClDone, "btnClDone");
+            this.btnClDone.Name = "btnClDone";
+            this.btnClDone.UseVisualStyleBackColor = true;
+            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
+            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -2972,6 +2982,7 @@ namespace MissionPlanner.GCSViews
             this.gbPoiCoords.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.pnlCheckList.ResumeLayout(false);
             this.contextMenuPoi.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -3207,7 +3218,6 @@ namespace MissionPlanner.GCSViews
         private Button btnCheckList;
         private Button btnTO;
         private Panel pnlCheckList;
-        private Button btnClDone;
         private Button btnDeletePois;
         private Button btnLoadPois;
         private Button btnAddPoi;
@@ -3238,5 +3248,7 @@ namespace MissionPlanner.GCSViews
         private Panel pnlAlt;
         private Button btnDown;
         private TextBox txtAltCmd;
+        private Controls.PreFlight.CheckListControl clcPreFlight;
+        private Button btnClDone;
     }
 }
