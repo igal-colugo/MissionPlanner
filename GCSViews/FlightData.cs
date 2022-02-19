@@ -239,6 +239,21 @@ namespace MissionPlanner.GCSViews
             }
          }
 
+        private bool _altCmdDisplay = false;
+        public bool altCmdDisplay { get
+            {
+                return _altCmdDisplay;
+            }
+            private set { 
+                if (value == _altCmdDisplay)
+                {
+                    return;
+                }
+                _altCmdDisplay = value;
+                pnlAlt.Visible = value;
+            }
+        }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -3845,6 +3860,7 @@ namespace MissionPlanner.GCSViews
 
                         tracklast = DateTime.Now;
                     }
+                    updateMyData();
                 }
                 catch (Exception ex)
                 {
@@ -3860,6 +3876,15 @@ namespace MissionPlanner.GCSViews
             }
 
             Console.WriteLine("FD Main loop exit");
+        }
+
+        private void updateMyData()
+        {
+            if (pnlAlt.Visible)
+            {
+               
+                txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0}m");
+            }
         }
 
         internal void UpdateConnectIcon()
@@ -5845,7 +5870,7 @@ namespace MissionPlanner.GCSViews
 
             {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
-                checkListControl2.BUT_edit.Visible = MainV2.instance.myDebug;
+             //ig   checkListControl2.BUT_edit.Visible = MainV2.instance.myDebug;
 
             }
         }
@@ -6218,6 +6243,11 @@ namespace MissionPlanner.GCSViews
                 res = false;
             }
             return res;
+        }
+
+        private void btnAltCmd_Click(object sender, EventArgs e)
+        {
+            altCmdDisplay = !altCmdDisplay;
         }
     }
 }
