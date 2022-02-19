@@ -18,7 +18,7 @@ namespace MissionPlanner.Utilities
         /// <summary>
         /// Store points of interest
         /// </summary>
-        static ObservableCollection<PointLatLngAlt> myMarkers = new ObservableCollection<PointLatLngAlt>();
+        public static ObservableCollection<PointLatLngAlt> myMarkers = new ObservableCollection<PointLatLngAlt>();
 
         private static EventHandler _POIModified;
 
@@ -120,28 +120,12 @@ namespace MissionPlanner.Utilities
                     MyMarkersLayer.myMarkers[a].Lat = newLat;
                     MyMarkersLayer.myMarkers[a].Lng = newLng;
 
-                    MyMarkersLayer.myMarkers[a].Tag = "rrr" + "\n" + marker.Position.ToString();
-                    MyMarkersLayer.myMarkers[a].Tag2 = "1" + "\n";
+                    MyMarkersLayer.myMarkers[a].Tag = myMarkers[a].Tag2 + "\n" + myMarkers[a].Point().ToString();
                     if (_POIModified != null)
                         _POIModified(null, null);
                     return;
                 }
             }
-
-/*
-                for (int a = 0; a < poioverlay.Markers.Count; a++)
-            {
-                if (myMarkers[a] == marker)
-                {
-                    myMarkers[a].Lat = newLat;
-                    myMarkers[a].Lng = newLng;
-                    myMarkers[a].Tag = myMarkers[a].Tag.Substring(0, myMarkers[a].Tag.IndexOf('\n')) + "\n" + marker.Position.ToString();
-                    break;
-                }
-            }
-*/
-            if (_POIModified != null)
-                _POIModified(null, null);
         }
 
         public static void POISave()

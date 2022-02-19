@@ -2369,7 +2369,12 @@ namespace MissionPlanner.GCSViews
 
         private void myMarkersModified(object sender, EventArgs e)
         {
+
             MyMarkersLayer.UpdateOverlay(myTargetsoverlay, ilMyTargets);
+            if(poiState == PoiStates.psCreateNew)
+            {
+                CurrentGMapMarker = myTargetsoverlay.Markers[myTargetsoverlay.Markers.Count-1];
+            }
         }
 
         private void FlightData_ParentChanged(object sender, EventArgs e)
@@ -5536,6 +5541,7 @@ namespace MissionPlanner.GCSViews
         private connectStates _connectState = connectStates.csNone;
         private GMapOverlay _rullerOverlay;
         private MyRullerhelper _myRuller;
+        private GMyMarkerGoogle myCurrentToMoveMarker = null;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6150,6 +6156,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            myCurrentToMoveMarker = null;
             gbPoiCoords.Visible = false;
         }
 
@@ -6158,20 +6165,59 @@ namespace MissionPlanner.GCSViews
             //change location
             Point point = pnlMap.PointToClient(Cursor.Position);
             gbPoiCoords.Location = point;
-            tbxLat.Text = CurrentGMapMarker.Position.Lat.ToString();
-            tbxLng.Text = CurrentGMapMarker.Position.Lng.ToString();
-            tbxLat.Focus();
+            myCurrentToMoveMarker = (GMyMarkerGoogle)CurrentGMapMarker;
             //update coordinates
+            tbxLat.Text = myCurrentToMoveMarker.Position.Lat.ToString();
+            tbxLng.Text = myCurrentToMoveMarker.Position.Lng.ToString();
+            this.ActiveControl = tbxLat;
+            tbxLat.Focus();
             //Visible...
+            lblStatus.Text = "";
             gbPoiCoords.Visible = true;
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
             //if valid location....
-            float lat = float.Parse(tbxLat.Text);
-            float lng = float.Parse(tbxLng.Text);
-            MyMarkersLayer.POIMove((GMyMarkerGoogle)CurrentGMapMarker, lat, lng);
+            float lat, lng;
+            if (validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text))
+            {
+                MyMarkersLayer.POIMove(myCurrentToMoveMarker, lat, lng);
+            }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            //if valid location....
+            float lat, lng;
+            if(validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text))
+            {
+                MyMarkersLayer.POIMove(myCurrentToMoveMarker, lat, lng);
+                gbPoiCoords.Visible = false;
+                myCurrentToMoveMarker = null;
+            }            
+        }
+
+        private bool validLocation(out float lat, out float lng, string slat, string slng)
+        {
+            bool res = false;
+            lat = 0;
+            lng = 0;
+            try
+            {
+                lat = float.Parse(slat);
+                lng = float.Parse(slng);
+                res = Math.Abs(lat) <= 90 && Math.Abs(lng) <= 180;
+                if (!res) {
+                    lblStatus.Text = "Coordinates out side of scope";
+                }
+            }
+            catch (Exception e)
+            {
+                lblStatus.Text = e.Message;
+                res = false;
+            }
+            return res;
         }
     }
 }

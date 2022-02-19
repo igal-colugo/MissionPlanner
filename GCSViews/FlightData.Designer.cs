@@ -194,6 +194,8 @@ namespace MissionPlanner.GCSViews
             this.pnlMap = new System.Windows.Forms.Panel();
             this.gbPoiCoords = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.tbxLng = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -243,7 +245,6 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.btnApply = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2223,7 +2224,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 10620D;
+            this.windDir1.Direction = 11160D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2456,6 +2457,7 @@ namespace MissionPlanner.GCSViews
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.btnOk, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.btnApply, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.tbxLng, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 1);
@@ -2463,6 +2465,20 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel3.Controls.Add(this.tbxLat, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnCancel, 0, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            // 
+            // btnOk
+            // 
+            resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.Name = "btnOk";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnApply
+            // 
+            resources.ApplyResources(this.btnApply, "btnApply");
+            this.btnApply.Name = "btnApply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // tbxLng
             // 
@@ -2841,13 +2857,6 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
-            // btnApply
-            // 
-            resources.ApplyResources(this.btnApply, "btnApply");
-            this.btnApply.Name = "btnApply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
-            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -3188,5 +3197,6 @@ namespace MissionPlanner.GCSViews
         private TextBox tbxLng;
         private Button btnCancel;
         private Button btnApply;
+        private Button btnOk;
     }
 }
