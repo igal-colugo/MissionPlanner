@@ -192,6 +192,8 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.btnClDone = new System.Windows.Forms.Button();
             this.pnlAlt = new System.Windows.Forms.Panel();
             this.btnAltup = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
@@ -210,8 +212,6 @@ namespace MissionPlanner.GCSViews
             this.btnDeletePois = new System.Windows.Forms.Button();
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
-            this.pnlCheckList = new System.Windows.Forms.Panel();
-            this.clcPreFlight = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnTO = new System.Windows.Forms.Button();
             this.btnCheckList = new System.Windows.Forms.Button();
             this.btnSim = new System.Windows.Forms.Button();
@@ -249,7 +249,11 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.btnClDone = new System.Windows.Forms.Button();
+            this.pnlSpeedCmd = new System.Windows.Forms.Panel();
+            this.btnSpdUp = new System.Windows.Forms.Button();
+            this.btnSpdDown = new System.Windows.Forms.Button();
+            this.txtSpdCmd = new System.Windows.Forms.TextBox();
+            this.clcPreFlight = new MissionPlanner.Controls.PreFlight.CheckListControl();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -302,11 +306,12 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.pnlMap.SuspendLayout();
+            this.pnlCheckList.SuspendLayout();
             this.pnlAlt.SuspendLayout();
             this.gbPoiCoords.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.pnlCheckList.SuspendLayout();
             this.contextMenuPoi.SuspendLayout();
+            this.pnlSpeedCmd.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainH
@@ -2231,7 +2236,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 12960D;
+            this.windDir1.Direction = 13680D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2418,6 +2423,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.pnlSpeedCmd);
             this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.pnlAlt);
             this.pnlMap.Controls.Add(this.gbPoiCoords);
@@ -2453,6 +2459,20 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // pnlCheckList
+            // 
+            resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
+            this.pnlCheckList.Controls.Add(this.btnClDone);
+            this.pnlCheckList.Controls.Add(this.clcPreFlight);
+            this.pnlCheckList.Name = "pnlCheckList";
+            // 
+            // btnClDone
+            // 
+            resources.ApplyResources(this.btnClDone, "btnClDone");
+            this.btnClDone.Name = "btnClDone";
+            this.btnClDone.UseVisualStyleBackColor = true;
+            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
             // 
             // pnlAlt
             // 
@@ -2583,18 +2603,6 @@ namespace MissionPlanner.GCSViews
             this.btnAddPoi.Name = "btnAddPoi";
             this.btnAddPoi.UseVisualStyleBackColor = true;
             this.btnAddPoi.Click += new System.EventHandler(this.btnAddPoi_Click);
-            // 
-            // pnlCheckList
-            // 
-            resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
-            this.pnlCheckList.Controls.Add(this.btnClDone);
-            this.pnlCheckList.Controls.Add(this.clcPreFlight);
-            this.pnlCheckList.Name = "pnlCheckList";
-            // 
-            // clcPreFlight
-            // 
-            resources.ApplyResources(this.clcPreFlight, "clcPreFlight");
-            this.clcPreFlight.Name = "clcPreFlight";
             // 
             // btnTO
             // 
@@ -2729,6 +2737,7 @@ namespace MissionPlanner.GCSViews
             this.btnIasCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnIasCmd.Name = "btnIasCmd";
             this.btnIasCmd.UseVisualStyleBackColor = true;
+            this.btnIasCmd.Click += new System.EventHandler(this.btnIasCmd_Click);
             // 
             // btnAltCmd
             // 
@@ -2895,12 +2904,40 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
-            // btnClDone
+            // pnlSpeedCmd
             // 
-            resources.ApplyResources(this.btnClDone, "btnClDone");
-            this.btnClDone.Name = "btnClDone";
-            this.btnClDone.UseVisualStyleBackColor = true;
-            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
+            this.pnlSpeedCmd.Controls.Add(this.btnSpdUp);
+            this.pnlSpeedCmd.Controls.Add(this.btnSpdDown);
+            this.pnlSpeedCmd.Controls.Add(this.txtSpdCmd);
+            resources.ApplyResources(this.pnlSpeedCmd, "pnlSpeedCmd");
+            this.pnlSpeedCmd.Name = "pnlSpeedCmd";
+            // 
+            // btnSpdUp
+            // 
+            resources.ApplyResources(this.btnSpdUp, "btnSpdUp");
+            this.btnSpdUp.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSpdUp.Name = "btnSpdUp";
+            this.btnSpdUp.UseVisualStyleBackColor = true;
+            this.btnSpdUp.Click += new System.EventHandler(this.btnSpdUp_Click);
+            // 
+            // btnSpdDown
+            // 
+            resources.ApplyResources(this.btnSpdDown, "btnSpdDown");
+            this.btnSpdDown.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSpdDown.Name = "btnSpdDown";
+            this.btnSpdDown.UseVisualStyleBackColor = true;
+            this.btnSpdDown.Click += new System.EventHandler(this.btnSpdDown_Click);
+            // 
+            // txtSpdCmd
+            // 
+            resources.ApplyResources(this.txtSpdCmd, "txtSpdCmd");
+            this.txtSpdCmd.Name = "txtSpdCmd";
+            this.txtSpdCmd.ReadOnly = true;
+            // 
+            // clcPreFlight
+            // 
+            resources.ApplyResources(this.clcPreFlight, "clcPreFlight");
+            this.clcPreFlight.Name = "clcPreFlight";
             // 
             // FlightData
             // 
@@ -2976,14 +3013,16 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
+            this.pnlCheckList.ResumeLayout(false);
             this.pnlAlt.ResumeLayout(false);
             this.pnlAlt.PerformLayout();
             this.gbPoiCoords.ResumeLayout(false);
             this.gbPoiCoords.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.pnlCheckList.ResumeLayout(false);
             this.contextMenuPoi.ResumeLayout(false);
+            this.pnlSpeedCmd.ResumeLayout(false);
+            this.pnlSpeedCmd.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3250,5 +3289,9 @@ namespace MissionPlanner.GCSViews
         private TextBox txtAltCmd;
         private Controls.PreFlight.CheckListControl clcPreFlight;
         private Button btnClDone;
+        private Panel pnlSpeedCmd;
+        private Button btnSpdUp;
+        private Button btnSpdDown;
+        private TextBox txtSpdCmd;
     }
 }

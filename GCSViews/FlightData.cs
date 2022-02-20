@@ -254,6 +254,24 @@ namespace MissionPlanner.GCSViews
             }
         }
 
+        private bool _iasCmdDisplay = false;
+        public bool iasCmdDisplay
+        {
+            get
+            {
+                return _iasCmdDisplay;
+            }
+            private set
+            {
+                if (value == _iasCmdDisplay)
+                {
+                    return;
+                }
+                _iasCmdDisplay = value;
+                pnlSpeedCmd.Visible = value;
+            }
+        }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -3885,10 +3903,21 @@ namespace MissionPlanner.GCSViews
                 AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
                 txtAltCmd.BeginInvokeIfRequired(() =>
                 {
-                    txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0}m");
+                    txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0} m");
                 });
                 
                 
+            }
+
+            if (pnlSpeedCmd.Visible)
+            {
+                myIasCmd = (int)MainV2.comPort.MAV.cs.targetairspeed;
+                txtSpdCmd.BeginInvokeIfRequired(() =>
+                {
+                    txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
+                });
+
+
             }
         }
 
@@ -5573,6 +5602,7 @@ namespace MissionPlanner.GCSViews
         private MyRullerhelper _myRuller;
         private GMyMarkerGoogle myCurrentToMoveMarker = null;
         private int AltTargetRprt;
+        private int myIasCmd;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -5949,6 +5979,7 @@ namespace MissionPlanner.GCSViews
             btnLoiterCmd.Location = new Point(rightColumb, btnAltCmd.Top);
 
             btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + gap);
+            pnlSpeedCmd.Location = new Point(btnIasCmd.Right + 2, (btnIasCmd.Top + (btnIasCmd.Height - pnlSpeedCmd.Height) / 2));
             btnPinPoint.Location = new Point(rightColumb, btnIasCmd.Top);
 
             //poi buttons
@@ -6278,6 +6309,55 @@ namespace MissionPlanner.GCSViews
             catch
             {
                 CustomMessageBox.Show(Strings.ErrorCommunicating, Strings.ERROR);
+            }
+        }
+
+        private void btnIasCmd_Click(object sender, EventArgs e)
+        {
+            iasCmdDisplay = !iasCmdDisplay;
+        }
+
+        private void btnSpdUp_Click(object sender, EventArgs e)
+        {
+            mySpeedCmd(1);
+        }
+
+        private void btnSpdDown_Click(object sender, EventArgs e)
+        {
+            mySpeedCmd(-1);
+        }
+
+        private void mySpeedCmd(int spdDif)
+        {
+            if (// plane 3.8 and above with airspeed as per plane 3.7 to plane 3.8 migration wiki page, no longer uses ARSPD_ENABLE, uses ARSPD_TYPE instead:
+                    (MainV2.comPort.MAV.param.ContainsKey("TRIM_ARSPD_CM") &&
+                    MainV2.comPort.MAV.param.ContainsKey("ARSPD_TYPE")
+                    && MainV2.comPort.MAV.param.ContainsKey("ARSPD_USE") &&
+                    (float)MainV2.comPort.MAV.param["ARSPD_TYPE"] > 0
+                    && (float)MainV2.comPort.MAV.param["ARSPD_USE"] == 1))
+            {
+                try
+                {
+                    MainV2.comPort.setParam("TRIM_ARSPD_CM", ((float)(myIasCmd + spdDif) * 100.0f));
+                }
+                catch
+                {
+                    CustomMessageBox.Show(String.Format(Strings.ErrorSetValueFailed, "TRIM_ARSPD_CM"), Strings.ERROR);
+                }
+            } // plane without airspeed
+            else if (MainV2.comPort.MAV.param.ContainsKey("TRIM_THROTTLE") &&
+                     MainV2.comPort.MAV.param.ContainsKey("ARSPD_USE")
+                     && (float)MainV2.comPort.MAV.param["ARSPD_USE"] == 0)
+            {
+                try
+                {
+                    MainV2.comPort.setParam("TRIM_THROTTLE", (float)(myIasCmd + spdDif));
+                }
+                catch
+                {
+                    CustomMessageBox.Show(String.Format(Strings.ErrorSetValueFailed, "TRIM_THROTTLE"),
+                        Strings.ERROR);
+                }
             }
         }
     }
