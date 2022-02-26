@@ -268,6 +268,15 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _iasCmdDisplay = value;
+                
+                if (_iasCmdDisplay) {
+                    myIasCmd = (int)Math.Round(MainV2.comPort.MAV.cs.targetairspeed);
+                    txtSpdCmd.BeginInvokeIfRequired(() =>
+                    {
+                        txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
+                    });                    
+                }
+
                 pnlSpeedCmd.Visible = value;
             }
         }
@@ -2406,6 +2415,7 @@ namespace MissionPlanner.GCSViews
             MyMarkersLayer.UpdateOverlay(myTargetsoverlay, ilMyTargets);
             if(poiState == PoiStates.psCreateNew)
             {
+                poiState = PoiStates.psNone;
                 CurrentGMapMarker = myTargetsoverlay.Markers[myTargetsoverlay.Markers.Count-1];
             }
         }
@@ -3900,7 +3910,7 @@ namespace MissionPlanner.GCSViews
         {
             if (pnlAlt.Visible)
             {
-                AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
+                
                 txtAltCmd.BeginInvokeIfRequired(() =>
                 {
                     txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0} m");
@@ -3909,16 +3919,16 @@ namespace MissionPlanner.GCSViews
                 
             }
 
-            if (pnlSpeedCmd.Visible)
-            {
-                myIasCmd = (int)MainV2.comPort.MAV.cs.targetairspeed;
-                txtSpdCmd.BeginInvokeIfRequired(() =>
-                {
-                    txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
-                });
+           // if (pnlSpeedCmd.Visible)
+           // {
+                
+              //  txtSpdCmd.BeginInvokeIfRequired(() =>
+             //   {
+              //      txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
+              //  });
 
 
-            }
+        //    }
         }
 
         internal void UpdateConnectIcon()
@@ -6058,7 +6068,7 @@ namespace MissionPlanner.GCSViews
                 bool ans = MainV2.comPort.doARM(true, true);
                 if (ans)
                 {
-                    MainV2.comPort.setMode("TAKEOFF");
+                    myModeCommand("TAKEOFF");
                     connectState = connectStates.csLaunched;
                 }
                 
@@ -6077,60 +6087,49 @@ namespace MissionPlanner.GCSViews
         private void btnNavToCmd_Click(object sender, EventArgs e)
         {
             setNavTo = !setNavTo;
+            poiState = PoiStates.psNone;
         }
 
         private void btnRtlCmd_Click(object sender, EventArgs e)
         {
-            if (!MainV2.comPort.BaseStream.IsOpen)
-                return;
-
-            //safety...
-            camGuideMode = false;
-            // arm the MAV
-            try
-            {
-                MainV2.comPort.setMode("RTL");
-            }
-            catch (Exception)
-            {
-
-            }
+            myModeCommand("RTL");
         }
 
         private void btnLoiterCmd_Click(object sender, EventArgs e)
         {
-            if (!MainV2.comPort.BaseStream.IsOpen)
-                return;
-
-            //safety...
-            camGuideMode = false;
-            // arm the MAV
-            try
-            {
-                MainV2.comPort.setMode("LOITER");
-            }
-            catch (Exception)
-            {
-
-            }
+            myModeCommand("LOITER");            
         }
 
         private void btnLandCmd_Click(object sender, EventArgs e)
-        {
-            if (!MainV2.comPort.BaseStream.IsOpen)
-                return;
+        {            
+            myModeCommand("QLAND");
+        }
 
+        private void myModeCommand(string modeName)
+        {
             //safety...
             camGuideMode = false;
-            // arm the MAV
+
+            //targets anull
+            poiState = PoiStates.psNone;
+
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;           
+           
             try
             {
-                MainV2.comPort.setMode("QLAND");
+                MainV2.comPort.setMode(modeName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if(MainV2.instance.myDebug)
+                    CustomMessageBox.Show("My planner error.\n" + ex);
+
+                log.Debug(ex);
+
 
             }
+
         }
 
         private void btnPinPoint_Click(object sender, EventArgs e)
@@ -6148,20 +6147,23 @@ namespace MissionPlanner.GCSViews
 
         private void btnLoadPois_Click(object sender, EventArgs e)
         {
-            MyMarkersLayer.LoadFile();
             poiState = PoiStates.psNone;
+            MyMarkersLayer.LoadFile();
+            
         }
 
         private void btnSaveAllPoi_Click(object sender, EventArgs e)
         {
-            MyMarkersLayer.POISave();
             poiState = PoiStates.psNone;
+            MyMarkersLayer.POISave();
+            
         }
 
         private void btnDeletePois_Click(object sender, EventArgs e)
         {
-            MyMarkersLayer.ClearAll();
             poiState = PoiStates.psNone;
+            MyMarkersLayer.ClearAll();
+            
         }
 
         private void deletePOIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -6292,6 +6294,7 @@ namespace MissionPlanner.GCSViews
         {
             try
             {
+                AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
                 MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetRprt + 5) });
             }
             catch
@@ -6304,6 +6307,7 @@ namespace MissionPlanner.GCSViews
         {
             try
             {
+                AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
                 MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetRprt - 5) });
             }
             catch
@@ -6329,6 +6333,10 @@ namespace MissionPlanner.GCSViews
 
         private void mySpeedCmd(int spdDif)
         {
+            myIasCmd = myIasCmd + spdDif;
+            //comon... negative air speed?
+            if (myIasCmd < 0)
+                myIasCmd = 0;
             if (// plane 3.8 and above with airspeed as per plane 3.7 to plane 3.8 migration wiki page, no longer uses ARSPD_ENABLE, uses ARSPD_TYPE instead:
                     (MainV2.comPort.MAV.param.ContainsKey("TRIM_ARSPD_CM") &&
                     MainV2.comPort.MAV.param.ContainsKey("ARSPD_TYPE")
@@ -6338,7 +6346,12 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-                    MainV2.comPort.setParam("TRIM_ARSPD_CM", ((float)(myIasCmd + spdDif) * 100.0f));
+                    MainV2.comPort.setParam("TRIM_ARSPD_CM", ((float)(myIasCmd) * 100.0f));
+                    txtSpdCmd.BeginInvokeIfRequired(() =>
+                    {
+                        txtSpdCmd.Text = string.Format($"{myIasCmd:0} m/s");
+                    });
+
                 }
                 catch
                 {

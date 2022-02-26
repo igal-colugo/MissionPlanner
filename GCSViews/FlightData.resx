@@ -5067,7 +5067,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACY
-        HQAAAk1TRnQBSQFMAgEBAgEAAWABAgFgAQIBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
+        HQAAAk1TRnQBSQFMAgEBAgEAAXgBAgF4AQIBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
         AQICAAFrAwABAQEAARgFAAEYAaABAiwAA/v/51TnA+88AP/nV+cD+/8A/wD/AFQAA/YDkQM2/wBdAANm
         A9ED+yQAA/sDwwNP/wBdAAM2A6MD9v8A/wD/AEUAA/sDkf8AbAADGgPcHgADwwMa/wBsAAOjA/v/AP8A
         /wA8AAPvAzYPAAMj/y5RLgMXDwADkRgAA5EPAAMX/y5RLgMjDwADTwP2/wD/AP8ANgAD9gMaCQADLgOB
@@ -12905,7 +12905,7 @@
     <value>2</value>
   </data>
   <data name="pnlSpeedCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 439</value>
+    <value>491, 439</value>
   </data>
   <data name="pnlSpeedCmd.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 72</value>
@@ -12977,7 +12977,7 @@
     <value>clcPreFlight</value>
   </data>
   <data name="&gt;&gt;clcPreFlight.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8086.15296, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8092.23303, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;clcPreFlight.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -12986,7 +12986,7 @@
     <value>1</value>
   </data>
   <data name="pnlCheckList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 37</value>
+    <value>681, 229</value>
   </data>
   <data name="pnlCheckList.Size" type="System.Drawing.Size, System.Drawing">
     <value>370, 369</value>
@@ -13263,7 +13263,7 @@
     <value>2</value>
   </data>
   <data name="pnlAlt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 423</value>
+    <value>529, 386</value>
   </data>
   <data name="pnlAlt.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 72</value>
@@ -13566,7 +13566,7 @@
     <value>1</value>
   </data>
   <data name="gbPoiCoords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 309</value>
+    <value>435, 125</value>
   </data>
   <data name="gbPoiCoords.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 116</value>
