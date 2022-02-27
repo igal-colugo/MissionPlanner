@@ -185,6 +185,10 @@ namespace MissionPlanner.Controls.PreFlight
             }
         }
 
+        public void EditChecklist() {
+            BUT_edit_Click(null, null);
+        }
+
         private void BUT_edit_Click(object sender, EventArgs e)
         {
             CheckListEditor form = new CheckListEditor(this);

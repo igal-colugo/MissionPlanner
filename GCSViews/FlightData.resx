@@ -5067,7 +5067,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACY
-        HQAAAk1TRnQBSQFMAgEBAgEAAXgBAgF4AQIBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
+        HQAAAk1TRnQBSQFMAgEBAgEAAfgBAgH4AQIBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
         AQICAAFrAwABAQEAARgFAAEYAaABAiwAA/v/51TnA+88AP/nV+cD+/8A/wD/AFQAA/YDkQM2/wBdAANm
         A9ED+yQAA/sDwwNP/wBdAAM2A6MD9v8A/wD/AEUAA/sDkf8AbAADGgPcHgADwwMa/wBsAAOjA/v/AP8A
         /wA8AAPvAzYPAAMj/y5RLgMXDwADkRgAA5EPAAMX/y5RLgMjDwADTwP2/wD/AP8ANgAD9gMaCQADLgOB
@@ -5218,7 +5218,40 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>32</value>
+  </data>
+  <data name="btnEditCl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="btnEditCl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEditCl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 535</value>
+  </data>
+  <data name="btnEditCl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 34</value>
+  </data>
+  <data name="btnEditCl.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="btnEditCl.Text" xml:space="preserve">
+    <value>Edit CheckList</value>
+  </data>
+  <data name="btnEditCl.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnEditCl.Name" xml:space="preserve">
+    <value>btnEditCl</value>
+  </data>
+  <data name="&gt;&gt;btnEditCl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEditCl.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;btnEditCl.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnSpdUp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -12926,10 +12959,37 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlSpeedCmd.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="pnlCheckList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
+  </data>
+  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 12pt</value>
+  </data>
+  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 316</value>
+  </data>
+  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
+    <value>checkListControl2</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8093.16549, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnClDone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -12959,34 +13019,10 @@
     <value>pnlCheckList</value>
   </data>
   <data name="&gt;&gt;btnClDone.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="clcPreFlight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="clcPreFlight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="clcPreFlight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 369</value>
-  </data>
-  <data name="clcPreFlight.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;clcPreFlight.Name" xml:space="preserve">
-    <value>clcPreFlight</value>
-  </data>
-  <data name="&gt;&gt;clcPreFlight.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8092.23303, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;clcPreFlight.Parent" xml:space="preserve">
-    <value>pnlCheckList</value>
-  </data>
-  <data name="&gt;&gt;clcPreFlight.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="pnlCheckList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 229</value>
+    <value>425, 152</value>
   </data>
   <data name="pnlCheckList.Size" type="System.Drawing.Size, System.Drawing">
     <value>370, 369</value>
@@ -13007,7 +13043,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlCheckList.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnAltup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -13284,7 +13320,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlAlt.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -13590,7 +13626,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;gbPoiCoords.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnSaveAllPoi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -13626,7 +13662,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnSaveAllPoi.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnDeletePois.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -13662,7 +13698,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnDeletePois.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnLoadPois.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -13698,7 +13734,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLoadPois.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnAddPoi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -13734,7 +13770,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnAddPoi.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnTO.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -13800,7 +13836,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnTO.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnCheckList.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -14116,7 +14152,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnCheckList.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btnSim.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -14125,7 +14161,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSim.Location" type="System.Drawing.Point, System.Drawing">
-    <value>448, 517</value>
+    <value>448, 568</value>
   </data>
   <data name="btnSim.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 34</value>
@@ -14149,7 +14185,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnSim.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="lblRullerDistance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14185,7 +14221,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;lblRullerDistance.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -14197,7 +14233,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 495</value>
+    <value>150, 546</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
@@ -14218,7 +14254,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -14230,7 +14266,7 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 508</value>
+    <value>150, 559</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 13</value>
@@ -14251,7 +14287,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -14263,7 +14299,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 521</value>
+    <value>150, 572</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 13</value>
@@ -14284,7 +14320,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -14296,7 +14332,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 536</value>
+    <value>150, 587</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
@@ -14317,7 +14353,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="btnPoinToLatlngCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -14397,7 +14433,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnPoinToLatlngCmd.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btnCamGuideCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -14477,7 +14513,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnCamGuideCmd.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="btnPointToCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -14556,7 +14592,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnPointToCmd.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="btnPinPoint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -14621,7 +14657,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnPinPoint.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="btnLoiterCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -14700,7 +14736,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLoiterCmd.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="btnNavToCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -14773,7 +14809,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnNavToCmd.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="btnBatDispaly.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -14827,7 +14863,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnBatDispaly.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="btnRtlCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -14886,7 +14922,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnRtlCmd.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="btnLandCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -14963,7 +14999,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLandCmd.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="btnIasCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -15037,7 +15073,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnIasCmd.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="btnAltCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -15110,7 +15146,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnAltCmd.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="btnRuller.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -15189,7 +15225,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnRuller.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="btnLock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -15270,7 +15306,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLock.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="btnZoomIn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -15342,7 +15378,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnZoomIn.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>30</value>
   </data>
   <data name="btnZoomOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -15412,7 +15448,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>31</value>
   </data>
   <data name="tlConnectionContainer.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15448,7 +15484,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;tlConnectionContainer.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>33</value>
   </data>
   <data name="tlConnectionContainer.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Absolute,50" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -15463,7 +15499,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="gMapControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>888, 559</value>
+    <value>888, 610</value>
   </data>
   <data name="gMapControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -15478,13 +15514,13 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;gMapControl1.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>34</value>
   </data>
   <data name="pnlMap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 0</value>
+    <value>308, 0</value>
   </data>
   <data name="pnlMap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>888, 559</value>
+    <value>888, 610</value>
   </data>
   <data name="pnlMap.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -15580,7 +15616,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>108</value>
+    <value>60</value>
   </metadata>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

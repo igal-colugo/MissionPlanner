@@ -63,8 +63,8 @@
             // 
             // CheckListControl
             // 
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.BUT_edit);
+            this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "CheckListControl";
             this.Size = new System.Drawing.Size(268, 179);

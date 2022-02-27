@@ -40,7 +40,7 @@
             this.TXT_version.Name = "TXT_version";
             this.TXT_version.Size = new System.Drawing.Size(155, 25);
             this.TXT_version.TabIndex = 1;
-            this.TXT_version.Text = "Version: ";
+            this.TXT_version.Text = "My Planner ";
             this.TXT_version.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Splash

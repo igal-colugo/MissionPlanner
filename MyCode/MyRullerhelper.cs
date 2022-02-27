@@ -1,8 +1,10 @@
-﻿using GMap.NET.WindowsForms;
+﻿using GMap.NET;
+using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using MissionPlanner.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace MissionPlanner.MyCode
                 if (_mode == RullerMode.rmNone) {
                     //clear all
                     _rullerOverlay.Markers.Clear();
+                    _rullerOverlay.Polygons.Clear();
                     _lblDisplay.Visible = false;
                 }
             } 
@@ -41,7 +44,7 @@ namespace MissionPlanner.MyCode
 
 
         internal void mouseClickOnMap(GMap.NET.PointLatLng mouseDownLoc)
-        {
+        {           
             switch (Mode)
             {
                 case RullerMode.rmNone:
@@ -54,7 +57,15 @@ namespace MissionPlanner.MyCode
                 case RullerMode.rmFirst:
                     Mode = RullerMode.rmSecond;
                     _p2 = new PointLatLngAlt(mouseDownLoc);
-                    _rullerOverlay.Markers.Add(new GMarkerGoogle(mouseDownLoc, GMarkerGoogleType.white_small));
+                    List<PointLatLng> listPoints = new List<PointLatLng>();
+                    listPoints.Add(_p1);
+                    listPoints.Add(_p2);
+                      _rullerOverlay.Markers.Add(new GMarkerGoogle(mouseDownLoc, GMarkerGoogleType.white_small));
+                    GMapPolygon plgn = new GMapPolygon(listPoints, "ruller");
+                    Pen pn = new Pen(Color.White);
+                    pn.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+                    plgn.Stroke = pn;
+                    _rullerOverlay.Polygons.Add(plgn);
                     _lblDisplay.Text = doMeasure();
                     _lblDisplay.Visible = true;
                     break;

@@ -192,13 +192,14 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.btnEditCl = new System.Windows.Forms.Button();
             this.pnlSpeedCmd = new System.Windows.Forms.Panel();
             this.btnSpdUp = new System.Windows.Forms.Button();
             this.btnSpdDown = new System.Windows.Forms.Button();
             this.txtSpdCmd = new System.Windows.Forms.TextBox();
             this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnClDone = new System.Windows.Forms.Button();
-            this.clcPreFlight = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.pnlAlt = new System.Windows.Forms.Panel();
             this.btnAltup = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
@@ -2236,7 +2237,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 14220D;
+            this.windDir1.Direction = 2700D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2423,6 +2424,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.btnEditCl);
             this.pnlMap.Controls.Add(this.pnlSpeedCmd);
             this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.pnlAlt);
@@ -2460,6 +2462,13 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
             // 
+            // btnEditCl
+            // 
+            resources.ApplyResources(this.btnEditCl, "btnEditCl");
+            this.btnEditCl.Name = "btnEditCl";
+            this.btnEditCl.UseVisualStyleBackColor = true;
+            this.btnEditCl.Click += new System.EventHandler(this.btnEditCl_Click);
+            // 
             // pnlSpeedCmd
             // 
             this.pnlSpeedCmd.Controls.Add(this.btnSpdUp);
@@ -2493,9 +2502,14 @@ namespace MissionPlanner.GCSViews
             // pnlCheckList
             // 
             resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
+            this.pnlCheckList.Controls.Add(this.checkListControl2);
             this.pnlCheckList.Controls.Add(this.btnClDone);
-            this.pnlCheckList.Controls.Add(this.clcPreFlight);
             this.pnlCheckList.Name = "pnlCheckList";
+            // 
+            // checkListControl2
+            // 
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
             // 
             // btnClDone
             // 
@@ -2503,11 +2517,6 @@ namespace MissionPlanner.GCSViews
             this.btnClDone.Name = "btnClDone";
             this.btnClDone.UseVisualStyleBackColor = true;
             this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
-            // 
-            // clcPreFlight
-            // 
-            resources.ApplyResources(this.clcPreFlight, "clcPreFlight");
-            this.clcPreFlight.Name = "clcPreFlight";
             // 
             // pnlAlt
             // 
@@ -3287,11 +3296,12 @@ namespace MissionPlanner.GCSViews
         private Panel pnlAlt;
         private Button btnDown;
         private TextBox txtAltCmd;
-        private Controls.PreFlight.CheckListControl clcPreFlight;
         private Button btnClDone;
         private Panel pnlSpeedCmd;
         private Button btnSpdUp;
         private Button btnSpdDown;
         private TextBox txtSpdCmd;
+        private Controls.PreFlight.CheckListControl checkListControl2;
+        public Button btnEditCl;
     }
 }

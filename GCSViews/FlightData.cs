@@ -5916,7 +5916,8 @@ namespace MissionPlanner.GCSViews
 
             {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
-                clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
+                btnEditCl.Visible = MainV2.instance.myDebug;
+            //    clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
 
             }
         }
@@ -5974,8 +5975,8 @@ namespace MissionPlanner.GCSViews
             lblRullerDistance.Location = new Point(btnRuller.Left, btnRuller.Bottom + 3);
 
             int ClWidth = btnZoomIn.Right - btnZoomOut.Left;
-            pnlCheckList.Width = ClWidth;
-            pnlCheckList.Location = new Point(btnZoomOut.Left, btnZoomOut.Bottom + 3);
+            pnlCheckList.Width = 480;//ig  ClWidth;
+            pnlCheckList.Location = new Point(btnZoomOut.Left - ((480- ClWidth)/2), btnZoomOut.Bottom + 3);
 
             //left columb... and right...
             int baseTop = btnMyConnect.Bottom;
@@ -6372,6 +6373,11 @@ namespace MissionPlanner.GCSViews
                         Strings.ERROR);
                 }
             }
+        }
+
+        private void btnEditCl_Click(object sender, EventArgs e)
+        {
+            checkListControl2.EditChecklist();
         }
     }
 }
