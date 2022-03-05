@@ -309,7 +309,6 @@ namespace MissionPlanner.Controls.PreFlight
                         return true;
                     break;
                 case Conditional.NONE:
-
                     break;
             }
 

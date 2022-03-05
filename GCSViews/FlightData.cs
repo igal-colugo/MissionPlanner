@@ -34,6 +34,7 @@ using TableLayoutPanelCellPosition = System.Windows.Forms.TableLayoutPanelCellPo
 using UnauthorizedAccessException = System.UnauthorizedAccessException;
 using MissionPlanner.MyCode;
 using System.Net.Sockets;
+using MissionPlanner.Controls.PreFlight;
 
 // written by michael oborne
 
@@ -67,6 +68,7 @@ namespace MissionPlanner.GCSViews
         private readonly string myConnectionsPath = Path.Combine(MySettings.myBasePath, "connections.txt");
         private readonly string myPlaneIconPathBase = Path.Combine(MySettings.myBasePath, "planeIcons");
         private readonly string myTargetsPathBase = Path.Combine(MySettings.myBasePath, "targets");
+        private readonly string myVidPlayerPath = Path.Combine(MySettings.myBasePath, "VideoPlayer\\VideoPlayer.exe");
         //end my code
 
         AviWriter aviwriter;
@@ -490,11 +492,18 @@ namespace MissionPlanner.GCSViews
 
             initMyGui();
             initMyData();
+            runExternalVidPlayer();
 
+        }
+
+        private void runExternalVidPlayer()
+        {
+            System.Diagnostics.Process.Start(myVidPlayerPath);
         }
 
         private void initMyGui()
         {
+            checkListControl2.cbClicked += checklistClicked;
             Common.myNAIcon = new Bitmap( Image.FromFile(myPlaneIconPathBase + "\\greyPlane.png"));
             Common.myGroundIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\greenPlane.png"));
             Common.myABIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\bluePlane.png"));
@@ -513,6 +522,23 @@ namespace MissionPlanner.GCSViews
 
             pnlMap.Dock = DockStyle.Fill;
             adjustMyGui();
+        }
+
+        private void checklistClicked(object sender, EventArgs e)
+        {
+            bool enable = true;
+            List<CheckBox> cli = checkListControl2.cBoxes;
+            foreach (CheckBox item in cli)
+            {
+                
+                enable = item.Checked;
+                if (!enable)
+                {
+                    break;
+                }
+            }
+            //
+            btnClDone.Enabled = enable;
         }
 
         private void initMyData()
@@ -6397,6 +6423,11 @@ namespace MissionPlanner.GCSViews
         private void btnEditCl_Click(object sender, EventArgs e)
         {
             checkListControl2.EditChecklist();
+        }
+
+        private void btnForceEnableclDone_Click(object sender, EventArgs e)
+        {
+            btnClDone.Enabled = !btnClDone.Enabled;
         }
     }
 }

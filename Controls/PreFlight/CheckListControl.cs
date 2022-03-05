@@ -10,10 +10,14 @@ namespace MissionPlanner.Controls.PreFlight
     public partial class CheckListControl : UserControl
     {
         public List<CheckListItem> CheckListItems = new List<CheckListItem>();
+        public readonly List<CheckBox> cBoxes = new List<CheckBox>();
+        
 
         public string configfile = Settings.GetUserDataDirectory() + "checklist.xml";
 
         public string configfiledefault = Settings.GetRunningDirectory() + "checklistDefault.xml";
+
+        public event EventHandler cbClicked;
 
         int rowcount = 0;
 
@@ -124,6 +128,8 @@ namespace MissionPlanner.Controls.PreFlight
             Label desc = new Label() { Text = desctext, Location = new Point(5, 9), Size = new Size(x1, height), Name = "udesc" + y };
             Label text = new Label() { Text = texttext, Location = new Point(desc.Right, 9), Size = new Size(x2, height), Name = "utext" + y };
             CheckBox tickbox = new CheckBox() { Checked = item.checkCond(item), Location = new Point(text.Right, 7), Size = new Size(21, 21), Name = "utickbox" + y };
+            cBoxes.Add(tickbox);
+            tickbox.Click += tbClicked;
 
             desc.Tag = text.Tag = tickbox.Tag = new internaldata { CLItem = item, desc = desc, text = text, tickbox = tickbox };
 
@@ -141,6 +147,11 @@ namespace MissionPlanner.Controls.PreFlight
             }
 
             return gb;
+        }
+
+        private void tbClicked(object sender, EventArgs e)
+        {
+            cbClicked?.Invoke(sender, e);
         }
 
         public void LoadConfig()
