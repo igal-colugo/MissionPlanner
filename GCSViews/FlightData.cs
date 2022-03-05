@@ -202,12 +202,24 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _connectState = value;
-                btnTO.Visible = _connectState == connectStates.csPreFlightDone;
-                btnCheckList.Visible = _connectState == connectStates.csConnected;
-                btnAltCmd.Visible = _connectState == connectStates.csLaunched;
-                btnIasCmd.Visible = _connectState == connectStates.csLaunched;
-                btnRtlCmd.Visible = _connectState == connectStates.csLaunched;
-                btnLandCmd.Visible = _connectState == connectStates.csLaunched;
+                btnTO.BeginInvokeIfRequired(() =>
+                {
+                    btnTO.Visible = _connectState == connectStates.csPreFlightDone;
+                });
+
+                btnCheckList.BeginInvokeIfRequired(() =>
+                {
+                    btnCheckList.Visible = _connectState == connectStates.csConnected;
+                });
+
+                btnAltCmd.BeginInvokeIfRequired(() =>
+                {
+                    btnAltCmd.Visible = _connectState == connectStates.csLaunched;
+                    btnIasCmd.Visible = _connectState == connectStates.csLaunched;
+                    btnRtlCmd.Visible = _connectState == connectStates.csLaunched;
+                    btnLandCmd.Visible = _connectState == connectStates.csLaunched;
+                });               
+                
                 if (pnlCheckList.Visible)
                 {
                     pnlCheckList.Visible = _connectState == connectStates.csConnected;
@@ -3908,6 +3920,10 @@ namespace MissionPlanner.GCSViews
 
         private void updateMyData()
         {
+            if (connectState == connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && resetEnabled)
+            {
+                connectState = connectStates.csConnected;
+            }
             if (pnlAlt.Visible)
             {
                 
@@ -5613,6 +5629,7 @@ namespace MissionPlanner.GCSViews
         private GMyMarkerGoogle myCurrentToMoveMarker = null;
         private int AltTargetRprt;
         private int myIasCmd;
+        private bool resetEnabled = false;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6066,13 +6083,13 @@ namespace MissionPlanner.GCSViews
             // arm the MAV
             try
             {
+                resetEnabled = false;
                 bool ans = MainV2.comPort.doARM(true, true);
                 if (ans)
                 {
                     myModeCommand("TAKEOFF");
                     connectState = connectStates.csLaunched;
-                }
-                
+                }                
             }
             catch (Exception)
             {
@@ -6093,6 +6110,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnRtlCmd_Click(object sender, EventArgs e)
         {
+            resetEnabled = true;
             myModeCommand("RTL");
         }
 
@@ -6102,7 +6120,8 @@ namespace MissionPlanner.GCSViews
         }
 
         private void btnLandCmd_Click(object sender, EventArgs e)
-        {            
+        {
+            resetEnabled = true;
             myModeCommand("QLAND");
         }
 

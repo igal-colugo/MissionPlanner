@@ -5067,7 +5067,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACY
-        HQAAAk1TRnQBSQFMAgEBAgEAAfgBAgH4AQIBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
+        HQAAAk1TRnQBSQFMAgEBAgEAASABAwEgAQMBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
         AQICAAFrAwABAQEAARgFAAEYAaABAiwAA/v/51TnA+88AP/nV+cD+/8A/wD/AFQAA/YDkQM2/wBdAANm
         A9ED+yQAA/sDwwNP/wBdAAM2A6MD9v8A/wD/AEUAA/sDkf8AbAADGgPcHgADwwMa/wBsAAOjA/v/AP8A
         /wA8AAPvAzYPAAMj/y5RLgMXDwADkRgAA5EPAAMX/y5RLgMjDwADTwP2/wD/AP8ANgAD9gMaCQADLgOB
@@ -12983,7 +12983,7 @@
     <value>checkListControl2</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8093.16549, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8099.31930, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -15607,7 +15607,7 @@
     <value>658, 96</value>
   </metadata>
   <data name="ilMyTargets.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>32, 32</value>
+    <value>48, 48</value>
   </data>
   <metadata name="tmrCamGuide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 96</value>
@@ -15616,7 +15616,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>60</value>
+    <value>243</value>
   </metadata>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
