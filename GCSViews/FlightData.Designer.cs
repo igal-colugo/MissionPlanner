@@ -192,6 +192,7 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.btnForceEnableclDone = new System.Windows.Forms.Button();
             this.btnEditCl = new System.Windows.Forms.Button();
             this.pnlSpeedCmd = new System.Windows.Forms.Panel();
             this.btnSpdUp = new System.Windows.Forms.Button();
@@ -255,7 +256,6 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.btnForceEnableclDone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2238,7 +2238,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 4860D;
+            this.windDir1.Direction = 5040D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2463,6 +2463,13 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // btnForceEnableclDone
+            // 
+            resources.ApplyResources(this.btnForceEnableclDone, "btnForceEnableclDone");
+            this.btnForceEnableclDone.Name = "btnForceEnableclDone";
+            this.btnForceEnableclDone.UseVisualStyleBackColor = true;
+            this.btnForceEnableclDone.Click += new System.EventHandler(this.btnForceEnableclDone_Click);
             // 
             // btnEditCl
             // 
@@ -2949,13 +2956,6 @@ namespace MissionPlanner.GCSViews
             // 
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
-            // 
-            // btnForceEnableclDone
-            // 
-            resources.ApplyResources(this.btnForceEnableclDone, "btnForceEnableclDone");
-            this.btnForceEnableclDone.Name = "btnForceEnableclDone";
-            this.btnForceEnableclDone.UseVisualStyleBackColor = true;
-            this.btnForceEnableclDone.Click += new System.EventHandler(this.btnForceEnableclDone_Click);
             // 
             // FlightData
             // 

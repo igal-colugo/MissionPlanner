@@ -5959,8 +5959,9 @@ namespace MissionPlanner.GCSViews
 
             {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
-                btnEditCl.Visible = MainV2.instance.myDebug;
-            //    clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
+                btnEditCl.Visible            = MainV2.instance.myDebug;
+                btnForceEnableclDone.Visible = MainV2.instance.myDebug;
+                //    clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
 
             }
         }

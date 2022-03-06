@@ -163,10 +163,10 @@ namespace MissionPlanner.MyCode
 
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             
-            g.DrawImageUnscaled(icon, Size.Width / -2,
-                Size.Height / -2);
+           g.DrawImageUnscaled(icon, Size.Width / -2, Size.Height / -2);
+            //ig -shrink works .. do it later
+          //  g.DrawImage(icon, Size.Width / -2, Size.Height / -2, Size.Width / 3, Size.Height / 4);
 
-            
             g.Transform = temp;
         }
     }
