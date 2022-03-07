@@ -64,7 +64,7 @@ namespace MissionPlanner.GCSViews
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         //my code paths 
-        
+
         private readonly string myConnectionsPath = Path.Combine(MySettings.myBasePath, "connections.txt");
         private readonly string myPlaneIconPathBase = Path.Combine(MySettings.myBasePath, "planeIcons");
         private readonly string myTargetsPathBase = Path.Combine(MySettings.myBasePath, "targets");
@@ -182,14 +182,16 @@ namespace MissionPlanner.GCSViews
         }
         private PoiStates _poiState = PoiStates.psNone;
 
-        PoiStates poiState { 
+        PoiStates poiState
+        {
             get { return _poiState; }
-            set {
+            set
+            {
                 if (value == _poiState) return;
                 _poiState = value;
-                btnAddPoi.Visible     = _poiState != PoiStates.psNone;
+                btnAddPoi.Visible = _poiState != PoiStates.psNone;
                 btnDeletePois.Visible = _poiState != PoiStates.psNone;
-                btnLoadPois.Visible   = _poiState != PoiStates.psNone;
+                btnLoadPois.Visible = _poiState != PoiStates.psNone;
                 btnSaveAllPoi.Visible = _poiState != PoiStates.psNone;
             }
         }
@@ -220,13 +222,13 @@ namespace MissionPlanner.GCSViews
                     btnIasCmd.Visible = _connectState == connectStates.csLaunched;
                     btnRtlCmd.Visible = _connectState == connectStates.csLaunched;
                     btnLandCmd.Visible = _connectState == connectStates.csLaunched;
-                });               
-                
+                });
+
                 if (pnlCheckList.Visible)
                 {
                     pnlCheckList.Visible = _connectState == connectStates.csConnected;
                 }
-                
+
             }
         }
 
@@ -234,12 +236,15 @@ namespace MissionPlanner.GCSViews
         public bool setNavTo { get; private set; }
 
         bool _camGuideMode = false;
-         bool camGuideMode { get
+        bool camGuideMode
+        {
+            get
             {
                 return _camGuideMode;
             }
-             set { 
-                if(value == _camGuideMode)
+            set
+            {
+                if (value == _camGuideMode)
                 {
                     return;
                 }
@@ -247,18 +252,21 @@ namespace MissionPlanner.GCSViews
                 tmrCamGuide.Enabled = _camGuideMode;
 
                 //in any case - start with safe mode...
-              //  if (!MainV2.comPort.BaseStream.IsOpen)
-                 // return;
-              //  MainV2.comPort.setMode("QLOITER");
+                //  if (!MainV2.comPort.BaseStream.IsOpen)
+                // return;
+                //  MainV2.comPort.setMode("QLOITER");
             }
-         }
+        }
 
         private bool _altCmdDisplay = false;
-        public bool altCmdDisplay { get
+        public bool altCmdDisplay
+        {
+            get
             {
                 return _altCmdDisplay;
             }
-            private set { 
+            private set
+            {
                 if (value == _altCmdDisplay)
                 {
                     return;
@@ -282,13 +290,14 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _iasCmdDisplay = value;
-                
-                if (_iasCmdDisplay) {
+
+                if (_iasCmdDisplay)
+                {
                     myIasCmd = (int)Math.Round(MainV2.comPort.MAV.cs.targetairspeed);
                     txtSpdCmd.BeginInvokeIfRequired(() =>
                     {
                         txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
-                    });                    
+                    });
                 }
 
                 pnlSpeedCmd.Visible = value;
@@ -504,13 +513,13 @@ namespace MissionPlanner.GCSViews
         private void initMyGui()
         {
             checkListControl2.cbClicked += checklistClicked;
-            Common.myNAIcon = new Bitmap( Image.FromFile(myPlaneIconPathBase + "\\greyPlane.png"));
+            Common.myNAIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\greyPlane.png"));
             Common.myGroundIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\greenPlane.png"));
             Common.myABIcon = new Bitmap(Image.FromFile(myPlaneIconPathBase + "\\bluePlane.png"));
-            
+
             for (int i = 1; i < 7; i++)
             {
-                ilMyTargets.Images.Add(Image.FromFile(myTargetsPathBase + "\\"+i.ToString() +".png"));
+                ilMyTargets.Images.Add(Image.FromFile(myTargetsPathBase + "\\" + i.ToString() + ".png"));
             }
 
             toolStripMenuItem2.Image = ilMyTargets.Images[0];
@@ -530,7 +539,7 @@ namespace MissionPlanner.GCSViews
             List<CheckBox> cli = checkListControl2.cBoxes;
             foreach (CheckBox item in cli)
             {
-                
+
                 enable = item.Checked;
                 if (!enable)
                 {
@@ -2451,10 +2460,10 @@ namespace MissionPlanner.GCSViews
         {
 
             MyMarkersLayer.UpdateOverlay(myTargetsoverlay, ilMyTargets);
-            if(poiState == PoiStates.psCreateNew)
+            if (poiState == PoiStates.psCreateNew)
             {
                 poiState = PoiStates.psNone;
-                CurrentGMapMarker = myTargetsoverlay.Markers[myTargetsoverlay.Markers.Count-1];
+                CurrentGMapMarker = myTargetsoverlay.Markers[myTargetsoverlay.Markers.Count - 1];
             }
         }
 
@@ -2492,7 +2501,7 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-               //     modifyandSetSpeed.Value = (decimal)((float)MainV2.comPort.MAV.param["TRIM_ARSPD_CM"] / 100.0);
+                    //     modifyandSetSpeed.Value = (decimal)((float)MainV2.comPort.MAV.param["TRIM_ARSPD_CM"] / 100.0);
                 }
                 catch
                 {
@@ -2531,7 +2540,7 @@ namespace MissionPlanner.GCSViews
             {
                 if (MainV2.comPort.MAV.param.ContainsKey("WP_LOITER_RAD"))
                 {
-                //    modifyandSetLoiterRad.Value =
+                    //    modifyandSetLoiterRad.Value =
                     //    (decimal)((float)MainV2.comPort.MAV.param["WP_LOITER_RAD"] * CurrentState.multiplierdist);
                 }
             }
@@ -2638,7 +2647,7 @@ namespace MissionPlanner.GCSViews
         {
 
             MouseDownStart = gMapControl1.FromLocalToLatLng(e.X, e.Y);
-            if(poiState == PoiStates.psCreateNew && e.Button == MouseButtons.Left)
+            if (poiState == PoiStates.psCreateNew && e.Button == MouseButtons.Left)
             {
                 MyMarkersLayer.POIAdd(MouseDownStart, "0");
                 return;
@@ -2667,13 +2676,13 @@ namespace MissionPlanner.GCSViews
 
             if (CurrentGMapMarker is GMyMarkerGoogle)
             {
-                gMapControl1.ContextMenuStrip = contextMenuPoi; 
+                gMapControl1.ContextMenuStrip = contextMenuPoi;
             }
             else
             {
                 gMapControl1.ContextMenuStrip = contextMenuStripMap;
             }
-            
+
 
             if (CurrentGMapMarker is GMapMarkerADSBPlane)
             {
@@ -2799,7 +2808,7 @@ namespace MissionPlanner.GCSViews
             {
                 gMapControl1.ContextMenuStrip = contextMenuPoi;
             }
-            
+
         }
 
         void gMapControl1_OnMarkerLeave(GMapMarker item)
@@ -3639,7 +3648,7 @@ namespace MissionPlanner.GCSViews
                                     (float)MainV2.comPort.MAV.param["MNT_TYPE"] == 4) // storm driver
                                 {
                                     var marker = GimbalPoint.ProjectPoint(MainV2.comPort);
-                                   // IGDAL todo - addHudUserItem your cam guide here...
+                                    // IGDAL todo - addHudUserItem your cam guide here...
                                     if (marker != PointLatLngAlt.Zero)
                                     {
                                         MainV2.comPort.MAV.cs.GimbalPoint = marker;
@@ -3883,7 +3892,9 @@ namespace MissionPlanner.GCSViews
                                 {
                                     this.BeginInvokeIfRequired(() =>
                                     {
-                                        var marker = Common.getMAVMarker(MAV, routes);
+
+                                        double scale = Math.Max(gMapControl1.Zoom / 24.0, 10.0 / 24);
+                                        var marker = Common.getMAVMarker(MAV, routes, scale);
 
                                         if (marker == null || marker.Position.Lat == 0 && marker.Position.Lng == 0)
                                             return;
@@ -3952,30 +3963,30 @@ namespace MissionPlanner.GCSViews
             }
             if (pnlAlt.Visible)
             {
-                
+
                 txtAltCmd.BeginInvokeIfRequired(() =>
                 {
                     txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0} m");
                 });
-                
-                
+
+
             }
 
-           // if (pnlSpeedCmd.Visible)
-           // {
-                
-              //  txtSpdCmd.BeginInvokeIfRequired(() =>
-             //   {
-              //      txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
-              //  });
+            // if (pnlSpeedCmd.Visible)
+            // {
+
+            //  txtSpdCmd.BeginInvokeIfRequired(() =>
+            //   {
+            //      txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
+            //  });
 
 
-        //    }
+            //    }
         }
 
         internal void UpdateConnectIcon()
         {
-            if(!MainV2.comPort.BaseStream.IsOpen == (connectStates.csDisconnected == connectState))
+            if (!MainV2.comPort.BaseStream.IsOpen == (connectStates.csDisconnected == connectState))
             {
                 //update only when needed
                 return;
@@ -5959,7 +5970,7 @@ namespace MissionPlanner.GCSViews
 
             {
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
-                btnEditCl.Visible            = MainV2.instance.myDebug;
+                btnEditCl.Visible = MainV2.instance.myDebug;
                 btnForceEnableclDone.Visible = MainV2.instance.myDebug;
                 //    clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
 
@@ -6020,7 +6031,7 @@ namespace MissionPlanner.GCSViews
 
             int ClWidth = btnZoomIn.Right - btnZoomOut.Left;
             pnlCheckList.Width = 480;//ig  ClWidth;
-            pnlCheckList.Location = new Point(btnZoomOut.Left - ((480- ClWidth)/2), btnZoomOut.Bottom + 3);
+            pnlCheckList.Location = new Point(btnZoomOut.Left - ((480 - ClWidth) / 2), btnZoomOut.Bottom + 3);
 
             //left columb... and right...
             int baseTop = btnMyConnect.Bottom;
@@ -6116,7 +6127,7 @@ namespace MissionPlanner.GCSViews
                 {
                     myModeCommand("TAKEOFF");
                     connectState = connectStates.csLaunched;
-                }                
+                }
             }
             catch (Exception)
             {
@@ -6143,7 +6154,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnLoiterCmd_Click(object sender, EventArgs e)
         {
-            myModeCommand("LOITER");            
+            myModeCommand("LOITER");
         }
 
         private void btnLandCmd_Click(object sender, EventArgs e)
@@ -6161,15 +6172,15 @@ namespace MissionPlanner.GCSViews
             poiState = PoiStates.psNone;
 
             if (!MainV2.comPort.BaseStream.IsOpen)
-                return;           
-           
+                return;
+
             try
             {
                 MainV2.comPort.setMode(modeName);
             }
             catch (Exception ex)
             {
-                if(MainV2.instance.myDebug)
+                if (MainV2.instance.myDebug)
                     CustomMessageBox.Show("My planner error.\n" + ex);
 
                 log.Debug(ex);
@@ -6196,21 +6207,21 @@ namespace MissionPlanner.GCSViews
         {
             poiState = PoiStates.psNone;
             MyMarkersLayer.LoadFile();
-            
+
         }
 
         private void btnSaveAllPoi_Click(object sender, EventArgs e)
         {
             poiState = PoiStates.psNone;
             MyMarkersLayer.POISave();
-            
+
         }
 
         private void btnDeletePois_Click(object sender, EventArgs e)
         {
             poiState = PoiStates.psNone;
             MyMarkersLayer.ClearAll();
-            
+
         }
 
         private void deletePOIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -6228,7 +6239,7 @@ namespace MissionPlanner.GCSViews
                 return;
 
             ToolStripMenuItem tmp = (ToolStripMenuItem)sender;
-            
+
             MyMarkersLayer.POIEdit((GMyMarkerGoogle)CurrentGMapMarker, tmp.Tag.ToString());
         }
 
@@ -6248,9 +6259,10 @@ namespace MissionPlanner.GCSViews
                 //sender navto
                 myNavTo(MainV2.comPort.MAV.cs.gimballat, MainV2.comPort.MAV.cs.gimballng);
             }
-            else {
+            else
+            {
                 //go to qloiter mode
-               
+
 
                 // arm the MAV
                 try
@@ -6302,12 +6314,12 @@ namespace MissionPlanner.GCSViews
         {
             //if valid location....
             float lat, lng;
-            if(validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text))
+            if (validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text))
             {
                 MyMarkersLayer.POIMove(myCurrentToMoveMarker, lat, lng);
                 gbPoiCoords.Visible = false;
                 myCurrentToMoveMarker = null;
-            }            
+            }
         }
 
         private bool validLocation(out float lat, out float lng, string slat, string slng)
@@ -6320,7 +6332,8 @@ namespace MissionPlanner.GCSViews
                 lat = float.Parse(slat);
                 lng = float.Parse(slng);
                 res = Math.Abs(lat) <= 90 && Math.Abs(lng) <= 180;
-                if (!res) {
+                if (!res)
+                {
                     lblStatus.Text = "Coordinates out side of scope";
                 }
             }

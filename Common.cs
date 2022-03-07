@@ -21,7 +21,7 @@ namespace MissionPlanner
         public static Bitmap myGroundIcon;
         public static Bitmap myABIcon;
         public static Bitmap myNAIcon;
-        public static GMapMarker getMAVMarker(MAVState MAV, GMapOverlay overlay = null)
+        public static GMapMarker getMAVMarker(MAVState MAV, GMapOverlay overlay = null, double scale = 1)
         {
             PointLatLng portlocation = MAV.cs.Location;
 
@@ -74,16 +74,7 @@ namespace MissionPlanner
 
             if (MAV.aptype == MAVLink.MAV_TYPE.FIXED_WING || MAV.aptype >= MAVLink.MAV_TYPE.VTOL_DUOROTOR && MAV.aptype <= MAVLink.MAV_TYPE.VTOL_RESERVED5)
             {
-                /*
-                return (new GMyMapMarkerPlane(null, MAV.sysid - 1, portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,
-                    MAV.cs.radius * CurrentState.multiplierdist)
-                {
-                    ToolTipText = ArduPilot.Common.speechConversion(MAV, "" + Settings.Instance["mapicondesc"]),
-                    ToolTipMode = MarkerTooltipMode.Always,
-                    Tag = MAV
-                });
-                */
+               
                 Bitmap ic = myNAIcon;
                 if (MainV2.comPort.BaseStream.IsOpen)
                 {
@@ -96,12 +87,12 @@ namespace MissionPlanner
                         ic = myGroundIcon;
                     }
                 }
-                
+                Bitmap resizedIc = new Bitmap(ic, new Size((int)(ic.Width * scale), (int)(ic.Height * scale)));
                 string stats = "IAS: "+(int)MAV.cs.airspeed+"m/s\r\n";
                 stats += "ALT: " + (int)MAV.cs.alt + "m\r\n";
                 stats += "MODE: " + MAV.cs.mode;
                 
-                return (new GMapMarkerMyPlane(ic, 0, portlocation, MAV.cs.HomeLocation, MAV.cs.yaw,
+                return (new GMapMarkerMyPlane(resizedIc, 0, portlocation, MAV.cs.HomeLocation, MAV.cs.yaw,
                     MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,
                     MAV.cs.radius * CurrentState.multiplierdist)
                 {
@@ -113,31 +104,7 @@ namespace MissionPlanner
                 });
                 
             }
-            else if (MAV.aptype == MAVLink.MAV_TYPE.GROUND_ROVER)
-            {
-                return (new GMapMarkerRover(portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing)
-                {
-                    ToolTipText = MAV.cs.alt.ToString("0") + "\n" + MAV.sysid.ToString("sysid: 0"),
-                    ToolTipMode = MarkerTooltipMode.Always,
-                    Tag = MAV
-                });
-            }
-            else if (MAV.aptype == MAVLink.MAV_TYPE.SURFACE_BOAT)
-            {
-                return (new GMapMarkerBoat(portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing){  Tag = MAV});
-            }
-            else if (MAV.aptype == MAVLink.MAV_TYPE.SUBMARINE)
-            {
-                return (new GMapMarkerSub(portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing){ Tag = MAV});
-            }
-            else if (MAV.aptype == MAVLink.MAV_TYPE.HELICOPTER)
-            {
-                return (new GMapMarkerHeli(portlocation, MAV.cs.yaw,
-                    MAV.cs.groundcourse, MAV.cs.nav_bearing){ Tag = MAV});
-            }
+            
             else if (MAV.cs.firmware == Firmwares.ArduTracker)
             {
                 return (new GMapMarkerAntennaTracker(portlocation, MAV.cs.yaw,
