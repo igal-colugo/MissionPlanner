@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridUIv2));
-            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
             this.label4 = new System.Windows.Forms.Label();
             this.NUM_angle = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +48,6 @@
             this.chk_grid = new System.Windows.Forms.CheckBox();
             this.chk_markers = new System.Windows.Forms.CheckBox();
             this.chk_boundary = new System.Windows.Forms.CheckBox();
-            this.map = new MissionPlanner.Controls.myGMAP();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -66,10 +64,6 @@
             this.lbl_distance = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.quickViewimagecount = new MissionPlanner.Controls.QuickView();
-            this.quickViewgroundres = new MissionPlanner.Controls.QuickView();
-            this.quickViewflighttime = new MissionPlanner.Controls.QuickView();
-            this.quickViewarea = new MissionPlanner.Controls.QuickView();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.RAD_camdirectionport = new System.Windows.Forms.RadioButton();
             this.RAD_camdirectionland = new System.Windows.Forms.RadioButton();
@@ -88,6 +82,12 @@
             this.toolStripButtonbox = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonmovebox = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtoneditbox = new System.Windows.Forms.ToolStripButton();
+            this.map = new MissionPlanner.Controls.myGMAP();
+            this.quickViewimagecount = new MissionPlanner.Controls.QuickView();
+            this.quickViewgroundres = new MissionPlanner.Controls.QuickView();
+            this.quickViewflighttime = new MissionPlanner.Controls.QuickView();
+            this.quickViewarea = new MissionPlanner.Controls.QuickView();
+            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_angle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_altitude)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -104,13 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_minspd)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BUT_Accept
-            // 
-            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
-            this.BUT_Accept.Name = "BUT_Accept";
-            this.BUT_Accept.UseVisualStyleBackColor = true;
-            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
             // 
             // label4
             // 
@@ -293,35 +286,6 @@
             this.chk_boundary.UseVisualStyleBackColor = true;
             this.chk_boundary.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
-            // map
-            // 
-            this.map.Bearing = 0F;
-            this.map.CanDragMap = true;
-            resources.ApplyResources(this.map, "map");
-            this.map.EmptyTileColor = System.Drawing.Color.Gray;
-            this.map.GrayScaleMode = false;
-            this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.map.HoldInvalidation = false;
-            this.map.LevelsKeepInMemmory = 5;
-            this.map.MarkersEnabled = true;
-            this.map.MaxZoom = 24;
-            this.map.MinZoom = 2;
-            this.map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
-            this.map.Name = "map";
-            this.map.NegativeMode = false;
-            this.map.PolygonsEnabled = true;
-            this.map.RetryLoadTile = 0;
-            this.map.RoutesEnabled = true;
-            this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Fractional;
-            this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.map.ShowTileGridLines = false;
-            this.map.Zoom = 3D;
-            this.map.OnPolygonEnter += new GMap.NET.WindowsForms.PolygonEnter(this.map_OnPolygonEnter);
-            this.map.OnPolygonLeave += new GMap.NET.WindowsForms.PolygonLeave(this.map_OnPolygonLeave);
-            this.map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
-            this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
-            this.map.MouseUp += new System.Windows.Forms.MouseEventHandler(this.map_MouseUp);
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.groupBox4);
@@ -421,46 +385,6 @@
             this.panel1.Controls.Add(this.quickViewarea);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // quickViewimagecount
-            // 
-            this.quickViewimagecount.desc = "Number of images";
-            resources.ApplyResources(this.quickViewimagecount, "quickViewimagecount");
-            this.quickViewimagecount.Name = "quickViewimagecount";
-            this.quickViewimagecount.number = -9999D;
-            this.quickViewimagecount.numberColor = System.Drawing.Color.LimeGreen;
-            this.quickViewimagecount.numberColorBackup = System.Drawing.Color.Empty;
-            this.quickViewimagecount.numberformat = "0";
-            // 
-            // quickViewgroundres
-            // 
-            this.quickViewgroundres.desc = "Ground resolution (cm/pixel)";
-            resources.ApplyResources(this.quickViewgroundres, "quickViewgroundres");
-            this.quickViewgroundres.Name = "quickViewgroundres";
-            this.quickViewgroundres.number = -9999D;
-            this.quickViewgroundres.numberColor = System.Drawing.Color.Chocolate;
-            this.quickViewgroundres.numberColorBackup = System.Drawing.Color.Empty;
-            this.quickViewgroundres.numberformat = "0.00";
-            // 
-            // quickViewflighttime
-            // 
-            this.quickViewflighttime.desc = "Flight time (min)";
-            resources.ApplyResources(this.quickViewflighttime, "quickViewflighttime");
-            this.quickViewflighttime.Name = "quickViewflighttime";
-            this.quickViewflighttime.number = -9999D;
-            this.quickViewflighttime.numberColor = System.Drawing.SystemColors.Highlight;
-            this.quickViewflighttime.numberColorBackup = System.Drawing.Color.Empty;
-            this.quickViewflighttime.numberformat = "0";
-            // 
-            // quickViewarea
-            // 
-            this.quickViewarea.desc = "Area (km2)";
-            resources.ApplyResources(this.quickViewarea, "quickViewarea");
-            this.quickViewarea.Name = "quickViewarea";
-            this.quickViewarea.number = -9999D;
-            this.quickViewarea.numberColor = System.Drawing.Color.Red;
-            this.quickViewarea.numberColorBackup = System.Drawing.Color.Empty;
-            this.quickViewarea.numberformat = "0.00";
             // 
             // groupBox7
             // 
@@ -637,6 +561,82 @@
             resources.ApplyResources(this.toolStripButtoneditbox, "toolStripButtoneditbox");
             this.toolStripButtoneditbox.Name = "toolStripButtoneditbox";
             this.toolStripButtoneditbox.Click += new System.EventHandler(this.toolStripButtoneditbox_Click);
+            // 
+            // map
+            // 
+            this.map.Bearing = 0F;
+            this.map.CanDragMap = true;
+            resources.ApplyResources(this.map, "map");
+            this.map.EmptyTileColor = System.Drawing.Color.Gray;
+            this.map.GrayScaleMode = false;
+            this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.map.HoldInvalidation = false;
+            this.map.LevelsKeepInMemmory = 5;
+            this.map.MarkersEnabled = true;
+            this.map.MaxZoom = 24;
+            this.map.MinZoom = 2;
+            this.map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
+            this.map.Name = "map";
+            this.map.NegativeMode = false;
+            this.map.PolygonsEnabled = true;
+            this.map.RetryLoadTile = 0;
+            this.map.RoutesEnabled = true;
+            this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Fractional;
+            this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.map.ShowTileGridLines = false;
+            this.map.Zoom = 3D;
+            this.map.OnPolygonEnter += new GMap.NET.WindowsForms.PolygonEnter(this.map_OnPolygonEnter);
+            this.map.OnPolygonLeave += new GMap.NET.WindowsForms.PolygonLeave(this.map_OnPolygonLeave);
+            this.map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
+            this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
+            this.map.MouseUp += new System.Windows.Forms.MouseEventHandler(this.map_MouseUp);
+            // 
+            // quickViewimagecount
+            // 
+            this.quickViewimagecount.desc = "Number of images";
+            resources.ApplyResources(this.quickViewimagecount, "quickViewimagecount");
+            this.quickViewimagecount.Name = "quickViewimagecount";
+            this.quickViewimagecount.number = -9999D;
+            this.quickViewimagecount.numberColor = System.Drawing.Color.LimeGreen;
+            this.quickViewimagecount.numberColorBackup = System.Drawing.Color.Empty;
+            this.quickViewimagecount.numberformat = "0";
+            // 
+            // quickViewgroundres
+            // 
+            this.quickViewgroundres.desc = "Ground resolution (cm/pixel)";
+            resources.ApplyResources(this.quickViewgroundres, "quickViewgroundres");
+            this.quickViewgroundres.Name = "quickViewgroundres";
+            this.quickViewgroundres.number = -9999D;
+            this.quickViewgroundres.numberColor = System.Drawing.Color.Chocolate;
+            this.quickViewgroundres.numberColorBackup = System.Drawing.Color.Empty;
+            this.quickViewgroundres.numberformat = "0.00";
+            // 
+            // quickViewflighttime
+            // 
+            this.quickViewflighttime.desc = "Flight time (min)";
+            resources.ApplyResources(this.quickViewflighttime, "quickViewflighttime");
+            this.quickViewflighttime.Name = "quickViewflighttime";
+            this.quickViewflighttime.number = -9999D;
+            this.quickViewflighttime.numberColor = System.Drawing.SystemColors.Highlight;
+            this.quickViewflighttime.numberColorBackup = System.Drawing.Color.Empty;
+            this.quickViewflighttime.numberformat = "0";
+            // 
+            // quickViewarea
+            // 
+            this.quickViewarea.desc = "Area (km2)";
+            resources.ApplyResources(this.quickViewarea, "quickViewarea");
+            this.quickViewarea.Name = "quickViewarea";
+            this.quickViewarea.number = -9999D;
+            this.quickViewarea.numberColor = System.Drawing.Color.Red;
+            this.quickViewarea.numberColorBackup = System.Drawing.Color.Empty;
+            this.quickViewarea.numberformat = "0.00";
+            // 
+            // BUT_Accept
+            // 
+            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
+            this.BUT_Accept.Name = "BUT_Accept";
+            this.BUT_Accept.UseVisualStyleBackColor = true;
+            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
             // 
             // GridUIv2
             // 

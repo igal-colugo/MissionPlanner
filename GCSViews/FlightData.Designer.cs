@@ -2238,7 +2238,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 5400D;
+            this.windDir1.Direction = 7020D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2421,7 +2421,11 @@ namespace MissionPlanner.GCSViews
             this.ilMyImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMyImages.ImageStream")));
             this.ilMyImages.TransparentColor = System.Drawing.Color.Transparent;
             this.ilMyImages.Images.SetKeyName(0, "link.png");
-            this.ilMyImages.Images.SetKeyName(1, "un_link.png");
+            this.ilMyImages.Images.SetKeyName(1, "broken_link.png");
+            this.ilMyImages.Images.SetKeyName(2, "battery_full.png");
+            this.ilMyImages.Images.SetKeyName(3, "battery_3_green.png");
+            this.ilMyImages.Images.SetKeyName(4, "battery_2_orange.png");
+            this.ilMyImages.Images.SetKeyName(5, "battery_1_red.png");
             // 
             // pnlMap
             // 
@@ -2712,54 +2716,61 @@ namespace MissionPlanner.GCSViews
             // btnPoinToLatlngCmd
             // 
             resources.ApplyResources(this.btnPoinToLatlngCmd, "btnPoinToLatlngCmd");
+            this.btnPoinToLatlngCmd.BackColor = System.Drawing.Color.Transparent;
             this.btnPoinToLatlngCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPoinToLatlngCmd.Name = "btnPoinToLatlngCmd";
-            this.btnPoinToLatlngCmd.UseVisualStyleBackColor = true;
+            this.btnPoinToLatlngCmd.UseVisualStyleBackColor = false;
             // 
             // btnCamGuideCmd
             // 
             resources.ApplyResources(this.btnCamGuideCmd, "btnCamGuideCmd");
+            this.btnCamGuideCmd.BackColor = System.Drawing.Color.Transparent;
             this.btnCamGuideCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCamGuideCmd.Name = "btnCamGuideCmd";
-            this.btnCamGuideCmd.UseVisualStyleBackColor = true;
+            this.btnCamGuideCmd.UseVisualStyleBackColor = false;
             this.btnCamGuideCmd.Click += new System.EventHandler(this.btnCamGuideCmd_Click);
             // 
             // btnPointToCmd
             // 
             resources.ApplyResources(this.btnPointToCmd, "btnPointToCmd");
+            this.btnPointToCmd.BackColor = System.Drawing.Color.Transparent;
             this.btnPointToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPointToCmd.Name = "btnPointToCmd";
-            this.btnPointToCmd.UseVisualStyleBackColor = true;
+            this.btnPointToCmd.UseVisualStyleBackColor = false;
             this.btnPointToCmd.Click += new System.EventHandler(this.btnPointToCmd_Click);
             // 
             // btnPinPoint
             // 
             resources.ApplyResources(this.btnPinPoint, "btnPinPoint");
+            this.btnPinPoint.BackColor = System.Drawing.Color.Transparent;
             this.btnPinPoint.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPinPoint.Name = "btnPinPoint";
-            this.btnPinPoint.UseVisualStyleBackColor = true;
+            this.btnPinPoint.UseVisualStyleBackColor = false;
             this.btnPinPoint.Click += new System.EventHandler(this.btnPinPoint_Click);
             // 
             // btnLoiterCmd
             // 
             resources.ApplyResources(this.btnLoiterCmd, "btnLoiterCmd");
+            this.btnLoiterCmd.BackColor = System.Drawing.Color.Transparent;
             this.btnLoiterCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoiterCmd.Name = "btnLoiterCmd";
-            this.btnLoiterCmd.UseVisualStyleBackColor = true;
+            this.btnLoiterCmd.UseVisualStyleBackColor = false;
             this.btnLoiterCmd.Click += new System.EventHandler(this.btnLoiterCmd_Click);
             // 
             // btnNavToCmd
             // 
             resources.ApplyResources(this.btnNavToCmd, "btnNavToCmd");
+            this.btnNavToCmd.BackColor = System.Drawing.Color.Transparent;
             this.btnNavToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNavToCmd.Name = "btnNavToCmd";
-            this.btnNavToCmd.UseVisualStyleBackColor = true;
+            this.btnNavToCmd.UseVisualStyleBackColor = false;
             this.btnNavToCmd.Click += new System.EventHandler(this.btnNavToCmd_Click);
             // 
             // btnBatDispaly
             // 
             resources.ApplyResources(this.btnBatDispaly, "btnBatDispaly");
             this.btnBatDispaly.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBatDispaly.ImageList = this.ilMyImages;
             this.btnBatDispaly.Name = "btnBatDispaly";
             this.btnBatDispaly.UseVisualStyleBackColor = true;
             // 
@@ -2798,17 +2809,19 @@ namespace MissionPlanner.GCSViews
             // btnRuller
             // 
             resources.ApplyResources(this.btnRuller, "btnRuller");
+            this.btnRuller.BackColor = System.Drawing.Color.Transparent;
             this.btnRuller.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRuller.Name = "btnRuller";
-            this.btnRuller.UseVisualStyleBackColor = true;
+            this.btnRuller.UseVisualStyleBackColor = false;
             this.btnRuller.Click += new System.EventHandler(this.btnRuller_Click);
             // 
             // btnLock
             // 
             resources.ApplyResources(this.btnLock, "btnLock");
+            this.btnLock.BackColor = System.Drawing.Color.Transparent;
             this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLock.Name = "btnLock";
-            this.btnLock.UseVisualStyleBackColor = true;
+            this.btnLock.UseVisualStyleBackColor = false;
             this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 
             // btnZoomIn

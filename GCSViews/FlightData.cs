@@ -206,6 +206,12 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _connectState = value;
+                //on connect update values of bat
+                if(_connectState == connectStates.csConnected)
+                {
+                    updateBattLimits();
+                }
+                
                 btnTO.BeginInvokeIfRequired(() =>
                 {
                     btnTO.Visible = _connectState == connectStates.csPreFlightDone;
@@ -230,6 +236,31 @@ namespace MissionPlanner.GCSViews
                 }
 
             }
+        }
+
+        private void updateBattLimits()
+        {
+            //try tyo get values BATT_LOW_VOLT BATT_CRT_VOLT
+            try
+            {
+                _lowBattVolt = MainV2.comPort.GetParam("BATT_LOW_VOLT");
+                _critBattVolt = MainV2.comPort.GetParam("BATT_CRT_VOLT");
+                
+            }
+            catch (Exception e)
+            {
+                MyGeneralConfigFileHelper config = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\")+ MyGeneralConfigFileHelper.DEFAULT_FILENAME);
+                {
+                    //get from file default...
+                    _lowBattVolt = config.LowBattVolt;
+                    _critBattVolt = config.CritBattVolt;
+                }
+               
+                
+            }
+            
+
+            //if not - get defaults from settings file...
         }
 
         public bool setPointTo { get; private set; }
@@ -3972,6 +4003,8 @@ namespace MissionPlanner.GCSViews
 
             }
 
+            updateBattStatus();
+
             // if (pnlSpeedCmd.Visible)
             // {
 
@@ -3982,6 +4015,29 @@ namespace MissionPlanner.GCSViews
 
 
             //    }
+        }
+
+        private void updateBattStatus()
+        {
+            int imageNum = 2;
+            int batLvl = MainV2.comPort.MAV.cs.battery_remaining;
+            if(MainV2.comPort.MAV.cs.battery_voltage < _critBattVolt)
+            {
+                imageNum = 5;
+            }
+            else if (MainV2.comPort.MAV.cs.battery_voltage < _lowBattVolt)
+            {
+                imageNum = 4;
+            }
+            else if(batLvl < 75)
+            {
+                imageNum = 3;
+            }
+
+            btnBatDispaly.BeginInvokeIfRequired(() =>
+            {
+                btnBatDispaly.ImageIndex = imageNum;
+            });
         }
 
         internal void UpdateConnectIcon()
@@ -5667,6 +5723,8 @@ namespace MissionPlanner.GCSViews
         private int AltTargetRprt;
         private int myIasCmd;
         private bool resetEnabled = false;
+        private float _lowBattVolt;
+        private float _critBattVolt;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6026,6 +6084,7 @@ namespace MissionPlanner.GCSViews
             btnZoomIn.Location = new Point((baseWidth / 2) + 10, 3);
             btnZoomOut.Location = new Point(btnZoomIn.Left - 20 - btnZoomIn.Width, 3);
             btnLock.Location = new Point(btnZoomOut.Left - 20 - btnZoomOut.Width, 3);
+
             btnRuller.Location = new Point(btnZoomIn.Right + 20, 3);
             lblRullerDistance.Location = new Point(btnRuller.Left, btnRuller.Bottom + 3);
 
