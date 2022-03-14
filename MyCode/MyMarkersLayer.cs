@@ -183,10 +183,11 @@ namespace MissionPlanner.Utilities
 
             foreach (var pnt in myMarkers)
             {
-                poioverlay.Markers.Add(new GMyMarkerGoogle(pnt, ilMyImages, int.Parse(pnt.Tag2))
+                int typeNum = int.Parse(pnt.Tag2);
+                poioverlay.Markers.Add(new GMyMarkerGoogle(pnt, ilMyImages, typeNum)
                 {
                     ToolTipMode = MarkerTooltipMode.OnMouseOver,
-                    ToolTipText = pnt.Tag + " Type(" + pnt.Tag2 +")"
+                    ToolTipText = "Type:" + (typeNum + 1)
                 });
             }
         }
