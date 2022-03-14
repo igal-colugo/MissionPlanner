@@ -1470,6 +1470,114 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="quickViewimagecount.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="quickViewimagecount.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="quickViewimagecount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 333</value>
+  </data>
+  <data name="quickViewimagecount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 111</value>
+  </data>
+  <data name="quickViewimagecount.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;quickViewimagecount.Name" xml:space="preserve">
+    <value>quickViewimagecount</value>
+  </data>
+  <data name="&gt;&gt;quickViewimagecount.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;quickViewimagecount.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;quickViewimagecount.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="quickViewgroundres.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="quickViewgroundres.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="quickViewgroundres.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 222</value>
+  </data>
+  <data name="quickViewgroundres.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 111</value>
+  </data>
+  <data name="quickViewgroundres.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;quickViewgroundres.Name" xml:space="preserve">
+    <value>quickViewgroundres</value>
+  </data>
+  <data name="&gt;&gt;quickViewgroundres.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;quickViewgroundres.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;quickViewgroundres.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="quickViewflighttime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="quickViewflighttime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="quickViewflighttime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 111</value>
+  </data>
+  <data name="quickViewflighttime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 111</value>
+  </data>
+  <data name="quickViewflighttime.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;quickViewflighttime.Name" xml:space="preserve">
+    <value>quickViewflighttime</value>
+  </data>
+  <data name="&gt;&gt;quickViewflighttime.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;quickViewflighttime.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;quickViewflighttime.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="quickViewarea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="quickViewarea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="quickViewarea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="quickViewarea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 111</value>
+  </data>
+  <data name="quickViewarea.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;quickViewarea.Name" xml:space="preserve">
+    <value>quickViewarea</value>
+  </data>
+  <data name="&gt;&gt;quickViewarea.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;quickViewarea.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;quickViewarea.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;RAD_camdirectionport.Name" xml:space="preserve">
     <value>RAD_camdirectionport</value>
   </data>
@@ -1908,6 +2016,33 @@
   <data name="&gt;&gt;CMB_aircraft.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="BUT_Accept.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_Accept.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 502</value>
+  </data>
+  <data name="BUT_Accept.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="BUT_Accept.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="BUT_Accept.Text" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.Name" xml:space="preserve">
+    <value>BUT_Accept</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="LBL_topdock.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2087,149 +2222,11 @@
   <data name="&gt;&gt;map.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="quickViewimagecount.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="quickViewimagecount.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="quickViewimagecount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 333</value>
-  </data>
-  <data name="quickViewimagecount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 111</value>
-  </data>
-  <data name="quickViewimagecount.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;quickViewimagecount.Name" xml:space="preserve">
-    <value>quickViewimagecount</value>
-  </data>
-  <data name="&gt;&gt;quickViewimagecount.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;quickViewimagecount.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;quickViewimagecount.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="quickViewgroundres.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="quickViewgroundres.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="quickViewgroundres.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 222</value>
-  </data>
-  <data name="quickViewgroundres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 111</value>
-  </data>
-  <data name="quickViewgroundres.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;quickViewgroundres.Name" xml:space="preserve">
-    <value>quickViewgroundres</value>
-  </data>
-  <data name="&gt;&gt;quickViewgroundres.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;quickViewgroundres.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;quickViewgroundres.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="quickViewflighttime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="quickViewflighttime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="quickViewflighttime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 111</value>
-  </data>
-  <data name="quickViewflighttime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 111</value>
-  </data>
-  <data name="quickViewflighttime.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;quickViewflighttime.Name" xml:space="preserve">
-    <value>quickViewflighttime</value>
-  </data>
-  <data name="&gt;&gt;quickViewflighttime.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;quickViewflighttime.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;quickViewflighttime.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="quickViewarea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="quickViewarea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="quickViewarea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="quickViewarea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 111</value>
-  </data>
-  <data name="quickViewarea.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;quickViewarea.Name" xml:space="preserve">
-    <value>quickViewarea</value>
-  </data>
-  <data name="&gt;&gt;quickViewarea.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.QuickView, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;quickViewarea.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;quickViewarea.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="BUT_Accept.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="BUT_Accept.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 502</value>
-  </data>
-  <data name="BUT_Accept.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="BUT_Accept.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="BUT_Accept.Text" xml:space="preserve">
-    <value>Accept</value>
-  </data>
-  <data name="&gt;&gt;BUT_Accept.Name" xml:space="preserve">
-    <value>BUT_Accept</value>
-  </data>
-  <data name="&gt;&gt;BUT_Accept.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;BUT_Accept.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;BUT_Accept.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1008, 537</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Survey (Gridv2)</value>

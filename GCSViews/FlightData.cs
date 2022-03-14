@@ -4019,13 +4019,15 @@ namespace MissionPlanner.GCSViews
 
         private void updateBattStatus()
         {
-            int imageNum = 2;
-            int batLvl = MainV2.comPort.MAV.cs.battery_remaining;
-            if(MainV2.comPort.MAV.cs.battery_voltage < _critBattVolt)
+            int imageNum  = 2;            
+            int batLvl    = MainV2.comPort.MAV.cs.battery_remaining;
+            double batVlt = MainV2.comPort.MAV.cs.battery_voltage;            
+                
+             if(batVlt < _critBattVolt)
             {
                 imageNum = 5;
             }
-            else if (MainV2.comPort.MAV.cs.battery_voltage < _lowBattVolt)
+            else if (batVlt < _lowBattVolt)
             {
                 imageNum = 4;
             }
@@ -4037,7 +4039,7 @@ namespace MissionPlanner.GCSViews
             btnBatDispaly.BeginInvokeIfRequired(() =>
             {
                 btnBatDispaly.ImageIndex = imageNum;
-            });
+            });           
         }
 
         internal void UpdateConnectIcon()
@@ -4252,16 +4254,7 @@ namespace MissionPlanner.GCSViews
             }
 
             srtm.altresponce altdata = srtm.getAltitude(MouseDownStart.Lat, MouseDownStart.Lng, gMapControl1.Zoom);
-            //   string alt = "0";
-            //     if (DialogResult.Cancel == InputBox.Show("Enter Alt",
-            //    "Enter Target Alt (Relative to home)", ref alt))
-            //    return;
-
-            //   if (!float.TryParse(alt, out var intalt))
-            //   {
-            //      CustomMessageBox.Show("Bad Alt");
-            //      return;
-            //  }
+            
 
             if (MouseDownStart.Lat == 0.0 || MouseDownStart.Lng == 0.0)
             {
@@ -6121,6 +6114,7 @@ namespace MissionPlanner.GCSViews
 
             btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + gap);
             btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
+            gbPointToMan.Location = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
@@ -6363,7 +6357,7 @@ namespace MissionPlanner.GCSViews
         {
             //if valid location....
             float lat, lng;
-            if (validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text))
+            if (validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text, lblStatus))
             {
                 MyMarkersLayer.POIMove(myCurrentToMoveMarker, lat, lng);
             }
@@ -6373,7 +6367,7 @@ namespace MissionPlanner.GCSViews
         {
             //if valid location....
             float lat, lng;
-            if (validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text))
+            if (validLocation(out lat, out lng, tbxLat.Text, tbxLng.Text, lblStatus))
             {
                 MyMarkersLayer.POIMove(myCurrentToMoveMarker, lat, lng);
                 gbPoiCoords.Visible = false;
@@ -6381,7 +6375,7 @@ namespace MissionPlanner.GCSViews
             }
         }
 
-        private bool validLocation(out float lat, out float lng, string slat, string slng)
+        private bool validLocation(out float lat, out float lng, string slat, string slng, System.Windows.Forms.Label statusLbl)
         {
             bool res = false;
             lat = 0;
@@ -6393,12 +6387,12 @@ namespace MissionPlanner.GCSViews
                 res = Math.Abs(lat) <= 90 && Math.Abs(lng) <= 180;
                 if (!res)
                 {
-                    lblStatus.Text = "Coordinates out side of scope";
+                    statusLbl.Text = "Coordinates out side of scope";
                 }
             }
             catch (Exception e)
             {
-                lblStatus.Text = e.Message;
+                statusLbl.Text = e.Message;
                 res = false;
             }
             return res;
@@ -6501,6 +6495,59 @@ namespace MissionPlanner.GCSViews
         private void btnForceEnableclDone_Click(object sender, EventArgs e)
         {
             btnClDone.Enabled = !btnClDone.Enabled;
+        }
+
+        private void btnPoinToLatlngCmd_Click(object sender, EventArgs e)
+        {
+            updateManPointtoVisibillity(!gbPointToMan.Visible);
+        }
+
+        private void updateManPointtoVisibillity(bool vis)
+        {
+            if (vis) {
+                txbManPointToLat.Text = "0.0";
+                txbManPointToLng.Text = "0.0";
+                lblManPointto.Text = "";
+            }
+            gbPointToMan.Visible = vis;
+        }
+
+        private void btnManPoinToOk_Click(object sender, EventArgs e)
+        {
+            //if valid location....
+            float lat, lng;
+            if (validLocation(out lat, out lng, txbManPointToLat.Text, txbManPointToLng.Text, lblManPointto))
+            {
+                //pointto commands
+                if (!MainV2.comPort.BaseStream.IsOpen)
+                {
+                    return;
+                }
+
+                srtm.altresponce altdata = srtm.getAltitude(lat, lng, gMapControl1.Zoom);
+
+                try
+                {
+                    MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent,
+                        MAVLink.MAV_CMD.DO_SET_ROI, 0, 0, 0, 0, (int)(lat * 1e7),
+                        (int)(lng * 1e7), (float)((altdata.alt / CurrentState.multiplieralt)),
+                        frame: MAVLink.MAV_FRAME.GLOBAL_RELATIVE_ALT);
+                }
+                catch
+                {
+                    CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                }
+
+
+
+                //visibillity...
+                updateManPointtoVisibillity(false);
+            }
+        }
+
+        private void btnManPoinToCncl_Click(object sender, EventArgs e)
+        {
+            updateManPointtoVisibillity(false);
         }
     }
 }
