@@ -6300,7 +6300,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACY
-        iQAAAk1TRnQBSQFMAgEBBgEAASgBBAEoAQQBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
+        iQAAAk1TRnQBSQFMAgEBBgEAAcABBAHAAQQBhgEAAWsBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAEY
         AQICAAHWAwABAQEAARgFAAEwAUABBSwAA+cD0f+0VLQD3APvMAAD+wPnA8P/tFS0A+cD9v8A/wD/AFEA
         A/YDkQMa/wBgAAM2A7QD+yEAA+cDfP8AYwADTwPR/wD/AP8ASAADtP8AbwADGgPcGAAD+wN8/wBvAANP
         A+//AP8A/wA/AAORDAADCwM6/15UXgMuDwAD0RIAA/sDTwwAAxcDRv9eUV4DUgMjDAADGgPv/wD/AP8A
@@ -6912,205 +6912,178 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>39</value>
   </data>
-  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label15.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="btnManPoinToOk.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="btnManPoinToOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnManPoinToOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 59</value>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 529</value>
   </data>
-  <data name="btnManPoinToOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 22</value>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
   </data>
-  <data name="btnManPoinToOk.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
   </data>
-  <data name="btnManPoinToOk.Text" xml:space="preserve">
-    <value>Ok</value>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Home Heading</value>
   </data>
-  <data name="&gt;&gt;btnManPoinToOk.Name" xml:space="preserve">
-    <value>btnManPoinToOk</value>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
   </data>
-  <data name="&gt;&gt;btnManPoinToOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnManPoinToOk.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>pnlMap</value>
   </data>
-  <data name="&gt;&gt;btnManPoinToOk.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="txbManPointToLng.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="txtHomeDist.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="txbManPointToLng.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 31</value>
+  <data name="txtHomeDist.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 529</value>
   </data>
-  <data name="txbManPointToLng.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 20</value>
+  <data name="txtHomeDist.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 20</value>
   </data>
-  <data name="txbManPointToLng.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="txtHomeDist.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
   </data>
-  <data name="&gt;&gt;txbManPointToLng.Name" xml:space="preserve">
-    <value>txbManPointToLng</value>
+  <data name="txtHomeDist.Text" xml:space="preserve">
+    <value>Distance to Home.</value>
   </data>
-  <data name="&gt;&gt;txbManPointToLng.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtHomeDist.Name" xml:space="preserve">
+    <value>txtHomeDist</value>
+  </data>
+  <data name="&gt;&gt;txtHomeDist.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txbManPointToLng.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
+  <data name="&gt;&gt;txtHomeDist.Parent" xml:space="preserve">
+    <value>pnlMap</value>
   </data>
-  <data name="&gt;&gt;txbManPointToLng.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtHomeDist.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="btnLandCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
   </data>
-  <data name="label13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="btnLandCmd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
   </data>
-  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnLandCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
+  <data name="btnLandCmd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 414</value>
   </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 28</value>
+  <data name="btnLandCmd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 107</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="btnLandCmd.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>LONG:</value>
+  <data name="btnLandCmd.Text" xml:space="preserve">
+    <value>LAND!</value>
   </data>
-  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="btnLandCmd.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
+  <data name="&gt;&gt;btnLandCmd.Name" xml:space="preserve">
+    <value>btnLandCmd</value>
   </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 28</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>LAT:</value>
-  </data>
-  <data name="label14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txbManPointToLat.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="txbManPointToLat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 3</value>
-  </data>
-  <data name="txbManPointToLat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 20</value>
-  </data>
-  <data name="txbManPointToLat.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txbManPointToLat.Name" xml:space="preserve">
-    <value>txbManPointToLat</value>
-  </data>
-  <data name="&gt;&gt;txbManPointToLat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txbManPointToLat.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;txbManPointToLat.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btnManPoinToCncl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="btnManPoinToCncl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnManPoinToCncl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 59</value>
-  </data>
-  <data name="btnManPoinToCncl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 22</value>
-  </data>
-  <data name="btnManPoinToCncl.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnManPoinToCncl.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;btnManPoinToCncl.Name" xml:space="preserve">
-    <value>btnManPoinToCncl</value>
-  </data>
-  <data name="&gt;&gt;btnManPoinToCncl.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnLandCmd.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnManPoinToCncl.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
+  <data name="&gt;&gt;btnLandCmd.Parent" xml:space="preserve">
+    <value>pnlMap</value>
   </data>
-  <data name="&gt;&gt;btnManPoinToCncl.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;btnLandCmd.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="btnToGo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
   </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
+  <data name="btnToGo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 26.25pt</value>
   </data>
-  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
+  <data name="btnToGo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnToGo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 218</value>
+  </data>
+  <data name="btnToGo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 107</value>
+  </data>
+  <data name="btnToGo.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="btnToGo.Text" xml:space="preserve">
+    <value>GO!</value>
+  </data>
+  <data name="btnToGo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnToGo.Name" xml:space="preserve">
+    <value>btnToGo</value>
+  </data>
+  <data name="&gt;&gt;btnToGo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnToGo.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;btnToGo.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 84</value>
+  <data name="pnlConnectList.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>pnlConnectList</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlConnectList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 15</value>
+  </data>
+  <data name="pnlConnectList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 100</value>
+  </data>
+  <data name="pnlConnectList.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="pnlConnectList.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlConnectList.Name" xml:space="preserve">
+    <value>pnlConnectList</value>
+  </data>
+  <data name="&gt;&gt;pnlConnectList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlConnectList.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;pnlConnectList.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
     <value>tableLayoutPanel4</value>
@@ -7126,27 +7099,6 @@
   </data>
   <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnManPoinToOk" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="txbManPointToLng" Row="1" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txbManPointToLat" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="btnManPoinToCncl" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="lblManPointto.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblManPointto.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="lblManPointto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblManPointto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 100</value>
-  </data>
-  <data name="lblManPointto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="lblManPointto.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblManPointto.Text" xml:space="preserve">
-    <value>.</value>
   </data>
   <data name="&gt;&gt;lblManPointto.Name" xml:space="preserve">
     <value>lblManPointto</value>
@@ -7185,7 +7137,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;gbPointToMan.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="btnForceEnableclDone.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -7218,7 +7170,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnForceEnableclDone.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="btnEditCl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -7251,7 +7203,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnEditCl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;btnSpdUp.Name" xml:space="preserve">
     <value>btnSpdUp</value>
@@ -7311,7 +7263,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlSpeedCmd.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="pnlCheckList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -7320,7 +7272,7 @@
     <value>checkListControl2</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8108.23281, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -7362,7 +7314,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlCheckList.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;btnAltup.Name" xml:space="preserve">
     <value>btnAltup</value>
@@ -7422,7 +7374,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlAlt.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -7476,7 +7428,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;gbPoiCoords.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>11</value>
   </data>
   <data name="btnSaveAllPoi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -7512,7 +7464,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnSaveAllPoi.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="btnDeletePois.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -7548,7 +7500,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnDeletePois.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>13</value>
   </data>
   <data name="btnLoadPois.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -7584,7 +7536,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLoadPois.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>14</value>
   </data>
   <data name="btnAddPoi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -7620,7 +7572,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnAddPoi.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>15</value>
   </data>
   <data name="btnTO.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7686,7 +7638,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnTO.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>16</value>
   </data>
   <data name="btnCheckList.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8002,7 +7954,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnCheckList.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>17</value>
   </data>
   <data name="btnSim.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -8035,7 +7987,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnSim.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>18</value>
   </data>
   <data name="lblRullerDistance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8071,7 +8023,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;lblRullerDistance.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>19</value>
   </data>
   <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -8104,7 +8056,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>20</value>
   </data>
   <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -8137,7 +8089,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>21</value>
   </data>
   <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -8170,7 +8122,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>22</value>
   </data>
   <data name="label10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -8203,7 +8155,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>23</value>
   </data>
   <data name="btnPoinToLatlngCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -8286,7 +8238,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnPoinToLatlngCmd.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>24</value>
   </data>
   <data name="btnCamGuideCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -8369,7 +8321,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnCamGuideCmd.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>25</value>
   </data>
   <data name="btnPointToCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -8451,7 +8403,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnPointToCmd.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>26</value>
   </data>
   <data name="btnPinPoint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -8519,7 +8471,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnPinPoint.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>27</value>
   </data>
   <data name="btnLoiterCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -8601,7 +8553,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLoiterCmd.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>28</value>
   </data>
   <data name="btnNavToCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -8677,7 +8629,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnNavToCmd.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>29</value>
   </data>
   <data name="btnBatDispaly.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -8710,7 +8662,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnBatDispaly.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>30</value>
   </data>
   <data name="btnRtlCmd.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8751,7 +8703,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnRtlCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 223</value>
+    <value>100, 220</value>
   </data>
   <data name="btnRtlCmd.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 107</value>
@@ -8772,9 +8724,9 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnRtlCmd.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>31</value>
   </data>
-  <data name="btnLandCmd.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnLandEnable.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIUAAABrCAYAAABZlEHOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAl4SURBVHhe7ZzN
@@ -8821,38 +8773,38 @@
         UKrHP8nGQx7rweRkqtH/Gpyk3hKsMLIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnLandCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+  <data name="btnLandEnable.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
-  <data name="btnLandCmd.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnLandEnable.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
-  <data name="btnLandCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnLandEnable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnLandCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 273</value>
+  <data name="btnLandEnable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 308</value>
   </data>
-  <data name="btnLandCmd.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnLandEnable.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 107</value>
   </data>
-  <data name="btnLandCmd.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnLandEnable.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="btnLandCmd.Visible" type="System.Boolean, mscorlib">
+  <data name="btnLandEnable.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;btnLandCmd.Name" xml:space="preserve">
-    <value>btnLandCmd</value>
+  <data name="&gt;&gt;btnLandEnable.Name" xml:space="preserve">
+    <value>btnLandEnable</value>
   </data>
-  <data name="&gt;&gt;btnLandCmd.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnLandEnable.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnLandCmd.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnLandEnable.Parent" xml:space="preserve">
     <value>pnlMap</value>
   </data>
-  <data name="&gt;&gt;btnLandCmd.ZOrder" xml:space="preserve">
-    <value>27</value>
+  <data name="&gt;&gt;btnLandEnable.ZOrder" xml:space="preserve">
+    <value>32</value>
   </data>
   <data name="btnIasCmd.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8929,7 +8881,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnIasCmd.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>33</value>
   </data>
   <data name="btnAltCmd.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -9005,7 +8957,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnAltCmd.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>34</value>
   </data>
   <data name="btnRuller.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -9087,7 +9039,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnRuller.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>35</value>
   </data>
   <data name="btnLock.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -9169,7 +9121,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLock.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>36</value>
   </data>
   <data name="btnZoomIn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -9244,7 +9196,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnZoomIn.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>37</value>
   </data>
   <data name="btnZoomOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -9317,46 +9269,31 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>38</value>
   </data>
-  <data name="tlConnectionContainer.AutoSize" type="System.Boolean, mscorlib">
+  <data name="crdsMy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tlConnectionContainer.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="crdsMy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 157</value>
   </data>
-  <data name="tlConnectionContainer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
+  <data name="crdsMy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 31</value>
   </data>
-  <data name="tlConnectionContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 3</value>
+  <data name="crdsMy.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
   </data>
-  <data name="tlConnectionContainer.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;crdsMy.Name" xml:space="preserve">
+    <value>crdsMy</value>
   </data>
-  <data name="tlConnectionContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 310</value>
+  <data name="&gt;&gt;crdsMy.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.Coords, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="tlConnectionContainer.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tlConnectionContainer.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;tlConnectionContainer.Name" xml:space="preserve">
-    <value>tlConnectionContainer</value>
-  </data>
-  <data name="&gt;&gt;tlConnectionContainer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlConnectionContainer.Parent" xml:space="preserve">
+  <data name="&gt;&gt;crdsMy.Parent" xml:space="preserve">
     <value>pnlMap</value>
   </data>
-  <data name="&gt;&gt;tlConnectionContainer.ZOrder" xml:space="preserve">
-    <value>35</value>
-  </data>
-  <data name="tlConnectionContainer.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Absolute,50" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;crdsMy.ZOrder" xml:space="preserve">
+    <value>40</value>
   </data>
   <data name="gMapControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -9383,10 +9320,10 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;gMapControl1.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>41</value>
   </data>
   <data name="pnlMap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 0</value>
+    <value>5, 0</value>
   </data>
   <data name="pnlMap.Size" type="System.Drawing.Size, System.Drawing">
     <value>888, 610</value>
@@ -9405,6 +9342,357 @@
   </data>
   <data name="&gt;&gt;pnlMap.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt, style=Underline</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 29</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Connections List</value>
+  </data>
+  <data name="textBox1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>pnlConnectList</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.Name" xml:space="preserve">
+    <value>btnManPoinToOk</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.Name" xml:space="preserve">
+    <value>txbManPointToLng</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.Name" xml:space="preserve">
+    <value>txbManPointToLat</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.Name" xml:space="preserve">
+    <value>btnManPoinToCncl</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tableLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 84</value>
+  </data>
+  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
+    <value>gbPointToMan</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnManPoinToOk" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="txbManPointToLng" Row="1" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="label13" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txbManPointToLat" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="btnManPoinToCncl" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="btnManPoinToOk.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="btnManPoinToOk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnManPoinToOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 59</value>
+  </data>
+  <data name="btnManPoinToOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 22</value>
+  </data>
+  <data name="btnManPoinToOk.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnManPoinToOk.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.Name" xml:space="preserve">
+    <value>btnManPoinToOk</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToOk.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txbManPointToLng.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="txbManPointToLng.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 31</value>
+  </data>
+  <data name="txbManPointToLng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="txbManPointToLng.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.Name" xml:space="preserve">
+    <value>txbManPointToLng</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLng.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 28</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 28</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>LONG:</value>
+  </data>
+  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 28</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>LAT:</value>
+  </data>
+  <data name="label14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txbManPointToLat.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="txbManPointToLat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 3</value>
+  </data>
+  <data name="txbManPointToLat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="txbManPointToLat.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.Name" xml:space="preserve">
+    <value>txbManPointToLat</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;txbManPointToLat.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnManPoinToCncl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="btnManPoinToCncl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnManPoinToCncl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 59</value>
+  </data>
+  <data name="btnManPoinToCncl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="btnManPoinToCncl.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnManPoinToCncl.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.Name" xml:space="preserve">
+    <value>btnManPoinToCncl</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;btnManPoinToCncl.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblManPointto.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblManPointto.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="lblManPointto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblManPointto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 100</value>
+  </data>
+  <data name="lblManPointto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="lblManPointto.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblManPointto.Text" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="&gt;&gt;lblManPointto.Name" xml:space="preserve">
+    <value>lblManPointto</value>
+  </data>
+  <data name="&gt;&gt;lblManPointto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblManPointto.Parent" xml:space="preserve">
+    <value>gbPointToMan</value>
+  </data>
+  <data name="&gt;&gt;lblManPointto.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnSpdUp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -17093,9 +17381,6 @@
   <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 12pt</value>
-  </data>
   <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -17103,13 +17388,13 @@
     <value>370, 316</value>
   </data>
   <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
     <value>checkListControl2</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.8108.23281, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
     <value>pnlCheckList</value>
@@ -17845,7 +18130,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>141</value>
+    <value>56</value>
   </metadata>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

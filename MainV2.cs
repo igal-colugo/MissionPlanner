@@ -38,6 +38,7 @@ using System.Linq;
 using MissionPlanner.Joystick;
 using System.Net;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace MissionPlanner
 {
@@ -3620,9 +3621,9 @@ namespace MissionPlanner
             {
                 Tracking.AddException(ex);
             }
-
+            Text = "MyPlanner ver: " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
             this.ResumeLayout();
-
+            
             Program.Splash?.Close();
 
             log.Info("appload time");

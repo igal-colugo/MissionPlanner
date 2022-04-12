@@ -192,6 +192,10 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.btnLandCmd = new System.Windows.Forms.Button();
+            this.btnToGo = new System.Windows.Forms.Button();
+            this.pnlConnectList = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbPointToMan = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnManPoinToOk = new System.Windows.Forms.Button();
@@ -244,14 +248,14 @@ namespace MissionPlanner.GCSViews
             this.btnNavToCmd = new System.Windows.Forms.Button();
             this.btnBatDispaly = new System.Windows.Forms.Button();
             this.btnRtlCmd = new System.Windows.Forms.Button();
-            this.btnLandCmd = new System.Windows.Forms.Button();
+            this.btnLandEnable = new System.Windows.Forms.Button();
             this.btnIasCmd = new System.Windows.Forms.Button();
             this.btnAltCmd = new System.Windows.Forms.Button();
             this.btnRuller = new System.Windows.Forms.Button();
             this.btnLock = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
-            this.tlConnectionContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.crdsMy = new MissionPlanner.Controls.Coords();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
             this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -265,6 +269,8 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
+            this.txtHomeDist = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -317,6 +323,7 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.pnlMap.SuspendLayout();
+            this.pnlConnectList.SuspendLayout();
             this.gbPointToMan.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.pnlSpeedCmd.SuspendLayout();
@@ -2249,7 +2256,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 9360D;
+            this.windDir1.Direction = 12780D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2440,6 +2447,11 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.label15);
+            this.pnlMap.Controls.Add(this.txtHomeDist);
+            this.pnlMap.Controls.Add(this.btnLandCmd);
+            this.pnlMap.Controls.Add(this.btnToGo);
+            this.pnlMap.Controls.Add(this.pnlConnectList);
             this.pnlMap.Controls.Add(this.gbPointToMan);
             this.pnlMap.Controls.Add(this.btnForceEnableclDone);
             this.pnlMap.Controls.Add(this.btnEditCl);
@@ -2467,7 +2479,7 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.btnNavToCmd);
             this.pnlMap.Controls.Add(this.btnBatDispaly);
             this.pnlMap.Controls.Add(this.btnRtlCmd);
-            this.pnlMap.Controls.Add(this.btnLandCmd);
+            this.pnlMap.Controls.Add(this.btnLandEnable);
             this.pnlMap.Controls.Add(this.btnIasCmd);
             this.pnlMap.Controls.Add(this.btnAltCmd);
             this.pnlMap.Controls.Add(this.btnRuller);
@@ -2475,10 +2487,40 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.btnZoomIn);
             this.pnlMap.Controls.Add(this.btnZoomOut);
             this.pnlMap.Controls.Add(this.btnMyConnect);
-            this.pnlMap.Controls.Add(this.tlConnectionContainer);
+            this.pnlMap.Controls.Add(this.crdsMy);
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // btnLandCmd
+            // 
+            resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
+            this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.Name = "btnLandCmd";
+            this.btnLandCmd.UseVisualStyleBackColor = true;
+            this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
+            // 
+            // btnToGo
+            // 
+            resources.ApplyResources(this.btnToGo, "btnToGo");
+            this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.Name = "btnToGo";
+            this.btnToGo.UseVisualStyleBackColor = true;
+            this.btnToGo.Click += new System.EventHandler(this.btnToGo_Click);
+            // 
+            // pnlConnectList
+            // 
+            resources.ApplyResources(this.pnlConnectList, "pnlConnectList");
+            this.pnlConnectList.BackColor = System.Drawing.Color.LightGray;
+            this.pnlConnectList.Controls.Add(this.textBox1);
+            this.pnlConnectList.Name = "pnlConnectList";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             // 
             // gbPointToMan
             // 
@@ -2861,14 +2903,14 @@ namespace MissionPlanner.GCSViews
             this.btnRtlCmd.UseVisualStyleBackColor = false;
             this.btnRtlCmd.Click += new System.EventHandler(this.btnRtlCmd_Click);
             // 
-            // btnLandCmd
+            // btnLandEnable
             // 
-            this.btnLandCmd.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
-            this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandCmd.Name = "btnLandCmd";
-            this.btnLandCmd.UseVisualStyleBackColor = false;
-            this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
+            this.btnLandEnable.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnLandEnable, "btnLandEnable");
+            this.btnLandEnable.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandEnable.Name = "btnLandEnable";
+            this.btnLandEnable.UseVisualStyleBackColor = false;
+            this.btnLandEnable.Click += new System.EventHandler(this.btnLandEnable_Click);
             // 
             // btnIasCmd
             // 
@@ -2922,11 +2964,16 @@ namespace MissionPlanner.GCSViews
             this.btnZoomOut.UseVisualStyleBackColor = true;
             this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
             // 
-            // tlConnectionContainer
+            // crdsMy
             // 
-            resources.ApplyResources(this.tlConnectionContainer, "tlConnectionContainer");
-            this.tlConnectionContainer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tlConnectionContainer.Name = "tlConnectionContainer";
+            this.crdsMy.Alt = 33D;
+            this.crdsMy.AltSource = "";
+            this.crdsMy.AltUnit = "m";
+            resources.ApplyResources(this.crdsMy, "crdsMy");
+            this.crdsMy.Lat = 31.5D;
+            this.crdsMy.Lng = 44.2D;
+            this.crdsMy.Name = "crdsMy";
+            this.crdsMy.Vertical = false;
             // 
             // gMapControl1
             // 
@@ -3047,6 +3094,19 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
+            // txtHomeDist
+            // 
+            resources.ApplyResources(this.txtHomeDist, "txtHomeDist");
+            this.txtHomeDist.Name = "txtHomeDist";
+            this.txtHomeDist.ReadOnly = true;
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.ForeColor = System.Drawing.Color.Aqua;
+            this.label15.Name = "label15";
+            this.label15.Tag = "custom";
+            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -3121,6 +3181,8 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
+            this.pnlConnectList.ResumeLayout(false);
+            this.pnlConnectList.PerformLayout();
             this.gbPointToMan.ResumeLayout(false);
             this.gbPointToMan.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -3342,7 +3404,6 @@ namespace MissionPlanner.GCSViews
         private System.Windows.Forms.TextBox NIC_tb;
         private Button btnMyConnect;
         private Panel pnlMap;
-        private TableLayoutPanel tlConnectionContainer;
         public Controls.myGMAP gMapControl1;
         private ImageList ilMyImages;
         private Button btnZoomOut;
@@ -3352,7 +3413,7 @@ namespace MissionPlanner.GCSViews
         private Button btnNavToCmd;
         private Button btnBatDispaly;
         private Button btnRtlCmd;
-        private Button btnLandCmd;
+        private Button btnLandEnable;
         private Button btnIasCmd;
         private Button btnAltCmd;
         private Button btnPoinToLatlngCmd;
@@ -3416,5 +3477,12 @@ namespace MissionPlanner.GCSViews
         private TextBox txbManPointToLat;
         private Button btnManPoinToCncl;
         private Label lblManPointto;
+        private Panel pnlConnectList;
+        private TextBox textBox1;
+        private Controls.Coords crdsMy;
+        private Button btnToGo;
+        private Button btnLandCmd;
+        private TextBox txtHomeDist;
+        private Label label15;
     }
 }

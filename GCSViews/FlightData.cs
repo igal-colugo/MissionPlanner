@@ -171,7 +171,8 @@ namespace MissionPlanner.GCSViews
             csDisconnected,
             csConnected,
             csPreFlightDone,
-            csLaunched
+            csLaunched,
+            csInFlight
         }
 
         private enum PoiStates
@@ -224,10 +225,10 @@ namespace MissionPlanner.GCSViews
 
                 btnAltCmd.BeginInvokeIfRequired(() =>
                 {
-                    btnAltCmd.Visible = _connectState == connectStates.csLaunched;
-                    btnIasCmd.Visible = _connectState == connectStates.csLaunched;
-                    btnRtlCmd.Visible = _connectState == connectStates.csLaunched;
-                    btnLandCmd.Visible = _connectState == connectStates.csLaunched;
+                    btnAltCmd.Visible     = _connectState >= connectStates.csLaunched;
+                    btnIasCmd.Visible     = _connectState >= connectStates.csLaunched;
+                    btnRtlCmd.Visible     = _connectState >= connectStates.csLaunched;
+                    btnLandEnable.Visible = _connectState >= connectStates.csLaunched;
                 });
 
                 if (pnlCheckList.Visible)
@@ -585,15 +586,15 @@ namespace MissionPlanner.GCSViews
         {
             if (File.Exists(myConnectionsPath))
             {
-                new ConnectHelper().decorateGui(myConnectionsPath, tlConnectionContainer, handleMonnectMy);
+                new ConnectHelper().decorateGui(myConnectionsPath, pnlConnectList, handleMyConnect);
             }
             _myRuller = new MyRullerhelper(_rullerOverlay, lblRullerDistance);
             setNavTo = false;
         }
 
-        private void handleMonnectMy(object sender, EventArgs e)
+        private void handleMyConnect(object sender, EventArgs e)
         {
-            tlConnectionContainer.Visible = false;
+            pnlConnectList.Visible = false;
             try
             {
                 object ls = ((RadioButton)sender).Tag;
@@ -609,11 +610,6 @@ namespace MissionPlanner.GCSViews
 
                     mav.BaseStream = client;
                 }
-
-
-
-
-
 
                 else if (connectData[0] == "serial")
                 {
@@ -2777,6 +2773,7 @@ namespace MissionPlanner.GCSViews
 
         private void gMapControl1_MouseMove(object sender, MouseEventArgs e)
         {
+            updateCoordDisplay(gMapControl1.FromLocalToLatLng(e.X, e.Y));
             if (e.Button == MouseButtons.Left)
             {
                 PointLatLng point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
@@ -2811,6 +2808,22 @@ namespace MissionPlanner.GCSViews
                     routes.Markers.Add(marker);
                 }
             }
+        }
+
+        private void updateCoordDisplay(PointLatLng mouseLatLng)
+        {
+            Task.Run(() =>
+            {
+                var altdata = srtm.getAltitude(mouseLatLng.Lat, mouseLatLng.Lng, gMapControl1.Zoom);
+                this.BeginInvokeIfRequired(() =>
+                {
+                    crdsMy.Lat = mouseLatLng.Lat;
+                    crdsMy.Lng = mouseLatLng.Lng;
+                    crdsMy.Alt = altdata.alt * CurrentState.multiplieralt;
+                    crdsMy.AltSource = altdata.altsource;
+                    crdsMy.AltUnit = CurrentState.AltUnit;
+                });
+            });
         }
 
         void gMapControl1_OnMapZoomChanged()
@@ -3988,7 +4001,7 @@ namespace MissionPlanner.GCSViews
 
         private void updateMyData()
         {
-            if (connectState == connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && resetEnabled)
+            if (connectState >= connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && resetEnabled)
             {
                 connectState = connectStates.csConnected;
             }
@@ -4002,6 +4015,19 @@ namespace MissionPlanner.GCSViews
 
 
             }
+            txtHomeDist.BeginInvokeIfRequired(() =>
+            {
+                int distMeters = (int)MainV2.comPort.MAV.cs.DistToHome;
+                if(distMeters < 950)
+                {
+                    txtHomeDist.Text = String.Format("Distance to Home:{0} m", distMeters);
+                }
+                else
+                {
+                    txtHomeDist.Text = String.Format("Distance to Home:{0:0.0} km", distMeters / 1000.0);
+                }
+                
+            });
 
             updateBattStatus();
 
@@ -6030,10 +6056,10 @@ namespace MissionPlanner.GCSViews
 
         private void btnMyConnect_Click(object sender, EventArgs e)
         {
-            if (tlConnectionContainer.Visible)
+            if (pnlConnectList.Visible)
             {
                 //scnd click - just want to remove connections...
-                tlConnectionContainer.Visible = false;
+                pnlConnectList.Visible = false;
                 return;
             }
             // decide if this is a connect or disconnect
@@ -6047,12 +6073,7 @@ namespace MissionPlanner.GCSViews
                 //read from file.....
                 if (File.Exists(myConnectionsPath))
                 {
-                    tlConnectionContainer.Visible = true;
-                    //display list 
-
-                    //   new ConnectHelper(myConnectionsPath).connectToPlane();
-
-
+                    pnlConnectList.Visible = true;   
                 }
                 else
                 {
@@ -6095,26 +6116,29 @@ namespace MissionPlanner.GCSViews
             btnTO.Location = btnAltCmd.Location;
             btnCheckList.Location = btnAltCmd.Location;
             btnLoiterCmd.Location = new Point(rightColumb, btnAltCmd.Top);
+            btnToGo.Location = new Point(btnTO.Right, btnTO.Top);
 
             btnIasCmd.Location = new Point(3, btnAltCmd.Bottom + gap);
             pnlSpeedCmd.Location = new Point(btnIasCmd.Right + 2, (btnIasCmd.Top + (btnIasCmd.Height - pnlSpeedCmd.Height) / 2));
             btnPinPoint.Location = new Point(rightColumb, btnIasCmd.Top);
 
             //poi buttons
-            btnAddPoi.Location = new Point(rightColumb - btnAddPoi.Width - 1, btnPinPoint.Top);
-            btnLoadPois.Location = new Point(btnAddPoi.Left - 2 - btnLoadPois.Width, btnAddPoi.Top);
+            btnAddPoi.Location     = new Point(rightColumb - btnAddPoi.Width - 1, btnPinPoint.Top);
+            btnLoadPois.Location   = new Point(btnAddPoi.Left - 2 - btnLoadPois.Width, btnAddPoi.Top);
             btnDeletePois.Location = new Point(btnAddPoi.Left, btnPinPoint.Bottom - btnDeletePois.Height);
             btnSaveAllPoi.Location = new Point(btnLoadPois.Left, btnDeletePois.Top);
 
-            btnRtlCmd.Location = new Point(3, btnIasCmd.Bottom + gap);
+            btnRtlCmd.Location     = new Point(3, btnIasCmd.Bottom + gap);
             btnPointToCmd.Location = new Point(rightColumb, btnRtlCmd.Top);
 
-            btnLandCmd.Location = new Point(3, btnRtlCmd.Bottom + gap);
-            btnCamGuideCmd.Location = new Point(rightColumb, btnLandCmd.Top);
+            btnLandEnable.Location  = new Point(3, btnRtlCmd.Bottom + gap);
+            btnLandCmd.Location     = new Point(btnLandEnable.Right, btnLandCmd.Top);
+            btnCamGuideCmd.Location = new Point(rightColumb, btnLandEnable.Top);
 
-            btnBatDispaly.Location = new Point(3, btnLandCmd.Bottom + gap);
+            btnBatDispaly.Location      = new Point(3, btnLandEnable.Bottom + gap);
             btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
-            gbPointToMan.Location = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);
+            gbPointToMan.Location       = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);
+            crdsMy.Location             = new Point(btnPoinToLatlngCmd.Left - crdsMy.Width -1, btnPoinToLatlngCmd.Bottom - crdsMy.Height);
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
@@ -6166,26 +6190,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnTO_Click(object sender, EventArgs e)
         {
-            if (!MainV2.comPort.BaseStream.IsOpen)
-                return;
-
-            //safety...
-            camGuideMode = false;
-            // arm the MAV
-            try
-            {
-                resetEnabled = false;
-                bool ans = MainV2.comPort.doARM(true, true);
-                if (ans)
-                {
-                    myModeCommand("TAKEOFF");
-                    connectState = connectStates.csLaunched;
-                }
-            }
-            catch (Exception)
-            {
-
-            }
+            btnToGo.Visible = !btnToGo.Visible;
         }
 
         private void btnClDone_Click(object sender, EventArgs e)
@@ -6214,6 +6219,7 @@ namespace MissionPlanner.GCSViews
         {
             resetEnabled = true;
             myModeCommand("QLAND");
+            btnLandCmd.Visible = false;
         }
 
         private void myModeCommand(string modeName)
@@ -6548,6 +6554,36 @@ namespace MissionPlanner.GCSViews
         private void btnManPoinToCncl_Click(object sender, EventArgs e)
         {
             updateManPointtoVisibillity(false);
+        }
+
+        private void btnToGo_Click(object sender, EventArgs e)
+        {
+            if (!MainV2.comPort.BaseStream.IsOpen)
+                return;
+
+            //safety...
+            camGuideMode = false;
+            // arm the MAV
+            try
+            {
+                resetEnabled = false;
+                bool ans = MainV2.comPort.doARM(true, true);
+                if (ans)
+                {
+                    myModeCommand("TAKEOFF");
+                    connectState = connectStates.csLaunched;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            btnToGo.Visible = false;
+        }
+
+        private void btnLandEnable_Click(object sender, EventArgs e)
+        {
+            btnLandCmd.Visible = !btnLandCmd.Visible;
         }
     }
 }

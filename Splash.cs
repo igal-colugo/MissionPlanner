@@ -1,5 +1,6 @@
 ﻿using MissionPlanner.MyCode;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -13,9 +14,10 @@ namespace MissionPlanner
         {
             InitializeComponent();
 
-            string strVersion = typeof(Splash).GetType().Assembly.GetName().Version.ToString();
-
-      //      TXT_version.Text = "Version: " + Application.ProductVersion; // +" Build " + strVersion;
+            // string strVersion = typeof(Splash).GetType().Assembly.GetName().Version.ToString();
+            string strVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+            TXT_version.Text = "MyPlanner " + strVersion;
+            //      TXT_version.Text = "Version: " + Application.ProductVersion; // +" Build " + strVersion;
 
             Console.WriteLine(strVersion);
             this.BackgroundImage = Image.FromFile(Path.Combine(MySettings.myBasePath, "general\\splashscreen.png"));
