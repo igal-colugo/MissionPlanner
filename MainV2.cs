@@ -501,6 +501,15 @@ namespace MissionPlanner
                 menu.Visible = _myDebug;
                 FlightData.btnSim.Visible = _myDebug;
 
+                if (_myDebug)
+                {
+                    FlightData.gMapControl1.ContextMenuStrip = FlightData.contextMenuStripMap;
+                }
+                else
+                {
+                    FlightData.gMapControl1.ContextMenuStrip = null;
+                }
+
             }
             }
 

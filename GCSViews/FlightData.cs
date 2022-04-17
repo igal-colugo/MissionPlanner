@@ -2707,7 +2707,7 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                gMapControl1.ContextMenuStrip = contextMenuStripMap;
+                gMapControl1.ContextMenuStrip = MainV2.instance.myDebug ? contextMenuStripMap : null;
             }
 
 
@@ -2846,7 +2846,7 @@ namespace MissionPlanner.GCSViews
             CurrentGMapMarker = item;
             if (CurrentGMapMarker == null || !(CurrentGMapMarker is GMyMarkerGoogle))
             {
-                gMapControl1.ContextMenuStrip = contextMenuStripMap;
+                gMapControl1.ContextMenuStrip = MainV2.instance.myDebug ? contextMenuStripMap : null;
             }
             else
             {
@@ -2858,7 +2858,7 @@ namespace MissionPlanner.GCSViews
         void gMapControl1_OnMarkerLeave(GMapMarker item)
         {
             CurrentGMapMarker = null;
-            gMapControl1.ContextMenuStrip = contextMenuStripMap;
+            gMapControl1.ContextMenuStrip = MainV2.instance.myDebug ? contextMenuStripMap : null;
         }
 
         private void gMapControl1_OnPositionChanged(PointLatLng point)
@@ -4045,23 +4045,44 @@ namespace MissionPlanner.GCSViews
 
         private void updateBattStatus()
         {
-            int imageNum  = 2;            
+            int imageNum  = 9;            
             int batLvl    = MainV2.comPort.MAV.cs.battery_remaining;
-            double batVlt = MainV2.comPort.MAV.cs.battery_voltage;            
+            double batVlt = MainV2.comPort.MAV.cs.battery_voltage;     
+            
+            if(batLvl == 0 && batVlt == 0)//somthing is fucke...
+            {
+                return;
+            }
                 
              if(batVlt < _critBattVolt)
             {
-                imageNum = 5;
+                imageNum = 8;
             }
             else if (batVlt < _lowBattVolt)
             {
+                imageNum = 7;
+            }
+            //normal vals
+            else if (batLvl < 43)
+            {
+                imageNum = 6;
+            }
+            else if (batLvl < 57)
+            {
+                imageNum = 5;
+            }
+            else if (batLvl < 72)
+            {
                 imageNum = 4;
             }
-            else if(batLvl < 75)
+            else if(batLvl < 86)
             {
                 imageNum = 3;
+            }                 
+            else
+            {//close to 100%
+                imageNum = 2;
             }
-
             btnBatDispaly.BeginInvokeIfRequired(() =>
             {
                 btnBatDispaly.ImageIndex = imageNum;
@@ -6132,7 +6153,7 @@ namespace MissionPlanner.GCSViews
             btnPointToCmd.Location = new Point(rightColumb, btnRtlCmd.Top);
 
             btnLandEnable.Location  = new Point(3, btnRtlCmd.Bottom + gap);
-            btnLandCmd.Location     = new Point(btnLandEnable.Right, btnLandCmd.Top);
+            btnLandCmd.Location     = new Point(btnLandEnable.Right, btnLandEnable.Top);
             btnCamGuideCmd.Location = new Point(rightColumb, btnLandEnable.Top);
 
             btnBatDispaly.Location      = new Point(3, btnLandEnable.Bottom + gap);
@@ -6288,7 +6309,10 @@ namespace MissionPlanner.GCSViews
             if (CurrentGMapMarker == null || !(CurrentGMapMarker is GMyMarkerGoogle))
                 return;
 
+            
             MyMarkersLayer.POIDelete((GMyMarkerGoogle)CurrentGMapMarker);
+            //remove menu - since we delete the marker...
+            CurrentGMapMarker = null;
         }
 
         private void toolStripMenuItemPOIChange_Click(object sender, EventArgs e)

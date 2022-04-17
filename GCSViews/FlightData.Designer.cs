@@ -192,6 +192,8 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect = new System.Windows.Forms.Button();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtHomeDist = new System.Windows.Forms.TextBox();
             this.btnLandCmd = new System.Windows.Forms.Button();
             this.btnToGo = new System.Windows.Forms.Button();
             this.pnlConnectList = new System.Windows.Forms.Panel();
@@ -212,7 +214,6 @@ namespace MissionPlanner.GCSViews
             this.btnSpdDown = new System.Windows.Forms.Button();
             this.txtSpdCmd = new System.Windows.Forms.TextBox();
             this.pnlCheckList = new System.Windows.Forms.Panel();
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnClDone = new System.Windows.Forms.Button();
             this.pnlAlt = new System.Windows.Forms.Panel();
             this.btnAltup = new System.Windows.Forms.Button();
@@ -269,8 +270,7 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.txtHomeDist = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2256,7 +2256,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 12780D;
+            this.windDir1.Direction = 14040D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2440,10 +2440,14 @@ namespace MissionPlanner.GCSViews
             this.ilMyImages.TransparentColor = System.Drawing.Color.Transparent;
             this.ilMyImages.Images.SetKeyName(0, "link.png");
             this.ilMyImages.Images.SetKeyName(1, "broken_link.png");
-            this.ilMyImages.Images.SetKeyName(2, "battery_full.png");
-            this.ilMyImages.Images.SetKeyName(3, "battery_3_green.png");
-            this.ilMyImages.Images.SetKeyName(4, "battery_2_orange.png");
-            this.ilMyImages.Images.SetKeyName(5, "battery_1_red.png");
+            this.ilMyImages.Images.SetKeyName(2, "7_green_battery.png");
+            this.ilMyImages.Images.SetKeyName(3, "6_green_battery.png");
+            this.ilMyImages.Images.SetKeyName(4, "5_green_battery.png");
+            this.ilMyImages.Images.SetKeyName(5, "4_green_battery.png");
+            this.ilMyImages.Images.SetKeyName(6, "3_yellow_battery.png");
+            this.ilMyImages.Images.SetKeyName(7, "2_orange_battery.png");
+            this.ilMyImages.Images.SetKeyName(8, "1_red_battery.png");
+            this.ilMyImages.Images.SetKeyName(9, "zero_battery.png");
             // 
             // pnlMap
             // 
@@ -2491,6 +2495,19 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.ForeColor = System.Drawing.Color.Aqua;
+            this.label15.Name = "label15";
+            this.label15.Tag = "custom";
+            // 
+            // txtHomeDist
+            // 
+            resources.ApplyResources(this.txtHomeDist, "txtHomeDist");
+            this.txtHomeDist.Name = "txtHomeDist";
+            this.txtHomeDist.ReadOnly = true;
             // 
             // btnLandCmd
             // 
@@ -2632,11 +2649,6 @@ namespace MissionPlanner.GCSViews
             this.pnlCheckList.Controls.Add(this.checkListControl2);
             this.pnlCheckList.Controls.Add(this.btnClDone);
             this.pnlCheckList.Name = "pnlCheckList";
-            // 
-            // checkListControl2
-            // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
             // 
             // btnClDone
             // 
@@ -2980,7 +2992,6 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.BackColor = System.Drawing.Color.Black;
             this.gMapControl1.Bearing = 0F;
             this.gMapControl1.CanDragMap = true;
-            this.gMapControl1.ContextMenuStrip = this.contextMenuStripMap;
             resources.ApplyResources(this.gMapControl1, "gMapControl1");
             this.gMapControl1.EmptyTileColor = System.Drawing.Color.Gray;
             this.gMapControl1.GrayScaleMode = false;
@@ -3094,18 +3105,10 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
-            // txtHomeDist
+            // checkListControl2
             // 
-            resources.ApplyResources(this.txtHomeDist, "txtHomeDist");
-            this.txtHomeDist.Name = "txtHomeDist";
-            this.txtHomeDist.ReadOnly = true;
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.ForeColor = System.Drawing.Color.Aqua;
-            this.label15.Name = "label15";
-            this.label15.Tag = "custom";
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
             // 
             // FlightData
             // 
