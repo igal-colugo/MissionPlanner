@@ -69,6 +69,8 @@ namespace MissionPlanner.GCSViews
         private readonly string myPlaneIconPathBase = Path.Combine(MySettings.myBasePath, "planeIcons");
         private readonly string myTargetsPathBase = Path.Combine(MySettings.myBasePath, "targets");
         private readonly string myVidPlayerPath = Path.Combine(MySettings.myBasePath, "VideoPlayer\\VideoPlayer.exe");
+        private readonly bool _balloonModeOn = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).BalloonMode;
+
         //end my code
 
         AviWriter aviwriter;
@@ -215,7 +217,7 @@ namespace MissionPlanner.GCSViews
                 
                 btnTO.BeginInvokeIfRequired(() =>
                 {
-                    btnTO.Visible = _connectState == connectStates.csPreFlightDone;
+                    btnTO.Visible = _connectState == connectStates.csPreFlightDone && !_balloonModeOn;
                 });
 
                 btnCheckList.BeginInvokeIfRequired(() =>
@@ -225,10 +227,10 @@ namespace MissionPlanner.GCSViews
 
                 btnAltCmd.BeginInvokeIfRequired(() =>
                 {
-                    btnAltCmd.Visible     = _connectState >= connectStates.csLaunched;
-                    btnIasCmd.Visible     = _connectState >= connectStates.csLaunched;
-                    btnRtlCmd.Visible     = _connectState >= connectStates.csLaunched;
-                    btnLandEnable.Visible = _connectState >= connectStates.csLaunched;
+                    btnAltCmd.Visible     = _connectState >= connectStates.csLaunched && !_balloonModeOn;
+                    btnIasCmd.Visible     = _connectState >= connectStates.csLaunched && !_balloonModeOn;
+                    btnRtlCmd.Visible     = _connectState >= connectStates.csLaunched && !_balloonModeOn;
+                    btnLandEnable.Visible = _connectState >= connectStates.csLaunched && !_balloonModeOn;
                 });
 
                 if (pnlCheckList.Visible)
@@ -562,6 +564,9 @@ namespace MissionPlanner.GCSViews
             toolStripMenuItem7.Image = ilMyTargets.Images[5];
 
             pnlMap.Dock = DockStyle.Fill;
+            btnNavToCmd.Visible = !_balloonModeOn;
+            btnLoiterCmd.Visible = !_balloonModeOn;
+            btnCamGuideCmd.Visible = !_balloonModeOn;
             adjustMyGui();
         }
 
@@ -3938,7 +3943,7 @@ namespace MissionPlanner.GCSViews
                                     {
 
                                         double scale = Math.Max(gMapControl1.Zoom / 24.0, 10.0 / 24);
-                                        var marker = Common.getMAVMarker(MAV, routes, scale);
+                                        var marker = Common.getMAVMarker(MAV, routes, scale, _balloonModeOn);
 
                                         if (marker == null || marker.Position.Lat == 0 && marker.Position.Lng == 0)
                                             return;

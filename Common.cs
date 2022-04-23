@@ -21,7 +21,7 @@ namespace MissionPlanner
         public static Bitmap myGroundIcon;
         public static Bitmap myABIcon;
         public static Bitmap myNAIcon;
-        public static GMapMarker getMAVMarker(MAVState MAV, GMapOverlay overlay = null, double scale = 1)
+        public static GMapMarker getMAVMarker(MAVState MAV, GMapOverlay overlay = null, double scale = 1, bool _balloonModeOn = false)
         {
             PointLatLng portlocation = MAV.cs.Location;
 
@@ -88,9 +88,13 @@ namespace MissionPlanner
                     }
                 }
                 Bitmap resizedIc = new Bitmap(ic, new Size((int)(ic.Width * scale), (int)(ic.Height * scale)));
-                string stats = "IAS: "+(int)MAV.cs.airspeed+"m/s\r\n";
-                stats += "ALT: " + (int)MAV.cs.alt + "m\r\n";
-                stats += "MODE: " + MAV.cs.mode;
+                string stats = "ALT: " + (int)MAV.cs.alt + "m\r\n";
+                if (!_balloonModeOn)
+                {
+                    stats += "IAS: " + (int)MAV.cs.airspeed + "m/s\r\n";
+                    stats += "MODE: " + MAV.cs.mode;
+                }
+                
                 
                 return (new GMapMarkerMyPlane(resizedIc, 0, portlocation, MAV.cs.HomeLocation, MAV.cs.yaw,
                     MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,

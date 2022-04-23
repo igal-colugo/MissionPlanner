@@ -27,8 +27,9 @@ using System.Web.Script.Serialization;
           {
         public float LowBattVolt { get; set; } = 20.0f;
         public float CritBattVolt { get; set; } = 18.5f;
+        public bool BalloonMode { get; set; } = false;
 
-    }
+}
    //   }
       
     public class MyConfigFileHelper<T> where T : new()
