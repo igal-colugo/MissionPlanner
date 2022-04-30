@@ -223,6 +223,10 @@ namespace MissionPlanner.GCSViews
                 btnCheckList.BeginInvokeIfRequired(() =>
                 {
                     btnCheckList.Visible = _connectState == connectStates.csConnected;
+                    if (btnCheckList.Visible)
+                    {
+                        pnlCheckList.Height = calcChcecklistHeight();
+                    }    
                 });
 
                 btnAltCmd.BeginInvokeIfRequired(() =>
@@ -6167,6 +6171,11 @@ namespace MissionPlanner.GCSViews
             crdsMy.Location             = new Point(btnPoinToLatlngCmd.Left - crdsMy.Width -1, btnPoinToLatlngCmd.Bottom - crdsMy.Height);
         }
 
+        private int calcChcecklistHeight()
+        {
+            return Math.Min(checkListControl2.CheckListItems.Count * 60, this.Height -80);//dont go over board....
+        }
+
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
             gMapControl1.Zoom = gMapControl1.Zoom + 1;
@@ -6211,6 +6220,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnCheckList_Click(object sender, EventArgs e)
         {
+            checkListControl2.Reset();
             pnlCheckList.Visible = !pnlCheckList.Visible;
         }
 

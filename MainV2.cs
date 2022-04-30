@@ -3322,7 +3322,7 @@ namespace MissionPlanner
                 {
                 }
             });
-
+            /* killed auto connect
             log.Info("start AutoConnect");
             AutoConnect.NewMavlinkConnection += (sender, serial) =>
             {
@@ -3385,7 +3385,7 @@ namespace MissionPlanner
                 }
             };
             AutoConnect.Start();
-
+            */
             // debound based on url
             List<string> videourlseen = new List<string>();
             // prevent spaming the ui

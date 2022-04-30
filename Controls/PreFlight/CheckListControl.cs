@@ -48,7 +48,19 @@ namespace MissionPlanner.Controls.PreFlight
             timer1.Start();
         }
 
-        public void Draw()
+
+        public void Reset()
+        {
+            List<CheckBox> cli = cBoxes;
+            foreach (CheckBox item in cBoxes)
+            {
+                item.Checked = false;
+            }
+
+        }
+
+        
+    public void Draw()
         {
             lock (this.CheckListItems)
             {
@@ -125,11 +137,12 @@ namespace MissionPlanner.Controls.PreFlight
 
             GroupBox gb = new GroupBox() { Text = "", Location = new Point(x, y), Size = new Size(x0, 17 + height), Name = "gb" + y };
 
-            Label desc = new Label() { Text = desctext, Location = new Point(5, 9), Size = new Size(x1, height), Name = "udesc" + y };
-            Label text = new Label() { Text = texttext, Location = new Point(desc.Right, 9), Size = new Size(x2, height), Name = "utext" + y };
-            CheckBox tickbox = new CheckBox() { Checked = item.checkCond(item), Location = new Point(text.Right, 7), Size = new Size(21, 21), Name = "utickbox" + y };
+            Label desc = new Label() { Text = desctext, Location = new Point(5, 12), Size = new Size(x1, height), Name = "udesc" + y };
+            Label text = new Label() { Text = texttext, Location = new Point(desc.Right, 12), Size = new Size(x2, height), Name = "utext" + y };
+            CheckBox tickbox = new CheckBox() { Checked = item.checkCond(item), Location = new Point(text.Right, 12), Size = new Size(21, 21), Name = "utickbox" + y };
             cBoxes.Add(tickbox);
-            tickbox.Click += tbClicked;
+           // tickbox.Click += tbClicked;
+            tickbox.CheckedChanged += tbchanged;
 
             desc.Tag = text.Tag = tickbox.Tag = new internaldata { CLItem = item, desc = desc, text = text, tickbox = tickbox };
 
@@ -147,6 +160,11 @@ namespace MissionPlanner.Controls.PreFlight
             }
 
             return gb;
+        }
+
+        private void tbchanged(object sender, EventArgs e)
+        {
+            cbClicked?.Invoke(sender, e);
         }
 
         private void tbClicked(object sender, EventArgs e)

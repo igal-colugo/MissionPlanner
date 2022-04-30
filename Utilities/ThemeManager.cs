@@ -310,7 +310,7 @@ namespace MissionPlanner.Utilities
             if (control is ContainerControl)
                 ((ContainerControl)control).AutoScaleMode = AutoScaleMode.None;
 
-            if (control.GetType().IsDefined(typeof(PreventThemingAttribute)))
+            if (control.GetType().IsDefined(typeof(PreventThemingAttribute)) || (control is Button)) //igal adition - leave buttns alone
                 return;
 
             ApplyTheme(control, 0);
