@@ -6286,6 +6286,12 @@
   <metadata name="bindingSourceStatusTab.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 57</value>
   </metadata>
+  <data name="btnMyConnect.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnMyConnect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnMyConnect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -6300,7 +6306,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
-        bwIAAk1TRnQBSQFMAgEBCgEAATgBAAE4AQABgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
+        bwIAAk1TRnQBSQFMAgEBCgEAAXgBAAF4AQABgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
         AgABLwEBAgABAQEAARgGAAEaAQcdAAP+A/QD4AGmAaUBpAJZAVcCGQEXAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
@@ -8983,7 +8989,7 @@
     <value>btnMyConnect</value>
   </data>
   <data name="&gt;&gt;btnMyConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnMyConnect.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -9345,21 +9351,6 @@
   <data name="pnlCheckList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 316</value>
-  </data>
-  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
     <value>checkListControl2</value>
   </data>
@@ -9371,27 +9362,6 @@
   </data>
   <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="btnClDone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="btnClDone.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnClDone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnClDone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 316</value>
-  </data>
-  <data name="btnClDone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 53</value>
-  </data>
-  <data name="btnClDone.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnClDone.Text" xml:space="preserve">
-    <value>DONE</value>
   </data>
   <data name="&gt;&gt;btnClDone.Name" xml:space="preserve">
     <value>btnClDone</value>
@@ -10524,7 +10494,7 @@
   <data name="btnPinPoint.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIUAAABqCAYAAACSyJJrAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAb4SURBVHhe7Zyx
+        DAAACwwBP0AiyAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAb4SURBVHhe7Zyx
         biRFEIY3QRA6Pid7PIGfAchBl4LQJgiBZWQRgCBBiASI1mRAAkRcwkVc5MCPco9wbzDMP3IN/9RVz3nt
         ntnu6go+nXdmehzU57+6e2Zv03WdyRtvvrXtuey56XnZ0wXVgzqinqjr1qo7eOVAf/FJz77HumngC9T5
         RDsw+dBfcNbz4nZA0Aao9xl7oIWYtIlHp6fdbrfrrq723fX1dVA5qCPqibpynXtQ91EMEQItY5IQGGzd
@@ -11208,7 +11178,10 @@
 </value>
   </data>
   <data name="btnLock.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+    <value>Center</value>
+  </data>
+  <data name="btnLock.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="btnLock.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -11220,7 +11193,7 @@
     <value>351, 8</value>
   </data>
   <data name="btnLock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 107</value>
+    <value>145, 115</value>
   </data>
   <data name="btnLock.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -11229,7 +11202,7 @@
     <value>btnLock</value>
   </data>
   <data name="&gt;&gt;btnLock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLock.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -19491,6 +19464,66 @@
   </data>
   <data name="&gt;&gt;txtSpdCmd.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 316</value>
+  </data>
+  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
+    <value>checkListControl2</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnClDone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="btnClDone.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnClDone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClDone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 316</value>
+  </data>
+  <data name="btnClDone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 53</value>
+  </data>
+  <data name="btnClDone.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnClDone.Text" xml:space="preserve">
+    <value>DONE</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.Name" xml:space="preserve">
+    <value>btnClDone</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.Parent" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnAltup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

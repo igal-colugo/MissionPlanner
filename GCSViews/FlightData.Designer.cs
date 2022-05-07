@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using MyControlsLibrary;
+using System.Windows.Forms;
 
 namespace MissionPlanner.GCSViews
 {
@@ -189,7 +190,7 @@ namespace MissionPlanner.GCSViews
             this.scriptChecker = new System.Windows.Forms.Timer(this.components);
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
-            this.btnMyConnect = new System.Windows.Forms.Button();
+            this.btnMyConnect = new MyControlsLibrary.MYRButton();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -254,7 +255,7 @@ namespace MissionPlanner.GCSViews
             this.btnIasCmd = new System.Windows.Forms.Button();
             this.btnAltCmd = new System.Windows.Forms.Button();
             this.btnRuller = new System.Windows.Forms.Button();
-            this.btnLock = new System.Windows.Forms.Button();
+            this.btnLock = new MyControlsLibrary.MYRButton();
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.crdsMy = new MissionPlanner.Controls.Coords();
@@ -2256,7 +2257,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 16020D;
+            this.windDir1.Direction = 17460D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2427,10 +2428,16 @@ namespace MissionPlanner.GCSViews
             // 
             // btnMyConnect
             // 
+            this.btnMyConnect.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnMyConnect.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
+            this.btnMyConnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnMyConnect.BorderRadius = 10;
+            this.btnMyConnect.BorderSize = 4;
             this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMyConnect.ImageList = this.ilMyImages;
             this.btnMyConnect.Name = "btnMyConnect";
+            this.btnMyConnect.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnMyConnect.UseVisualStyleBackColor = true;
             this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
             // 
@@ -2959,9 +2966,14 @@ namespace MissionPlanner.GCSViews
             // btnLock
             // 
             resources.ApplyResources(this.btnLock, "btnLock");
-            this.btnLock.BackColor = System.Drawing.Color.Transparent;
+            this.btnLock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnLock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnLock.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLock.BorderRadius = 12;
+            this.btnLock.BorderSize = 0;
             this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLock.Name = "btnLock";
+            this.btnLock.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnLock.UseVisualStyleBackColor = false;
             this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 
@@ -3405,13 +3417,13 @@ namespace MissionPlanner.GCSViews
         private System.Windows.Forms.Label NIC_lbl;
         private System.Windows.Forms.TextBox NACp_tb;
         private System.Windows.Forms.TextBox NIC_tb;
-        private Button btnMyConnect;
+        private MYRButton btnMyConnect;//new MyControlsLibrary.MYRButton();
         private Panel pnlMap;
         public Controls.myGMAP gMapControl1;
         private ImageList ilMyImages;
         private Button btnZoomOut;
         private Button btnRuller;
-        private Button btnLock;
+        private MYRButton btnLock;
         private Button btnZoomIn;
         private Button btnNavToCmd;
         private Button btnBatDispaly;

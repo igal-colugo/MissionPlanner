@@ -111,6 +111,9 @@
       <HintPath>.\extlibs\BitMiracle.LibTiff.NetStandard.dll</HintPath>
       <Private>true</Private>
     </Reference>
+    <Reference Include="MyControlsLibrary">
+      <HintPath>..\deleteme\MyControlsLibrary\MyControlsLibrary\bin\Debug\MyControlsLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -626,6 +629,9 @@
     </Compile>
     <Compile Include="MyCode\GMapMarkerMyPlane.cs" />
     <Compile Include="MyCode\GMyMarkerGoogle.cs" />
+    <Compile Include="MyCode\MYRButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyCode\MyRullerhelper.cs" />
     <Compile Include="MyCode\MyMarkersLayer.cs" />
     <Compile Include="MyCode\MySettings.cs" />
