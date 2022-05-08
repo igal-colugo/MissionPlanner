@@ -6286,18 +6286,6 @@
   <metadata name="bindingSourceStatusTab.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 57</value>
   </metadata>
-  <data name="btnMyConnect.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="btnMyConnect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnMyConnect.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="btnMyConnect.ImageIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <metadata name="ilMyImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>544, 96</value>
   </metadata>
@@ -6306,7 +6294,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
-        bwIAAk1TRnQBSQFMAgEBCgEAAXgBAAF4AQABgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
+        bwIAAk1TRnQBSQFMAgEBCgEAAbABAAGwAQABgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
         AgABLwEBAgABAQEAARgGAAEaAQcdAAP+A/QD4AGmAaUBpAJZAVcCGQEXAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
@@ -8970,33 +8958,6 @@
         AQcB/A4AAX8Q/wH4DgABPwH4DgABPws=
 </value>
   </data>
-  <data name="btnMyConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnMyConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="btnMyConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 107</value>
-  </data>
-  <data name="btnMyConnect.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnMyConnect.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomRight</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Name" xml:space="preserve">
-    <value>btnMyConnect</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Type" xml:space="preserve">
-    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.Parent" xml:space="preserve">
-    <value>pnlMap</value>
-  </data>
-  <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
-    <value>39</value>
-  </data>
   <data name="label15.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -9060,6 +9021,9 @@
   <data name="btnLandCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnLandCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnLandCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 26.25pt</value>
   </data>
@@ -9085,7 +9049,7 @@
     <value>btnLandCmd</value>
   </data>
   <data name="&gt;&gt;btnLandCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLandCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -9096,6 +9060,9 @@
   <data name="btnToGo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnToGo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
   <data name="btnToGo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 26.25pt</value>
   </data>
@@ -9104,6 +9071,9 @@
   </data>
   <data name="btnToGo.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 218</value>
+  </data>
+  <data name="btnToGo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="btnToGo.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 107</value>
@@ -9121,7 +9091,7 @@
     <value>btnToGo</value>
   </data>
   <data name="&gt;&gt;btnToGo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnToGo.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -9693,6 +9663,9 @@
   <data name="btnTO.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnTO.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnTO.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -9715,7 +9688,7 @@
     <value>btnTO</value>
   </data>
   <data name="&gt;&gt;btnTO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnTO.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10009,6 +9982,9 @@
   <data name="btnCheckList.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnCheckList.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnCheckList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10031,7 +10007,7 @@
     <value>btnCheckList</value>
   </data>
   <data name="&gt;&gt;btnCheckList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCheckList.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10296,6 +10272,9 @@
   <data name="btnPoinToLatlngCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnPoinToLatlngCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnPoinToLatlngCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10315,7 +10294,7 @@
     <value>btnPoinToLatlngCmd</value>
   </data>
   <data name="&gt;&gt;btnPoinToLatlngCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnPoinToLatlngCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10379,6 +10358,9 @@
   <data name="btnCamGuideCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnCamGuideCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnCamGuideCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10398,7 +10380,7 @@
     <value>btnCamGuideCmd</value>
   </data>
   <data name="&gt;&gt;btnCamGuideCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCamGuideCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10461,6 +10443,9 @@
   <data name="btnPointToCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnPointToCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnPointToCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10480,7 +10465,7 @@
     <value>btnPointToCmd</value>
   </data>
   <data name="&gt;&gt;btnPointToCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnPointToCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10530,6 +10515,9 @@
   <data name="btnPinPoint.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnPinPoint.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnPinPoint.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10549,7 +10537,7 @@
     <value>btnPinPoint</value>
   </data>
   <data name="&gt;&gt;btnPinPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnPinPoint.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10610,7 +10598,10 @@
 </value>
   </data>
   <data name="btnLoiterCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+    <value>Center</value>
+  </data>
+  <data name="btnLoiterCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
   </data>
   <data name="btnLoiterCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -10621,8 +10612,14 @@
   <data name="btnLoiterCmd.Location" type="System.Drawing.Point, System.Drawing">
     <value>751, 121</value>
   </data>
+  <data name="btnLoiterCmd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>33, 33, 33, 33</value>
+  </data>
+  <data name="btnLoiterCmd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>22, 22, 22, 22</value>
+  </data>
   <data name="btnLoiterCmd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 107</value>
+    <value>135, 109</value>
   </data>
   <data name="btnLoiterCmd.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -10631,7 +10628,7 @@
     <value>btnLoiterCmd</value>
   </data>
   <data name="&gt;&gt;btnLoiterCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLoiterCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10688,6 +10685,9 @@
   <data name="btnNavToCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnNavToCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
   <data name="btnNavToCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10707,7 +10707,7 @@
     <value>btnNavToCmd</value>
   </data>
   <data name="&gt;&gt;btnNavToCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnNavToCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10717,6 +10717,9 @@
   </data>
   <data name="btnBatDispaly.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
+  </data>
+  <data name="btnBatDispaly.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="btnBatDispaly.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -10740,7 +10743,7 @@
     <value>btnBatDispaly</value>
   </data>
   <data name="&gt;&gt;btnBatDispaly.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnBatDispaly.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10780,6 +10783,9 @@
   <data name="btnRtlCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnRtlCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnRtlCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10802,7 +10808,7 @@
     <value>btnRtlCmd</value>
   </data>
   <data name="&gt;&gt;btnRtlCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnRtlCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10860,6 +10866,9 @@
   <data name="btnLandEnable.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnLandEnable.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnLandEnable.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10882,7 +10891,7 @@
     <value>btnLandEnable</value>
   </data>
   <data name="&gt;&gt;btnLandEnable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLandEnable.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -10937,6 +10946,9 @@
   <data name="btnIasCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnIasCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnIasCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -10959,7 +10971,7 @@
     <value>btnIasCmd</value>
   </data>
   <data name="&gt;&gt;btnIasCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnIasCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -11013,6 +11025,9 @@
   <data name="btnAltCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnAltCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnAltCmd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -11035,7 +11050,7 @@
     <value>btnAltCmd</value>
   </data>
   <data name="&gt;&gt;btnAltCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAltCmd.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -11098,6 +11113,9 @@
   <data name="btnRuller.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnRuller.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnRuller.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -11117,7 +11135,7 @@
     <value>btnRuller</value>
   </data>
   <data name="&gt;&gt;btnRuller.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnRuller.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -11193,7 +11211,7 @@
     <value>351, 8</value>
   </data>
   <data name="btnLock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 115</value>
+    <value>144, 117</value>
   </data>
   <data name="btnLock.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -11258,6 +11276,9 @@
   <data name="btnZoomIn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnZoomIn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="btnZoomIn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
@@ -11277,7 +11298,7 @@
     <value>btnZoomIn</value>
   </data>
   <data name="&gt;&gt;btnZoomIn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnZoomIn.Parent" xml:space="preserve">
     <value>pnlMap</value>
@@ -11329,7 +11350,10 @@
 </value>
   </data>
   <data name="btnZoomOut.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+    <value>Center</value>
+  </data>
+  <data name="btnZoomOut.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="btnZoomOut.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt</value>
@@ -11341,7 +11365,7 @@
     <value>491, 8</value>
   </data>
   <data name="btnZoomOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 107</value>
+    <value>144, 117</value>
   </data>
   <data name="btnZoomOut.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -11350,13 +11374,52 @@
     <value>btnZoomOut</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.Parent" xml:space="preserve">
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnZoomOut.ZOrder" xml:space="preserve">
     <value>38</value>
+  </data>
+  <data name="btnMyConnect.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnMyConnect.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnMyConnect.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="btnMyConnect.ImageIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnMyConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnMyConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="btnMyConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 107</value>
+  </data>
+  <data name="btnMyConnect.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnMyConnect.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.Name" xml:space="preserve">
+    <value>btnMyConnect</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.Type" xml:space="preserve">
+    <value>MyControlsLibrary.MYRButton, MyPlanner, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;btnMyConnect.ZOrder" xml:space="preserve">
+    <value>39</value>
   </data>
   <data name="crdsMy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

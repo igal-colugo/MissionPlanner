@@ -190,13 +190,12 @@ namespace MissionPlanner.GCSViews
             this.scriptChecker = new System.Windows.Forms.Timer(this.components);
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
-            this.btnMyConnect = new MyControlsLibrary.MYRButton();
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.txtHomeDist = new System.Windows.Forms.TextBox();
-            this.btnLandCmd = new System.Windows.Forms.Button();
-            this.btnToGo = new System.Windows.Forms.Button();
+            this.btnLandCmd = new MyControlsLibrary.MYRButton();
+            this.btnToGo = new MyControlsLibrary.MYRButton();
             this.pnlConnectList = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbPointToMan = new System.Windows.Forms.GroupBox();
@@ -235,29 +234,30 @@ namespace MissionPlanner.GCSViews
             this.btnDeletePois = new System.Windows.Forms.Button();
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
-            this.btnTO = new System.Windows.Forms.Button();
-            this.btnCheckList = new System.Windows.Forms.Button();
+            this.btnTO = new MyControlsLibrary.MYRButton();
+            this.btnCheckList = new MyControlsLibrary.MYRButton();
             this.btnSim = new System.Windows.Forms.Button();
             this.lblRullerDistance = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnPoinToLatlngCmd = new System.Windows.Forms.Button();
-            this.btnCamGuideCmd = new System.Windows.Forms.Button();
-            this.btnPointToCmd = new System.Windows.Forms.Button();
-            this.btnPinPoint = new System.Windows.Forms.Button();
-            this.btnLoiterCmd = new System.Windows.Forms.Button();
-            this.btnNavToCmd = new System.Windows.Forms.Button();
-            this.btnBatDispaly = new System.Windows.Forms.Button();
-            this.btnRtlCmd = new System.Windows.Forms.Button();
-            this.btnLandEnable = new System.Windows.Forms.Button();
-            this.btnIasCmd = new System.Windows.Forms.Button();
-            this.btnAltCmd = new System.Windows.Forms.Button();
-            this.btnRuller = new System.Windows.Forms.Button();
+            this.btnPoinToLatlngCmd = new MyControlsLibrary.MYRButton();
+            this.btnCamGuideCmd = new MyControlsLibrary.MYRButton();
+            this.btnPointToCmd = new MyControlsLibrary.MYRButton();
+            this.btnPinPoint = new MyControlsLibrary.MYRButton();
+            this.btnLoiterCmd = new MyControlsLibrary.MYRButton();
+            this.btnNavToCmd = new MyControlsLibrary.MYRButton();
+            this.btnBatDispaly = new MyControlsLibrary.MYRButton();
+            this.btnRtlCmd = new MyControlsLibrary.MYRButton();
+            this.btnLandEnable = new MyControlsLibrary.MYRButton();
+            this.btnIasCmd = new MyControlsLibrary.MYRButton();
+            this.btnAltCmd = new MyControlsLibrary.MYRButton();
+            this.btnRuller = new MyControlsLibrary.MYRButton();
             this.btnLock = new MyControlsLibrary.MYRButton();
-            this.btnZoomIn = new System.Windows.Forms.Button();
-            this.btnZoomOut = new System.Windows.Forms.Button();
+            this.btnZoomIn = new MyControlsLibrary.MYRButton();
+            this.btnZoomOut = new MyControlsLibrary.MYRButton();
+            this.btnMyConnect = new MyControlsLibrary.MYRButton();
             this.crdsMy = new MissionPlanner.Controls.Coords();
             this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
             this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -2257,7 +2257,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 17460D;
+            this.windDir1.Direction = 18720D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2426,21 +2426,6 @@ namespace MissionPlanner.GCSViews
             // 
             this.bindingSourceStatusTab.DataSource = typeof(MissionPlanner.CurrentState);
             // 
-            // btnMyConnect
-            // 
-            this.btnMyConnect.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnMyConnect.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
-            this.btnMyConnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnMyConnect.BorderRadius = 10;
-            this.btnMyConnect.BorderSize = 4;
-            this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMyConnect.ImageList = this.ilMyImages;
-            this.btnMyConnect.Name = "btnMyConnect";
-            this.btnMyConnect.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMyConnect.UseVisualStyleBackColor = true;
-            this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
-            // 
             // ilMyImages
             // 
             this.ilMyImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMyImages.ImageStream")));
@@ -2518,18 +2503,30 @@ namespace MissionPlanner.GCSViews
             // 
             // btnLandCmd
             // 
+            this.btnLandCmd.BackColor = System.Drawing.Color.Silver;
+            this.btnLandCmd.BackgroundColor = System.Drawing.Color.Silver;
             resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
+            this.btnLandCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnLandCmd.BorderRadius = 10;
+            this.btnLandCmd.BorderSize = 0;
             this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLandCmd.Name = "btnLandCmd";
-            this.btnLandCmd.UseVisualStyleBackColor = true;
+            this.btnLandCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.UseVisualStyleBackColor = false;
             this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
             // 
             // btnToGo
             // 
+            this.btnToGo.BackColor = System.Drawing.Color.Silver;
+            this.btnToGo.BackgroundColor = System.Drawing.Color.Silver;
             resources.ApplyResources(this.btnToGo, "btnToGo");
+            this.btnToGo.BorderColor = System.Drawing.Color.Yellow;
+            this.btnToGo.BorderRadius = 10;
+            this.btnToGo.BorderSize = 0;
             this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnToGo.Name = "btnToGo";
-            this.btnToGo.UseVisualStyleBackColor = true;
+            this.btnToGo.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.UseVisualStyleBackColor = false;
             this.btnToGo.Click += new System.EventHandler(this.btnToGo_Click);
             // 
             // pnlConnectList
@@ -2801,17 +2798,29 @@ namespace MissionPlanner.GCSViews
             // 
             // btnTO
             // 
+            this.btnTO.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnTO.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             resources.ApplyResources(this.btnTO, "btnTO");
+            this.btnTO.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTO.BorderRadius = 10;
+            this.btnTO.BorderSize = 0;
             this.btnTO.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnTO.Name = "btnTO";
+            this.btnTO.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnTO.UseVisualStyleBackColor = true;
             this.btnTO.Click += new System.EventHandler(this.btnTO_Click);
             // 
             // btnCheckList
             // 
+            this.btnCheckList.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCheckList.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             resources.ApplyResources(this.btnCheckList, "btnCheckList");
+            this.btnCheckList.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCheckList.BorderRadius = 10;
+            this.btnCheckList.BorderSize = 0;
             this.btnCheckList.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCheckList.Name = "btnCheckList";
+            this.btnCheckList.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnCheckList.UseVisualStyleBackColor = true;
             this.btnCheckList.Click += new System.EventHandler(this.btnCheckList_Click);
             // 
@@ -2860,8 +2869,13 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnPoinToLatlngCmd, "btnPoinToLatlngCmd");
             this.btnPoinToLatlngCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnPoinToLatlngCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPoinToLatlngCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPoinToLatlngCmd.BorderRadius = 10;
+            this.btnPoinToLatlngCmd.BorderSize = 0;
             this.btnPoinToLatlngCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPoinToLatlngCmd.Name = "btnPoinToLatlngCmd";
+            this.btnPoinToLatlngCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnPoinToLatlngCmd.UseVisualStyleBackColor = false;
             this.btnPoinToLatlngCmd.Click += new System.EventHandler(this.btnPoinToLatlngCmd_Click);
             // 
@@ -2869,8 +2883,13 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnCamGuideCmd, "btnCamGuideCmd");
             this.btnCamGuideCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnCamGuideCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnCamGuideCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCamGuideCmd.BorderRadius = 10;
+            this.btnCamGuideCmd.BorderSize = 0;
             this.btnCamGuideCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCamGuideCmd.Name = "btnCamGuideCmd";
+            this.btnCamGuideCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnCamGuideCmd.UseVisualStyleBackColor = false;
             this.btnCamGuideCmd.Click += new System.EventHandler(this.btnCamGuideCmd_Click);
             // 
@@ -2878,8 +2897,13 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnPointToCmd, "btnPointToCmd");
             this.btnPointToCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnPointToCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPointToCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPointToCmd.BorderRadius = 10;
+            this.btnPointToCmd.BorderSize = 0;
             this.btnPointToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPointToCmd.Name = "btnPointToCmd";
+            this.btnPointToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnPointToCmd.UseVisualStyleBackColor = false;
             this.btnPointToCmd.Click += new System.EventHandler(this.btnPointToCmd_Click);
             // 
@@ -2887,8 +2911,13 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnPinPoint, "btnPinPoint");
             this.btnPinPoint.BackColor = System.Drawing.Color.Transparent;
+            this.btnPinPoint.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPinPoint.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPinPoint.BorderRadius = 10;
+            this.btnPinPoint.BorderSize = 0;
             this.btnPinPoint.ForeColor = System.Drawing.Color.IndianRed;
             this.btnPinPoint.Name = "btnPinPoint";
+            this.btnPinPoint.TextColor = System.Drawing.Color.IndianRed;
             this.btnPinPoint.UseVisualStyleBackColor = false;
             this.btnPinPoint.Click += new System.EventHandler(this.btnPinPoint_Click);
             // 
@@ -2896,8 +2925,13 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnLoiterCmd, "btnLoiterCmd");
             this.btnLoiterCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnLoiterCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnLoiterCmd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnLoiterCmd.BorderRadius = 10;
+            this.btnLoiterCmd.BorderSize = 0;
             this.btnLoiterCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoiterCmd.Name = "btnLoiterCmd";
+            this.btnLoiterCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoiterCmd.UseVisualStyleBackColor = false;
             this.btnLoiterCmd.Click += new System.EventHandler(this.btnLoiterCmd_Click);
             // 
@@ -2905,52 +2939,87 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnNavToCmd, "btnNavToCmd");
             this.btnNavToCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnNavToCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnNavToCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnNavToCmd.BorderRadius = 10;
+            this.btnNavToCmd.BorderSize = 0;
+            this.btnNavToCmd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNavToCmd.FlatAppearance.BorderSize = 5;
+            this.btnNavToCmd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnNavToCmd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
             this.btnNavToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNavToCmd.Name = "btnNavToCmd";
+            this.btnNavToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnNavToCmd.UseVisualStyleBackColor = false;
             this.btnNavToCmd.Click += new System.EventHandler(this.btnNavToCmd_Click);
             // 
             // btnBatDispaly
             // 
+            this.btnBatDispaly.BackColor = System.Drawing.Color.Transparent;
+            this.btnBatDispaly.BackgroundColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.btnBatDispaly, "btnBatDispaly");
+            this.btnBatDispaly.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnBatDispaly.BorderRadius = 10;
+            this.btnBatDispaly.BorderSize = 0;
             this.btnBatDispaly.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnBatDispaly.ImageList = this.ilMyImages;
             this.btnBatDispaly.Name = "btnBatDispaly";
-            this.btnBatDispaly.UseVisualStyleBackColor = true;
+            this.btnBatDispaly.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBatDispaly.UseVisualStyleBackColor = false;
             // 
             // btnRtlCmd
             // 
             this.btnRtlCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnRtlCmd.BackgroundColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.btnRtlCmd, "btnRtlCmd");
+            this.btnRtlCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRtlCmd.BorderRadius = 10;
+            this.btnRtlCmd.BorderSize = 0;
             this.btnRtlCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRtlCmd.Name = "btnRtlCmd";
+            this.btnRtlCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnRtlCmd.UseVisualStyleBackColor = false;
             this.btnRtlCmd.Click += new System.EventHandler(this.btnRtlCmd_Click);
             // 
             // btnLandEnable
             // 
             this.btnLandEnable.BackColor = System.Drawing.Color.Transparent;
+            this.btnLandEnable.BackgroundColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.btnLandEnable, "btnLandEnable");
+            this.btnLandEnable.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnLandEnable.BorderRadius = 10;
+            this.btnLandEnable.BorderSize = 0;
             this.btnLandEnable.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLandEnable.Name = "btnLandEnable";
+            this.btnLandEnable.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnLandEnable.UseVisualStyleBackColor = false;
             this.btnLandEnable.Click += new System.EventHandler(this.btnLandEnable_Click);
             // 
             // btnIasCmd
             // 
             this.btnIasCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnIasCmd.BackgroundColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.btnIasCmd, "btnIasCmd");
+            this.btnIasCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnIasCmd.BorderRadius = 10;
+            this.btnIasCmd.BorderSize = 0;
             this.btnIasCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnIasCmd.Name = "btnIasCmd";
+            this.btnIasCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnIasCmd.UseVisualStyleBackColor = false;
             this.btnIasCmd.Click += new System.EventHandler(this.btnIasCmd_Click);
             // 
             // btnAltCmd
             // 
             this.btnAltCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAltCmd.BackgroundColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.btnAltCmd, "btnAltCmd");
+            this.btnAltCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAltCmd.BorderRadius = 10;
+            this.btnAltCmd.BorderSize = 0;
             this.btnAltCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAltCmd.Name = "btnAltCmd";
+            this.btnAltCmd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnAltCmd.UseVisualStyleBackColor = false;
             this.btnAltCmd.Click += new System.EventHandler(this.btnAltCmd_Click);
             // 
@@ -2958,18 +3027,23 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.btnRuller, "btnRuller");
             this.btnRuller.BackColor = System.Drawing.Color.Transparent;
+            this.btnRuller.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnRuller.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRuller.BorderRadius = 10;
+            this.btnRuller.BorderSize = 0;
             this.btnRuller.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRuller.Name = "btnRuller";
+            this.btnRuller.TextColor = System.Drawing.Color.WhiteSmoke;
             this.btnRuller.UseVisualStyleBackColor = false;
             this.btnRuller.Click += new System.EventHandler(this.btnRuller_Click);
             // 
             // btnLock
             // 
             resources.ApplyResources(this.btnLock, "btnLock");
-            this.btnLock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnLock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnLock.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLock.BorderRadius = 12;
+            this.btnLock.BackColor = System.Drawing.Color.Transparent;
+            this.btnLock.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnLock.BorderColor = System.Drawing.Color.Blue;
+            this.btnLock.BorderRadius = 10;
             this.btnLock.BorderSize = 0;
             this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLock.Name = "btnLock";
@@ -2980,18 +3054,45 @@ namespace MissionPlanner.GCSViews
             // btnZoomIn
             // 
             resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
+            this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnZoomIn.BorderRadius = 10;
+            this.btnZoomIn.BorderSize = 0;
             this.btnZoomIn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.UseVisualStyleBackColor = true;
+            this.btnZoomIn.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomIn.UseVisualStyleBackColor = false;
             this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
             // 
             // btnZoomOut
             // 
             resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
+            this.btnZoomOut.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnZoomOut.BackgroundColor = System.Drawing.Color.PowderBlue;
+            this.btnZoomOut.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.btnZoomOut.BorderRadius = 10;
+            this.btnZoomOut.BorderSize = 0;
             this.btnZoomOut.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnZoomOut.Name = "btnZoomOut";
-            this.btnZoomOut.UseVisualStyleBackColor = true;
+            this.btnZoomOut.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomOut.UseVisualStyleBackColor = false;
             this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            // 
+            // btnMyConnect
+            // 
+            this.btnMyConnect.BackColor = System.Drawing.Color.Transparent;
+            this.btnMyConnect.BackgroundColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
+            this.btnMyConnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnMyConnect.BorderRadius = 10;
+            this.btnMyConnect.BorderSize = 0;
+            this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMyConnect.ImageList = this.ilMyImages;
+            this.btnMyConnect.Name = "btnMyConnect";
+            this.btnMyConnect.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMyConnect.UseVisualStyleBackColor = false;
+            this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
             // 
             // crdsMy
             // 
@@ -3421,29 +3522,29 @@ namespace MissionPlanner.GCSViews
         private Panel pnlMap;
         public Controls.myGMAP gMapControl1;
         private ImageList ilMyImages;
-        private Button btnZoomOut;
-        private Button btnRuller;
+        private MYRButton btnZoomOut;
+        private MYRButton btnRuller;
         private MYRButton btnLock;
-        private Button btnZoomIn;
-        private Button btnNavToCmd;
-        private Button btnBatDispaly;
-        private Button btnRtlCmd;
-        private Button btnLandEnable;
-        private Button btnIasCmd;
-        private Button btnAltCmd;
-        private Button btnPoinToLatlngCmd;
-        private Button btnCamGuideCmd;
-        private Button btnPointToCmd;
-        private Button btnPinPoint;
-        private Button btnLoiterCmd;
+        private MYRButton btnZoomIn;
+        private MYRButton btnNavToCmd;
+        private MYRButton btnBatDispaly;
+        private MYRButton btnRtlCmd;
+        private MYRButton btnLandEnable;
+        private MYRButton btnIasCmd;
+        private MYRButton btnAltCmd;
+        private MYRButton btnPoinToLatlngCmd;
+        private MYRButton btnCamGuideCmd;
+        private MYRButton btnPointToCmd;
+        private MYRButton btnPinPoint;
+        private MYRButton btnLoiterCmd;
         private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label lblRullerDistance;
         public Button btnSim;
-        private Button btnCheckList;
-        private Button btnTO;
+        private MYRButton btnCheckList;
+        private MYRButton btnTO;
         private Panel pnlCheckList;
         private Button btnDeletePois;
         private Button btnLoadPois;
@@ -3495,8 +3596,8 @@ namespace MissionPlanner.GCSViews
         private Panel pnlConnectList;
         private TextBox textBox1;
         private Controls.Coords crdsMy;
-        private Button btnToGo;
-        private Button btnLandCmd;
+        private MYRButton btnToGo;
+        private MYRButton btnLandCmd;
         private TextBox txtHomeDist;
         private Label label15;
     }

@@ -21,7 +21,7 @@ namespace MyControlsLibrary
         private Color borderColor = Color.PaleVioletRed;
 
         //Properties
-        [Category("RJ Code Advance")]
+        [Category("MYRButton Code Advance")]
         public int BorderSize
         {
             get { return borderSize; }
@@ -32,7 +32,7 @@ namespace MyControlsLibrary
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("MYRButton Code Advance")]
         public int BorderRadius
         {
             get { return borderRadius; }
@@ -45,7 +45,7 @@ namespace MyControlsLibrary
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("MYRButton Code Advance")]
         public Color BorderColor
         {
             get { return borderColor; }
@@ -55,14 +55,14 @@ namespace MyControlsLibrary
                 this.Invalidate();
             }
         }
-        [Category("RJ Code Advance")]
+        [Category("MYRButton Code Advance")]
         public Color BackgroundColor
         {
             get { return this.BackColor; }
             set { this.BackColor = value; }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("MYRButton Code Advance")]
         public Color TextColor
         {
             get { return this.ForeColor; }

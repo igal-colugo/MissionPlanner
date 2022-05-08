@@ -209,10 +209,19 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _connectState = value;
-                //on connect update values of bat
-                if(_connectState == connectStates.csConnected)
+
+                //on lamd/disconnect... reset view...
+                if (_connectState <= connectStates.csConnected)
                 {
-                    updateBattLimits();
+                    closeSecondaryButtons();
+                    updateManPointtoVisibillity(false);
+                }
+               
+
+                //on connect update values of bat
+                if (_connectState == connectStates.csConnected)
+                {
+                    updateBattLimits();                    
                 }
                 
                 btnTO.BeginInvokeIfRequired(() =>
@@ -2729,6 +2738,15 @@ namespace MissionPlanner.GCSViews
                     plla.DisplayICAO = !plla.DisplayICAO;
                 }
             }
+            closeSecondaryButtons();
+        }
+
+        private void closeSecondaryButtons()
+        {
+            btnToGo.Visible    = false;
+            btnLandCmd.Visible = false;
+            altCmdDisplay      = false;
+            iasCmdDisplay      = false;
         }
 
         private void myNavTo(double lat, double lng)
