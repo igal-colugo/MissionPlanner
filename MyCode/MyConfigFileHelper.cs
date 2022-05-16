@@ -28,6 +28,9 @@ using System.Web.Script.Serialization;
         public float LowBattVolt { get; set; } = 20.0f;
         public float CritBattVolt { get; set; } = 18.5f;
         public bool BalloonMode { get; set; } = false;
+        public int MinSpd { get; set; } = 10;
+        public int CruiseSpd { get; set; } = 20;
+        public int MaxSpd { get; set; } = 30;
 
 }
    //   }

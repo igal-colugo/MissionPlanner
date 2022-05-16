@@ -210,9 +210,9 @@ namespace MissionPlanner.GCSViews
             this.btnForceEnableclDone = new System.Windows.Forms.Button();
             this.btnEditCl = new System.Windows.Forms.Button();
             this.pnlSpeedCmd = new System.Windows.Forms.Panel();
-            this.btnSpdUp = new System.Windows.Forms.Button();
-            this.btnSpdDown = new System.Windows.Forms.Button();
-            this.txtSpdCmd = new System.Windows.Forms.TextBox();
+            this.btnCruiseSpd = new MyControlsLibrary.MYRButton();
+            this.btnMaxSpd = new MyControlsLibrary.MYRButton();
+            this.bntLowSpd = new MyControlsLibrary.MYRButton();
             this.pnlCheckList = new System.Windows.Forms.Panel();
             this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnClDone = new System.Windows.Forms.Button();
@@ -2257,7 +2257,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 18720D;
+            this.windDir1.Direction = 20160D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2619,33 +2619,55 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlSpeedCmd
             // 
-            this.pnlSpeedCmd.Controls.Add(this.btnSpdUp);
-            this.pnlSpeedCmd.Controls.Add(this.btnSpdDown);
-            this.pnlSpeedCmd.Controls.Add(this.txtSpdCmd);
+            this.pnlSpeedCmd.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSpeedCmd.Controls.Add(this.btnCruiseSpd);
+            this.pnlSpeedCmd.Controls.Add(this.btnMaxSpd);
+            this.pnlSpeedCmd.Controls.Add(this.bntLowSpd);
+            this.pnlSpeedCmd.ForeColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.pnlSpeedCmd, "pnlSpeedCmd");
             this.pnlSpeedCmd.Name = "pnlSpeedCmd";
             // 
-            // btnSpdUp
+            // btnCruiseSpd
             // 
-            resources.ApplyResources(this.btnSpdUp, "btnSpdUp");
-            this.btnSpdUp.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSpdUp.Name = "btnSpdUp";
-            this.btnSpdUp.UseVisualStyleBackColor = true;
-            this.btnSpdUp.Click += new System.EventHandler(this.btnSpdUp_Click);
+            resources.ApplyResources(this.btnCruiseSpd, "btnCruiseSpd");
+            this.btnCruiseSpd.BackColor = System.Drawing.Color.Silver;
+            this.btnCruiseSpd.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnCruiseSpd.BorderColor = System.Drawing.Color.Yellow;
+            this.btnCruiseSpd.BorderRadius = 10;
+            this.btnCruiseSpd.BorderSize = 0;
+            this.btnCruiseSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.Name = "btnCruiseSpd";
+            this.btnCruiseSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.UseVisualStyleBackColor = false;
+            this.btnCruiseSpd.Click += new System.EventHandler(this.btnCruiseSpd_Click);
             // 
-            // btnSpdDown
+            // btnMaxSpd
             // 
-            resources.ApplyResources(this.btnSpdDown, "btnSpdDown");
-            this.btnSpdDown.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSpdDown.Name = "btnSpdDown";
-            this.btnSpdDown.UseVisualStyleBackColor = true;
-            this.btnSpdDown.Click += new System.EventHandler(this.btnSpdDown_Click);
+            this.btnMaxSpd.BackColor = System.Drawing.Color.Silver;
+            this.btnMaxSpd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnMaxSpd, "btnMaxSpd");
+            this.btnMaxSpd.BorderColor = System.Drawing.Color.Yellow;
+            this.btnMaxSpd.BorderRadius = 10;
+            this.btnMaxSpd.BorderSize = 0;
+            this.btnMaxSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.Name = "btnMaxSpd";
+            this.btnMaxSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.UseVisualStyleBackColor = false;
+            this.btnMaxSpd.Click += new System.EventHandler(this.btnMaxSpd_Click);
             // 
-            // txtSpdCmd
+            // bntLowSpd
             // 
-            resources.ApplyResources(this.txtSpdCmd, "txtSpdCmd");
-            this.txtSpdCmd.Name = "txtSpdCmd";
-            this.txtSpdCmd.ReadOnly = true;
+            this.bntLowSpd.BackColor = System.Drawing.Color.Silver;
+            this.bntLowSpd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.bntLowSpd, "bntLowSpd");
+            this.bntLowSpd.BorderColor = System.Drawing.Color.Yellow;
+            this.bntLowSpd.BorderRadius = 10;
+            this.bntLowSpd.BorderSize = 0;
+            this.bntLowSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.Name = "bntLowSpd";
+            this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.UseVisualStyleBackColor = false;
+            this.bntLowSpd.Click += new System.EventHandler(this.bntLowSpd_Click);
             // 
             // pnlCheckList
             // 
@@ -3068,8 +3090,8 @@ namespace MissionPlanner.GCSViews
             // btnZoomOut
             // 
             resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
-            this.btnZoomOut.BackColor = System.Drawing.Color.PowderBlue;
-            this.btnZoomOut.BackgroundColor = System.Drawing.Color.PowderBlue;
+            this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnZoomOut.BackgroundColor = System.Drawing.Color.Transparent;
             this.btnZoomOut.BorderColor = System.Drawing.Color.LightSteelBlue;
             this.btnZoomOut.BorderRadius = 10;
             this.btnZoomOut.BorderSize = 0;
@@ -3304,7 +3326,6 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.pnlSpeedCmd.ResumeLayout(false);
-            this.pnlSpeedCmd.PerformLayout();
             this.pnlCheckList.ResumeLayout(false);
             this.pnlAlt.ResumeLayout(false);
             this.pnlAlt.PerformLayout();
@@ -3578,9 +3599,6 @@ namespace MissionPlanner.GCSViews
         private TextBox txtAltCmd;
         private Button btnClDone;
         private Panel pnlSpeedCmd;
-        private Button btnSpdUp;
-        private Button btnSpdDown;
-        private TextBox txtSpdCmd;
         private Controls.PreFlight.CheckListControl checkListControl2;
         public Button btnEditCl;
         public Button btnForceEnableclDone;
@@ -3600,5 +3618,8 @@ namespace MissionPlanner.GCSViews
         private MYRButton btnLandCmd;
         private TextBox txtHomeDist;
         private Label label15;
+        private MYRButton bntLowSpd;
+        private MYRButton btnMaxSpd;
+        private MYRButton btnCruiseSpd;
     }
 }

@@ -70,6 +70,9 @@ namespace MissionPlanner.GCSViews
         private readonly string myTargetsPathBase = Path.Combine(MySettings.myBasePath, "targets");
         private readonly string myVidPlayerPath = Path.Combine(MySettings.myBasePath, "VideoPlayer\\VideoPlayer.exe");
         private readonly bool _balloonModeOn = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).BalloonMode;
+        private readonly int _minSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).MinSpd;
+        private readonly int _cruiseSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).CruiseSpd;
+        private readonly int _maxSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).MaxSpd;
 
         //end my code
 
@@ -337,15 +340,6 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _iasCmdDisplay = value;
-
-                if (_iasCmdDisplay)
-                {
-                    myIasCmd = (int)Math.Round(MainV2.comPort.MAV.cs.targetairspeed);
-                    txtSpdCmd.BeginInvokeIfRequired(() =>
-                    {
-                        txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
-                    });
-                }
 
                 pnlSpeedCmd.Visible = value;
             }
@@ -6497,19 +6491,11 @@ namespace MissionPlanner.GCSViews
             iasCmdDisplay = !iasCmdDisplay;
         }
 
-        private void btnSpdUp_Click(object sender, EventArgs e)
-        {
-            mySpeedCmd(1);
-        }
+       
 
-        private void btnSpdDown_Click(object sender, EventArgs e)
+        private void mySpeedCmd(int spdCmd)
         {
-            mySpeedCmd(-1);
-        }
-
-        private void mySpeedCmd(int spdDif)
-        {
-            myIasCmd = myIasCmd + spdDif;
+            myIasCmd = spdCmd;
             //comon... negative air speed?
             if (myIasCmd < 0)
                 myIasCmd = 0;
@@ -6522,12 +6508,7 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-                    MainV2.comPort.setParam("TRIM_ARSPD_CM", ((float)(myIasCmd) * 100.0f));
-                    txtSpdCmd.BeginInvokeIfRequired(() =>
-                    {
-                        txtSpdCmd.Text = string.Format($"{myIasCmd:0} m/s");
-                    });
-
+                    MainV2.comPort.setParam("TRIM_ARSPD_CM", ((float)(myIasCmd) * 100.0f));                    
                 }
                 catch
                 {
@@ -6540,7 +6521,7 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-                    MainV2.comPort.setParam("TRIM_THROTTLE", (float)(myIasCmd + spdDif));
+                    MainV2.comPort.setParam("TRIM_THROTTLE", (float)(myIasCmd + spdCmd));
                 }
                 catch
                 {
@@ -6641,6 +6622,21 @@ namespace MissionPlanner.GCSViews
         private void btnLandEnable_Click(object sender, EventArgs e)
         {
             btnLandCmd.Visible = !btnLandCmd.Visible;
+        }
+
+        private void bntLowSpd_Click(object sender, EventArgs e)
+        {
+            mySpeedCmd(_minSpd);
+        }
+
+        private void btnCruiseSpd_Click(object sender, EventArgs e)
+        {
+            mySpeedCmd(_cruiseSpd);
+        }
+
+        private void btnMaxSpd_Click(object sender, EventArgs e)
+        {
+            mySpeedCmd(_maxSpd);
         }
     }
 }
