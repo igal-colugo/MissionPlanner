@@ -6288,7 +6288,7 @@ namespace MissionPlanner.GCSViews
             catch (Exception ex)
             {
                 if (MainV2.instance.myDebug)
-                    CustomMessageBox.Show("My planner error.\n" + ex);
+                    CustomMessageBox.Show("2MT error.\n" + ex);
 
                 log.Debug(ex);
 

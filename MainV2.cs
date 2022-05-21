@@ -3630,7 +3630,7 @@ namespace MissionPlanner
             {
                 Tracking.AddException(ex);
             }
-            Text = "MyPlanner ver: " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+            Text = "2MT ver: " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
             this.ResumeLayout();
             
             Program.Splash?.Close();

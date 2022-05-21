@@ -63,7 +63,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>MyPlanner</AssemblyName>
+    <AssemblyName>2MT</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>23CFAC2EC42235B91491F8780CAB219C017A791D</ManifestCertificateThumbprint>

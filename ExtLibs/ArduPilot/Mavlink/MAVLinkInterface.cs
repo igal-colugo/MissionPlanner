@@ -775,7 +775,7 @@ Mission Planner waits for 2 valid heartbeat packets before connecting");
 
                 countDown.Stop();
 
-                char[] temp = ("MyPlanner " + getAppVersion() + "\0").ToCharArray();
+                char[] temp = ("2MT " + getAppVersion() + "\0").ToCharArray();
                 Array.Resize(ref temp, 50);
 
                 //

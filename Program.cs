@@ -167,7 +167,7 @@ namespace MissionPlanner
                 return;
             }
 
-            name = "MyPlanner";
+            name = "2MT";
 
             try
             {

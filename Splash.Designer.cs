@@ -40,7 +40,7 @@
             this.TXT_version.Name = "TXT_version";
             this.TXT_version.Size = new System.Drawing.Size(155, 25);
             this.TXT_version.TabIndex = 1;
-            this.TXT_version.Text = "My Planner ";
+            this.TXT_version.Text = "2MT ";
             this.TXT_version.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Splash
@@ -57,7 +57,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 375);
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "My Planner";
+            this.Text = "2MT";
             this.TopMost = true;
             this.ResumeLayout(false);
 

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MyPlanner")]
-[assembly: AssemblyDescription("MyPlanner ground control station for ardupilot")]
+[assembly: AssemblyTitle("2MT")]
+[assembly: AssemblyDescription("2MT ground control station for ardupilot")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("White Label")]
-[assembly: AssemblyProduct("MyPlanner")]
+[assembly: AssemblyProduct("2MT")]
 [assembly: AssemblyCopyright("Copyright ©  2021-2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -29,4 +29,4 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 [assembly: AssemblyVersion("1.3.75.1")]
-[assembly: AssemblyFileVersion("1.1.2.0")]
+[assembly: AssemblyFileVersion("1.2.0.0")]
