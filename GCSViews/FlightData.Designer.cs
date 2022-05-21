@@ -193,9 +193,13 @@ namespace MissionPlanner.GCSViews
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
             this.pnlAlt = new System.Windows.Forms.Panel();
+            this.btnAltup = new MyControlsLibrary.MYRButton();
+            this.btnAltdwn = new MyControlsLibrary.MYRButton();
             this.txtAltCmd = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtHomeDist = new System.Windows.Forms.TextBox();
+            this.btnLandCmd = new MyControlsLibrary.MYRButton();
+            this.btnToGo = new MyControlsLibrary.MYRButton();
             this.pnlConnectList = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbPointToMan = new System.Windows.Forms.GroupBox();
@@ -210,7 +214,11 @@ namespace MissionPlanner.GCSViews
             this.btnForceEnableclDone = new System.Windows.Forms.Button();
             this.btnEditCl = new System.Windows.Forms.Button();
             this.pnlSpeedCmd = new System.Windows.Forms.Panel();
+            this.btnCruiseSpd = new MyControlsLibrary.MYRButton();
+            this.btnMaxSpd = new MyControlsLibrary.MYRButton();
+            this.bntLowSpd = new MyControlsLibrary.MYRButton();
             this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.btnClDone = new System.Windows.Forms.Button();
             this.gbPoiCoords = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -226,36 +234,14 @@ namespace MissionPlanner.GCSViews
             this.btnDeletePois = new System.Windows.Forms.Button();
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
+            this.btnTO = new MyControlsLibrary.MYRButton();
+            this.btnCheckList = new MyControlsLibrary.MYRButton();
             this.btnSim = new System.Windows.Forms.Button();
             this.lblRullerDistance = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.crdsMy = new MissionPlanner.Controls.Coords();
-            this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
-            this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
-            this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.btnAltup = new MyControlsLibrary.MYRButton();
-            this.btnAltdwn = new MyControlsLibrary.MYRButton();
-            this.btnLandCmd = new MyControlsLibrary.MYRButton();
-            this.btnToGo = new MyControlsLibrary.MYRButton();
-            this.btnCruiseSpd = new MyControlsLibrary.MYRButton();
-            this.btnMaxSpd = new MyControlsLibrary.MYRButton();
-            this.bntLowSpd = new MyControlsLibrary.MYRButton();
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.btnTO = new MyControlsLibrary.MYRButton();
-            this.btnCheckList = new MyControlsLibrary.MYRButton();
             this.btnPoinToLatlngCmd = new MyControlsLibrary.MYRButton();
             this.btnCamGuideCmd = new MyControlsLibrary.MYRButton();
             this.btnPointToCmd = new MyControlsLibrary.MYRButton();
@@ -272,6 +258,20 @@ namespace MissionPlanner.GCSViews
             this.btnZoomIn = new MyControlsLibrary.MYRButton();
             this.btnZoomOut = new MyControlsLibrary.MYRButton();
             this.btnMyConnect = new MyControlsLibrary.MYRButton();
+            this.crdsMy = new MissionPlanner.Controls.Coords();
+            this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
+            this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
+            this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2257,7 +2257,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 21420D;
+            this.windDir1.Direction = 24120D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2496,6 +2496,36 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlAlt, "pnlAlt");
             this.pnlAlt.Name = "pnlAlt";
             // 
+            // btnAltup
+            // 
+            this.btnAltup.BackColor = System.Drawing.Color.Silver;
+            this.btnAltup.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnAltup, "btnAltup");
+            this.btnAltup.BorderColor = System.Drawing.Color.Black;
+            this.btnAltup.BorderRadius = 10;
+            this.btnAltup.BorderSize = 4;
+            this.btnAltup.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltup.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnAltup.Name = "btnAltup";
+            this.btnAltup.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltup.UseVisualStyleBackColor = false;
+            this.btnAltup.Click += new System.EventHandler(this.btnAltup_Click);
+            // 
+            // btnAltdwn
+            // 
+            this.btnAltdwn.BackColor = System.Drawing.Color.Silver;
+            this.btnAltdwn.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnAltdwn, "btnAltdwn");
+            this.btnAltdwn.BorderColor = System.Drawing.Color.Black;
+            this.btnAltdwn.BorderRadius = 10;
+            this.btnAltdwn.BorderSize = 4;
+            this.btnAltdwn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltdwn.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnAltdwn.Name = "btnAltdwn";
+            this.btnAltdwn.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltdwn.UseVisualStyleBackColor = false;
+            this.btnAltdwn.Click += new System.EventHandler(this.btnAltdwn_Click);
+            // 
             // txtAltCmd
             // 
             resources.ApplyResources(this.txtAltCmd, "txtAltCmd");
@@ -2514,6 +2544,36 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.txtHomeDist, "txtHomeDist");
             this.txtHomeDist.Name = "txtHomeDist";
             this.txtHomeDist.ReadOnly = true;
+            // 
+            // btnLandCmd
+            // 
+            this.btnLandCmd.BackColor = System.Drawing.Color.Silver;
+            this.btnLandCmd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
+            this.btnLandCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnLandCmd.BorderRadius = 10;
+            this.btnLandCmd.BorderSize = 4;
+            this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnLandCmd.Name = "btnLandCmd";
+            this.btnLandCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.UseVisualStyleBackColor = false;
+            this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
+            // 
+            // btnToGo
+            // 
+            this.btnToGo.BackColor = System.Drawing.Color.Silver;
+            this.btnToGo.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnToGo, "btnToGo");
+            this.btnToGo.BorderColor = System.Drawing.Color.Black;
+            this.btnToGo.BorderRadius = 10;
+            this.btnToGo.BorderSize = 4;
+            this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnToGo.Name = "btnToGo";
+            this.btnToGo.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.UseVisualStyleBackColor = false;
+            this.btnToGo.Click += new System.EventHandler(this.btnToGo_Click);
             // 
             // pnlConnectList
             // 
@@ -2613,12 +2673,62 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlSpeedCmd, "pnlSpeedCmd");
             this.pnlSpeedCmd.Name = "pnlSpeedCmd";
             // 
+            // btnCruiseSpd
+            // 
+            resources.ApplyResources(this.btnCruiseSpd, "btnCruiseSpd");
+            this.btnCruiseSpd.BackColor = System.Drawing.Color.Silver;
+            this.btnCruiseSpd.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnCruiseSpd.BorderColor = System.Drawing.Color.Black;
+            this.btnCruiseSpd.BorderRadius = 10;
+            this.btnCruiseSpd.BorderSize = 4;
+            this.btnCruiseSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnCruiseSpd.Name = "btnCruiseSpd";
+            this.btnCruiseSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.UseVisualStyleBackColor = false;
+            this.btnCruiseSpd.Click += new System.EventHandler(this.btnCruiseSpd_Click);
+            // 
+            // btnMaxSpd
+            // 
+            this.btnMaxSpd.BackColor = System.Drawing.Color.Silver;
+            this.btnMaxSpd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnMaxSpd, "btnMaxSpd");
+            this.btnMaxSpd.BorderColor = System.Drawing.Color.Black;
+            this.btnMaxSpd.BorderRadius = 10;
+            this.btnMaxSpd.BorderSize = 4;
+            this.btnMaxSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnMaxSpd.Name = "btnMaxSpd";
+            this.btnMaxSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.UseVisualStyleBackColor = false;
+            this.btnMaxSpd.Click += new System.EventHandler(this.btnMaxSpd_Click);
+            // 
+            // bntLowSpd
+            // 
+            this.bntLowSpd.BackColor = System.Drawing.Color.Silver;
+            this.bntLowSpd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.bntLowSpd, "bntLowSpd");
+            this.bntLowSpd.BorderColor = System.Drawing.Color.Black;
+            this.bntLowSpd.BorderRadius = 10;
+            this.bntLowSpd.BorderSize = 4;
+            this.bntLowSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.bntLowSpd.Name = "bntLowSpd";
+            this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.UseVisualStyleBackColor = false;
+            this.bntLowSpd.Click += new System.EventHandler(this.bntLowSpd_Click);
+            // 
             // pnlCheckList
             // 
             resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
             this.pnlCheckList.Controls.Add(this.checkListControl2);
             this.pnlCheckList.Controls.Add(this.btnClDone);
             this.pnlCheckList.Name = "pnlCheckList";
+            // 
+            // checkListControl2
+            // 
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
             // 
             // btnClDone
             // 
@@ -2727,6 +2837,36 @@ namespace MissionPlanner.GCSViews
             this.btnAddPoi.UseVisualStyleBackColor = true;
             this.btnAddPoi.Click += new System.EventHandler(this.btnAddPoi_Click);
             // 
+            // btnTO
+            // 
+            this.btnTO.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnTO.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            resources.ApplyResources(this.btnTO, "btnTO");
+            this.btnTO.BorderColor = System.Drawing.Color.Black;
+            this.btnTO.BorderRadius = 10;
+            this.btnTO.BorderSize = 4;
+            this.btnTO.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTO.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnTO.Name = "btnTO";
+            this.btnTO.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTO.UseVisualStyleBackColor = true;
+            this.btnTO.Click += new System.EventHandler(this.btnTO_Click);
+            // 
+            // btnCheckList
+            // 
+            this.btnCheckList.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCheckList.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            resources.ApplyResources(this.btnCheckList, "btnCheckList");
+            this.btnCheckList.BorderColor = System.Drawing.Color.Black;
+            this.btnCheckList.BorderRadius = 10;
+            this.btnCheckList.BorderSize = 4;
+            this.btnCheckList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCheckList.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnCheckList.Name = "btnCheckList";
+            this.btnCheckList.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCheckList.UseVisualStyleBackColor = true;
+            this.btnCheckList.Click += new System.EventHandler(this.btnCheckList_Click);
+            // 
             // btnSim
             // 
             resources.ApplyResources(this.btnSim, "btnSim");
@@ -2767,6 +2907,251 @@ namespace MissionPlanner.GCSViews
             this.label10.ForeColor = System.Drawing.Color.Red;
             this.label10.Name = "label10";
             this.label10.Tag = "custom";
+            // 
+            // btnPoinToLatlngCmd
+            // 
+            resources.ApplyResources(this.btnPoinToLatlngCmd, "btnPoinToLatlngCmd");
+            this.btnPoinToLatlngCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnPoinToLatlngCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPoinToLatlngCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnPoinToLatlngCmd.BorderRadius = 10;
+            this.btnPoinToLatlngCmd.BorderSize = 4;
+            this.btnPoinToLatlngCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPoinToLatlngCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnPoinToLatlngCmd.Name = "btnPoinToLatlngCmd";
+            this.btnPoinToLatlngCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPoinToLatlngCmd.UseVisualStyleBackColor = false;
+            this.btnPoinToLatlngCmd.Click += new System.EventHandler(this.btnPoinToLatlngCmd_Click);
+            // 
+            // btnCamGuideCmd
+            // 
+            resources.ApplyResources(this.btnCamGuideCmd, "btnCamGuideCmd");
+            this.btnCamGuideCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnCamGuideCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnCamGuideCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnCamGuideCmd.BorderRadius = 10;
+            this.btnCamGuideCmd.BorderSize = 4;
+            this.btnCamGuideCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCamGuideCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnCamGuideCmd.Name = "btnCamGuideCmd";
+            this.btnCamGuideCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCamGuideCmd.UseVisualStyleBackColor = false;
+            this.btnCamGuideCmd.Click += new System.EventHandler(this.btnCamGuideCmd_Click);
+            // 
+            // btnPointToCmd
+            // 
+            resources.ApplyResources(this.btnPointToCmd, "btnPointToCmd");
+            this.btnPointToCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnPointToCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPointToCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnPointToCmd.BorderRadius = 10;
+            this.btnPointToCmd.BorderSize = 4;
+            this.btnPointToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPointToCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnPointToCmd.Name = "btnPointToCmd";
+            this.btnPointToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPointToCmd.UseVisualStyleBackColor = false;
+            this.btnPointToCmd.Click += new System.EventHandler(this.btnPointToCmd_Click);
+            // 
+            // btnPinPoint
+            // 
+            resources.ApplyResources(this.btnPinPoint, "btnPinPoint");
+            this.btnPinPoint.BackColor = System.Drawing.Color.Transparent;
+            this.btnPinPoint.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPinPoint.BorderColor = System.Drawing.Color.Black;
+            this.btnPinPoint.BorderRadius = 10;
+            this.btnPinPoint.BorderSize = 4;
+            this.btnPinPoint.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnPinPoint.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnPinPoint.Name = "btnPinPoint";
+            this.btnPinPoint.TextColor = System.Drawing.Color.IndianRed;
+            this.btnPinPoint.UseVisualStyleBackColor = false;
+            this.btnPinPoint.Click += new System.EventHandler(this.btnPinPoint_Click);
+            // 
+            // btnLoiterCmd
+            // 
+            resources.ApplyResources(this.btnLoiterCmd, "btnLoiterCmd");
+            this.btnLoiterCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnLoiterCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnLoiterCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnLoiterCmd.BorderRadius = 10;
+            this.btnLoiterCmd.BorderSize = 4;
+            this.btnLoiterCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLoiterCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnLoiterCmd.Name = "btnLoiterCmd";
+            this.btnLoiterCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLoiterCmd.UseVisualStyleBackColor = false;
+            this.btnLoiterCmd.Click += new System.EventHandler(this.btnLoiterCmd_Click);
+            // 
+            // btnNavToCmd
+            // 
+            resources.ApplyResources(this.btnNavToCmd, "btnNavToCmd");
+            this.btnNavToCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnNavToCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnNavToCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnNavToCmd.BorderRadius = 10;
+            this.btnNavToCmd.BorderSize = 4;
+            this.btnNavToCmd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNavToCmd.FlatAppearance.BorderSize = 5;
+            this.btnNavToCmd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnNavToCmd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
+            this.btnNavToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNavToCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnNavToCmd.Name = "btnNavToCmd";
+            this.btnNavToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNavToCmd.UseVisualStyleBackColor = false;
+            this.btnNavToCmd.Click += new System.EventHandler(this.btnNavToCmd_Click);
+            // 
+            // btnBatDispaly
+            // 
+            this.btnBatDispaly.BackColor = System.Drawing.Color.Lavender;
+            this.btnBatDispaly.BackgroundColor = System.Drawing.Color.Lavender;
+            resources.ApplyResources(this.btnBatDispaly, "btnBatDispaly");
+            this.btnBatDispaly.BorderColor = System.Drawing.Color.Black;
+            this.btnBatDispaly.BorderRadius = 10;
+            this.btnBatDispaly.BorderSize = 4;
+            this.btnBatDispaly.ForeColor = System.Drawing.Color.Lime;
+            this.btnBatDispaly.ImageList = this.ilMyImages;
+            this.btnBatDispaly.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnBatDispaly.Name = "btnBatDispaly";
+            this.btnBatDispaly.TextColor = System.Drawing.Color.Lime;
+            this.btnBatDispaly.UseVisualStyleBackColor = false;
+            // 
+            // btnRtlCmd
+            // 
+            this.btnRtlCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnRtlCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnRtlCmd, "btnRtlCmd");
+            this.btnRtlCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnRtlCmd.BorderRadius = 10;
+            this.btnRtlCmd.BorderSize = 4;
+            this.btnRtlCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRtlCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnRtlCmd.Name = "btnRtlCmd";
+            this.btnRtlCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRtlCmd.UseVisualStyleBackColor = false;
+            this.btnRtlCmd.Click += new System.EventHandler(this.btnRtlCmd_Click);
+            // 
+            // btnLandEnable
+            // 
+            this.btnLandEnable.BackColor = System.Drawing.Color.Transparent;
+            this.btnLandEnable.BackgroundColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnLandEnable, "btnLandEnable");
+            this.btnLandEnable.BorderColor = System.Drawing.Color.Black;
+            this.btnLandEnable.BorderRadius = 10;
+            this.btnLandEnable.BorderSize = 4;
+            this.btnLandEnable.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandEnable.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnLandEnable.Name = "btnLandEnable";
+            this.btnLandEnable.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandEnable.UseVisualStyleBackColor = false;
+            this.btnLandEnable.Click += new System.EventHandler(this.btnLandEnable_Click);
+            // 
+            // btnIasCmd
+            // 
+            this.btnIasCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnIasCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnIasCmd, "btnIasCmd");
+            this.btnIasCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnIasCmd.BorderRadius = 10;
+            this.btnIasCmd.BorderSize = 4;
+            this.btnIasCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnIasCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnIasCmd.Name = "btnIasCmd";
+            this.btnIasCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnIasCmd.UseVisualStyleBackColor = false;
+            this.btnIasCmd.Click += new System.EventHandler(this.btnIasCmd_Click);
+            // 
+            // btnAltCmd
+            // 
+            this.btnAltCmd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAltCmd.BackgroundColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnAltCmd, "btnAltCmd");
+            this.btnAltCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnAltCmd.BorderRadius = 10;
+            this.btnAltCmd.BorderSize = 4;
+            this.btnAltCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnAltCmd.Name = "btnAltCmd";
+            this.btnAltCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltCmd.UseVisualStyleBackColor = false;
+            this.btnAltCmd.Click += new System.EventHandler(this.btnAltCmd_Click);
+            // 
+            // btnRuller
+            // 
+            resources.ApplyResources(this.btnRuller, "btnRuller");
+            this.btnRuller.BackColor = System.Drawing.Color.Transparent;
+            this.btnRuller.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnRuller.BorderColor = System.Drawing.Color.Black;
+            this.btnRuller.BorderRadius = 10;
+            this.btnRuller.BorderSize = 4;
+            this.btnRuller.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRuller.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnRuller.Name = "btnRuller";
+            this.btnRuller.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRuller.UseVisualStyleBackColor = false;
+            this.btnRuller.Click += new System.EventHandler(this.btnRuller_Click);
+            // 
+            // btnLock
+            // 
+            resources.ApplyResources(this.btnLock, "btnLock");
+            this.btnLock.BackColor = System.Drawing.Color.Transparent;
+            this.btnLock.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnLock.BorderColor = System.Drawing.Color.Black;
+            this.btnLock.BorderRadius = 10;
+            this.btnLock.BorderSize = 4;
+            this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLock.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnLock.Name = "btnLock";
+            this.btnLock.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLock.UseVisualStyleBackColor = false;
+            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
+            // 
+            // btnZoomIn
+            // 
+            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
+            this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnZoomIn.BorderColor = System.Drawing.Color.Black;
+            this.btnZoomIn.BorderRadius = 10;
+            this.btnZoomIn.BorderSize = 4;
+            this.btnZoomIn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomIn.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.btnZoomIn.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomIn.UseVisualStyleBackColor = false;
+            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
+            // 
+            // btnZoomOut
+            // 
+            resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
+            this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnZoomOut.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnZoomOut.BorderColor = System.Drawing.Color.Black;
+            this.btnZoomOut.BorderRadius = 10;
+            this.btnZoomOut.BorderSize = 4;
+            this.btnZoomOut.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomOut.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnZoomOut.Name = "btnZoomOut";
+            this.btnZoomOut.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomOut.UseVisualStyleBackColor = false;
+            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
+            // 
+            // btnMyConnect
+            // 
+            this.btnMyConnect.BackColor = System.Drawing.Color.Transparent;
+            this.btnMyConnect.BackgroundColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
+            this.btnMyConnect.BorderColor = System.Drawing.Color.Black;
+            this.btnMyConnect.BorderRadius = 10;
+            this.btnMyConnect.BorderSize = 4;
+            this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMyConnect.ImageList = this.ilMyImages;
+            this.btnMyConnect.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnMyConnect.Name = "btnMyConnect";
+            this.btnMyConnect.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMyConnect.UseVisualStyleBackColor = false;
+            this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
             // 
             // crdsMy
             // 
@@ -2896,366 +3281,6 @@ namespace MissionPlanner.GCSViews
             // 
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
-            // 
-            // btnAltup
-            // 
-            this.btnAltup.BackColor = System.Drawing.Color.Silver;
-            this.btnAltup.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnAltup, "btnAltup");
-            this.btnAltup.BorderColor = System.Drawing.Color.Yellow;
-            this.btnAltup.BorderRadius = 10;
-            this.btnAltup.BorderSize = 0;
-            this.btnAltup.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltup.Name = "btnAltup";
-            this.btnAltup.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltup.UseVisualStyleBackColor = false;
-            this.btnAltup.Click += new System.EventHandler(this.btnAltup_Click);
-            // 
-            // btnAltdwn
-            // 
-            this.btnAltdwn.BackColor = System.Drawing.Color.Silver;
-            this.btnAltdwn.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnAltdwn, "btnAltdwn");
-            this.btnAltdwn.BorderColor = System.Drawing.Color.Yellow;
-            this.btnAltdwn.BorderRadius = 10;
-            this.btnAltdwn.BorderSize = 0;
-            this.btnAltdwn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltdwn.Name = "btnAltdwn";
-            this.btnAltdwn.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltdwn.UseVisualStyleBackColor = false;
-            this.btnAltdwn.Click += new System.EventHandler(this.btnAltdwn_Click);
-            // 
-            // btnLandCmd
-            // 
-            this.btnLandCmd.BackColor = System.Drawing.Color.Silver;
-            this.btnLandCmd.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
-            this.btnLandCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnLandCmd.BorderRadius = 10;
-            this.btnLandCmd.BorderSize = 0;
-            this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandCmd.Name = "btnLandCmd";
-            this.btnLandCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandCmd.UseVisualStyleBackColor = false;
-            this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
-            // 
-            // btnToGo
-            // 
-            this.btnToGo.BackColor = System.Drawing.Color.Silver;
-            this.btnToGo.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnToGo, "btnToGo");
-            this.btnToGo.BorderColor = System.Drawing.Color.Yellow;
-            this.btnToGo.BorderRadius = 10;
-            this.btnToGo.BorderSize = 0;
-            this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToGo.Name = "btnToGo";
-            this.btnToGo.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToGo.UseVisualStyleBackColor = false;
-            this.btnToGo.Click += new System.EventHandler(this.btnToGo_Click);
-            // 
-            // btnCruiseSpd
-            // 
-            resources.ApplyResources(this.btnCruiseSpd, "btnCruiseSpd");
-            this.btnCruiseSpd.BackColor = System.Drawing.Color.Silver;
-            this.btnCruiseSpd.BackgroundColor = System.Drawing.Color.Silver;
-            this.btnCruiseSpd.BorderColor = System.Drawing.Color.Yellow;
-            this.btnCruiseSpd.BorderRadius = 10;
-            this.btnCruiseSpd.BorderSize = 0;
-            this.btnCruiseSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCruiseSpd.Name = "btnCruiseSpd";
-            this.btnCruiseSpd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCruiseSpd.UseVisualStyleBackColor = false;
-            this.btnCruiseSpd.Click += new System.EventHandler(this.btnCruiseSpd_Click);
-            // 
-            // btnMaxSpd
-            // 
-            this.btnMaxSpd.BackColor = System.Drawing.Color.Silver;
-            this.btnMaxSpd.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnMaxSpd, "btnMaxSpd");
-            this.btnMaxSpd.BorderColor = System.Drawing.Color.Yellow;
-            this.btnMaxSpd.BorderRadius = 10;
-            this.btnMaxSpd.BorderSize = 0;
-            this.btnMaxSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMaxSpd.Name = "btnMaxSpd";
-            this.btnMaxSpd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMaxSpd.UseVisualStyleBackColor = false;
-            this.btnMaxSpd.Click += new System.EventHandler(this.btnMaxSpd_Click);
-            // 
-            // bntLowSpd
-            // 
-            this.bntLowSpd.BackColor = System.Drawing.Color.Silver;
-            this.bntLowSpd.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.bntLowSpd, "bntLowSpd");
-            this.bntLowSpd.BorderColor = System.Drawing.Color.Yellow;
-            this.bntLowSpd.BorderRadius = 10;
-            this.bntLowSpd.BorderSize = 0;
-            this.bntLowSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bntLowSpd.Name = "bntLowSpd";
-            this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.bntLowSpd.UseVisualStyleBackColor = false;
-            this.bntLowSpd.Click += new System.EventHandler(this.bntLowSpd_Click);
-            // 
-            // checkListControl2
-            // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
-            // 
-            // btnTO
-            // 
-            this.btnTO.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnTO.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            resources.ApplyResources(this.btnTO, "btnTO");
-            this.btnTO.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnTO.BorderRadius = 10;
-            this.btnTO.BorderSize = 0;
-            this.btnTO.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTO.Name = "btnTO";
-            this.btnTO.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTO.UseVisualStyleBackColor = true;
-            this.btnTO.Click += new System.EventHandler(this.btnTO_Click);
-            // 
-            // btnCheckList
-            // 
-            this.btnCheckList.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnCheckList.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            resources.ApplyResources(this.btnCheckList, "btnCheckList");
-            this.btnCheckList.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnCheckList.BorderRadius = 10;
-            this.btnCheckList.BorderSize = 0;
-            this.btnCheckList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCheckList.Name = "btnCheckList";
-            this.btnCheckList.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCheckList.UseVisualStyleBackColor = true;
-            this.btnCheckList.Click += new System.EventHandler(this.btnCheckList_Click);
-            // 
-            // btnPoinToLatlngCmd
-            // 
-            resources.ApplyResources(this.btnPoinToLatlngCmd, "btnPoinToLatlngCmd");
-            this.btnPoinToLatlngCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnPoinToLatlngCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnPoinToLatlngCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPoinToLatlngCmd.BorderRadius = 10;
-            this.btnPoinToLatlngCmd.BorderSize = 0;
-            this.btnPoinToLatlngCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPoinToLatlngCmd.Name = "btnPoinToLatlngCmd";
-            this.btnPoinToLatlngCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPoinToLatlngCmd.UseVisualStyleBackColor = false;
-            this.btnPoinToLatlngCmd.Click += new System.EventHandler(this.btnPoinToLatlngCmd_Click);
-            // 
-            // btnCamGuideCmd
-            // 
-            resources.ApplyResources(this.btnCamGuideCmd, "btnCamGuideCmd");
-            this.btnCamGuideCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnCamGuideCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnCamGuideCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnCamGuideCmd.BorderRadius = 10;
-            this.btnCamGuideCmd.BorderSize = 0;
-            this.btnCamGuideCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCamGuideCmd.Name = "btnCamGuideCmd";
-            this.btnCamGuideCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCamGuideCmd.UseVisualStyleBackColor = false;
-            this.btnCamGuideCmd.Click += new System.EventHandler(this.btnCamGuideCmd_Click);
-            // 
-            // btnPointToCmd
-            // 
-            resources.ApplyResources(this.btnPointToCmd, "btnPointToCmd");
-            this.btnPointToCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnPointToCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnPointToCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPointToCmd.BorderRadius = 10;
-            this.btnPointToCmd.BorderSize = 0;
-            this.btnPointToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPointToCmd.Name = "btnPointToCmd";
-            this.btnPointToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPointToCmd.UseVisualStyleBackColor = false;
-            this.btnPointToCmd.Click += new System.EventHandler(this.btnPointToCmd_Click);
-            // 
-            // btnPinPoint
-            // 
-            resources.ApplyResources(this.btnPinPoint, "btnPinPoint");
-            this.btnPinPoint.BackColor = System.Drawing.Color.Transparent;
-            this.btnPinPoint.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnPinPoint.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPinPoint.BorderRadius = 10;
-            this.btnPinPoint.BorderSize = 0;
-            this.btnPinPoint.ForeColor = System.Drawing.Color.IndianRed;
-            this.btnPinPoint.Name = "btnPinPoint";
-            this.btnPinPoint.TextColor = System.Drawing.Color.IndianRed;
-            this.btnPinPoint.UseVisualStyleBackColor = false;
-            this.btnPinPoint.Click += new System.EventHandler(this.btnPinPoint_Click);
-            // 
-            // btnLoiterCmd
-            // 
-            resources.ApplyResources(this.btnLoiterCmd, "btnLoiterCmd");
-            this.btnLoiterCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnLoiterCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnLoiterCmd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnLoiterCmd.BorderRadius = 10;
-            this.btnLoiterCmd.BorderSize = 0;
-            this.btnLoiterCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLoiterCmd.Name = "btnLoiterCmd";
-            this.btnLoiterCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLoiterCmd.UseVisualStyleBackColor = false;
-            this.btnLoiterCmd.Click += new System.EventHandler(this.btnLoiterCmd_Click);
-            // 
-            // btnNavToCmd
-            // 
-            resources.ApplyResources(this.btnNavToCmd, "btnNavToCmd");
-            this.btnNavToCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnNavToCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnNavToCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnNavToCmd.BorderRadius = 10;
-            this.btnNavToCmd.BorderSize = 0;
-            this.btnNavToCmd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnNavToCmd.FlatAppearance.BorderSize = 5;
-            this.btnNavToCmd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnNavToCmd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
-            this.btnNavToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNavToCmd.Name = "btnNavToCmd";
-            this.btnNavToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNavToCmd.UseVisualStyleBackColor = false;
-            this.btnNavToCmd.Click += new System.EventHandler(this.btnNavToCmd_Click);
-            // 
-            // btnBatDispaly
-            // 
-            this.btnBatDispaly.BackColor = System.Drawing.Color.Transparent;
-            this.btnBatDispaly.BackgroundColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnBatDispaly, "btnBatDispaly");
-            this.btnBatDispaly.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnBatDispaly.BorderRadius = 10;
-            this.btnBatDispaly.BorderSize = 0;
-            this.btnBatDispaly.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBatDispaly.ImageList = this.ilMyImages;
-            this.btnBatDispaly.Name = "btnBatDispaly";
-            this.btnBatDispaly.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBatDispaly.UseVisualStyleBackColor = false;
-            // 
-            // btnRtlCmd
-            // 
-            this.btnRtlCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnRtlCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnRtlCmd, "btnRtlCmd");
-            this.btnRtlCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnRtlCmd.BorderRadius = 10;
-            this.btnRtlCmd.BorderSize = 0;
-            this.btnRtlCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRtlCmd.Name = "btnRtlCmd";
-            this.btnRtlCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRtlCmd.UseVisualStyleBackColor = false;
-            this.btnRtlCmd.Click += new System.EventHandler(this.btnRtlCmd_Click);
-            // 
-            // btnLandEnable
-            // 
-            this.btnLandEnable.BackColor = System.Drawing.Color.Transparent;
-            this.btnLandEnable.BackgroundColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnLandEnable, "btnLandEnable");
-            this.btnLandEnable.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnLandEnable.BorderRadius = 10;
-            this.btnLandEnable.BorderSize = 0;
-            this.btnLandEnable.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandEnable.Name = "btnLandEnable";
-            this.btnLandEnable.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandEnable.UseVisualStyleBackColor = false;
-            this.btnLandEnable.Click += new System.EventHandler(this.btnLandEnable_Click);
-            // 
-            // btnIasCmd
-            // 
-            this.btnIasCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnIasCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnIasCmd, "btnIasCmd");
-            this.btnIasCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnIasCmd.BorderRadius = 10;
-            this.btnIasCmd.BorderSize = 0;
-            this.btnIasCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIasCmd.Name = "btnIasCmd";
-            this.btnIasCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIasCmd.UseVisualStyleBackColor = false;
-            this.btnIasCmd.Click += new System.EventHandler(this.btnIasCmd_Click);
-            // 
-            // btnAltCmd
-            // 
-            this.btnAltCmd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAltCmd.BackgroundColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnAltCmd, "btnAltCmd");
-            this.btnAltCmd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnAltCmd.BorderRadius = 10;
-            this.btnAltCmd.BorderSize = 0;
-            this.btnAltCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltCmd.Name = "btnAltCmd";
-            this.btnAltCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltCmd.UseVisualStyleBackColor = false;
-            this.btnAltCmd.Click += new System.EventHandler(this.btnAltCmd_Click);
-            // 
-            // btnRuller
-            // 
-            resources.ApplyResources(this.btnRuller, "btnRuller");
-            this.btnRuller.BackColor = System.Drawing.Color.Transparent;
-            this.btnRuller.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnRuller.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnRuller.BorderRadius = 10;
-            this.btnRuller.BorderSize = 0;
-            this.btnRuller.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRuller.Name = "btnRuller";
-            this.btnRuller.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRuller.UseVisualStyleBackColor = false;
-            this.btnRuller.Click += new System.EventHandler(this.btnRuller_Click);
-            // 
-            // btnLock
-            // 
-            resources.ApplyResources(this.btnLock, "btnLock");
-            this.btnLock.BackColor = System.Drawing.Color.Transparent;
-            this.btnLock.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnLock.BorderColor = System.Drawing.Color.Blue;
-            this.btnLock.BorderRadius = 10;
-            this.btnLock.BorderSize = 0;
-            this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLock.Name = "btnLock";
-            this.btnLock.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLock.UseVisualStyleBackColor = false;
-            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
-            // 
-            // btnZoomIn
-            // 
-            resources.ApplyResources(this.btnZoomIn, "btnZoomIn");
-            this.btnZoomIn.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnZoomIn.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnZoomIn.BorderRadius = 10;
-            this.btnZoomIn.BorderSize = 0;
-            this.btnZoomIn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnZoomIn.UseVisualStyleBackColor = false;
-            this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
-            // 
-            // btnZoomOut
-            // 
-            resources.ApplyResources(this.btnZoomOut, "btnZoomOut");
-            this.btnZoomOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnZoomOut.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnZoomOut.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.btnZoomOut.BorderRadius = 10;
-            this.btnZoomOut.BorderSize = 0;
-            this.btnZoomOut.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnZoomOut.Name = "btnZoomOut";
-            this.btnZoomOut.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnZoomOut.UseVisualStyleBackColor = false;
-            this.btnZoomOut.Click += new System.EventHandler(this.btnZoomOut_Click);
-            // 
-            // btnMyConnect
-            // 
-            this.btnMyConnect.BackColor = System.Drawing.Color.Transparent;
-            this.btnMyConnect.BackgroundColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnMyConnect, "btnMyConnect");
-            this.btnMyConnect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnMyConnect.BorderRadius = 10;
-            this.btnMyConnect.BorderSize = 0;
-            this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMyConnect.ImageList = this.ilMyImages;
-            this.btnMyConnect.Name = "btnMyConnect";
-            this.btnMyConnect.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMyConnect.UseVisualStyleBackColor = false;
-            this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
             // 
             // FlightData
             // 

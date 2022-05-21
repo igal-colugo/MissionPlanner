@@ -6294,7 +6294,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
-        bwIAAk1TRnQBSQFMAgEBCgEAASgBAQEoAQEBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
+        bwIAAk1TRnQBSQFMAgEBCgEAAaABAQGgAQEBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
         AgABLwEBAgABAQEAARgGAAEaAQcdAAP+A/QD4AGmAaUBpAJZAVcCGQEXAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
@@ -10272,6 +10272,9 @@
   <data name="btnPoinToLatlngCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnPoinToLatlngCmd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnPoinToLatlngCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -10358,6 +10361,9 @@
   <data name="btnCamGuideCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnCamGuideCmd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnCamGuideCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -10442,6 +10448,9 @@
   </data>
   <data name="btnPointToCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
+  </data>
+  <data name="btnPointToCmd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="btnPointToCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -10600,6 +10609,9 @@
   <data name="btnLoiterCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
+  <data name="btnLoiterCmd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnLoiterCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
@@ -10685,6 +10697,9 @@
   <data name="btnNavToCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnNavToCmd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnNavToCmd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
@@ -10731,7 +10746,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBatDispaly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 337</value>
+    <value>15, 461</value>
   </data>
   <data name="btnBatDispaly.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 107</value>
@@ -11493,6 +11508,126 @@
   <data name="&gt;&gt;pnlMap.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnAltup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+s9J6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAA5dJREFUeF7t3UtOHDEUBdDeAiNggMQy2AGLY4bEBAlG7JMEYkuhuhtXVduvPj5H
+        uiIKUiCdvjy/dkIOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAADAZjw8PHymHwLRbm9vvwr4eX19rYgQ7f7+/ruAOXd3d4oIUW5ubn4UMOfq
+        6urrLdBSmnhnk46oQAt5ByzFjggNDHfAUuyIUNHYCTiMiQgVlHbAUtKLOMAclxYwx9EUZqhVwByvmsIE
+        tQuYo4gwQnoxpVlc6MMvpl5DzI0dEU5oPQGHMRHhP612wFLsiPDXUgXMcaFP16J2wFLsiHRp6Qk4jIlI
+        V9ZWwBxFpAtrOYKei6Mpu7bWCTiMicgubaWAOa4v2JXoi/hacaHPLqx9ByzFjsimbXUCDmMisklRO+Dj
+        4+PJn68dOyKbElXAp6enr7eH5+fno/e1iCKyCdEFzKKKaEdk1ZYqYBZVRN88ilVKR7XmOVfALL2/eVzo
+        sypR1xClAmaOpnQlagKmYo0WVUQTkUUtvQOWRBXRq6Ys4tx/T1Y7Uyfg0MvLy9Gv2SIu9AkVtQNeWsAs
+        qoh2REKsdQcsiSqiHZGmonbA2gXMoopoR6SJrRcwU0Q2KaqAqSDNKSKbspcJOKSIbMJWriHmiiqi6wtm
+        ibqGiDqCnvP6+nr0ObWI6wsmifoX8UsXMIsqoonIKHvdAUvsiKxCeoI0z1om4FDURHShz0m97IAldkQW
+        ETUB0xN89d7e3o4+9xYxEfkWtQNupYBZ1ET0rTI6F3UE3VoBs6iJ6GjaKRNwnKgimoidUcBpooro+qIT
+        URfxeylgFlVEF/o7Zwe8zPv7+9HvtUXsiDtlAtYRVUQTcWfsgHXZEZkk6gmTPk43oiZib4/rbrUuYq9P
+        lNZF7OVk0Y30B1o9vX+lblXEtf8dW2aqPRF9pf6ndhE9rjtXq4jpiUfy8fFx9BjNiQJ24tIiKuBplxZR
+        ATszd0dUwN/NLaIdsFNTJ2J6glEwtYgmYOfGFlEBpxlbRAXkW+loqoDzlIroCMoP54qogJc5V0QTkJOG
+        R1MFrGNYRAXkV7mIClhXLqICAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEB3Doc/ZXVb9I7aYPwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnAltup.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btnAltup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnAltup.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnAltup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="btnAltup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAltup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 0</value>
+  </data>
+  <data name="btnAltup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btnAltup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 72</value>
+  </data>
+  <data name="btnAltup.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="&gt;&gt;btnAltup.Name" xml:space="preserve">
+    <value>btnAltup</value>
+  </data>
+  <data name="&gt;&gt;btnAltup.Type" xml:space="preserve">
+    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAltup.Parent" xml:space="preserve">
+    <value>pnlAlt</value>
+  </data>
+  <data name="&gt;&gt;btnAltup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnAltdwn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+s9J6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAA4JJREFUeF7t3U1O5DAQBlCuwApYIHEMbsDh2CGxQYIV92ToGVtikg6ddNuVxH5P
+        KkVigVDI1+Xq4ucKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAOjM29vb1/fl6/Pz83ClkHQ/v97f391XpuUA5hLEMnIAcwkiRw0D
+        mEsQLzMMYK50v+Gf19fX0UPyswTxPFMBzCWI/DXVAYcliMucCmAuR9POzQ1gLkGcZ24Acwlip04dQadK
+        EH/38fExumdzytG0M0s74LAE8bhzA5hLR+zEpQHMJYj/uzSAuQSxcaUCmCs9eN0rfV8FsVHnzoCnqvcg
+        psAULzNiY0q/Ug+r1yDWCmAuHbERtR+UXL0FMeq+CmIj7u7uRt/cGtXLA1P7ZJHr/v7+cKUV19fXo29y
+        jWq9I0YF8Obm5nClNemVtXq1GsSoAD48PByutCqqI7Z2NNUBKcqMuIwZkCpub29HD0GN2nsQBZCqombE
+        vQbRDEiIqI6YHujd0AEJld4MqF576YhRAUyzOfwTdTTdekes9TO2w3IE5aiojrjVIEYFUAfkV1Hri/TA
+        b8bLy8voa6xRZkBmiVrob6UjRnVAi3gW6WVGNAOyaVEdca2jadQRNK2B4DytzohmQHaltSBGHUEFkKJa
+        CaIOyK7tPYgCSBOiFvqlgxgVwPRCBXVFrS9KBTEqgNYQhNrL+iIqgNYQrCJqRkxBWuz5+Xn0uWqUGZBV
+        Rc2IS4NoBqQrUTPi3CBGdUAzIJsS1RFTwCZFBVAHZJOi/lTGVEc0A8K3tY6mAgg/RL9rKoBwRFQQn56e
+        jn68dAkguxS10K9dfiOeXYuaEWuVNQRN2GtH1AFpStSMWKrMgDQpaqF/aQkgTdv6jGgGpAtb7Yg6IF3Z
+        WhAFkC5t5WjqCErX1u6IOiB8W2t9IYDwQ/RC3yIejoiaEc2A8IvaHVEHhBlqzYhmQFigdBAFEM5QakYU
+        QLjApX88SgChgHMX+ulIC5Sw9GhqDQEVzO2IOiBUdOpdUzMgBJha6Pv3ZBBoOCOaAWEFeUY0A8KKHh8f
+        BRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAPbi6uoPGvBb9GVj2WwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnAltdwn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btnAltdwn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="btnAltdwn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnAltdwn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="btnAltdwn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAltdwn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="btnAltdwn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btnAltdwn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 72</value>
+  </data>
+  <data name="btnAltdwn.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="&gt;&gt;btnAltdwn.Name" xml:space="preserve">
+    <value>btnAltdwn</value>
+  </data>
+  <data name="&gt;&gt;btnAltdwn.Type" xml:space="preserve">
+    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAltdwn.Parent" xml:space="preserve">
+    <value>pnlAlt</value>
+  </data>
+  <data name="&gt;&gt;btnAltdwn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="txtAltCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -11870,6 +12005,159 @@
   </data>
   <data name="&gt;&gt;lblManPointto.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btnCruiseSpd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="btnCruiseSpd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btnCruiseSpd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnCruiseSpd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="btnCruiseSpd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCruiseSpd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 0</value>
+  </data>
+  <data name="btnCruiseSpd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btnCruiseSpd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 72</value>
+  </data>
+  <data name="btnCruiseSpd.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="btnCruiseSpd.Text" xml:space="preserve">
+    <value>Cruise</value>
+  </data>
+  <data name="&gt;&gt;btnCruiseSpd.Name" xml:space="preserve">
+    <value>btnCruiseSpd</value>
+  </data>
+  <data name="&gt;&gt;btnCruiseSpd.Type" xml:space="preserve">
+    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnCruiseSpd.Parent" xml:space="preserve">
+    <value>pnlSpeedCmd</value>
+  </data>
+  <data name="&gt;&gt;btnCruiseSpd.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnMaxSpd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btnMaxSpd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="btnMaxSpd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="btnMaxSpd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="btnMaxSpd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnMaxSpd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 0</value>
+  </data>
+  <data name="btnMaxSpd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btnMaxSpd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 72</value>
+  </data>
+  <data name="btnMaxSpd.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="btnMaxSpd.Text" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="&gt;&gt;btnMaxSpd.Name" xml:space="preserve">
+    <value>btnMaxSpd</value>
+  </data>
+  <data name="&gt;&gt;btnMaxSpd.Type" xml:space="preserve">
+    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnMaxSpd.Parent" xml:space="preserve">
+    <value>pnlSpeedCmd</value>
+  </data>
+  <data name="&gt;&gt;btnMaxSpd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bntLowSpd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="bntLowSpd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="bntLowSpd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="bntLowSpd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="bntLowSpd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bntLowSpd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="bntLowSpd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="bntLowSpd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 72</value>
+  </data>
+  <data name="bntLowSpd.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="bntLowSpd.Text" xml:space="preserve">
+    <value>Loiter</value>
+  </data>
+  <data name="&gt;&gt;bntLowSpd.Name" xml:space="preserve">
+    <value>bntLowSpd</value>
+  </data>
+  <data name="&gt;&gt;bntLowSpd.Type" xml:space="preserve">
+    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bntLowSpd.Parent" xml:space="preserve">
+    <value>pnlSpeedCmd</value>
+  </data>
+  <data name="&gt;&gt;bntLowSpd.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 316</value>
+  </data>
+  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
+    <value>checkListControl2</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnClDone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -12342,279 +12630,6 @@
   <metadata name="tmrCamGuide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 96</value>
   </metadata>
-  <data name="btnAltup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+s9J6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAA5dJREFUeF7t3UtOHDEUBdDeAiNggMQy2AGLY4bEBAlG7JMEYkuhuhtXVduvPj5H
-        uiIKUiCdvjy/dkIOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAADAZjw8PHymHwLRbm9vvwr4eX19rYgQ7f7+/ruAOXd3d4oIUW5ubn4UMOfq
-        6urrLdBSmnhnk46oQAt5ByzFjggNDHfAUuyIUNHYCTiMiQgVlHbAUtKLOMAclxYwx9EUZqhVwByvmsIE
-        tQuYo4gwQnoxpVlc6MMvpl5DzI0dEU5oPQGHMRHhP612wFLsiPDXUgXMcaFP16J2wFLsiHRp6Qk4jIlI
-        V9ZWwBxFpAtrOYKei6Mpu7bWCTiMicgubaWAOa4v2JXoi/hacaHPLqx9ByzFjsimbXUCDmMisklRO+Dj
-        4+PJn68dOyKbElXAp6enr7eH5+fno/e1iCKyCdEFzKKKaEdk1ZYqYBZVRN88ilVKR7XmOVfALL2/eVzo
-        sypR1xClAmaOpnQlagKmYo0WVUQTkUUtvQOWRBXRq6Ys4tx/T1Y7Uyfg0MvLy9Gv2SIu9AkVtQNeWsAs
-        qoh2REKsdQcsiSqiHZGmonbA2gXMoopoR6SJrRcwU0Q2KaqAqSDNKSKbspcJOKSIbMJWriHmiiqi6wtm
-        ibqGiDqCnvP6+nr0ObWI6wsmifoX8UsXMIsqoonIKHvdAUvsiKxCeoI0z1om4FDURHShz0m97IAldkQW
-        ETUB0xN89d7e3o4+9xYxEfkWtQNupYBZ1ET0rTI6F3UE3VoBs6iJ6GjaKRNwnKgimoidUcBpooro+qIT
-        URfxeylgFlVEF/o7Zwe8zPv7+9HvtUXsiDtlAtYRVUQTcWfsgHXZEZkk6gmTPk43oiZib4/rbrUuYq9P
-        lNZF7OVk0Y30B1o9vX+lblXEtf8dW2aqPRF9pf6ndhE9rjtXq4jpiUfy8fFx9BjNiQJ24tIiKuBplxZR
-        ATszd0dUwN/NLaIdsFNTJ2J6glEwtYgmYOfGFlEBpxlbRAXkW+loqoDzlIroCMoP54qogJc5V0QTkJOG
-        R1MFrGNYRAXkV7mIClhXLqICAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEB3Doc/ZXVb9I7aYPwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnAltup.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="btnAltup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnAltup.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnAltup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="btnAltup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnAltup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 0</value>
-  </data>
-  <data name="btnAltup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="btnAltup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 72</value>
-  </data>
-  <data name="btnAltup.TabIndex" type="System.Int32, mscorlib">
-    <value>106</value>
-  </data>
-  <data name="&gt;&gt;btnAltup.Name" xml:space="preserve">
-    <value>btnAltup</value>
-  </data>
-  <data name="&gt;&gt;btnAltup.Type" xml:space="preserve">
-    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnAltup.Parent" xml:space="preserve">
-    <value>pnlAlt</value>
-  </data>
-  <data name="&gt;&gt;btnAltup.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnAltdwn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+s9J6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAA4JJREFUeF7t3U1O5DAQBlCuwApYIHEMbsDh2CGxQYIV92ToGVtikg6ddNuVxH5P
-        KkVigVDI1+Xq4ucKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAOjM29vb1/fl6/Pz83ClkHQ/v97f391XpuUA5hLEMnIAcwkiRw0D
-        mEsQLzMMYK50v+Gf19fX0UPyswTxPFMBzCWI/DXVAYcliMucCmAuR9POzQ1gLkGcZ24Acwlip04dQadK
-        EH/38fExumdzytG0M0s74LAE8bhzA5hLR+zEpQHMJYj/uzSAuQSxcaUCmCs9eN0rfV8FsVHnzoCnqvcg
-        psAULzNiY0q/Ug+r1yDWCmAuHbERtR+UXL0FMeq+CmIj7u7uRt/cGtXLA1P7ZJHr/v7+cKUV19fXo29y
-        jWq9I0YF8Obm5nClNemVtXq1GsSoAD48PByutCqqI7Z2NNUBKcqMuIwZkCpub29HD0GN2nsQBZCqombE
-        vQbRDEiIqI6YHujd0AEJld4MqF576YhRAUyzOfwTdTTdekes9TO2w3IE5aiojrjVIEYFUAfkV1Hri/TA
-        b8bLy8voa6xRZkBmiVrob6UjRnVAi3gW6WVGNAOyaVEdca2jadQRNK2B4DytzohmQHaltSBGHUEFkKJa
-        CaIOyK7tPYgCSBOiFvqlgxgVwPRCBXVFrS9KBTEqgNYQhNrL+iIqgNYQrCJqRkxBWuz5+Xn0uWqUGZBV
-        Rc2IS4NoBqQrUTPi3CBGdUAzIJsS1RFTwCZFBVAHZJOi/lTGVEc0A8K3tY6mAgg/RL9rKoBwRFQQn56e
-        jn68dAkguxS10K9dfiOeXYuaEWuVNQRN2GtH1AFpStSMWKrMgDQpaqF/aQkgTdv6jGgGpAtb7Yg6IF3Z
-        WhAFkC5t5WjqCErX1u6IOiB8W2t9IYDwQ/RC3yIejoiaEc2A8IvaHVEHhBlqzYhmQFigdBAFEM5QakYU
-        QLjApX88SgChgHMX+ulIC5Sw9GhqDQEVzO2IOiBUdOpdUzMgBJha6Pv3ZBBoOCOaAWEFeUY0A8KKHh8f
-        BRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAPbi6uoPGvBb9GVj2WwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnAltdwn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="btnAltdwn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="btnAltdwn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnAltdwn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="btnAltdwn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnAltdwn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="btnAltdwn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="btnAltdwn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 72</value>
-  </data>
-  <data name="btnAltdwn.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="&gt;&gt;btnAltdwn.Name" xml:space="preserve">
-    <value>btnAltdwn</value>
-  </data>
-  <data name="&gt;&gt;btnAltdwn.Type" xml:space="preserve">
-    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnAltdwn.Parent" xml:space="preserve">
-    <value>pnlAlt</value>
-  </data>
-  <data name="&gt;&gt;btnAltdwn.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnCruiseSpd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="btnCruiseSpd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="btnCruiseSpd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnCruiseSpd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="btnCruiseSpd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnCruiseSpd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 0</value>
-  </data>
-  <data name="btnCruiseSpd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="btnCruiseSpd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 72</value>
-  </data>
-  <data name="btnCruiseSpd.TabIndex" type="System.Int32, mscorlib">
-    <value>106</value>
-  </data>
-  <data name="btnCruiseSpd.Text" xml:space="preserve">
-    <value>Cruise</value>
-  </data>
-  <data name="&gt;&gt;btnCruiseSpd.Name" xml:space="preserve">
-    <value>btnCruiseSpd</value>
-  </data>
-  <data name="&gt;&gt;btnCruiseSpd.Type" xml:space="preserve">
-    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnCruiseSpd.Parent" xml:space="preserve">
-    <value>pnlSpeedCmd</value>
-  </data>
-  <data name="&gt;&gt;btnCruiseSpd.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnMaxSpd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="btnMaxSpd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnMaxSpd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="btnMaxSpd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="btnMaxSpd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnMaxSpd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 0</value>
-  </data>
-  <data name="btnMaxSpd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="btnMaxSpd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 72</value>
-  </data>
-  <data name="btnMaxSpd.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="btnMaxSpd.Text" xml:space="preserve">
-    <value>Max</value>
-  </data>
-  <data name="&gt;&gt;btnMaxSpd.Name" xml:space="preserve">
-    <value>btnMaxSpd</value>
-  </data>
-  <data name="&gt;&gt;btnMaxSpd.Type" xml:space="preserve">
-    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnMaxSpd.Parent" xml:space="preserve">
-    <value>pnlSpeedCmd</value>
-  </data>
-  <data name="&gt;&gt;btnMaxSpd.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="bntLowSpd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="bntLowSpd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="bntLowSpd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="bntLowSpd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="bntLowSpd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bntLowSpd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="bntLowSpd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="bntLowSpd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 72</value>
-  </data>
-  <data name="bntLowSpd.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
-  </data>
-  <data name="bntLowSpd.Text" xml:space="preserve">
-    <value>Loiter</value>
-  </data>
-  <data name="&gt;&gt;bntLowSpd.Name" xml:space="preserve">
-    <value>bntLowSpd</value>
-  </data>
-  <data name="&gt;&gt;bntLowSpd.Type" xml:space="preserve">
-    <value>MyControlsLibrary.MYRButton, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bntLowSpd.Parent" xml:space="preserve">
-    <value>pnlSpeedCmd</value>
-  </data>
-  <data name="&gt;&gt;bntLowSpd.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 316</value>
-  </data>
-  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
-    <value>checkListControl2</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
-    <value>pnlCheckList</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

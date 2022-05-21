@@ -1613,7 +1613,7 @@ namespace MissionPlanner.GCSViews
                     pos.Lat = lat;
                     pos.Lng = lng;
                     item.Position = pos;
-                    item.ToolTipText = tag + " - " + alt;
+                  //  item.ToolTipText = tag + " - " + alt;
 
                     var rect = overlay.Markers.OfType<GMapMarkerRect>().Where(a => a.InnerMarker == item);
                     var mBorders = rect.First();
@@ -1638,7 +1638,7 @@ namespace MissionPlanner.GCSViews
                     PointLatLng point = new PointLatLng(lat, lng);
                     GMarkerGoogle m = new GMarkerGoogle(point, GMarkerGoogleType.green);
                     m.ToolTipMode = MarkerTooltipMode.Always;
-                    m.ToolTipText = tag + " - " + alt;
+                 //   m.ToolTipText = tag + " - " + alt;
                     m.Tag = tag;
 
                     GMapMarkerRect mBorders = new GMapMarkerRect(point);

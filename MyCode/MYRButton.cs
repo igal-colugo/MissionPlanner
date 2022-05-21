@@ -19,6 +19,8 @@ namespace MyControlsLibrary
         private int borderSize = 0;
         private int borderRadius = 20;
         private Color borderColor = Color.PaleVioletRed;
+        private Color mouseEnterColor = Color.Red;
+        private bool _mouseEnter = false;
 
         //Properties
         [Category("MYRButton Code Advance")]
@@ -55,6 +57,20 @@ namespace MyControlsLibrary
                 this.Invalidate();
             }
         }
+
+        [Category("MYRButton Code Advance")]
+        public Color MouseEnterColor
+        {
+            get { return mouseEnterColor; }
+            set
+            {
+                mouseEnterColor = value;
+                this.Invalidate();
+            }
+        }
+
+
+
         [Category("MYRButton Code Advance")]
         public Color BackgroundColor
         {
@@ -95,23 +111,51 @@ namespace MyControlsLibrary
             return path;
         }
 
+
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            _mouseEnter = true;
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            _mouseEnter = false;
+        }
+
+
+
+
+
+
+
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
+           
             Rectangle rectSurface = this.ClientRectangle;
             Rectangle rectBorder = Rectangle.Inflate(rectSurface, -borderSize, -borderSize);
             int smoothSize = 2;
             if (borderSize > 0)
                 smoothSize = borderSize;
+            Color clr = borderColor;
+            if (_mouseEnter)
+            {
+                clr = mouseEnterColor;
+            }
+
+
 
             if (borderRadius > 2) //Rounded button
             {
+                
                 using (GraphicsPath pathSurface = GetFigurePath(rectSurface, borderRadius))
                 using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
                 using (Pen penSurface = new Pen(this.Parent.BackColor, smoothSize))
-                using (Pen penBorder = new Pen(borderColor, borderSize))
+                using (Pen penBorder = new Pen(clr, borderSize)) //new Pen(borderColor, borderSize))
                 {
                     //Button surface
                     this.Region = new Region(pathSurface);
@@ -122,6 +166,10 @@ namespace MyControlsLibrary
                     if (borderSize >= 1)
                         //Draw control border
                         pevent.Graphics.DrawPath(penBorder, pathBorder);
+                    
+
+
+
                 }
             }
             else //Normal button

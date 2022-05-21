@@ -635,6 +635,7 @@
     <Compile Include="MyCode\MyRullerhelper.cs" />
     <Compile Include="MyCode\MyMarkersLayer.cs" />
     <Compile Include="MyCode\MySettings.cs" />
+    <Compile Include="MyCode\myTOHelper.cs" />
     <Compile Include="NativeMethods.cs" />
     <None Include="arm64\libSkiaSharp.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -254,7 +254,7 @@ namespace MissionPlanner.GCSViews
                 {
                     pnlCheckList.Visible = _connectState == connectStates.csConnected;
                 }
-
+                updateRightBtnsDisplay();
             }
         }
 
@@ -2744,10 +2744,14 @@ namespace MissionPlanner.GCSViews
 
         private void closeSecondaryButtons()
         {
-            btnToGo.Visible    = false;
-            btnLandCmd.Visible = false;
-            altCmdDisplay      = false;
-            iasCmdDisplay      = false;
+            btnToGo.BeginInvokeIfRequired(() =>
+             {
+                 btnToGo.Visible    = false;
+                 btnLandCmd.Visible = false;
+                 altCmdDisplay      = false;
+                 iasCmdDisplay      = false;
+             });
+                 
         }
 
         private void myNavTo(double lat, double lng)
@@ -4009,7 +4013,8 @@ namespace MissionPlanner.GCSViews
 
                         tracklast = DateTime.Now;
                     }
-                    updateMyData();
+                    updateMyData();                    
+                    
                 }
                 catch (Exception ex)
                 {
@@ -4033,7 +4038,13 @@ namespace MissionPlanner.GCSViews
             {
                 connectState = connectStates.csConnected;
             }
-            
+            //if we are airborne....
+            if (MainV2.comPort.MAV.cs.armed && MainV2.comPort.MAV.cs.timeSinceArmInAir > 5)
+            {
+                connectState = connectStates.csInFlight;
+            }
+
+           
             txtHomeDist.BeginInvokeIfRequired(() =>
             {
                 int distMeters = (int)MainV2.comPort.MAV.cs.DistToHome;
@@ -4128,11 +4139,16 @@ namespace MissionPlanner.GCSViews
                 {
                     btnMyConnect.Text = "Connect";
                     btnMyConnect.ImageIndex = 1;
-                }
-
-                connectState = MainV2.comPort.BaseStream.IsOpen ? connectStates.csConnected : connectStates.csDisconnected;
-
+                }       
             });
+
+            connectState = MainV2.comPort.BaseStream.IsOpen ? connectStates.csConnected : connectStates.csDisconnected;
+            //send command ONLY when disarmed 
+            if (MainV2.comPort.BaseStream.IsOpen && !MainV2.comPort.MAV.cs.armed)
+            {
+                myModeCommand("QSTABILIZE");
+
+            }
         }
 
 
@@ -6097,6 +6113,7 @@ namespace MissionPlanner.GCSViews
         private void btnMyConnect_Click(object sender, EventArgs e)
         {
             closeSecondaryButtons();
+            updateRightBtnsDisplay();
             if (pnlConnectList.Visible)
             {
                 //scnd click - just want to remove connections...
@@ -6131,7 +6148,20 @@ namespace MissionPlanner.GCSViews
 
         }
 
+        private void updateRightBtnsDisplay()
+        {
+            btnNavToCmd.BeginInvokeIfRequired(() =>
+            {
+                btnNavToCmd.Enabled        = connectState == connectStates.csInFlight;
+                btnLoiterCmd.Enabled       = connectState == connectStates.csInFlight;
+                btnPoinToLatlngCmd.Enabled = connectState == connectStates.csInFlight;
+                btnPointToCmd.Enabled      = connectState == connectStates.csInFlight;
+                btnCamGuideCmd.Enabled     = connectState == connectStates.csInFlight;
+            });
 
+
+            
+        }
 
         private void gMapControl1_Resize_1(object sender, EventArgs e)
         {
@@ -6253,12 +6283,17 @@ namespace MissionPlanner.GCSViews
 
         private void btnTO_Click(object sender, EventArgs e)
         {
+            myModeCommand("AUTO");
             closeSecondaryButtons();
             btnToGo.Visible = !btnToGo.Visible;
         }
 
         private void btnClDone_Click(object sender, EventArgs e)
         {
+            myModeCommand("QLOITER");
+            //upload mini auto plan for to
+            int toAlt = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).RElTOAlt;
+            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt, log);
             connectState = connectStates.csPreFlightDone;
         }
 
@@ -6636,7 +6671,7 @@ namespace MissionPlanner.GCSViews
                 bool ans = MainV2.comPort.doARM(true, true);
                 if (ans)
                 {
-                    myModeCommand("TAKEOFF");
+                 //   myModeCommand("TAKEOFF");
                     connectState = connectStates.csLaunched;
                 }
             }
@@ -6672,6 +6707,11 @@ namespace MissionPlanner.GCSViews
         {
             altChange(-_altIcrement);
         }
+
+        private void btnSendMis_Click(object sender, EventArgs e)
+        {
+               
+        }       
     }
 }
 
