@@ -73,6 +73,7 @@ namespace MissionPlanner.GCSViews
         private readonly int _minSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).MinSpd;
         private readonly int _cruiseSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).CruiseSpd;
         private readonly int _maxSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).MaxSpd;
+        private readonly int _altIcrement = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).AltIncrement;
 
         //end my code
 
@@ -323,6 +324,12 @@ namespace MissionPlanner.GCSViews
                 }
                 _altCmdDisplay = value;
                 pnlAlt.Visible = value;
+                //get current alt cmd
+                if (_altCmdDisplay)
+                {
+                    AltTargetLocalcmd = (int)MainV2.comPort.MAV.cs.targetalt;
+                    updateAltCmdDisplay();
+                }
             }
         }
 
@@ -4026,16 +4033,7 @@ namespace MissionPlanner.GCSViews
             {
                 connectState = connectStates.csConnected;
             }
-            if (pnlAlt.Visible)
-            {
-
-                txtAltCmd.BeginInvokeIfRequired(() =>
-                {
-                    txtAltCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetalt:0} m");
-                });
-
-
-            }
+            
             txtHomeDist.BeginInvokeIfRequired(() =>
             {
                 int distMeters = (int)MainV2.comPort.MAV.cs.DistToHome;
@@ -5781,11 +5779,11 @@ namespace MissionPlanner.GCSViews
         private GMapOverlay _rullerOverlay;
         private MyRullerhelper _myRuller;
         private GMyMarkerGoogle myCurrentToMoveMarker = null;
-        private int AltTargetRprt;
+        private int AltTargetLocalcmd;
         private int myIasCmd;
         private bool resetEnabled = false;
         private float _lowBattVolt;
-        private float _critBattVolt;
+        private float _critBattVolt;       
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6098,6 +6096,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnMyConnect_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             if (pnlConnectList.Visible)
             {
                 //scnd click - just want to remove connections...
@@ -6107,11 +6106,17 @@ namespace MissionPlanner.GCSViews
             // decide if this is a connect or disconnect
             if (MainV2.comPort.BaseStream.IsOpen)
             {
-                MainV2.instance.doDisconnect(MainV2.comPort);
+                //if we are conneced - warn user first...
+                if (
+                CustomMessageBox.Show("Disconnect from Plane\nAre you sure!!", "DISCONNECT - ARMAGEDON",
+                    MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
+                {
+                    MainV2.instance.doDisconnect(MainV2.comPort);
+                }
+                    
             }
             else
             {
-
                 //read from file.....
                 if (File.Exists(myConnectionsPath))
                 {
@@ -6121,9 +6126,8 @@ namespace MissionPlanner.GCSViews
                 {
                     CustomMessageBox.Show("CANT FIND CONNECTIONS FILE!");
                 }
-
-
             }
+            resetChecklistDisplay();
 
         }
 
@@ -6190,26 +6194,31 @@ namespace MissionPlanner.GCSViews
 
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             gMapControl1.Zoom = gMapControl1.Zoom + 1;
         }
 
         private void btnZoomOut_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
         }
 
         private void btnLock_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             CHK_autopan.Checked = !CHK_autopan.Checked;
         }
 
         private void btnCamGuideCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             camGuideMode = !camGuideMode;
         }
 
         private void btnRuller_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             if (_myRuller.Mode == RullerMode.rmNone)
             {
                 _myRuller.Mode = RullerMode.rmSet;
@@ -6232,12 +6241,19 @@ namespace MissionPlanner.GCSViews
 
         private void btnCheckList_Click(object sender, EventArgs e)
         {
-            checkListControl2.Reset();
+            resetChecklistDisplay();
             pnlCheckList.Visible = !pnlCheckList.Visible;
+        }
+
+        private void resetChecklistDisplay()
+        {
+            checkListControl2.Reset();
+            btnClDone.Enabled = false;
         }
 
         private void btnTO_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             btnToGo.Visible = !btnToGo.Visible;
         }
 
@@ -6248,12 +6264,14 @@ namespace MissionPlanner.GCSViews
 
         private void btnNavToCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             setNavTo = !setNavTo;
             poiState = PoiStates.psNone;
         }
 
         private void btnRtlCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             resetEnabled = true;
             myModeCommand("RTL");
         }
@@ -6272,6 +6290,7 @@ namespace MissionPlanner.GCSViews
 
         private void myModeCommand(string modeName)
         {
+            closeSecondaryButtons();
             //safety...
             camGuideMode = false;
 
@@ -6300,6 +6319,7 @@ namespace MissionPlanner.GCSViews
         private void btnPinPoint_Click(object sender, EventArgs e)
         {
             //
+            closeSecondaryButtons();
             poiState = poiState == PoiStates.psNone ? PoiStates.psDisplayAll : PoiStates.psNone;
         }
 
@@ -6355,6 +6375,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnPointToCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             setPointTo = true;
         }
 
@@ -6457,15 +6478,25 @@ namespace MissionPlanner.GCSViews
 
         private void btnAltCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             altCmdDisplay = !altCmdDisplay;
         }
 
         private void btnAltup_Click(object sender, EventArgs e)
         {
+            altChange(_altIcrement);            
+        }
+
+
+        private void altChange(int diff)
+        {
+
+            AltTargetLocalcmd += diff;
+            updateAltCmdDisplay();
+
             try
             {
-                AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
-                MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetRprt + 5) });
+                MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetLocalcmd) });
             }
             catch
             {
@@ -6473,21 +6504,17 @@ namespace MissionPlanner.GCSViews
             }
         }
 
-        private void btnDown_Click(object sender, EventArgs e)
+        private void updateAltCmdDisplay()
         {
-            try
+            txtAltCmd.BeginInvokeIfRequired(() =>
             {
-                AltTargetRprt = (int)MainV2.comPort.MAV.cs.targetalt;
-                MainV2.comPort.setNewWPAlt(new Locationwp { alt = (AltTargetRprt - 5) });
-            }
-            catch
-            {
-                CustomMessageBox.Show(Strings.ErrorCommunicating, Strings.ERROR);
-            }
+                txtAltCmd.Text = string.Format($"{AltTargetLocalcmd:0} m");
+            });
         }
 
         private void btnIasCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             iasCmdDisplay = !iasCmdDisplay;
         }
 
@@ -6543,6 +6570,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnPoinToLatlngCmd_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             updateManPointtoVisibillity(!gbPointToMan.Visible);
         }
 
@@ -6621,6 +6649,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnLandEnable_Click(object sender, EventArgs e)
         {
+            closeSecondaryButtons();
             btnLandCmd.Visible = !btnLandCmd.Visible;
         }
 
@@ -6637,6 +6666,11 @@ namespace MissionPlanner.GCSViews
         private void btnMaxSpd_Click(object sender, EventArgs e)
         {
             mySpeedCmd(_maxSpd);
+        }
+
+        private void btnAltdwn_Click(object sender, EventArgs e)
+        {
+            altChange(-_altIcrement);
         }
     }
 }

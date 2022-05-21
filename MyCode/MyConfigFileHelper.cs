@@ -31,6 +31,7 @@ using System.Web.Script.Serialization;
         public int MinSpd { get; set; } = 10;
         public int CruiseSpd { get; set; } = 20;
         public int MaxSpd { get; set; } = 30;
+        public int AltIncrement { get; set; } = 10;
 
 }
    //   }
