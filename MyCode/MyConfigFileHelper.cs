@@ -33,7 +33,8 @@ using System.Web.Script.Serialization;
         public int MaxSpd { get; set; } = 30;
         public int AltIncrement { get; set; } = 10;
         public int RElTOAlt { get; set; } = 25;
-
+        public int AfterToWpAlt{ get; set; } = 47;
+        public int DistToWp { get;  set; } = 455;
 }
    //   }
       

@@ -6219,7 +6219,7 @@ namespace MissionPlanner.GCSViews
 
         private int calcChcecklistHeight()
         {
-            return Math.Min(checkListControl2.CheckListItems.Count * 60, this.Height -80);//dont go over board....
+            return Math.Min(checkListControl2.CheckListItems.Count * 60, this.Height -280);//dont go over board....
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
@@ -6257,8 +6257,6 @@ namespace MissionPlanner.GCSViews
             {
                 _myRuller.Mode = RullerMode.rmNone;
             }
-
-
         }
 
 
@@ -6291,9 +6289,13 @@ namespace MissionPlanner.GCSViews
         private void btnClDone_Click(object sender, EventArgs e)
         {
             myModeCommand("QLOITER");
+
             //upload mini auto plan for to
-            int toAlt = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).RElTOAlt;
-            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt, log);
+            MyGeneralConfigFileHelper fh = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME);
+            int toAlt = fh.RElTOAlt;
+            int wpAlt = fh.AfterToWpAlt;
+            int distToWp = fh.DistToWp;
+            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt,wpAlt, distToWp, log);
             connectState = connectStates.csPreFlightDone;
         }
 
