@@ -6710,10 +6710,23 @@ namespace MissionPlanner.GCSViews
             altChange(-_altIcrement);
         }
 
-        private void btnSendMis_Click(object sender, EventArgs e)
+        
+
+        private void btnEnablePitotTest_Click(object sender, EventArgs e)
         {
-               
-        }       
+            btnPitotTest.Enabled = !btnPitotTest.Enabled;
+        }
+
+        private void btnPitotTest_Click(object sender, EventArgs e)
+        {
+            btnPitotTest.Enabled = false;
+            if (MainV2.comPort.BaseStream.IsOpen)
+            {
+                MainV2.comPort.doCommand(MAVLink.MAV_CMD.PREFLIGHT_CALIBRATION, 0, 0, 1, 0, 0, 0, 0);
+            }
+                
+
+        }
     }
 }
 

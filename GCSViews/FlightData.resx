@@ -5061,7 +5061,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
-        bwIAAk1TRnQBSQFMAgEBCgEAAagBAQGoAQEBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
+        bwIAAk1TRnQBSQFMAgEBCgEAAdgBAQHYAQEBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
         AgABLwEBAgABAQEAARgGAAEaAQcdAAP+A/QD4AGmAaUBpAJZAVcCGQEXAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
@@ -7725,6 +7725,239 @@
         AQcB/A4AAX8Q/wH4DgABPwH4DgABPws=
 </value>
   </data>
+  <data name="pnlCheckList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 324</value>
+  </data>
+  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
+    <value>checkListControl2</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnPitotTest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="btnPitotTest.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnPitotTest.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        QmCC
+</value>
+  </data>
+  <data name="btnPitotTest.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="btnPitotTest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPitotTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 3</value>
+  </data>
+  <data name="btnPitotTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 44</value>
+  </data>
+  <data name="btnPitotTest.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnPitotTest.Text" xml:space="preserve">
+    <value>Test Pitot</value>
+  </data>
+  <data name="&gt;&gt;btnPitotTest.Name" xml:space="preserve">
+    <value>btnPitotTest</value>
+  </data>
+  <data name="&gt;&gt;btnPitotTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPitotTest.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;btnPitotTest.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnEnablePitotTest.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="btnEnablePitotTest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEnablePitotTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="btnEnablePitotTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 44</value>
+  </data>
+  <data name="btnEnablePitotTest.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnEnablePitotTest.Text" xml:space="preserve">
+    <value>Cover Pitot</value>
+  </data>
+  <data name="&gt;&gt;btnEnablePitotTest.Name" xml:space="preserve">
+    <value>btnEnablePitotTest</value>
+  </data>
+  <data name="&gt;&gt;btnEnablePitotTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEnablePitotTest.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;btnEnablePitotTest.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnClDone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="btnClDone.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnClDone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClDone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 53</value>
+  </data>
+  <data name="btnClDone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 44</value>
+  </data>
+  <data name="btnClDone.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnClDone.Text" xml:space="preserve">
+    <value>DONE</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.Name" xml:space="preserve">
+    <value>btnClDone</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;btnClDone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 324</value>
+  </data>
+  <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 100</value>
+  </data>
+  <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.Name" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.Parent" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnPitotTest" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnEnablePitotTest" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnClDone" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="pnlCheckList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>463, 97</value>
+  </data>
+  <data name="pnlCheckList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 424</value>
+  </data>
+  <data name="pnlCheckList.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="pnlCheckList.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlCheckList.Name" xml:space="preserve">
+    <value>pnlCheckList</value>
+  </data>
+  <data name="&gt;&gt;pnlCheckList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlCheckList.Parent" xml:space="preserve">
+    <value>pnlMap</value>
+  </data>
+  <data name="&gt;&gt;pnlCheckList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnAltup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+s9J6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -7894,7 +8127,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlAlt.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label15.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -7927,7 +8160,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="txtHomeDist.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -7954,7 +8187,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;txtHomeDist.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnLandCmd.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -7993,7 +8226,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnLandCmd.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnToGo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -8035,7 +8268,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnToGo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="pnlConnectList.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8095,7 +8328,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlConnectList.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -8368,7 +8601,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;gbPointToMan.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnForceEnableclDone.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -8401,7 +8634,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnForceEnableclDone.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnEditCl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -8434,7 +8667,7 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;btnEditCl.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnCruiseSpd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -8584,93 +8817,6 @@
     <value>pnlMap</value>
   </data>
   <data name="&gt;&gt;pnlSpeedCmd.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="pnlCheckList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="checkListControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="checkListControl2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14.25pt</value>
-  </data>
-  <data name="checkListControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkListControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 316</value>
-  </data>
-  <data name="checkListControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.Name" xml:space="preserve">
-    <value>checkListControl2</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, 2MT, Version=1.3.75.1, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.Parent" xml:space="preserve">
-    <value>pnlCheckList</value>
-  </data>
-  <data name="&gt;&gt;checkListControl2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnClDone.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="btnClDone.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnClDone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnClDone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 316</value>
-  </data>
-  <data name="btnClDone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 53</value>
-  </data>
-  <data name="btnClDone.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnClDone.Text" xml:space="preserve">
-    <value>DONE</value>
-  </data>
-  <data name="&gt;&gt;btnClDone.Name" xml:space="preserve">
-    <value>btnClDone</value>
-  </data>
-  <data name="&gt;&gt;btnClDone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClDone.Parent" xml:space="preserve">
-    <value>pnlCheckList</value>
-  </data>
-  <data name="&gt;&gt;btnClDone.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlCheckList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>463, 152</value>
-  </data>
-  <data name="pnlCheckList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 369</value>
-  </data>
-  <data name="pnlCheckList.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
-  </data>
-  <data name="pnlCheckList.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pnlCheckList.Name" xml:space="preserve">
-    <value>pnlCheckList</value>
-  </data>
-  <data name="&gt;&gt;pnlCheckList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlCheckList.Parent" xml:space="preserve">
-    <value>pnlMap</value>
-  </data>
-  <data name="&gt;&gt;pnlCheckList.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
@@ -10984,7 +11130,7 @@
     <value>41</value>
   </data>
   <data name="pnlMap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
+    <value>181, 0</value>
   </data>
   <data name="pnlMap.Size" type="System.Drawing.Size, System.Drawing">
     <value>888, 610</value>

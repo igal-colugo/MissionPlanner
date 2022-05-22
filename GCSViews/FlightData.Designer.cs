@@ -192,6 +192,12 @@ namespace MissionPlanner.GCSViews
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPitotTest = new System.Windows.Forms.Button();
+            this.btnEnablePitotTest = new System.Windows.Forms.Button();
+            this.btnClDone = new System.Windows.Forms.Button();
             this.pnlAlt = new System.Windows.Forms.Panel();
             this.btnAltup = new MyControlsLibrary.MYRButton();
             this.btnAltdwn = new MyControlsLibrary.MYRButton();
@@ -217,9 +223,6 @@ namespace MissionPlanner.GCSViews
             this.btnCruiseSpd = new MyControlsLibrary.MYRButton();
             this.btnMaxSpd = new MyControlsLibrary.MYRButton();
             this.bntLowSpd = new MyControlsLibrary.MYRButton();
-            this.pnlCheckList = new System.Windows.Forms.Panel();
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.btnClDone = new System.Windows.Forms.Button();
             this.gbPoiCoords = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOk = new System.Windows.Forms.Button();
@@ -324,12 +327,13 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.pnlMap.SuspendLayout();
+            this.pnlCheckList.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.pnlAlt.SuspendLayout();
             this.pnlConnectList.SuspendLayout();
             this.gbPointToMan.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.pnlSpeedCmd.SuspendLayout();
-            this.pnlCheckList.SuspendLayout();
             this.gbPoiCoords.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.contextMenuPoi.SuspendLayout();
@@ -2257,7 +2261,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 24300D;
+            this.windDir1.Direction = 900D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2443,6 +2447,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.pnlAlt);
             this.pnlMap.Controls.Add(this.label15);
             this.pnlMap.Controls.Add(this.txtHomeDist);
@@ -2453,7 +2458,6 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.btnForceEnableclDone);
             this.pnlMap.Controls.Add(this.btnEditCl);
             this.pnlMap.Controls.Add(this.pnlSpeedCmd);
-            this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.gbPoiCoords);
             this.pnlMap.Controls.Add(this.btnSaveAllPoi);
             this.pnlMap.Controls.Add(this.btnDeletePois);
@@ -2487,6 +2491,48 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // pnlCheckList
+            // 
+            resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
+            this.pnlCheckList.Controls.Add(this.checkListControl2);
+            this.pnlCheckList.Controls.Add(this.tableLayoutPanel5);
+            this.pnlCheckList.Name = "pnlCheckList";
+            // 
+            // checkListControl2
+            // 
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
+            // 
+            // tableLayoutPanel5
+            // 
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.btnPitotTest, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnEnablePitotTest, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnClDone, 0, 1);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            // 
+            // btnPitotTest
+            // 
+            resources.ApplyResources(this.btnPitotTest, "btnPitotTest");
+            this.btnPitotTest.Name = "btnPitotTest";
+            this.btnPitotTest.UseVisualStyleBackColor = true;
+            this.btnPitotTest.Click += new System.EventHandler(this.btnPitotTest_Click);
+            // 
+            // btnEnablePitotTest
+            // 
+            resources.ApplyResources(this.btnEnablePitotTest, "btnEnablePitotTest");
+            this.btnEnablePitotTest.Name = "btnEnablePitotTest";
+            this.btnEnablePitotTest.UseVisualStyleBackColor = true;
+            this.btnEnablePitotTest.Click += new System.EventHandler(this.btnEnablePitotTest_Click);
+            // 
+            // btnClDone
+            // 
+            this.tableLayoutPanel5.SetColumnSpan(this.btnClDone, 2);
+            resources.ApplyResources(this.btnClDone, "btnClDone");
+            this.btnClDone.Name = "btnClDone";
+            this.btnClDone.UseVisualStyleBackColor = true;
+            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
             // 
             // pnlAlt
             // 
@@ -2717,25 +2763,6 @@ namespace MissionPlanner.GCSViews
             this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
             this.bntLowSpd.UseVisualStyleBackColor = false;
             this.bntLowSpd.Click += new System.EventHandler(this.bntLowSpd_Click);
-            // 
-            // pnlCheckList
-            // 
-            resources.ApplyResources(this.pnlCheckList, "pnlCheckList");
-            this.pnlCheckList.Controls.Add(this.checkListControl2);
-            this.pnlCheckList.Controls.Add(this.btnClDone);
-            this.pnlCheckList.Name = "pnlCheckList";
-            // 
-            // checkListControl2
-            // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
-            // 
-            // btnClDone
-            // 
-            resources.ApplyResources(this.btnClDone, "btnClDone");
-            this.btnClDone.Name = "btnClDone";
-            this.btnClDone.UseVisualStyleBackColor = true;
-            this.btnClDone.Click += new System.EventHandler(this.btnClDone_Click);
             // 
             // gbPoiCoords
             // 
@@ -3356,6 +3383,8 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
+            this.pnlCheckList.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.pnlAlt.ResumeLayout(false);
             this.pnlAlt.PerformLayout();
             this.pnlConnectList.ResumeLayout(false);
@@ -3365,7 +3394,6 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.pnlSpeedCmd.ResumeLayout(false);
-            this.pnlCheckList.ResumeLayout(false);
             this.gbPoiCoords.ResumeLayout(false);
             this.gbPoiCoords.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -3658,5 +3686,8 @@ namespace MissionPlanner.GCSViews
         private MYRButton btnCruiseSpd;
         private MYRButton btnAltup;
         private MYRButton btnAltdwn;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Button btnPitotTest;
+        private Button btnEnablePitotTest;
     }
 }
