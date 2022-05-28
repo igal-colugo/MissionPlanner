@@ -1556,6 +1556,248 @@ namespace MissionPlanner
             this.MenuConnect.Image = global::MissionPlanner.Properties.Resources.light_connect_icon;
         }
 
+
+        
+        public void myConnect(string cnnctType, string host, string port)
+        {
+            bool bSkipConnectCheck = false;
+            var mav = new MAVLinkInterface();
+            switch (cnnctType)
+            {
+                case "UdpCl":
+                    {
+                        var udc = new UdpSerialConnect();
+                        udc.Port = port;
+                        IPAddress ip;
+                        IPAddress.TryParse(host, out ip);
+                        udc.hostEndPoint = new IPEndPoint(ip, int.Parse(port));
+                        mav.BaseStream = udc;
+                        break;
+                    }
+                case "Udp":
+                    {
+                        mav.BaseStream = new UdpSerial(new UdpClient(int.Parse(port)));
+                        bSkipConnectCheck = true;
+                        break;
+                    }
+                default: return;
+            }
+            mav.BaseStream.PortName = port;
+            try
+            {
+
+                ResetConnectionStats();
+
+                mav.MAV.cs.ResetInternals();
+
+                //cleanup any log being played
+                mav.logreadmode = false;
+                if (comPort.logplaybackfile != null)
+                    comPort.logplaybackfile.Close();
+                mav.logplaybackfile = null;
+
+                try
+                {
+
+                    // prevent serialreader from doing anything
+                    mav.giveComport = true;
+
+                    log.Info("About to do dtr if needed");
+                    // reset on connect logic.
+                    if (Settings.Instance.GetBoolean("CHK_resetapmonconnect") == true)
+                    {
+                        log.Info("set dtr rts to false");
+                        mav.BaseStream.DtrEnable = false;
+                        mav.BaseStream.RtsEnable = false;
+
+                        mav.BaseStream.toggleDTR();
+                    }
+
+                    mav.giveComport = false;
+
+                    // setup to record new logs
+                    try
+                    {
+                        Directory.CreateDirectory(Settings.Instance.LogDir);
+                        lock (this)
+                        {
+                            // create log names
+                            var dt = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+                            var tlog = Settings.Instance.LogDir + Path.DirectorySeparatorChar +
+                                       dt + ".tlog";
+                            var rlog = Settings.Instance.LogDir + Path.DirectorySeparatorChar +
+                                       dt + ".rlog";
+
+                            // check if this logname already exists
+                            int a = 1;
+                            while (File.Exists(tlog))
+                            {
+                                Thread.Sleep(1000);
+                                // create new names with a as an index
+                                dt = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + "-" + a.ToString();
+                                tlog = Settings.Instance.LogDir + Path.DirectorySeparatorChar +
+                                       dt + ".tlog";
+                                rlog = Settings.Instance.LogDir + Path.DirectorySeparatorChar +
+                                       dt + ".rlog";
+                            }
+
+                            //open the logs for writing
+                            mav.logfile =
+                                new BufferedStream(File.Open(tlog, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None));
+                            mav.rawlogfile =
+                                new BufferedStream(File.Open(rlog, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None));
+                            log.Info("creating logfile " + dt + ".tlog");
+                        }
+                    }
+                    catch (Exception exp2)
+                    {
+                        log.Error(exp2);
+                        CustomMessageBox.Show(Strings.Failclog);
+                    } // soft fail
+
+                    // reset connect time - for timeout functions
+                    connecttime = DateTime.Now;
+
+                    // do the connect
+                    mav.Open(true, bSkipConnectCheck, true);
+
+                    if (!mav.BaseStream.IsOpen)
+                    {
+                        log.Info("comport is closed. existing connect");
+                        try
+                        {
+                            _connectionControl.IsConnected(false);
+                            UpdateConnectIcon();
+                            mav.Close();
+                        }
+                        catch
+                        {
+                        }
+                        return;
+                    }
+
+
+                    //        mav.getParamList();
+
+                    _connectionControl.UpdateSysIDS();
+
+
+
+                    FlightData.CheckBatteryShow();
+
+                    MissionPlanner.Utilities.Tracking.AddEvent("Connect", "Connect", mav.MAV.cs.firmware.ToString(),
+                        mav.MAV.param.Count.ToString());
+                    MissionPlanner.Utilities.Tracking.AddTiming("Connect", "Connect Time",
+                        (DateTime.Now - connecttime).TotalMilliseconds, "");
+
+                    MissionPlanner.Utilities.Tracking.AddEvent("Connect", "Baud", mav.BaseStream.BaudRate.ToString(), "");
+
+                    if (mav.MAV.param.ContainsKey("SPRAY_ENABLE"))
+                        MissionPlanner.Utilities.Tracking.AddEvent("Param", "Value", "SPRAY_ENABLE", mav.MAV.param["SPRAY_ENABLE"].ToString());
+
+                    if (mav.MAV.param.ContainsKey("CHUTE_ENABLE"))
+                        MissionPlanner.Utilities.Tracking.AddEvent("Param", "Value", "CHUTE_ENABLE", mav.MAV.param["CHUTE_ENABLE"].ToString());
+
+                    if (mav.MAV.param.ContainsKey("TERRAIN_ENABLE"))
+                        MissionPlanner.Utilities.Tracking.AddEvent("Param", "Value", "TERRAIN_ENABLE", mav.MAV.param["TERRAIN_ENABLE"].ToString());
+
+                    if (mav.MAV.param.ContainsKey("ADSB_ENABLE"))
+                        MissionPlanner.Utilities.Tracking.AddEvent("Param", "Value", "ADSB_ENABLE", mav.MAV.param["ADSB_ENABLE"].ToString());
+
+                    if (mav.MAV.param.ContainsKey("AVD_ENABLE"))
+                        MissionPlanner.Utilities.Tracking.AddEvent("Param", "Value", "AVD_ENABLE", mav.MAV.param["AVD_ENABLE"].ToString());
+
+                    // save the baudrate for this port
+                    Settings.Instance[_connectionControl.CMB_serialport.Text + "_BAUD"] = _connectionControl.CMB_baudrate.Text;
+
+                    this.Text = titlebar + " " + mav.MAV.VersionString;
+
+                    // refresh config window if needed
+                    if (MyView.current != null)
+                    {
+                        if (MyView.current.Name == "HWConfig")
+                            MyView.ShowScreen("HWConfig");
+                        if (MyView.current.Name == "SWConfig")
+                            MyView.ShowScreen("SWConfig");
+                    }
+
+                    // load wps on connect option.
+                    if (Settings.Instance.GetBoolean("loadwpsonconnect") == true)
+                    {
+                        // only do it if we are connected.
+                        if (mav.BaseStream.IsOpen)
+                        {
+                            MenuFlightPlanner_Click(null, null);
+                            FlightPlanner.BUT_read_Click(null, null);
+                        }
+                    }
+
+                    // get any rallypoints
+                    if (MainV2.comPort.MAV.param.ContainsKey("RALLY_TOTAL") &&
+                        int.Parse(MainV2.comPort.MAV.param["RALLY_TOTAL"].ToString()) > 0)
+                    {
+                        FlightPlanner.getRallyPointsToolStripMenuItem_Click(null, null);
+
+                        double maxdist = 0;
+
+                       
+
+                        if (mav.MAV.param.ContainsKey("RALLY_LIMIT_KM") &&
+                            (maxdist / 1000.0) > (float)mav.MAV.param["RALLY_LIMIT_KM"])
+                        {
+                            CustomMessageBox.Show(Strings.Warningrallypointdistance + " " +
+                                                  (maxdist / 1000.0).ToString("0.00") + " > " +
+                                                  (float)mav.MAV.param["RALLY_LIMIT_KM"]);
+                        }
+                    }
+
+                    // get any fences
+                    if (MainV2.comPort.MAV.param.ContainsKey("FENCE_TOTAL") &&
+                        int.Parse(MainV2.comPort.MAV.param["FENCE_TOTAL"].ToString()) > 1 &&
+                        MainV2.comPort.MAV.param.ContainsKey("FENCE_ACTION"))
+                    {
+                        FlightPlanner.GeoFencedownloadToolStripMenuItem_Click(null, null);
+                    }
+                    //Add HUD custom items source 
+                    HUD.Custom.src = MainV2.comPort.MAV.cs;
+
+                    // set connected icon
+                    this.MenuConnect.Image = displayicons.disconnect;
+                }
+                catch (Exception ex)
+                {
+                    log.Warn(ex);
+                    try
+                    {
+                        _connectionControl.IsConnected(false);
+                        UpdateConnectIcon();
+                        mav.Close();
+                    }
+                    catch (Exception ex2)
+                    {
+                        log.Warn(ex2);
+                    }
+                    CustomMessageBox.Show("Can not establish a connection\n\n" + ex.Message);
+                    return;
+                }
+
+                ///////////////
+
+
+                Comports.Add(mav);
+
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+
+        }
+        /// 
+        
+
+
+
         public void doConnect(MAVLinkInterface comPort, string portname, string baud, bool getparams = true, bool showui = true)
         {
             bool skipconnectcheck = false;

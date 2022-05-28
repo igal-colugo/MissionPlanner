@@ -35,6 +35,7 @@ using UnauthorizedAccessException = System.UnauthorizedAccessException;
 using MissionPlanner.MyCode;
 using System.Net.Sockets;
 using MissionPlanner.Controls.PreFlight;
+using MissionPlanner.Comms;
 
 // written by michael oborne
 
@@ -640,6 +641,10 @@ namespace MissionPlanner.GCSViews
                     MainV2._connectionControl.UpdateSysIDS();
                 }
 
+                else if (connectData[0] == "udpcl")
+                {   
+                    MainV2.instance.myConnect("UdpCl", connectData[2], connectData[3]);
+                }
             }
             catch (Exception ex)
             {

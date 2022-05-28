@@ -87,11 +87,11 @@ namespace MissionPlanner.Comms
 
             //if (!MainV2.MONO)
             {
-                if (inputboxreturn.Cancel == OnInputBoxShow("remote host",
-                        "Enter host name/ip (ensure remote end is already started)", ref host))
-                    throw new Exception("Canceled by request");
-                if (inputboxreturn.Cancel == OnInputBoxShow("remote Port", "Enter remote port", ref dest))
-                    throw new Exception("Canceled by request");
+    //            if (inputboxreturn.Cancel == OnInputBoxShow("remote host",
+              //          "Enter host name/ip (ensure remote end is already started)", ref host))
+              //      throw new Exception("Canceled by request");
+        //        if (inputboxreturn.Cancel == OnInputBoxShow("remote Port", "Enter remote port", ref dest))
+         //           throw new Exception("Canceled by request");
             }
 
             Port = dest;
