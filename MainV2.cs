@@ -1710,7 +1710,7 @@ namespace MissionPlanner
                     // save the baudrate for this port
                     Settings.Instance[_connectionControl.CMB_serialport.Text + "_BAUD"] = _connectionControl.CMB_baudrate.Text;
 
-                    this.Text = titlebar + " " + mav.MAV.VersionString;
+                    this.Text += " " + mav.MAV.VersionString;
 
                     // refresh config window if needed
                     if (MyView.current != null)
@@ -2065,7 +2065,7 @@ namespace MissionPlanner
                     Settings.Instance[_connectionControl.CMB_serialport.Text + "_BAUD"] =
                         _connectionControl.CMB_baudrate.Text;
 
-                    this.Text = titlebar + " " + comPort.MAV.VersionString;
+                    this.Text += " " + comPort.MAV.VersionString;
 
                     // refresh config window if needed
                     if (MyView.current != null && showui)

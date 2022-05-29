@@ -6276,6 +6276,23 @@ namespace MissionPlanner.GCSViews
         {
             resetChecklistDisplay();
             pnlCheckList.Visible = !pnlCheckList.Visible;
+            //upload only when checklist visible...
+            if (pnlCheckList.Visible)
+            {
+                uploadMyParams();
+            }
+        }
+
+        private void uploadMyParams()
+        {
+            Dictionary<string, double> prms = ParamFile.loadParamFile(Path.Combine(MySettings.myBasePath, "general\\" + "myPrms"));
+            if (MainV2.comPort.BaseStream.IsOpen)
+            {
+                foreach (KeyValuePair<string, double> tuple in prms)
+                {
+                    MainV2.comPort.setParam(tuple.Key, (float)tuple.Value);
+                }
+            }
         }
 
         private void resetChecklistDisplay()
@@ -6728,9 +6745,7 @@ namespace MissionPlanner.GCSViews
             if (MainV2.comPort.BaseStream.IsOpen)
             {
                 MainV2.comPort.doCommand(MAVLink.MAV_CMD.PREFLIGHT_CALIBRATION, 0, 0, 1, 0, 0, 0, 0);
-            }
-                
-
+            }     
         }
     }
 }
