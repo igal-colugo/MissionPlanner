@@ -645,6 +645,11 @@ namespace MissionPlanner.GCSViews
                 {   
                     MainV2.instance.myConnect("UdpCl", connectData[2], connectData[3]);
                 }
+
+                else if (connectData[0] == "udp")
+                {
+                    MainV2.instance.myConnect("Udp", connectData[2], connectData[3]);
+                }
             }
             catch (Exception ex)
             {
