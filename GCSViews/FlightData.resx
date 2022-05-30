@@ -5061,7 +5061,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
-        bwIAAk1TRnQBSQFMAgEBCgEAAQgBAgEIAQIBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
+        bwIAAk1TRnQBSQFMAgEBCgEAARABAgEQAQIBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
         AgABLwEBAgABAQEAARgGAAEaAQcdAAP+A/QD4AGmAaUBpAJZAVcCGQEXAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
         AQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJAQwBCwEJ
@@ -11064,7 +11064,7 @@
     <value>0</value>
   </data>
   <data name="btnMyConnect.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomRight</value>
+    <value>BottomCenter</value>
   </data>
   <data name="&gt;&gt;btnMyConnect.Name" xml:space="preserve">
     <value>btnMyConnect</value>
