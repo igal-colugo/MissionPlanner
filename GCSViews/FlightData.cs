@@ -328,7 +328,7 @@ namespace MissionPlanner.GCSViews
                 //get current alt cmd
                 if (_altCmdDisplay)
                 {
-                    AltTargetLocalcmd = (int)MainV2.comPort.MAV.cs.targetalt;
+                    AltTargetLocalcmd = (int)(MainV2.comPort.MAV.cs.targetalt / CurrentState.multiplieralt);
                     updateAltCmdDisplay();
                 }
             }
@@ -2766,7 +2766,7 @@ namespace MissionPlanner.GCSViews
 
         private void myNavTo(double lat, double lng)
         {
-            float alt = MainV2.comPort.MAV.cs.alt == 0 ? 100 : MainV2.comPort.MAV.cs.alt;
+            float alt = MainV2.comPort.MAV.cs.alt == 0 ? 100 : MainV2.comPort.MAV.cs.alt / CurrentState.multiplieralt;
             MainV2.comPort.MAV.GuidedMode.z = alt;
 
             Locationwp gotohere = new Locationwp();
@@ -6572,7 +6572,8 @@ namespace MissionPlanner.GCSViews
         {
             txtAltCmd.BeginInvokeIfRequired(() =>
             {
-                txtAltCmd.Text = string.Format($"{AltTargetLocalcmd:0} m");
+                int displayAlt = (int)(AltTargetLocalcmd * CurrentState.multiplieralt);
+                txtAltCmd.Text = string.Format($"{displayAlt:0} " + CurrentState.AltUnit);
             });
         }
 

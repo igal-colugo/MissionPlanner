@@ -88,10 +88,10 @@ namespace MissionPlanner
                     }
                 }
                 Bitmap resizedIc = new Bitmap(ic, new Size((int)(ic.Width * scale), (int)(ic.Height * scale)));
-                string stats = "ALT: " + (int)MAV.cs.alt + "m\r\n";
+                string stats = "ALT: " + (int)MAV.cs.alt +" "+ CurrentState.AltUnit + "\r\n";
                 if (!_balloonModeOn)
                 {
-                    stats += "IAS: " + (int)MAV.cs.airspeed + "m/s\r\n";
+                    stats += "IAS: " + (int)MAV.cs.airspeed + " " +CurrentState.SpeedUnit + "\r\n";
                     stats += "MODE: " + MAV.cs.mode;
                 }
                 
