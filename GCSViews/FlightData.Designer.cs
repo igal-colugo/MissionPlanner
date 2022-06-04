@@ -2261,7 +2261,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 3600D;
+            this.windDir1.Direction = 3780D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2447,6 +2447,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.gbPointToMan);
             this.pnlMap.Controls.Add(this.pnlCheckList);
             this.pnlMap.Controls.Add(this.pnlAlt);
             this.pnlMap.Controls.Add(this.label15);
@@ -2454,7 +2455,6 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.btnLandCmd);
             this.pnlMap.Controls.Add(this.btnToGo);
             this.pnlMap.Controls.Add(this.pnlConnectList);
-            this.pnlMap.Controls.Add(this.gbPointToMan);
             this.pnlMap.Controls.Add(this.btnForceEnableclDone);
             this.pnlMap.Controls.Add(this.btnEditCl);
             this.pnlMap.Controls.Add(this.pnlSpeedCmd);

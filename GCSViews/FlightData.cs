@@ -2717,6 +2717,7 @@ namespace MissionPlanner.GCSViews
             if (setNavTo)
             {
                 setNavTo = false;
+                resetPointToLayer();
                 myNavTo(MouseDownStart.Lat, MouseDownStart.Lng);
             }
 
@@ -2724,7 +2725,7 @@ namespace MissionPlanner.GCSViews
             {
                 setPointTo = false;
                 pointCameraHereToolStripMenuItem_Click(null, null);
-                updatePointoLayer();
+                updatePointoLayer(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng));
                 return;
             }
 
@@ -2757,9 +2758,16 @@ namespace MissionPlanner.GCSViews
             closeSecondaryButtons();
         }
 
-        private void updatePointoLayer()
+        private void resetPointToLayer()
         {
-            GMapMarkerMyPointTo mypntMark = new GMapMarkerMyPointTo(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng), 0 ,0);
+            BeginInvoke((Action)delegate {
+                pointToOverlay.Markers.Clear();
+            });
+        }
+
+        private void updatePointoLayer(PointLatLng loc)
+        {
+            GMapMarkerMyPointTo mypntMark = new GMapMarkerMyPointTo(loc);
             BeginInvoke((Action)delegate {
                 pointToOverlay.Markers.Clear();               
                 pointToOverlay.Markers.Add(mypntMark); 
@@ -6391,9 +6399,7 @@ namespace MissionPlanner.GCSViews
 
             try
             {
-                BeginInvoke((Action)delegate {
-                    pointToOverlay.Markers.Clear();
-                });
+                resetPointToLayer();
                 MainV2.comPort.setMode(modeName);
             }
             catch (Exception ex)
@@ -6693,6 +6699,8 @@ namespace MissionPlanner.GCSViews
 
                 try
                 {
+                    //update gui
+                    updatePointoLayer(new PointLatLng(lat,lng));
                     MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent,
                         MAVLink.MAV_CMD.DO_SET_ROI, 0, 0, 0, 0, (int)(lat * 1e7),
                         (int)(lng * 1e7), (float)((altdata.alt / CurrentState.multiplieralt)),
