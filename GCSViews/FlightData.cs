@@ -51,6 +51,7 @@ namespace MissionPlanner.GCSViews
         public SplitContainer MainHcopy;
         internal static GMapOverlay geofence;
         internal static GMapOverlay photosoverlay;
+        internal static GMapOverlay pointToOverlay;
         internal static GMapOverlay poioverlay = new GMapOverlay("POI");
         internal static GMapOverlay myTargetsoverlay = new GMapOverlay("MyTargets");
         internal static GMapOverlay rallypointoverlay;
@@ -520,6 +521,9 @@ namespace MissionPlanner.GCSViews
 
             photosoverlay = new GMapOverlay("photos overlay");
             gMapControl1.Overlays.Add(photosoverlay);
+
+            pointToOverlay = new GMapOverlay("PointTo overlay");
+            gMapControl1.Overlays.Add(pointToOverlay);
 
             routes = new GMapOverlay("routes");
             gMapControl1.Overlays.Add(routes);
@@ -2720,6 +2724,7 @@ namespace MissionPlanner.GCSViews
             {
                 setPointTo = false;
                 pointCameraHereToolStripMenuItem_Click(null, null);
+                updatePointoLayer();
                 return;
             }
 
@@ -2750,6 +2755,15 @@ namespace MissionPlanner.GCSViews
                 }
             }
             closeSecondaryButtons();
+        }
+
+        private void updatePointoLayer()
+        {
+            GMapMarkerMyPointTo mypntMark = new GMapMarkerMyPointTo(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng), 0 ,0);
+            BeginInvoke((Action)delegate {
+                pointToOverlay.Markers.Clear();               
+                pointToOverlay.Markers.Add(mypntMark); 
+            });
         }
 
         private void closeSecondaryButtons()
@@ -6332,7 +6346,8 @@ namespace MissionPlanner.GCSViews
             int toAlt = fh.RElTOAlt;
             int wpAlt = fh.AfterToWpAlt;
             int distToWp = fh.DistToWp;
-            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt,wpAlt, distToWp, log);
+            bool shrtTo = fh.ShortTO;
+            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt,wpAlt, distToWp, shrtTo, log);
             connectState = connectStates.csPreFlightDone;
         }
 
@@ -6376,6 +6391,9 @@ namespace MissionPlanner.GCSViews
 
             try
             {
+                BeginInvoke((Action)delegate {
+                    pointToOverlay.Markers.Clear();
+                });
                 MainV2.comPort.setMode(modeName);
             }
             catch (Exception ex)

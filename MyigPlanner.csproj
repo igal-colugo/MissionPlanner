@@ -613,6 +613,7 @@
     <Compile Include="GCSViews\ConfigurationView\DeviceInfo.cs" />
     <Compile Include="GCSViews\ConfigurationView\UAVCANModel.cs" />
     <Compile Include="GCSViews\ConfigurationView\uitype.cs" />
+    <Compile Include="MyCode\GMapMarkerMyPointTo.cs" />
     <Compile Include="MyCode\MyConfigFileHelper.cs" />
     <Compile Include="MyCode\ConnectHelper.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -4609,9 +4610,11 @@
     <Content Include="mavutil.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="pointTo.png" />
     <Content Include="quaternion.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\pointTo.png" />
     <Content Include="rotmat.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

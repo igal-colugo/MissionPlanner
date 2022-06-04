@@ -11,9 +11,9 @@ namespace MissionPlanner.MyCode
 {
     internal class myTOHelper
     {
-        internal static void CreateAndUploadTOPlan(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt, int distToWp, ILog log)
+        internal static void CreateAndUploadTOPlan(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt, int distToWp, bool shrtTo, ILog log)
         {
-            List<Locationwp> commandlist = createPoints(lat, lng, altAsl, yaw, tOAlt, wpAlt, distToWp);
+            List<Locationwp> commandlist = createPoints(lat, lng, altAsl, yaw, tOAlt, wpAlt, distToWp, shrtTo);
 
             Task.Run(async () =>
             {
@@ -42,7 +42,7 @@ namespace MissionPlanner.MyCode
             }).GetAwaiter().GetResult();
         }
 
-        private static List<Locationwp> createPoints(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt, int distToWp)
+        private static List<Locationwp> createPoints(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt, int distToWp, bool shrtTo)
         {
             List<Locationwp> locationwps = new List<Locationwp>();
             Locationwp home = new Locationwp();
@@ -59,25 +59,40 @@ namespace MissionPlanner.MyCode
             TOCmd.lat = lat;// (double.Parse(items[8], CultureInfo.InvariantCulture));
             TOCmd.lng = lng;// (double.Parse(items[9], CultureInfo.InvariantCulture));
 
-            PointLatLngAlt nextPos = new PointLatLngAlt(lat,lng).newpos(yaw, distToWp);
-            Locationwp wp = new Locationwp();
-            wp.frame = 3;//relative alt...
-            wp.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
-            wp.alt = wpAlt;
-            wp.lat = nextPos.Lat;
-            wp.lng = nextPos.Lng;
-
-            Locationwp loitCmd = new Locationwp();
-            loitCmd.frame = 3;//relative alt...
-            loitCmd.id = (ushort)MAVLink.MAV_CMD.LOITER_UNLIM;
-            loitCmd.alt = wpAlt;
-            loitCmd.lat = nextPos.Lat;
-            loitCmd.lng = nextPos.Lng;
-
             locationwps.Add(home);
             locationwps.Add(TOCmd);
-            locationwps.Add(wp);            
-            locationwps.Add(loitCmd);
+            if (!shrtTo)
+            {
+                PointLatLngAlt nextPos = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp);
+                Locationwp wp = new Locationwp();
+                wp.frame = 3;//relative alt...
+                wp.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                wp.alt = wpAlt;
+                wp.lat = nextPos.Lat;
+                wp.lng = nextPos.Lng;
+
+                Locationwp loitCmd = new Locationwp();
+                loitCmd.frame = 3;//relative alt...
+                loitCmd.id = (ushort)MAVLink.MAV_CMD.LOITER_UNLIM;
+                loitCmd.alt = wpAlt;
+                loitCmd.lat = nextPos.Lat;
+                loitCmd.lng = nextPos.Lng;
+
+                
+                locationwps.Add(wp);
+                locationwps.Add(loitCmd);
+            }
+            else
+            {
+                Locationwp loitCmd = new Locationwp();
+                loitCmd.frame = 3;//relative alt...
+                loitCmd.id = (ushort)MAVLink.MAV_CMD.LOITER_UNLIM;
+                loitCmd.alt = TOCmd.alt;
+                loitCmd.lat = TOCmd.lat;
+                loitCmd.lng = TOCmd.lng;                
+                locationwps.Add(loitCmd);
+            }
+            
             return locationwps;
         }
 
