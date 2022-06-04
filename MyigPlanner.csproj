@@ -629,6 +629,7 @@
     </Compile>
     <Compile Include="MyCode\GMapMarkerMyPlane.cs" />
     <Compile Include="MyCode\GMyMarkerGoogle.cs" />
+    <Compile Include="MyCode\myFenceHelper.cs" />
     <Compile Include="MyCode\MYRButton.cs">
       <SubType>Component</SubType>
     </Compile>

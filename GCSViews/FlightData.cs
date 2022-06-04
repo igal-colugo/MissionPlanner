@@ -6285,6 +6285,16 @@ namespace MissionPlanner.GCSViews
             if (pnlCheckList.Visible)
             {
                 uploadMyParams();
+                try
+                {
+                    myFenceHelper.LoadFenceAndUploadToPlane(Path.Combine(MySettings.myBasePath, "general\\" + "safePoints"));
+                }
+                catch (Exception ex)
+                {
+                    CustomMessageBox.Show("cant send safe points.\n" + ex);
+                    log.Debug(ex);
+                }
+                
             }
         }
 

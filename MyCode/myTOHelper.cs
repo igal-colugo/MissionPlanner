@@ -17,19 +17,9 @@ namespace MissionPlanner.MyCode
 
             Task.Run(async () =>
             {
-                await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, 0,
+                await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, MAVLink.MAV_MISSION_TYPE.MISSION,
                     commandlist,
-                    (percent, status) =>
-                    {
-                        // if (sender.doWorkArgs.CancelRequested)
-                        //  {
-                        //    sender.doWorkArgs.CancelAcknowledged = true;
-                        //    sender.doWorkArgs.ErrorMessage = "User Canceled";
-                        //   throw new Exception("User Canceled");
-                        //  }
-
-                        // sender.UpdateProgressAndStatus((int)(percent * 0.95), status);
-                    }).ConfigureAwait(false);
+                    (percent, status) => {}).ConfigureAwait(false);
 
                 try
                 {

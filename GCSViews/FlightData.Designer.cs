@@ -2261,7 +2261,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 2160D;
+            this.windDir1.Direction = 2880D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -3039,7 +3039,7 @@ namespace MissionPlanner.GCSViews
             this.btnBatDispaly.BorderSize = 4;
             this.btnBatDispaly.ForeColor = System.Drawing.Color.Lime;
             this.btnBatDispaly.ImageList = this.ilMyImages;
-            this.btnBatDispaly.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnBatDispaly.MouseEnterColor = System.Drawing.Color.Black;
             this.btnBatDispaly.Name = "btnBatDispaly";
             this.btnBatDispaly.TextColor = System.Drawing.Color.Lime;
             this.btnBatDispaly.UseVisualStyleBackColor = false;
