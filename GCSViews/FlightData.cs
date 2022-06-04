@@ -585,7 +585,8 @@ namespace MissionPlanner.GCSViews
             pnlMap.Dock = DockStyle.Fill;
             btnNavToCmd.Visible = !_balloonModeOn;
             btnLoiterCmd.Visible = !_balloonModeOn;
-            btnCamGuideCmd.Visible = !_balloonModeOn;
+            btnCamGuideCmd.Visible = !_balloonModeOn;           
+            
             adjustMyGui();
         }
 
@@ -2479,6 +2480,7 @@ namespace MissionPlanner.GCSViews
 
             if (Settings.Instance["CHK_autopan"] != null)
                 CHK_autopan.Checked = Settings.Instance.GetBoolean("CHK_autopan");
+            btnLock.ImageIndex = CHK_autopan.Checked ? 11 : 10;
 
             if (Settings.Instance.ContainsKey("HudSwap") && Settings.Instance["HudSwap"] == "true")
                 SwapHud1AndMap();
@@ -6270,6 +6272,7 @@ namespace MissionPlanner.GCSViews
         {
             closeSecondaryButtons();
             CHK_autopan.Checked = !CHK_autopan.Checked;
+            btnLock.ImageIndex = CHK_autopan.Checked ? 11 : 10;
         }
 
         private void btnCamGuideCmd_Click(object sender, EventArgs e)
@@ -6701,6 +6704,8 @@ namespace MissionPlanner.GCSViews
                 {
                     //update gui
                     updatePointoLayer(new PointLatLng(lat,lng));
+
+                    //send command to plane
                     MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent,
                         MAVLink.MAV_CMD.DO_SET_ROI, 0, 0, 0, 0, (int)(lat * 1e7),
                         (int)(lng * 1e7), (float)((altdata.alt / CurrentState.multiplieralt)),
