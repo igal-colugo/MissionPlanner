@@ -354,6 +354,32 @@ namespace MissionPlanner.GCSViews
             }
         }
 
+        private string _myWarning;
+        private string myWarning { get { return _myWarning; }
+            set { 
+                //if warn enbled....
+                if(value != _myWarning)
+                {
+                    _myWarning = value;
+                    // update pane
+                    /*
+                     * mywarnpanel.BeginInvokeIfRequired(() =>
+            {
+                ///
+
+                    if (_myWarning == "")
+                    {
+                        //panel visible = false...
+                    }
+                
+            });
+                     */
+
+                }
+
+            }
+        }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -4094,6 +4120,7 @@ namespace MissionPlanner.GCSViews
             });
 
             updateBattStatus();
+            myWarning = hud1.message;
 
             // if (pnlSpeedCmd.Visible)
             // {
@@ -5833,7 +5860,8 @@ namespace MissionPlanner.GCSViews
         private int myIasCmd;
         private bool resetEnabled = false;
         private float _lowBattVolt;
-        private float _critBattVolt;       
+        private float _critBattVolt;
+        
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6384,7 +6412,11 @@ namespace MissionPlanner.GCSViews
         private void btnLandCmd_Click(object sender, EventArgs e)
         {
             resetEnabled = true;
-            myModeCommand("QLAND");
+            //update command to corrent location
+            //Cs.
+
+           // go Too to rtl...
+            myModeCommand("RTL");
             btnLandCmd.Visible = false;
         }
 

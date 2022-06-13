@@ -58,12 +58,30 @@ namespace MissionPlanner.MyCode
             TOCmd.alt = tOAlt;// (float)(double.Parse(items[10], CultureInfo.InvariantCulture));
             TOCmd.lat = lat;// (double.Parse(items[8], CultureInfo.InvariantCulture));
             TOCmd.lng = lng;// (double.Parse(items[9], CultureInfo.InvariantCulture));
+            
 
             locationwps.Add(home);
             locationwps.Add(TOCmd);
             if (!shrtTo)
             {
+                PointLatLngAlt transitionTocopter = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp - 20);
                 PointLatLngAlt nextPos = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp);
+
+                Locationwp wpTcopter = new Locationwp();
+                wpTcopter.frame = 3;//relative alt...
+                wpTcopter.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                wpTcopter.alt = wpAlt;
+                wpTcopter.lat = transitionTocopter.Lat;
+                wpTcopter.lng = transitionTocopter.Lng;
+
+                Locationwp transToCopter = new Locationwp();
+                transToCopter.frame = 3;//relative alt...
+                transToCopter.id = (ushort)MAVLink.MAV_CMD.DO_VTOL_TRANSITION;
+                transToCopter.alt = wpAlt;
+                transToCopter.lat = transitionTocopter.Lat;
+                transToCopter.lng = transitionTocopter.Lng;
+                transToCopter.p1 = 3;//copter 
+
                 Locationwp wp = new Locationwp();
                 wp.frame = 3;//relative alt...
                 wp.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
@@ -78,7 +96,8 @@ namespace MissionPlanner.MyCode
                 loitCmd.lat = nextPos.Lat;
                 loitCmd.lng = nextPos.Lng;
 
-                
+                locationwps.Add(wpTcopter);
+                locationwps.Add(transToCopter);
                 locationwps.Add(wp);
                 locationwps.Add(loitCmd);
             }
