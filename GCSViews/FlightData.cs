@@ -6412,12 +6412,41 @@ namespace MissionPlanner.GCSViews
         private void btnLandCmd_Click(object sender, EventArgs e)
         {
             resetEnabled = true;
-            //update command to corrent location
-            //Cs.
-
-           // go Too to rtl...
+            //update command to corrent location            
+            updateHomeLocationAsync(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng);
+            // go Too to rtl...
             myModeCommand("RTL");
             btnLandCmd.Visible = false;
+        }
+
+        private async Task updateHomeLocationAsync(double lat, double lng)
+        {
+            if (MainV2.comPort.BaseStream.IsOpen)
+            {
+                try
+                {
+                    var alt = srtm.getAltitude(lat, lng);
+
+                    if (alt.currenttype != srtm.tiletype.valid)
+                    {
+                        alt.alt = 0;
+                    }
+
+                    
+                        MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
+                            (byte)MainV2.comPort.compidcurrent,
+                            MAVLink.MAV_CMD.DO_SET_HOME, 0, 0, 0, 0, (float)lat,
+                            (float)lng, (float)alt.alt);
+                    
+
+                    await MainV2.comPort.getHomePositionAsync((byte)MainV2.comPort.sysidcurrent,
+                        (byte)MainV2.comPort.compidcurrent);
+                }
+                catch
+                {
+                    CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                }
+            }
         }
 
         private void myModeCommand(string modeName)
