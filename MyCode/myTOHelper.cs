@@ -62,25 +62,29 @@ namespace MissionPlanner.MyCode
 
             locationwps.Add(home);
             locationwps.Add(TOCmd);
-            if (!shrtTo)
+
+            Locationwp loitCmd = new Locationwp();
+            loitCmd.frame = 3;//relative alt...
+            loitCmd.id = (ushort)MAVLink.MAV_CMD.LOITER_UNLIM;
+            
+            
+
+            if (shrtTo)
             {
-                PointLatLngAlt transitionTocopter = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp - 20);
-                PointLatLngAlt nextPos = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp);
-
-                Locationwp wpTcopter = new Locationwp();
-                wpTcopter.frame = 3;//relative alt...
-                wpTcopter.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
-                wpTcopter.alt = wpAlt;
-                wpTcopter.lat = transitionTocopter.Lat;
-                wpTcopter.lng = transitionTocopter.Lng;
-
                 Locationwp transToCopter = new Locationwp();
                 transToCopter.frame = 3;//relative alt...
                 transToCopter.id = (ushort)MAVLink.MAV_CMD.DO_VTOL_TRANSITION;
-                transToCopter.alt = wpAlt;
-                transToCopter.lat = transitionTocopter.Lat;
-                transToCopter.lng = transitionTocopter.Lng;
-                transToCopter.p1 = 3;//copter 
+                transToCopter.p1 = 3;//copter
+                locationwps.Add(transToCopter);
+
+                //update location of where to loiter...
+                loitCmd.lat = lat;
+                loitCmd.lng = lng;
+                loitCmd.alt = tOAlt;
+            }
+            else
+            {
+                PointLatLngAlt nextPos = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp);
 
                 Locationwp wp = new Locationwp();
                 wp.frame = 3;//relative alt...
@@ -88,29 +92,15 @@ namespace MissionPlanner.MyCode
                 wp.alt = wpAlt;
                 wp.lat = nextPos.Lat;
                 wp.lng = nextPos.Lng;
+                locationwps.Add(wp);
 
-                Locationwp loitCmd = new Locationwp();
-                loitCmd.frame = 3;//relative alt...
-                loitCmd.id = (ushort)MAVLink.MAV_CMD.LOITER_UNLIM;
-                loitCmd.alt = wpAlt;
+                //update location of where to loiter...
                 loitCmd.lat = nextPos.Lat;
                 loitCmd.lng = nextPos.Lng;
+                loitCmd.alt = wpAlt;
+            }
 
-                locationwps.Add(wpTcopter);
-                locationwps.Add(transToCopter);
-                locationwps.Add(wp);
-                locationwps.Add(loitCmd);
-            }
-            else
-            {
-                Locationwp loitCmd = new Locationwp();
-                loitCmd.frame = 3;//relative alt...
-                loitCmd.id = (ushort)MAVLink.MAV_CMD.LOITER_UNLIM;
-                loitCmd.alt = TOCmd.alt;
-                loitCmd.lat = TOCmd.lat;
-                loitCmd.lng = TOCmd.lng;                
-                locationwps.Add(loitCmd);
-            }
+            locationwps.Add(loitCmd);
             
             return locationwps;
         }
