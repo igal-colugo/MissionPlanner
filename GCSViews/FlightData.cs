@@ -227,7 +227,8 @@ namespace MissionPlanner.GCSViews
                 //on connect update values of bat
                 if (_connectState == connectStates.csConnected)
                 {
-                    updateBattLimits();                    
+                    updateBattLimits();
+                    _qrtlAltMeters = MainV2.comPort.GetParam("Q_RTL_ALT");
                 }
                 
                 btnTO.BeginInvokeIfRequired(() =>
@@ -5861,7 +5862,7 @@ namespace MissionPlanner.GCSViews
         private bool resetEnabled = false;
         private float _lowBattVolt;
         private float _critBattVolt;
-        
+        private float _qrtlAltMeters;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6275,8 +6276,9 @@ namespace MissionPlanner.GCSViews
 
             btnBatDispaly.Location      = new Point(3, btnLandEnable.Bottom + gap);
             btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
-            gbPointToMan.Location       = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);
+            gbPointToMan.Location       = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);            
             crdsMy.Location             = new Point(btnPoinToLatlngCmd.Left - crdsMy.Width -1, btnPoinToLatlngCmd.Bottom - crdsMy.Height);
+            lblSatCount.Location = new Point(crdsMy.Right - 40, crdsMy.Top - 2 - lblSatCount.Height);
         }
 
         private int calcChcecklistHeight()
@@ -6412,10 +6414,21 @@ namespace MissionPlanner.GCSViews
         private void btnLandCmd_Click(object sender, EventArgs e)
         {
             resetEnabled = true;
-            //update command to corrent location            
-            updateHomeLocationAsync(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng);
-            // go Too to rtl...
-            myModeCommand("RTL");
+
+            //igal Q_RTL_ALT
+            //planer alt 
+            float planeAltMeters = (float)(MainV2.comPort.MAV.cs.alt / CurrentState.multiplieralt);
+            if (planeAltMeters < _qrtlAltMeters) {
+                myModeCommand("QLAND");
+            }
+            else
+            {
+                //update command to corrent location            
+                updateHomeLocationAsync(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng);
+                // go Too to rtl...
+                myModeCommand("RTL");
+            }
+            
             btnLandCmd.Visible = false;
         }
 
