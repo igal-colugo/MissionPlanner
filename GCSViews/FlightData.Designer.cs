@@ -186,6 +186,7 @@ namespace MissionPlanner.GCSViews
             this.CB_tuning = new System.Windows.Forms.CheckBox();
             this.ZedGraphTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblSatCount = new MissionPlanner.Controls.MyLabel();
             this.openScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.scriptChecker = new System.Windows.Forms.Timer(this.components);
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
@@ -202,19 +203,27 @@ namespace MissionPlanner.GCSViews
             this.btnManPoinToCncl = new System.Windows.Forms.Button();
             this.lblManPointto = new System.Windows.Forms.Label();
             this.pnlCheckList = new System.Windows.Forms.Panel();
+            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnPitotTest = new System.Windows.Forms.Button();
             this.btnEnablePitotTest = new System.Windows.Forms.Button();
             this.btnClDone = new System.Windows.Forms.Button();
             this.pnlAlt = new System.Windows.Forms.Panel();
+            this.btnAltup = new MyControlsLibrary.MYRButton();
+            this.btnAltdwn = new MyControlsLibrary.MYRButton();
             this.txtAltCmd = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtHomeDist = new System.Windows.Forms.TextBox();
+            this.btnLandCmd = new MyControlsLibrary.MYRButton();
+            this.btnToGo = new MyControlsLibrary.MYRButton();
             this.pnlConnectList = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnForceEnableclDone = new System.Windows.Forms.Button();
             this.btnEditCl = new System.Windows.Forms.Button();
             this.pnlSpeedCmd = new System.Windows.Forms.Panel();
+            this.btnCruiseSpd = new MyControlsLibrary.MYRButton();
+            this.btnMaxSpd = new MyControlsLibrary.MYRButton();
+            this.bntLowSpd = new MyControlsLibrary.MYRButton();
             this.gbPoiCoords = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOk = new System.Windows.Forms.Button();
@@ -229,36 +238,14 @@ namespace MissionPlanner.GCSViews
             this.btnDeletePois = new System.Windows.Forms.Button();
             this.btnLoadPois = new System.Windows.Forms.Button();
             this.btnAddPoi = new System.Windows.Forms.Button();
+            this.btnTO = new MyControlsLibrary.MYRButton();
+            this.btnCheckList = new MyControlsLibrary.MYRButton();
             this.btnSim = new System.Windows.Forms.Button();
             this.lblRullerDistance = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.crdsMy = new MissionPlanner.Controls.Coords();
-            this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
-            this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
-            this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.checkListControl2 = new MissionPlanner.Controls.PreFlight.CheckListControl();
-            this.btnAltup = new MyControlsLibrary.MYRButton();
-            this.btnAltdwn = new MyControlsLibrary.MYRButton();
-            this.btnLandCmd = new MyControlsLibrary.MYRButton();
-            this.btnToGo = new MyControlsLibrary.MYRButton();
-            this.btnCruiseSpd = new MyControlsLibrary.MYRButton();
-            this.btnMaxSpd = new MyControlsLibrary.MYRButton();
-            this.bntLowSpd = new MyControlsLibrary.MYRButton();
-            this.btnTO = new MyControlsLibrary.MYRButton();
-            this.btnCheckList = new MyControlsLibrary.MYRButton();
             this.btnPoinToLatlngCmd = new MyControlsLibrary.MYRButton();
             this.btnCamGuideCmd = new MyControlsLibrary.MYRButton();
             this.btnPointToCmd = new MyControlsLibrary.MYRButton();
@@ -275,7 +262,20 @@ namespace MissionPlanner.GCSViews
             this.btnZoomIn = new MyControlsLibrary.MYRButton();
             this.btnZoomOut = new MyControlsLibrary.MYRButton();
             this.btnMyConnect = new MyControlsLibrary.MYRButton();
-            this.lblSatCount = new MissionPlanner.Controls.MyLabel();
+            this.crdsMy = new MissionPlanner.Controls.Coords();
+            this.gMapControl1 = new MissionPlanner.Controls.myGMAP();
+            this.contextMenuPoi = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deletePOIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
+            this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2262,7 +2262,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 180D;
+            this.windDir1.Direction = 360D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2414,6 +2414,14 @@ namespace MissionPlanner.GCSViews
             this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(226)))), ((int)(((byte)(150)))));
             this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(148)))), ((int)(((byte)(41)))));
             // 
+            // lblSatCount
+            // 
+            resources.ApplyResources(this.lblSatCount, "lblSatCount");
+            this.lblSatCount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "satcount", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "Sats: 0"));
+            this.lblSatCount.Name = "lblSatCount";
+            this.lblSatCount.resize = true;
+            this.toolTip1.SetToolTip(this.lblSatCount, resources.GetString("lblSatCount.ToolTip"));
+            // 
             // openScriptDialog
             // 
             resources.ApplyResources(this.openScriptDialog, "openScriptDialog");
@@ -2563,6 +2571,11 @@ namespace MissionPlanner.GCSViews
             this.pnlCheckList.Controls.Add(this.tableLayoutPanel5);
             this.pnlCheckList.Name = "pnlCheckList";
             // 
+            // checkListControl2
+            // 
+            resources.ApplyResources(this.checkListControl2, "checkListControl2");
+            this.checkListControl2.Name = "checkListControl2";
+            // 
             // tableLayoutPanel5
             // 
             resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
@@ -2601,6 +2614,36 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.pnlAlt, "pnlAlt");
             this.pnlAlt.Name = "pnlAlt";
             // 
+            // btnAltup
+            // 
+            this.btnAltup.BackColor = System.Drawing.Color.Silver;
+            this.btnAltup.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnAltup, "btnAltup");
+            this.btnAltup.BorderColor = System.Drawing.Color.Black;
+            this.btnAltup.BorderRadius = 10;
+            this.btnAltup.BorderSize = 4;
+            this.btnAltup.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltup.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnAltup.Name = "btnAltup";
+            this.btnAltup.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltup.UseVisualStyleBackColor = false;
+            this.btnAltup.Click += new System.EventHandler(this.btnAltup_Click);
+            // 
+            // btnAltdwn
+            // 
+            this.btnAltdwn.BackColor = System.Drawing.Color.Silver;
+            this.btnAltdwn.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnAltdwn, "btnAltdwn");
+            this.btnAltdwn.BorderColor = System.Drawing.Color.Black;
+            this.btnAltdwn.BorderRadius = 10;
+            this.btnAltdwn.BorderSize = 4;
+            this.btnAltdwn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltdwn.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnAltdwn.Name = "btnAltdwn";
+            this.btnAltdwn.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltdwn.UseVisualStyleBackColor = false;
+            this.btnAltdwn.Click += new System.EventHandler(this.btnAltdwn_Click);
+            // 
             // txtAltCmd
             // 
             resources.ApplyResources(this.txtAltCmd, "txtAltCmd");
@@ -2619,6 +2662,36 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.txtHomeDist, "txtHomeDist");
             this.txtHomeDist.Name = "txtHomeDist";
             this.txtHomeDist.ReadOnly = true;
+            // 
+            // btnLandCmd
+            // 
+            this.btnLandCmd.BackColor = System.Drawing.Color.Silver;
+            this.btnLandCmd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
+            this.btnLandCmd.BorderColor = System.Drawing.Color.Black;
+            this.btnLandCmd.BorderRadius = 10;
+            this.btnLandCmd.BorderSize = 4;
+            this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnLandCmd.Name = "btnLandCmd";
+            this.btnLandCmd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.UseVisualStyleBackColor = false;
+            this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
+            // 
+            // btnToGo
+            // 
+            this.btnToGo.BackColor = System.Drawing.Color.Silver;
+            this.btnToGo.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnToGo, "btnToGo");
+            this.btnToGo.BorderColor = System.Drawing.Color.Black;
+            this.btnToGo.BorderRadius = 10;
+            this.btnToGo.BorderSize = 4;
+            this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnToGo.Name = "btnToGo";
+            this.btnToGo.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.UseVisualStyleBackColor = false;
+            this.btnToGo.Click += new System.EventHandler(this.btnToGo_Click);
             // 
             // pnlConnectList
             // 
@@ -2657,6 +2730,51 @@ namespace MissionPlanner.GCSViews
             this.pnlSpeedCmd.ForeColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.pnlSpeedCmd, "pnlSpeedCmd");
             this.pnlSpeedCmd.Name = "pnlSpeedCmd";
+            // 
+            // btnCruiseSpd
+            // 
+            resources.ApplyResources(this.btnCruiseSpd, "btnCruiseSpd");
+            this.btnCruiseSpd.BackColor = System.Drawing.Color.Silver;
+            this.btnCruiseSpd.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnCruiseSpd.BorderColor = System.Drawing.Color.Black;
+            this.btnCruiseSpd.BorderRadius = 10;
+            this.btnCruiseSpd.BorderSize = 4;
+            this.btnCruiseSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnCruiseSpd.Name = "btnCruiseSpd";
+            this.btnCruiseSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.UseVisualStyleBackColor = false;
+            this.btnCruiseSpd.Click += new System.EventHandler(this.btnCruiseSpd_Click);
+            // 
+            // btnMaxSpd
+            // 
+            this.btnMaxSpd.BackColor = System.Drawing.Color.Silver;
+            this.btnMaxSpd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.btnMaxSpd, "btnMaxSpd");
+            this.btnMaxSpd.BorderColor = System.Drawing.Color.Black;
+            this.btnMaxSpd.BorderRadius = 10;
+            this.btnMaxSpd.BorderSize = 4;
+            this.btnMaxSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnMaxSpd.Name = "btnMaxSpd";
+            this.btnMaxSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.UseVisualStyleBackColor = false;
+            this.btnMaxSpd.Click += new System.EventHandler(this.btnMaxSpd_Click);
+            // 
+            // bntLowSpd
+            // 
+            this.bntLowSpd.BackColor = System.Drawing.Color.Silver;
+            this.bntLowSpd.BackgroundColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.bntLowSpd, "bntLowSpd");
+            this.bntLowSpd.BorderColor = System.Drawing.Color.Black;
+            this.bntLowSpd.BorderRadius = 10;
+            this.bntLowSpd.BorderSize = 4;
+            this.bntLowSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.MouseEnterColor = System.Drawing.Color.Blue;
+            this.bntLowSpd.Name = "bntLowSpd";
+            this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.UseVisualStyleBackColor = false;
+            this.bntLowSpd.Click += new System.EventHandler(this.bntLowSpd_Click);
             // 
             // gbPoiCoords
             // 
@@ -2758,6 +2876,36 @@ namespace MissionPlanner.GCSViews
             this.btnAddPoi.UseVisualStyleBackColor = true;
             this.btnAddPoi.Click += new System.EventHandler(this.btnAddPoi_Click);
             // 
+            // btnTO
+            // 
+            this.btnTO.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnTO.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            resources.ApplyResources(this.btnTO, "btnTO");
+            this.btnTO.BorderColor = System.Drawing.Color.Black;
+            this.btnTO.BorderRadius = 10;
+            this.btnTO.BorderSize = 4;
+            this.btnTO.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTO.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnTO.Name = "btnTO";
+            this.btnTO.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTO.UseVisualStyleBackColor = true;
+            this.btnTO.Click += new System.EventHandler(this.btnTO_Click);
+            // 
+            // btnCheckList
+            // 
+            this.btnCheckList.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCheckList.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            resources.ApplyResources(this.btnCheckList, "btnCheckList");
+            this.btnCheckList.BorderColor = System.Drawing.Color.Black;
+            this.btnCheckList.BorderRadius = 10;
+            this.btnCheckList.BorderSize = 4;
+            this.btnCheckList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCheckList.MouseEnterColor = System.Drawing.Color.Blue;
+            this.btnCheckList.Name = "btnCheckList";
+            this.btnCheckList.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCheckList.UseVisualStyleBackColor = true;
+            this.btnCheckList.Click += new System.EventHandler(this.btnCheckList_Click);
+            // 
             // btnSim
             // 
             resources.ApplyResources(this.btnSim, "btnSim");
@@ -2798,275 +2946,6 @@ namespace MissionPlanner.GCSViews
             this.label10.ForeColor = System.Drawing.Color.Red;
             this.label10.Name = "label10";
             this.label10.Tag = "custom";
-            // 
-            // crdsMy
-            // 
-            this.crdsMy.Alt = 33D;
-            this.crdsMy.AltSource = "";
-            this.crdsMy.AltUnit = "m";
-            resources.ApplyResources(this.crdsMy, "crdsMy");
-            this.crdsMy.Lat = 31.5D;
-            this.crdsMy.Lng = 44.2D;
-            this.crdsMy.Name = "crdsMy";
-            this.crdsMy.Vertical = false;
-            // 
-            // gMapControl1
-            // 
-            this.gMapControl1.BackColor = System.Drawing.Color.Black;
-            this.gMapControl1.Bearing = 0F;
-            this.gMapControl1.CanDragMap = true;
-            resources.ApplyResources(this.gMapControl1, "gMapControl1");
-            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Gray;
-            this.gMapControl1.GrayScaleMode = false;
-            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gMapControl1.HoldInvalidation = false;
-            this.gMapControl1.LevelsKeepInMemmory = 5;
-            this.gMapControl1.MarkersEnabled = true;
-            this.gMapControl1.MaxZoom = 24;
-            this.gMapControl1.MinZoom = 1;
-            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
-            this.gMapControl1.Name = "gMapControl1";
-            this.gMapControl1.NegativeMode = false;
-            this.gMapControl1.PolygonsEnabled = true;
-            this.gMapControl1.RetryLoadTile = 0;
-            this.gMapControl1.RoutesEnabled = true;
-            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Fractional;
-            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Zoom = 3D;
-            this.gMapControl1.OnPositionChanged += new GMap.NET.PositionChanged(this.gMapControl1_OnPositionChanged);
-            this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
-            this.gMapControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDown);
-            this.gMapControl1.MouseLeave += new System.EventHandler(this.gMapControl1_MouseLeave);
-            this.gMapControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseMove);
-            this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
-            this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
-            // 
-            // contextMenuPoi
-            // 
-            this.contextMenuPoi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deletePOIToolStripMenuItem,
-            this.editLocationToolStripMenuItem,
-            this.changeTypeToolStripMenuItem});
-            this.contextMenuPoi.Name = "contextMenuPoi";
-            resources.ApplyResources(this.contextMenuPoi, "contextMenuPoi");
-            // 
-            // deletePOIToolStripMenuItem
-            // 
-            this.deletePOIToolStripMenuItem.Name = "deletePOIToolStripMenuItem";
-            resources.ApplyResources(this.deletePOIToolStripMenuItem, "deletePOIToolStripMenuItem");
-            this.deletePOIToolStripMenuItem.Click += new System.EventHandler(this.deletePOIToolStripMenuItem_Click);
-            // 
-            // editLocationToolStripMenuItem
-            // 
-            this.editLocationToolStripMenuItem.Name = "editLocationToolStripMenuItem";
-            resources.ApplyResources(this.editLocationToolStripMenuItem, "editLocationToolStripMenuItem");
-            this.editLocationToolStripMenuItem.Click += new System.EventHandler(this.editLocationToolStripMenuItem_Click);
-            // 
-            // changeTypeToolStripMenuItem
-            // 
-            this.changeTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7});
-            this.changeTypeToolStripMenuItem.Name = "changeTypeToolStripMenuItem";
-            resources.ApplyResources(this.changeTypeToolStripMenuItem, "changeTypeToolStripMenuItem");
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.Tag = "0";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.Tag = "1";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Tag = "2";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Tag = "3";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
-            this.toolStripMenuItem6.Tag = "4";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
-            this.toolStripMenuItem7.Tag = "5";
-            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
-            // 
-            // ilMyTargets
-            // 
-            this.ilMyTargets.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            resources.ApplyResources(this.ilMyTargets, "ilMyTargets");
-            this.ilMyTargets.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // tmrCamGuide
-            // 
-            this.tmrCamGuide.Interval = 2000;
-            this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
-            // 
-            // checkListControl2
-            // 
-            resources.ApplyResources(this.checkListControl2, "checkListControl2");
-            this.checkListControl2.Name = "checkListControl2";
-            // 
-            // btnAltup
-            // 
-            this.btnAltup.BackColor = System.Drawing.Color.Silver;
-            this.btnAltup.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnAltup, "btnAltup");
-            this.btnAltup.BorderColor = System.Drawing.Color.Black;
-            this.btnAltup.BorderRadius = 10;
-            this.btnAltup.BorderSize = 4;
-            this.btnAltup.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltup.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnAltup.Name = "btnAltup";
-            this.btnAltup.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltup.UseVisualStyleBackColor = false;
-            this.btnAltup.Click += new System.EventHandler(this.btnAltup_Click);
-            // 
-            // btnAltdwn
-            // 
-            this.btnAltdwn.BackColor = System.Drawing.Color.Silver;
-            this.btnAltdwn.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnAltdwn, "btnAltdwn");
-            this.btnAltdwn.BorderColor = System.Drawing.Color.Black;
-            this.btnAltdwn.BorderRadius = 10;
-            this.btnAltdwn.BorderSize = 4;
-            this.btnAltdwn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltdwn.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnAltdwn.Name = "btnAltdwn";
-            this.btnAltdwn.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAltdwn.UseVisualStyleBackColor = false;
-            this.btnAltdwn.Click += new System.EventHandler(this.btnAltdwn_Click);
-            // 
-            // btnLandCmd
-            // 
-            this.btnLandCmd.BackColor = System.Drawing.Color.Silver;
-            this.btnLandCmd.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnLandCmd, "btnLandCmd");
-            this.btnLandCmd.BorderColor = System.Drawing.Color.Black;
-            this.btnLandCmd.BorderRadius = 10;
-            this.btnLandCmd.BorderSize = 4;
-            this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandCmd.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnLandCmd.Name = "btnLandCmd";
-            this.btnLandCmd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLandCmd.UseVisualStyleBackColor = false;
-            this.btnLandCmd.Click += new System.EventHandler(this.btnLandCmd_Click);
-            // 
-            // btnToGo
-            // 
-            this.btnToGo.BackColor = System.Drawing.Color.Silver;
-            this.btnToGo.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnToGo, "btnToGo");
-            this.btnToGo.BorderColor = System.Drawing.Color.Black;
-            this.btnToGo.BorderRadius = 10;
-            this.btnToGo.BorderSize = 4;
-            this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToGo.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnToGo.Name = "btnToGo";
-            this.btnToGo.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToGo.UseVisualStyleBackColor = false;
-            this.btnToGo.Click += new System.EventHandler(this.btnToGo_Click);
-            // 
-            // btnCruiseSpd
-            // 
-            resources.ApplyResources(this.btnCruiseSpd, "btnCruiseSpd");
-            this.btnCruiseSpd.BackColor = System.Drawing.Color.Silver;
-            this.btnCruiseSpd.BackgroundColor = System.Drawing.Color.Silver;
-            this.btnCruiseSpd.BorderColor = System.Drawing.Color.Black;
-            this.btnCruiseSpd.BorderRadius = 10;
-            this.btnCruiseSpd.BorderSize = 4;
-            this.btnCruiseSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCruiseSpd.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnCruiseSpd.Name = "btnCruiseSpd";
-            this.btnCruiseSpd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCruiseSpd.UseVisualStyleBackColor = false;
-            this.btnCruiseSpd.Click += new System.EventHandler(this.btnCruiseSpd_Click);
-            // 
-            // btnMaxSpd
-            // 
-            this.btnMaxSpd.BackColor = System.Drawing.Color.Silver;
-            this.btnMaxSpd.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.btnMaxSpd, "btnMaxSpd");
-            this.btnMaxSpd.BorderColor = System.Drawing.Color.Black;
-            this.btnMaxSpd.BorderRadius = 10;
-            this.btnMaxSpd.BorderSize = 4;
-            this.btnMaxSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMaxSpd.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnMaxSpd.Name = "btnMaxSpd";
-            this.btnMaxSpd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMaxSpd.UseVisualStyleBackColor = false;
-            this.btnMaxSpd.Click += new System.EventHandler(this.btnMaxSpd_Click);
-            // 
-            // bntLowSpd
-            // 
-            this.bntLowSpd.BackColor = System.Drawing.Color.Silver;
-            this.bntLowSpd.BackgroundColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.bntLowSpd, "bntLowSpd");
-            this.bntLowSpd.BorderColor = System.Drawing.Color.Black;
-            this.bntLowSpd.BorderRadius = 10;
-            this.bntLowSpd.BorderSize = 4;
-            this.bntLowSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bntLowSpd.MouseEnterColor = System.Drawing.Color.Blue;
-            this.bntLowSpd.Name = "bntLowSpd";
-            this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.bntLowSpd.UseVisualStyleBackColor = false;
-            this.bntLowSpd.Click += new System.EventHandler(this.bntLowSpd_Click);
-            // 
-            // btnTO
-            // 
-            this.btnTO.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnTO.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            resources.ApplyResources(this.btnTO, "btnTO");
-            this.btnTO.BorderColor = System.Drawing.Color.Black;
-            this.btnTO.BorderRadius = 10;
-            this.btnTO.BorderSize = 4;
-            this.btnTO.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTO.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnTO.Name = "btnTO";
-            this.btnTO.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTO.UseVisualStyleBackColor = true;
-            this.btnTO.Click += new System.EventHandler(this.btnTO_Click);
-            // 
-            // btnCheckList
-            // 
-            this.btnCheckList.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnCheckList.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            resources.ApplyResources(this.btnCheckList, "btnCheckList");
-            this.btnCheckList.BorderColor = System.Drawing.Color.Black;
-            this.btnCheckList.BorderRadius = 10;
-            this.btnCheckList.BorderSize = 4;
-            this.btnCheckList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCheckList.MouseEnterColor = System.Drawing.Color.Blue;
-            this.btnCheckList.Name = "btnCheckList";
-            this.btnCheckList.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCheckList.UseVisualStyleBackColor = true;
-            this.btnCheckList.Click += new System.EventHandler(this.btnCheckList_Click);
             // 
             // btnPoinToLatlngCmd
             // 
@@ -3314,13 +3193,134 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect.UseVisualStyleBackColor = false;
             this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
             // 
-            // lblSatCount
+            // crdsMy
             // 
-            resources.ApplyResources(this.lblSatCount, "lblSatCount");
-            this.lblSatCount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "satcount", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "Sats: 0"));
-            this.lblSatCount.Name = "lblSatCount";
-            this.lblSatCount.resize = true;
-            this.toolTip1.SetToolTip(this.lblSatCount, resources.GetString("lblSatCount.ToolTip"));
+            this.crdsMy.Alt = 33D;
+            this.crdsMy.AltSource = "";
+            this.crdsMy.AltUnit = "m";
+            resources.ApplyResources(this.crdsMy, "crdsMy");
+            this.crdsMy.Lat = 31.5D;
+            this.crdsMy.Lng = 44.2D;
+            this.crdsMy.Name = "crdsMy";
+            this.crdsMy.Vertical = false;
+            // 
+            // gMapControl1
+            // 
+            this.gMapControl1.BackColor = System.Drawing.Color.Black;
+            this.gMapControl1.Bearing = 0F;
+            this.gMapControl1.CanDragMap = true;
+            resources.ApplyResources(this.gMapControl1, "gMapControl1");
+            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Gray;
+            this.gMapControl1.GrayScaleMode = false;
+            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl1.HoldInvalidation = false;
+            this.gMapControl1.LevelsKeepInMemmory = 5;
+            this.gMapControl1.MarkersEnabled = true;
+            this.gMapControl1.MaxZoom = 24;
+            this.gMapControl1.MinZoom = 1;
+            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
+            this.gMapControl1.Name = "gMapControl1";
+            this.gMapControl1.NegativeMode = false;
+            this.gMapControl1.PolygonsEnabled = true;
+            this.gMapControl1.RetryLoadTile = 0;
+            this.gMapControl1.RoutesEnabled = true;
+            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Fractional;
+            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl1.ShowTileGridLines = false;
+            this.gMapControl1.Zoom = 3D;
+            this.gMapControl1.OnPositionChanged += new GMap.NET.PositionChanged(this.gMapControl1_OnPositionChanged);
+            this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
+            this.gMapControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDown);
+            this.gMapControl1.MouseLeave += new System.EventHandler(this.gMapControl1_MouseLeave);
+            this.gMapControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseMove);
+            this.gMapControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseUp);
+            this.gMapControl1.Resize += new System.EventHandler(this.gMapControl1_Resize_1);
+            // 
+            // contextMenuPoi
+            // 
+            this.contextMenuPoi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deletePOIToolStripMenuItem,
+            this.editLocationToolStripMenuItem,
+            this.changeTypeToolStripMenuItem});
+            this.contextMenuPoi.Name = "contextMenuPoi";
+            resources.ApplyResources(this.contextMenuPoi, "contextMenuPoi");
+            // 
+            // deletePOIToolStripMenuItem
+            // 
+            this.deletePOIToolStripMenuItem.Name = "deletePOIToolStripMenuItem";
+            resources.ApplyResources(this.deletePOIToolStripMenuItem, "deletePOIToolStripMenuItem");
+            this.deletePOIToolStripMenuItem.Click += new System.EventHandler(this.deletePOIToolStripMenuItem_Click);
+            // 
+            // editLocationToolStripMenuItem
+            // 
+            this.editLocationToolStripMenuItem.Name = "editLocationToolStripMenuItem";
+            resources.ApplyResources(this.editLocationToolStripMenuItem, "editLocationToolStripMenuItem");
+            this.editLocationToolStripMenuItem.Click += new System.EventHandler(this.editLocationToolStripMenuItem_Click);
+            // 
+            // changeTypeToolStripMenuItem
+            // 
+            this.changeTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.changeTypeToolStripMenuItem.Name = "changeTypeToolStripMenuItem";
+            resources.ApplyResources(this.changeTypeToolStripMenuItem, "changeTypeToolStripMenuItem");
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.Tag = "0";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.toolStripMenuItem3.Tag = "1";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            this.toolStripMenuItem4.Tag = "2";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+            this.toolStripMenuItem5.Tag = "3";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+            this.toolStripMenuItem6.Tag = "4";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
+            this.toolStripMenuItem7.Tag = "5";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItemPOIChange_Click);
+            // 
+            // ilMyTargets
+            // 
+            this.ilMyTargets.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.ilMyTargets, "ilMyTargets");
+            this.ilMyTargets.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // tmrCamGuide
+            // 
+            this.tmrCamGuide.Interval = 2000;
+            this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
             // FlightData
             // 
