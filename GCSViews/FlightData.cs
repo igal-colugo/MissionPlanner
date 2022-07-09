@@ -76,6 +76,7 @@ namespace MissionPlanner.GCSViews
         private readonly int _cruiseSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).CruiseSpd;
         private readonly int _maxSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).MaxSpd;
         private readonly int _altIcrement = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).AltIncrement;
+        private readonly bool _EnableWarns = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).EnableWarns;         
 
         //end my code
 
@@ -355,29 +356,39 @@ namespace MissionPlanner.GCSViews
             }
         }
 
-        private string _myWarning;
-        private string myWarning { get { return _myWarning; }
-            set { 
-                //if warn enbled....
-                if(value != _myWarning)
-                {
-                    _myWarning = value;
-                    // update pane
-                    /*
-                     * mywarnpanel.BeginInvokeIfRequired(() =>
+        private string _myWarning = "No Warns";
+        private string myWarning
+        {
+            get { return _myWarning; }
+            set
             {
-                ///
-
-                    if (_myWarning == "")
+                //if warn enbled....
+                if (_EnableWarns)
+                {
+                    if (value != _myWarning)
                     {
-                        //panel visible = false...
+                        pnlWarnings.BeginInvokeIfRequired(() =>
+                        {
+                            
+                            _myWarning = value;
+                            // update pane
+                            txtWarns.ForeColor = Color.Red;
+                            txtWarns.Text = value;
+
+                            if (_myWarning == "")
+                            {
+                                pnlWarnings.Visible = false;
+                            }
+                            else
+                            {
+                                pnlWarnings.Visible = true;
+                            }
+
+                        });
+
+
                     }
-                
-            });
-                     */
-
                 }
-
             }
         }
 
@@ -6914,6 +6925,11 @@ namespace MissionPlanner.GCSViews
         private void gMapControl1_Paint(object sender, PaintEventArgs e)
         {
            
+        }
+
+        private void btnHideWarns_Click(object sender, EventArgs e)
+        {
+            pnlWarnings.Visible = false;
         }
     }
 }
