@@ -186,6 +186,7 @@ namespace MissionPlanner.GCSViews
             this.CB_tuning = new System.Windows.Forms.CheckBox();
             this.ZedGraphTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblSatCount = new MissionPlanner.Controls.MyLabel();
             this.openScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.scriptChecker = new System.Windows.Forms.Timer(this.components);
             this.Messagetabtimer = new System.Windows.Forms.Timer(this.components);
@@ -275,7 +276,7 @@ namespace MissionPlanner.GCSViews
             this.btnZoomIn = new MyControlsLibrary.MYRButton();
             this.btnZoomOut = new MyControlsLibrary.MYRButton();
             this.btnMyConnect = new MyControlsLibrary.MYRButton();
-            this.lblSatCount = new MissionPlanner.Controls.MyLabel();
+            this.txtGpsStatus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2262,7 +2263,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 180D;
+            this.windDir1.Direction = 1260D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2414,6 +2415,14 @@ namespace MissionPlanner.GCSViews
             this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(226)))), ((int)(((byte)(150)))));
             this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(148)))), ((int)(((byte)(41)))));
             // 
+            // lblSatCount
+            // 
+            resources.ApplyResources(this.lblSatCount, "lblSatCount");
+            this.lblSatCount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "satcount", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "Sats: 0"));
+            this.lblSatCount.Name = "lblSatCount";
+            this.lblSatCount.resize = true;
+            this.toolTip1.SetToolTip(this.lblSatCount, resources.GetString("lblSatCount.ToolTip"));
+            // 
             // openScriptDialog
             // 
             resources.ApplyResources(this.openScriptDialog, "openScriptDialog");
@@ -2450,6 +2459,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.txtGpsStatus);
             this.pnlMap.Controls.Add(this.lblSatCount);
             this.pnlMap.Controls.Add(this.gbPointToMan);
             this.pnlMap.Controls.Add(this.pnlCheckList);
@@ -2835,6 +2845,7 @@ namespace MissionPlanner.GCSViews
             this.gMapControl1.ShowTileGridLines = false;
             this.gMapControl1.Zoom = 3D;
             this.gMapControl1.OnPositionChanged += new GMap.NET.PositionChanged(this.gMapControl1_OnPositionChanged);
+            this.gMapControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.gMapControl1_Paint);
             this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDoubleClick);
             this.gMapControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseDown);
             this.gMapControl1.MouseLeave += new System.EventHandler(this.gMapControl1_MouseLeave);
@@ -3314,13 +3325,11 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect.UseVisualStyleBackColor = false;
             this.btnMyConnect.Click += new System.EventHandler(this.btnMyConnect_Click);
             // 
-            // lblSatCount
+            // txtGpsStatus
             // 
-            resources.ApplyResources(this.lblSatCount, "lblSatCount");
-            this.lblSatCount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "satcount", true, System.Windows.Forms.DataSourceUpdateMode.Never, null, "Sats: 0"));
-            this.lblSatCount.Name = "lblSatCount";
-            this.lblSatCount.resize = true;
-            this.toolTip1.SetToolTip(this.lblSatCount, resources.GetString("lblSatCount.ToolTip"));
+            resources.ApplyResources(this.txtGpsStatus, "txtGpsStatus");
+            this.txtGpsStatus.Name = "txtGpsStatus";
+            this.txtGpsStatus.ReadOnly = true;
             // 
             // FlightData
             // 
@@ -3703,5 +3712,6 @@ namespace MissionPlanner.GCSViews
         private Button btnPitotTest;
         private Button btnEnablePitotTest;
         private Controls.MyLabel lblSatCount;
+        private TextBox txtGpsStatus;
     }
 }

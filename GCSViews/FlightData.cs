@@ -4119,20 +4119,61 @@ namespace MissionPlanner.GCSViews
                 }
                 
             });
-
+            updateGPSDisplay();
             updateBattStatus();
             myWarning = hud1.message;
+        }
 
-            // if (pnlSpeedCmd.Visible)
-            // {
+        private void updateGPSDisplay()
+        {
+          //  lblGpsStatus.Parent.SuspendLayout();
+            txtGpsStatus.BeginInvokeIfRequired(() =>
+            {
+                int igpsFix = (int)myhud.gpsfix;
+                if (igpsFix < 3)
+                {
+                    txtGpsStatus.ForeColor = Color.Red;
+                }
+                else
+                {
+                    txtGpsStatus.ForeColor = lblSatCount.ForeColor;
+                }
 
-            //  txtSpdCmd.BeginInvokeIfRequired(() =>
-            //   {
-            //      txtSpdCmd.Text = string.Format($"{MainV2.comPort.MAV.cs.targetairspeed:0} m/s");
-            //  });
+                string gpsStatus;
+                switch (igpsFix)
+                {
+                    case 0:
+                        gpsStatus = HUDT.GPS0;
+                        break;
+                    case 1:
+                        gpsStatus = HUDT.GPS1;
+                        break;
+                    case 2:
+                        gpsStatus = HUDT.GPS2;
+                        break;
+                    case 3:
+                        gpsStatus = HUDT.GPS3;
+                        break;
+                    case 4:
+                        gpsStatus = HUDT.GPS4;
+                        break;
+                    case 5:
+                        gpsStatus = HUDT.GPS5;
+                        break;
+                    case 6:
+                        gpsStatus = HUDT.GPS6;
+                        break;
+                    default:
+                        gpsStatus = myhud.gpsfix.ToString();
+                        break;
+                }
 
 
-            //    }
+            if(gpsStatus != txtGpsStatus.Text)
+                    txtGpsStatus.Text = gpsStatus;
+            });
+     //       lblGpsStatus.Parent.ResumeLayout();
+
         }
 
         private void updateBattStatus()
@@ -6278,7 +6319,8 @@ namespace MissionPlanner.GCSViews
             btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
             gbPointToMan.Location       = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);            
             crdsMy.Location             = new Point(btnPoinToLatlngCmd.Left - crdsMy.Width -1, btnPoinToLatlngCmd.Bottom - crdsMy.Height);
-            lblSatCount.Location = new Point(crdsMy.Right - 40, crdsMy.Top - 2 - lblSatCount.Height);
+            lblSatCount.Location        = new Point(crdsMy.Right - 40, crdsMy.Top - 2 - lblSatCount.Height);
+            txtGpsStatus.Location       = new Point(crdsMy.Left, lblSatCount.Top);
         }
 
         private int calcChcecklistHeight()
@@ -6867,6 +6909,11 @@ namespace MissionPlanner.GCSViews
             {
                 MainV2.comPort.doCommand(MAVLink.MAV_CMD.PREFLIGHT_CALIBRATION, 0, 0, 1, 0, 0, 0, 0);
             }     
+        }
+
+        private void gMapControl1_Paint(object sender, PaintEventArgs e)
+        {
+           
         }
     }
 }
