@@ -276,6 +276,7 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
+            this.txtGpsStatus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -2262,7 +2263,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 360D;
+            this.windDir1.Direction = 540D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2458,6 +2459,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.txtGpsStatus);
             this.pnlMap.Controls.Add(this.lblSatCount);
             this.pnlMap.Controls.Add(this.gbPointToMan);
             this.pnlMap.Controls.Add(this.pnlCheckList);
@@ -3322,6 +3324,12 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
+            // txtGpsStatus
+            // 
+            resources.ApplyResources(this.txtGpsStatus, "txtGpsStatus");
+            this.txtGpsStatus.Name = "txtGpsStatus";
+            this.txtGpsStatus.ReadOnly = true;
+            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -3703,5 +3711,6 @@ namespace MissionPlanner.GCSViews
         private Button btnPitotTest;
         private Button btnEnablePitotTest;
         private Controls.MyLabel lblSatCount;
+        private TextBox txtGpsStatus;
     }
 }

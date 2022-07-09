@@ -4173,7 +4173,7 @@ namespace MissionPlanner.GCSViews
                     txtGpsStatus.Text = gpsStatus;
             });
      //       lblGpsStatus.Parent.ResumeLayout();
-
+       
         }
 
         private void updateBattStatus()
