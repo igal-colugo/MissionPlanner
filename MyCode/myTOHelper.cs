@@ -11,9 +11,9 @@ namespace MissionPlanner.MyCode
 {
     internal class myTOHelper
     {
-        internal static void CreateAndUploadTOPlan(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt, int distToWp, bool shrtTo, ILog log)
+        internal static void CreateAndUploadTOPlan(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt1, int distToWp1, int wpAlt2, int distToWp2, bool shrtTo, ILog log)
         {
-            List<Locationwp> commandlist = createPoints(lat, lng, altAsl, yaw, tOAlt, wpAlt, distToWp, shrtTo);
+            List<Locationwp> commandlist = createPoints(lat, lng, altAsl, yaw, tOAlt, wpAlt1, distToWp1, wpAlt2, distToWp2, shrtTo);
 
             Task.Run(async () =>
             {
@@ -42,7 +42,7 @@ namespace MissionPlanner.MyCode
             }).GetAwaiter().GetResult();
         }
 
-        private static List<Locationwp> createPoints(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt, int distToWp, bool shrtTo)
+        private static List<Locationwp> createPoints(float lat, float lng, float altAsl, float yaw, int tOAlt, int wpAlt1, int distToWp1, int wpAlt2, int distToWp2, bool shrtTo)
         {
             List<Locationwp> locationwps = new List<Locationwp>();
             Locationwp home = new Locationwp();
@@ -84,20 +84,29 @@ namespace MissionPlanner.MyCode
             }
             else
             {
-                PointLatLngAlt nextPos = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp);
+                PointLatLngAlt frstPos = new PointLatLngAlt(lat, lng).newpos(yaw, distToWp1);
+                PointLatLngAlt scndPos = new PointLatLngAlt(frstPos.Lat, frstPos.Lng).newpos(yaw, distToWp2);
 
-                Locationwp wp = new Locationwp();
-                wp.frame = 3;//relative alt...
-                wp.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
-                wp.alt = wpAlt;
-                wp.lat = nextPos.Lat;
-                wp.lng = nextPos.Lng;
-                locationwps.Add(wp);
+                Locationwp wp1 = new Locationwp();
+                wp1.frame = 3;//relative alt...
+                wp1.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                wp1.alt = wpAlt1;
+                wp1.lat = frstPos.Lat;
+                wp1.lng = frstPos.Lng;
+                locationwps.Add(wp1);
+
+                Locationwp wp2 = new Locationwp();
+                wp2.frame = 3;//relative alt...
+                wp2.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                wp2.alt = wpAlt2;
+                wp2.lat = scndPos.Lat;
+                wp2.lng = scndPos.Lng;
+                locationwps.Add(wp2);
 
                 //update location of where to loiter...
-                loitCmd.lat = nextPos.Lat;
-                loitCmd.lng = nextPos.Lng;
-                loitCmd.alt = wpAlt;
+                loitCmd.lat = scndPos.Lat;
+                loitCmd.lng = scndPos.Lng;
+                loitCmd.alt = wpAlt2;
             }
 
             locationwps.Add(loitCmd);
@@ -105,7 +114,27 @@ namespace MissionPlanner.MyCode
             return locationwps;
         }
 
+        internal static void resetToFlightPlan(float homeAlt, double homeLat, double homeLng)
+        {
+            
+            Locationwp home = new Locationwp();
+            home.frame = 0;
+            home.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+            home.alt = homeAlt;
+            home.lat = homeLat;
+            home.lng = homeLng;
 
+            List<Locationwp> commandlist = new List<Locationwp>();
+            commandlist.Add(home);
 
+            Task.Run(async () =>
+            {
+                await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, MAVLink.MAV_MISSION_TYPE.MISSION,
+                    commandlist,
+                    (percent, status) => { }).ConfigureAwait(false);
+               
+            }).GetAwaiter().GetResult();
+
+        }
     }
 }

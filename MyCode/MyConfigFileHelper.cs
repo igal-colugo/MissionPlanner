@@ -36,7 +36,10 @@ using System.Web.Script.Serialization;
         public int AltIncrement { get; set; } = 10;
         public int RElTOAlt { get; set; } = 25;
         public int AfterToWpAlt{ get; set; } = 47;
-        public int DistToWp { get;  set; } = 455;
+        public int DistToAfterToWp { get;  set; } = 455;
+        public int ScndWpAlt { get; set; } = 88;
+        public int DistToScndWp { get; set; } = 145;
+        public bool DisableVideo { get; set; } = false;
 }
    //   }
       

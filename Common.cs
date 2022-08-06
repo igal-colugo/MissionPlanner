@@ -92,7 +92,9 @@ namespace MissionPlanner
                 if (!_balloonModeOn)
                 {
                     stats += "IAS: " + (int)MAV.cs.airspeed + " " +CurrentState.SpeedUnit + "\r\n";
-                    stats += "MODE: " + MAV.cs.mode;
+                    string sMode = (MAV.cs.mode.ToLower().Equals("loiter") ? "Hold" : MAV.cs.mode)  +"\r\n";
+                    stats += "MODE: " + sMode;
+                    stats += "Heading: " + (int)MAV.cs.yaw;
                 }
                 
                 

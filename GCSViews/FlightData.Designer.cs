@@ -280,6 +280,8 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
+            this.pnlBatDebug = new System.Windows.Forms.Panel();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -343,6 +345,7 @@ namespace MissionPlanner.GCSViews
             this.gbPoiCoords.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.contextMenuPoi.SuspendLayout();
+            this.pnlBatDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainH
@@ -2267,7 +2270,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 1080D;
+            this.windDir1.Direction = 1440D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2463,6 +2466,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
+            this.pnlMap.Controls.Add(this.pnlBatDebug);
             this.pnlMap.Controls.Add(this.pnlWarnings);
             this.pnlMap.Controls.Add(this.txtGpsStatus);
             this.pnlMap.Controls.Add(this.lblSatCount);
@@ -3360,6 +3364,17 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
+            // pnlBatDebug
+            // 
+            this.pnlBatDebug.Controls.Add(this.hScrollBar1);
+            resources.ApplyResources(this.pnlBatDebug, "pnlBatDebug");
+            this.pnlBatDebug.Name = "pnlBatDebug";
+            // 
+            // hScrollBar1
+            // 
+            resources.ApplyResources(this.hScrollBar1, "hScrollBar1");
+            this.hScrollBar1.Name = "hScrollBar1";
+            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -3452,6 +3467,7 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.contextMenuPoi.ResumeLayout(false);
+            this.pnlBatDebug.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3747,5 +3763,7 @@ namespace MissionPlanner.GCSViews
         private Panel pnlWarnings;
         private Button btnHideWarns;
         private TextBox txtWarns;
+        private Panel pnlBatDebug;
+        private HScrollBar hScrollBar1;
     }
 }

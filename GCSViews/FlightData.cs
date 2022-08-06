@@ -598,7 +598,9 @@ namespace MissionPlanner.GCSViews
 
         private void runExternalVidPlayer()
         {
-            System.Diagnostics.Process.Start(myVidPlayerPath);
+            MyGeneralConfigFileHelper fh = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME);
+            if (!fh.DisableVideo)
+                System.Diagnostics.Process.Start(myVidPlayerPath);
         }
 
         private void initMyGui()
@@ -2758,6 +2760,7 @@ namespace MissionPlanner.GCSViews
             {
                 setNavTo = false;
                 resetPointToLayer();
+                clearInitialeTORoute();
                 myNavTo(MouseDownStart.Lat, MouseDownStart.Lng);
             }
 
@@ -4106,7 +4109,7 @@ namespace MissionPlanner.GCSViews
 
         private void updateMyData()
         {
-            if (connectState >= connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && resetEnabled)
+            if (connectState >= connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && _resetEnabled)
             {
                 connectState = connectStates.csConnected;
             }
@@ -5911,7 +5914,8 @@ namespace MissionPlanner.GCSViews
         private GMyMarkerGoogle myCurrentToMoveMarker = null;
         private int AltTargetLocalcmd;
         private int myIasCmd;
-        private bool resetEnabled = false;
+        private bool _inInitialTORoute;
+        private bool _resetEnabled = false;
         private float _lowBattVolt;
         private float _critBattVolt;
         private float _qrtlAltMeters;
@@ -6438,10 +6442,12 @@ namespace MissionPlanner.GCSViews
             //upload mini auto plan for to
             MyGeneralConfigFileHelper fh = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME);
             int toAlt = fh.RElTOAlt;
-            int wpAlt = fh.AfterToWpAlt;
-            int distToWp = fh.DistToWp;
+            int wpAlt1 = fh.AfterToWpAlt;
+            int distToWp1 = fh.DistToAfterToWp;
+            int wpAlt2 = fh.ScndWpAlt;
+            int distToWp2 = fh.DistToScndWp;
             bool shrtTo = fh.ShortTO;
-            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt,wpAlt, distToWp, shrtTo, log);
+            myTOHelper.CreateAndUploadTOPlan((float)MainV2.comPort.MAV.cs.lat, (float)MainV2.comPort.MAV.cs.lng, MainV2.comPort.MAV.cs.altasl, MainV2.comPort.MAV.cs.yaw, toAlt,wpAlt1, distToWp1, wpAlt2, distToWp2, shrtTo, log);
             connectState = connectStates.csPreFlightDone;
         }
 
@@ -6455,7 +6461,7 @@ namespace MissionPlanner.GCSViews
         private void btnRtlCmd_Click(object sender, EventArgs e)
         {
             closeSecondaryButtons();
-            resetEnabled = true;
+            _resetEnabled = true;
             myModeCommand("RTL");
         }
 
@@ -6466,7 +6472,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnLandCmd_Click(object sender, EventArgs e)
         {
-            resetEnabled = true;
+            _resetEnabled = true;
 
             //igal Q_RTL_ALT
             //planer alt 
@@ -6527,6 +6533,7 @@ namespace MissionPlanner.GCSViews
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
 
+            clearInitialeTORoute();
             try
             {
                 resetPointToLayer();
@@ -6542,6 +6549,19 @@ namespace MissionPlanner.GCSViews
 
             }
 
+        }
+
+        private void clearInitialeTORoute()
+        {
+            if (_inInitialTORoute && connectState == connectStates.csInFlight)
+            {
+                _inInitialTORoute = false;
+                //send clear nav plan command to plane
+
+                myTOHelper.resetToFlightPlan((float)(MainV2.comPort.MAV.cs.HomeLocation.Alt / CurrentState.multiplieralt), 
+                    MainV2.comPort.MAV.cs.HomeLocation.Lat,
+                    MainV2.comPort.MAV.cs.HomeLocation.Lng); 
+            }
         }
 
         private void btnPinPoint_Click(object sender, EventArgs e)
@@ -6862,10 +6882,13 @@ namespace MissionPlanner.GCSViews
 
             //safety...
             camGuideMode = false;
+
+
             // arm the MAV
             try
             {
-                resetEnabled = false;
+                _inInitialTORoute = true;
+                _resetEnabled = false;
                 bool ans = MainV2.comPort.doARM(true, true);
                 if (ans)
                 {
