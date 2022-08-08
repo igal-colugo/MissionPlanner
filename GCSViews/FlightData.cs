@@ -264,27 +264,36 @@ namespace MissionPlanner.GCSViews
 
         private void updateBattLimits()
         {
+            MyGeneralConfigFileHelper config = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME);
             //try tyo get values BATT_LOW_VOLT BATT_CRT_VOLT
             try
             {
-                _lowBattVolt = MainV2.comPort.GetParam("BATT_LOW_VOLT");
-                _critBattVolt = MainV2.comPort.GetParam("BATT_CRT_VOLT");
+                
+                _lowBattVolt = config.LowBattVolt;
+                if (MainV2.comPort.MAV.param.ContainsKey("BATT_LOW_VOLT"))
+                {
+                    _lowBattVolt = MainV2.comPort.GetParam("BATT_LOW_VOLT");
+                }
+
+                _critBattVolt = config.CritBattVolt;
+                if (MainV2.comPort.MAV.param.ContainsKey("BATT_CRT_VOLT"))
+                {
+                    _critBattVolt = MainV2.comPort.GetParam("BATT_CRT_VOLT");
+                }                    
                 
             }
+            //if not - get defaults from settings file...
             catch (Exception e)
-            {
-                MyGeneralConfigFileHelper config = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\")+ MyGeneralConfigFileHelper.DEFAULT_FILENAME);
-                {
+            {                
                     //get from file default...
                     _lowBattVolt = config.LowBattVolt;
                     _critBattVolt = config.CritBattVolt;
-                }
-               
-                
             }
-            
-
-            //if not - get defaults from settings file...
+            sbarDebugBatVlt.BeginInvokeIfRequired(() =>
+            {
+                sbarDebugBatVlt.Value = (int)(_critBattVolt + 1);
+                sbarDebugBatVlt.Minimum = (int)(_critBattVolt - 5);
+            });
         }
 
         public bool setPointTo { get; private set; }
@@ -4193,8 +4202,8 @@ namespace MissionPlanner.GCSViews
         private void updateBattStatus()
         {
             int imageNum  = 9;            
-            int batLvl    = MainV2.comPort.MAV.cs.battery_remaining;
-            double batVlt = MainV2.comPort.MAV.cs.battery_voltage;     
+            int batLvl    = MainV2.instance.myDebug ? sbarDebugBattPcent.Value : MainV2.comPort.MAV.cs.battery_remaining;
+            double batVlt = MainV2.instance.myDebug ? sbarDebugBatVlt.Value : MainV2.comPort.MAV.cs.battery_voltage;     
             
             if(batLvl == 0 && batVlt == 0)//somthing is fucke...
             {
@@ -6224,6 +6233,7 @@ namespace MissionPlanner.GCSViews
                 MainV2.instance.myDebug = !MainV2.instance.myDebug;
                 btnEditCl.Visible = MainV2.instance.myDebug;
                 btnForceEnableclDone.Visible = MainV2.instance.myDebug;
+                pnlBatDebug.Visible = MainV2.instance.myDebug;
                 //    clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
 
             }
@@ -6331,6 +6341,7 @@ namespace MissionPlanner.GCSViews
             btnCamGuideCmd.Location = new Point(rightColumb, btnLandEnable.Top);
 
             btnBatDispaly.Location      = new Point(3, btnLandEnable.Bottom + gap);
+            pnlBatDebug.Top             = btnBatDispaly.Top;
             btnPoinToLatlngCmd.Location = new Point(rightColumb, btnBatDispaly.Top);
             gbPointToMan.Location       = new Point(btnPoinToLatlngCmd.Left - gbPointToMan.Width - 2, btnPoinToLatlngCmd.Top);            
             crdsMy.Location             = new Point(btnPoinToLatlngCmd.Left - crdsMy.Width -1, btnPoinToLatlngCmd.Bottom - crdsMy.Height);
@@ -6953,6 +6964,16 @@ namespace MissionPlanner.GCSViews
         private void btnHideWarns_Click(object sender, EventArgs e)
         {
             pnlWarnings.Visible = false;
+        }
+
+        private void sbarDebugBat_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtBatDebugVlt.Text = sbarDebugBatVlt.Value + " v";
+        }
+
+        private void sbarDebugBattPcent_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtBatPercentDebug.Text = sbarDebugBattPcent.Value + "%";
         }
     }
 }

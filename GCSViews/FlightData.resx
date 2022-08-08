@@ -5094,7 +5094,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADk
-        zQIAAk1TRnQBSQFMAgEBDAEAAeABAgHgAQIBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
+        zQIAAk1TRnQBSQFMAgEBDAEAAegBAgHoAQIBgAEAAWUBAAT/ARkBAAj/AUIBTQE2BwABNgMAASgEAAEC
         AgABlAEBAgABAQEAARgGAAF4AQn/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
         /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
@@ -8160,38 +8160,122 @@
         DgABPws=
 </value>
   </data>
-  <data name="hScrollBar1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="txtBatPercentDebug.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="hScrollBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 38</value>
+  <data name="txtBatPercentDebug.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 10</value>
   </data>
-  <data name="hScrollBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 17</value>
+  <data name="txtBatPercentDebug.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 20</value>
   </data>
-  <data name="hScrollBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="txtBatPercentDebug.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;hScrollBar1.Name" xml:space="preserve">
-    <value>hScrollBar1</value>
+  <data name="txtBatPercentDebug.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="&gt;&gt;hScrollBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.HScrollBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtBatPercentDebug.Name" xml:space="preserve">
+    <value>txtBatPercentDebug</value>
   </data>
-  <data name="&gt;&gt;hScrollBar1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtBatPercentDebug.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtBatPercentDebug.Parent" xml:space="preserve">
     <value>pnlBatDebug</value>
   </data>
-  <data name="&gt;&gt;hScrollBar1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtBatPercentDebug.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="sbarDebugBattPcent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="sbarDebugBattPcent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="sbarDebugBattPcent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
+  </data>
+  <data name="sbarDebugBattPcent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 30</value>
+  </data>
+  <data name="sbarDebugBattPcent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBattPcent.Name" xml:space="preserve">
+    <value>sbarDebugBattPcent</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBattPcent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HScrollBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBattPcent.Parent" xml:space="preserve">
+    <value>pnlBatDebug</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBattPcent.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtBatDebugVlt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="txtBatDebugVlt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 60</value>
+  </data>
+  <data name="txtBatDebugVlt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 20</value>
+  </data>
+  <data name="txtBatDebugVlt.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtBatDebugVlt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;txtBatDebugVlt.Name" xml:space="preserve">
+    <value>txtBatDebugVlt</value>
+  </data>
+  <data name="&gt;&gt;txtBatDebugVlt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtBatDebugVlt.Parent" xml:space="preserve">
+    <value>pnlBatDebug</value>
+  </data>
+  <data name="&gt;&gt;txtBatDebugVlt.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="sbarDebugBatVlt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="sbarDebugBatVlt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 80</value>
+  </data>
+  <data name="sbarDebugBatVlt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 30</value>
+  </data>
+  <data name="sbarDebugBatVlt.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBatVlt.Name" xml:space="preserve">
+    <value>sbarDebugBatVlt</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBatVlt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HScrollBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBatVlt.Parent" xml:space="preserve">
+    <value>pnlBatDebug</value>
+  </data>
+  <data name="&gt;&gt;sbarDebugBatVlt.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="pnlBatDebug.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 510</value>
+    <value>266, 455</value>
   </data>
   <data name="pnlBatDebug.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 55</value>
+    <value>218, 110</value>
   </data>
   <data name="pnlBatDebug.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
+  </data>
+  <data name="pnlBatDebug.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;pnlBatDebug.Name" xml:space="preserve">
     <value>pnlBatDebug</value>

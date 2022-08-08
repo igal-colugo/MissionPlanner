@@ -193,6 +193,11 @@ namespace MissionPlanner.GCSViews
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.pnlBatDebug = new System.Windows.Forms.Panel();
+            this.txtBatPercentDebug = new System.Windows.Forms.TextBox();
+            this.sbarDebugBattPcent = new System.Windows.Forms.HScrollBar();
+            this.txtBatDebugVlt = new System.Windows.Forms.TextBox();
+            this.sbarDebugBatVlt = new System.Windows.Forms.HScrollBar();
             this.pnlWarnings = new System.Windows.Forms.Panel();
             this.btnHideWarns = new System.Windows.Forms.Button();
             this.txtWarns = new System.Windows.Forms.TextBox();
@@ -280,8 +285,6 @@ namespace MissionPlanner.GCSViews
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.ilMyTargets = new System.Windows.Forms.ImageList(this.components);
             this.tmrCamGuide = new System.Windows.Forms.Timer(this.components);
-            this.pnlBatDebug = new System.Windows.Forms.Panel();
-            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.MainH)).BeginInit();
             this.MainH.Panel1.SuspendLayout();
             this.MainH.Panel2.SuspendLayout();
@@ -334,6 +337,7 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.Zoomlevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).BeginInit();
             this.pnlMap.SuspendLayout();
+            this.pnlBatDebug.SuspendLayout();
             this.pnlWarnings.SuspendLayout();
             this.gbPointToMan.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -345,7 +349,6 @@ namespace MissionPlanner.GCSViews
             this.gbPoiCoords.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.contextMenuPoi.SuspendLayout();
-            this.pnlBatDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainH
@@ -2270,7 +2273,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 1440D;
+            this.windDir1.Direction = 1620D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2514,6 +2517,42 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.gMapControl1);
             resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
+            // 
+            // pnlBatDebug
+            // 
+            this.pnlBatDebug.Controls.Add(this.txtBatPercentDebug);
+            this.pnlBatDebug.Controls.Add(this.sbarDebugBattPcent);
+            this.pnlBatDebug.Controls.Add(this.txtBatDebugVlt);
+            this.pnlBatDebug.Controls.Add(this.sbarDebugBatVlt);
+            resources.ApplyResources(this.pnlBatDebug, "pnlBatDebug");
+            this.pnlBatDebug.Name = "pnlBatDebug";
+            // 
+            // txtBatPercentDebug
+            // 
+            resources.ApplyResources(this.txtBatPercentDebug, "txtBatPercentDebug");
+            this.txtBatPercentDebug.Name = "txtBatPercentDebug";
+            this.txtBatPercentDebug.ReadOnly = true;
+            // 
+            // sbarDebugBattPcent
+            // 
+            this.sbarDebugBattPcent.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.sbarDebugBattPcent, "sbarDebugBattPcent");
+            this.sbarDebugBattPcent.Name = "sbarDebugBattPcent";
+            this.sbarDebugBattPcent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.sbarDebugBattPcent_Scroll);
+            // 
+            // txtBatDebugVlt
+            // 
+            resources.ApplyResources(this.txtBatDebugVlt, "txtBatDebugVlt");
+            this.txtBatDebugVlt.Name = "txtBatDebugVlt";
+            this.txtBatDebugVlt.ReadOnly = true;
+            // 
+            // sbarDebugBatVlt
+            // 
+            this.sbarDebugBatVlt.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.sbarDebugBatVlt, "sbarDebugBatVlt");
+            this.sbarDebugBatVlt.Maximum = 50;
+            this.sbarDebugBatVlt.Name = "sbarDebugBatVlt";
+            this.sbarDebugBatVlt.Scroll += new System.Windows.Forms.ScrollEventHandler(this.sbarDebugBat_Scroll);
             // 
             // pnlWarnings
             // 
@@ -3364,17 +3403,6 @@ namespace MissionPlanner.GCSViews
             this.tmrCamGuide.Interval = 2000;
             this.tmrCamGuide.Tick += new System.EventHandler(this.tmrCamGuide_Tick);
             // 
-            // pnlBatDebug
-            // 
-            this.pnlBatDebug.Controls.Add(this.hScrollBar1);
-            resources.ApplyResources(this.pnlBatDebug, "pnlBatDebug");
-            this.pnlBatDebug.Name = "pnlBatDebug";
-            // 
-            // hScrollBar1
-            // 
-            resources.ApplyResources(this.hScrollBar1, "hScrollBar1");
-            this.hScrollBar1.Name = "hScrollBar1";
-            // 
             // FlightData
             // 
             this.Controls.Add(this.pnlMap);
@@ -3449,6 +3477,8 @@ namespace MissionPlanner.GCSViews
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceStatusTab)).EndInit();
             this.pnlMap.ResumeLayout(false);
             this.pnlMap.PerformLayout();
+            this.pnlBatDebug.ResumeLayout(false);
+            this.pnlBatDebug.PerformLayout();
             this.pnlWarnings.ResumeLayout(false);
             this.pnlWarnings.PerformLayout();
             this.gbPointToMan.ResumeLayout(false);
@@ -3467,7 +3497,6 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.contextMenuPoi.ResumeLayout(false);
-            this.pnlBatDebug.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3764,6 +3793,9 @@ namespace MissionPlanner.GCSViews
         private Button btnHideWarns;
         private TextBox txtWarns;
         private Panel pnlBatDebug;
-        private HScrollBar hScrollBar1;
+        private HScrollBar sbarDebugBatVlt;
+        private TextBox txtBatDebugVlt;
+        private TextBox txtBatPercentDebug;
+        private HScrollBar sbarDebugBattPcent;
     }
 }
