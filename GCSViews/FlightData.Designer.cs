@@ -194,8 +194,6 @@ namespace MissionPlanner.GCSViews
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
             this.pnlBatDebug = new System.Windows.Forms.Panel();
-            this.txtBatPercentDebug = new System.Windows.Forms.TextBox();
-            this.sbarDebugBattPcent = new System.Windows.Forms.HScrollBar();
             this.txtBatDebugVlt = new System.Windows.Forms.TextBox();
             this.sbarDebugBatVlt = new System.Windows.Forms.HScrollBar();
             this.pnlWarnings = new System.Windows.Forms.Panel();
@@ -2273,7 +2271,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 180D;
+            this.windDir1.Direction = 540D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2520,25 +2518,10 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlBatDebug
             // 
-            this.pnlBatDebug.Controls.Add(this.txtBatPercentDebug);
-            this.pnlBatDebug.Controls.Add(this.sbarDebugBattPcent);
             this.pnlBatDebug.Controls.Add(this.txtBatDebugVlt);
             this.pnlBatDebug.Controls.Add(this.sbarDebugBatVlt);
             resources.ApplyResources(this.pnlBatDebug, "pnlBatDebug");
             this.pnlBatDebug.Name = "pnlBatDebug";
-            // 
-            // txtBatPercentDebug
-            // 
-            resources.ApplyResources(this.txtBatPercentDebug, "txtBatPercentDebug");
-            this.txtBatPercentDebug.Name = "txtBatPercentDebug";
-            this.txtBatPercentDebug.ReadOnly = true;
-            // 
-            // sbarDebugBattPcent
-            // 
-            this.sbarDebugBattPcent.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.sbarDebugBattPcent, "sbarDebugBattPcent");
-            this.sbarDebugBattPcent.Name = "sbarDebugBattPcent";
-            this.sbarDebugBattPcent.Scroll += new System.Windows.Forms.ScrollEventHandler(this.sbarDebugBattPcent_Scroll);
             // 
             // txtBatDebugVlt
             // 
@@ -2550,8 +2533,9 @@ namespace MissionPlanner.GCSViews
             // 
             this.sbarDebugBatVlt.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.sbarDebugBatVlt, "sbarDebugBatVlt");
-            this.sbarDebugBatVlt.Maximum = 50;
+            this.sbarDebugBatVlt.Maximum = 52;
             this.sbarDebugBatVlt.Name = "sbarDebugBatVlt";
+            this.sbarDebugBatVlt.Value = 50;
             this.sbarDebugBatVlt.Scroll += new System.Windows.Forms.ScrollEventHandler(this.sbarDebugBat_Scroll);
             // 
             // pnlWarnings
@@ -2704,6 +2688,7 @@ namespace MissionPlanner.GCSViews
             this.btnAltup.BorderRadius = 10;
             this.btnAltup.BorderSize = 4;
             this.btnAltup.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltup.ModeOn = false;
             this.btnAltup.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnAltup.Name = "btnAltup";
             this.btnAltup.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2719,6 +2704,7 @@ namespace MissionPlanner.GCSViews
             this.btnAltdwn.BorderRadius = 10;
             this.btnAltdwn.BorderSize = 4;
             this.btnAltdwn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltdwn.ModeOn = false;
             this.btnAltdwn.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnAltdwn.Name = "btnAltdwn";
             this.btnAltdwn.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2753,6 +2739,7 @@ namespace MissionPlanner.GCSViews
             this.btnLandCmd.BorderRadius = 10;
             this.btnLandCmd.BorderSize = 4;
             this.btnLandCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandCmd.ModeOn = false;
             this.btnLandCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnLandCmd.Name = "btnLandCmd";
             this.btnLandCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2768,6 +2755,7 @@ namespace MissionPlanner.GCSViews
             this.btnToGo.BorderRadius = 10;
             this.btnToGo.BorderSize = 4;
             this.btnToGo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToGo.ModeOn = false;
             this.btnToGo.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnToGo.Name = "btnToGo";
             this.btnToGo.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2821,6 +2809,7 @@ namespace MissionPlanner.GCSViews
             this.btnCruiseSpd.BorderRadius = 10;
             this.btnCruiseSpd.BorderSize = 4;
             this.btnCruiseSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCruiseSpd.ModeOn = false;
             this.btnCruiseSpd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnCruiseSpd.Name = "btnCruiseSpd";
             this.btnCruiseSpd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2836,6 +2825,7 @@ namespace MissionPlanner.GCSViews
             this.btnMaxSpd.BorderRadius = 10;
             this.btnMaxSpd.BorderSize = 4;
             this.btnMaxSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMaxSpd.ModeOn = false;
             this.btnMaxSpd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnMaxSpd.Name = "btnMaxSpd";
             this.btnMaxSpd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2851,6 +2841,7 @@ namespace MissionPlanner.GCSViews
             this.bntLowSpd.BorderRadius = 10;
             this.bntLowSpd.BorderSize = 4;
             this.bntLowSpd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bntLowSpd.ModeOn = false;
             this.bntLowSpd.MouseEnterColor = System.Drawing.Color.Blue;
             this.bntLowSpd.Name = "bntLowSpd";
             this.bntLowSpd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2966,6 +2957,7 @@ namespace MissionPlanner.GCSViews
             this.btnTO.BorderRadius = 10;
             this.btnTO.BorderSize = 4;
             this.btnTO.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTO.ModeOn = false;
             this.btnTO.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnTO.Name = "btnTO";
             this.btnTO.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -2981,6 +2973,7 @@ namespace MissionPlanner.GCSViews
             this.btnCheckList.BorderRadius = 10;
             this.btnCheckList.BorderSize = 4;
             this.btnCheckList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCheckList.ModeOn = false;
             this.btnCheckList.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnCheckList.Name = "btnCheckList";
             this.btnCheckList.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3037,6 +3030,7 @@ namespace MissionPlanner.GCSViews
             this.btnPoinToLatlngCmd.BorderRadius = 10;
             this.btnPoinToLatlngCmd.BorderSize = 4;
             this.btnPoinToLatlngCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPoinToLatlngCmd.ModeOn = false;
             this.btnPoinToLatlngCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnPoinToLatlngCmd.Name = "btnPoinToLatlngCmd";
             this.btnPoinToLatlngCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3052,6 +3046,7 @@ namespace MissionPlanner.GCSViews
             this.btnCamGuideCmd.BorderRadius = 10;
             this.btnCamGuideCmd.BorderSize = 4;
             this.btnCamGuideCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCamGuideCmd.ModeOn = false;
             this.btnCamGuideCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnCamGuideCmd.Name = "btnCamGuideCmd";
             this.btnCamGuideCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3067,6 +3062,7 @@ namespace MissionPlanner.GCSViews
             this.btnPointToCmd.BorderRadius = 10;
             this.btnPointToCmd.BorderSize = 4;
             this.btnPointToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPointToCmd.ModeOn = false;
             this.btnPointToCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnPointToCmd.Name = "btnPointToCmd";
             this.btnPointToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3082,6 +3078,7 @@ namespace MissionPlanner.GCSViews
             this.btnPinPoint.BorderRadius = 10;
             this.btnPinPoint.BorderSize = 4;
             this.btnPinPoint.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnPinPoint.ModeOn = false;
             this.btnPinPoint.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnPinPoint.Name = "btnPinPoint";
             this.btnPinPoint.TextColor = System.Drawing.Color.IndianRed;
@@ -3097,6 +3094,7 @@ namespace MissionPlanner.GCSViews
             this.btnLoiterCmd.BorderRadius = 10;
             this.btnLoiterCmd.BorderSize = 4;
             this.btnLoiterCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLoiterCmd.ModeOn = false;
             this.btnLoiterCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnLoiterCmd.Name = "btnLoiterCmd";
             this.btnLoiterCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3116,6 +3114,7 @@ namespace MissionPlanner.GCSViews
             this.btnNavToCmd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnNavToCmd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
             this.btnNavToCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNavToCmd.ModeOn = false;
             this.btnNavToCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnNavToCmd.Name = "btnNavToCmd";
             this.btnNavToCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3132,6 +3131,7 @@ namespace MissionPlanner.GCSViews
             this.btnBatDispaly.BorderSize = 4;
             this.btnBatDispaly.ForeColor = System.Drawing.Color.Lime;
             this.btnBatDispaly.ImageList = this.ilMyImages;
+            this.btnBatDispaly.ModeOn = false;
             this.btnBatDispaly.MouseEnterColor = System.Drawing.Color.Black;
             this.btnBatDispaly.Name = "btnBatDispaly";
             this.btnBatDispaly.TextColor = System.Drawing.Color.Lime;
@@ -3146,6 +3146,7 @@ namespace MissionPlanner.GCSViews
             this.btnRtlCmd.BorderRadius = 10;
             this.btnRtlCmd.BorderSize = 4;
             this.btnRtlCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRtlCmd.ModeOn = false;
             this.btnRtlCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnRtlCmd.Name = "btnRtlCmd";
             this.btnRtlCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3161,6 +3162,7 @@ namespace MissionPlanner.GCSViews
             this.btnLandEnable.BorderRadius = 10;
             this.btnLandEnable.BorderSize = 4;
             this.btnLandEnable.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLandEnable.ModeOn = false;
             this.btnLandEnable.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnLandEnable.Name = "btnLandEnable";
             this.btnLandEnable.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3176,6 +3178,7 @@ namespace MissionPlanner.GCSViews
             this.btnIasCmd.BorderRadius = 10;
             this.btnIasCmd.BorderSize = 4;
             this.btnIasCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnIasCmd.ModeOn = false;
             this.btnIasCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnIasCmd.Name = "btnIasCmd";
             this.btnIasCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3191,6 +3194,7 @@ namespace MissionPlanner.GCSViews
             this.btnAltCmd.BorderRadius = 10;
             this.btnAltCmd.BorderSize = 4;
             this.btnAltCmd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAltCmd.ModeOn = false;
             this.btnAltCmd.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnAltCmd.Name = "btnAltCmd";
             this.btnAltCmd.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3206,6 +3210,7 @@ namespace MissionPlanner.GCSViews
             this.btnRuller.BorderRadius = 10;
             this.btnRuller.BorderSize = 4;
             this.btnRuller.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRuller.ModeOn = false;
             this.btnRuller.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnRuller.Name = "btnRuller";
             this.btnRuller.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3222,6 +3227,7 @@ namespace MissionPlanner.GCSViews
             this.btnLock.BorderSize = 4;
             this.btnLock.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLock.ImageList = this.ilMyImages;
+            this.btnLock.ModeOn = false;
             this.btnLock.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnLock.Name = "btnLock";
             this.btnLock.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3237,6 +3243,7 @@ namespace MissionPlanner.GCSViews
             this.btnZoomIn.BorderRadius = 10;
             this.btnZoomIn.BorderSize = 4;
             this.btnZoomIn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomIn.ModeOn = false;
             this.btnZoomIn.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnZoomIn.Name = "btnZoomIn";
             this.btnZoomIn.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3252,6 +3259,7 @@ namespace MissionPlanner.GCSViews
             this.btnZoomOut.BorderRadius = 10;
             this.btnZoomOut.BorderSize = 4;
             this.btnZoomOut.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnZoomOut.ModeOn = false;
             this.btnZoomOut.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnZoomOut.Name = "btnZoomOut";
             this.btnZoomOut.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3268,6 +3276,7 @@ namespace MissionPlanner.GCSViews
             this.btnMyConnect.BorderSize = 4;
             this.btnMyConnect.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMyConnect.ImageList = this.ilMyImages;
+            this.btnMyConnect.ModeOn = false;
             this.btnMyConnect.MouseEnterColor = System.Drawing.Color.Blue;
             this.btnMyConnect.Name = "btnMyConnect";
             this.btnMyConnect.TextColor = System.Drawing.Color.WhiteSmoke;
@@ -3795,7 +3804,5 @@ namespace MissionPlanner.GCSViews
         private Panel pnlBatDebug;
         private HScrollBar sbarDebugBatVlt;
         private TextBox txtBatDebugVlt;
-        private TextBox txtBatPercentDebug;
-        private HScrollBar sbarDebugBattPcent;
     }
 }

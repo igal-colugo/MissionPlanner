@@ -291,7 +291,6 @@ namespace MissionPlanner.GCSViews
             }
             sbarDebugBatVlt.BeginInvokeIfRequired(() =>
             {
-                sbarDebugBatVlt.Value = (int)(_critBattVolt + 1);
                 sbarDebugBatVlt.Minimum = (int)(_critBattVolt - 5);
             });
         }
@@ -4220,36 +4219,38 @@ namespace MissionPlanner.GCSViews
         private void updateBattStatus()
         {
             int imageNum  = 9;            
-            int batLvl    = MainV2.instance.myDebug ? sbarDebugBattPcent.Value : MainV2.comPort.MAV.cs.battery_remaining;
-            double batVlt = MainV2.instance.myDebug ? sbarDebugBatVlt.Value : MainV2.comPort.MAV.cs.battery_voltage;     
-            
-            if(batLvl == 0 && batVlt == 0)//somthing is fucke...
+            double batVlt = MainV2.instance.myDebug ? sbarDebugBatVlt.Value : MainV2.comPort.MAV.cs.battery_voltage;
+            float normalbarStep = (50 - _lowBattVolt) / 4;
+            float lowbarStep = (_lowBattVolt - _critBattVolt) / 2;
+
+
+            if (batVlt == 0)//somthing is fucke...
             {
                 return;
             }
                 
-             if(batVlt < _critBattVolt)
+             if(batVlt < _critBattVolt) //One bar...
             {
                 imageNum = 8;
             }
-            else if (batVlt < _lowBattVolt)
+            else if (batVlt < (_critBattVolt + lowbarStep))//two bars
             {
                 imageNum = 7;
-            }
-            //normal vals
-            else if (batLvl < 43)
+            }            
+            else if (batVlt < _lowBattVolt)//3 bars yellow
             {
                 imageNum = 6;
             }
-            else if (batLvl < 57)
+            //normal vals
+            else if (batVlt < (_lowBattVolt + normalbarStep))//4 bars
             {
                 imageNum = 5;
             }
-            else if (batLvl < 72)
+            else if (batVlt < (_lowBattVolt + 2 * normalbarStep))//5 bars
             {
                 imageNum = 4;
             }
-            else if(batLvl < 86)
+            else if(batVlt < (_lowBattVolt + 3 * normalbarStep))//6 bars
             {
                 imageNum = 3;
             }                 
@@ -6999,10 +7000,7 @@ namespace MissionPlanner.GCSViews
             txtBatDebugVlt.Text = sbarDebugBatVlt.Value + " v";
         }
 
-        private void sbarDebugBattPcent_Scroll(object sender, ScrollEventArgs e)
-        {
-            txtBatPercentDebug.Text = sbarDebugBattPcent.Value + "%";
-        }
+       
     }
 }
 
