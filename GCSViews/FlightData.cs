@@ -4118,7 +4118,9 @@ namespace MissionPlanner.GCSViews
 
         private void updateMyData()
         {
-            if (connectState >= connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && _resetEnabled)
+           // if (connectState >= connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && _resetEnabled)
+           //if we where airborne - and landed - go to connected state again
+           if(connectState > connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && MainV2.comPort.MAV.cs.landed)
             {
                 connectState = connectStates.csConnected;
             }
@@ -4259,7 +4261,7 @@ namespace MissionPlanner.GCSViews
                 {
                     btnMyConnect.Text = "Disconnect";
                     btnMyConnect.ImageIndex = 0;
-                    btnAltCmd.Visible = true;
+                    btnCheckList.Visible = connectState < connectStates.csPreFlightDone;
                 }
                 else
                 {
@@ -5924,7 +5926,7 @@ namespace MissionPlanner.GCSViews
         private int AltTargetLocalcmd;
         private int myIasCmd;
         private bool _inInitialTORoute;
-        private bool _resetEnabled = false;
+      //  private bool _resetEnabled = false;
         private float _lowBattVolt;
         private float _critBattVolt;
         private float _qrtlAltMeters;
@@ -6472,7 +6474,7 @@ namespace MissionPlanner.GCSViews
         private void btnRtlCmd_Click(object sender, EventArgs e)
         {
             closeSecondaryButtons();
-            _resetEnabled = true;
+        //    _resetEnabled = true;
             myModeCommand("RTL");
         }
 
@@ -6483,7 +6485,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnLandCmd_Click(object sender, EventArgs e)
         {
-            _resetEnabled = true;
+         //   _resetEnabled = true;
 
             //igal Q_RTL_ALT
             //planer alt 
@@ -6899,7 +6901,7 @@ namespace MissionPlanner.GCSViews
             try
             {
                 _inInitialTORoute = true;
-                _resetEnabled = false;
+                //_resetEnabled = false;
                 bool ans = MainV2.comPort.doARM(true, true);
                 if (ans)
                 {
