@@ -21,6 +21,7 @@ namespace MyControlsLibrary
         private Color borderColor = Color.PaleVioletRed;
         private Color mouseEnterColor = Color.Red;
         private bool _mouseEnter = false;
+        private bool modeOn = false;
 
         //Properties
         [Category("MYRButton Code Advance")]
@@ -85,6 +86,18 @@ namespace MyControlsLibrary
             set { this.ForeColor = value; }
         }
 
+        [Category("MYRButton Code Advance")]
+        public bool ModeOn
+        {
+            get { return modeOn; }
+            set {if(value != modeOn)
+                {
+                    this.modeOn = value;
+                    this.Invalidate();
+                }    
+            }
+        }
+
         //Constructor
         public MYRButton()
         {
@@ -142,7 +155,7 @@ namespace MyControlsLibrary
             if (borderSize > 0)
                 smoothSize = borderSize;
             Color clr = borderColor;
-            if (_mouseEnter)
+            if (_mouseEnter || modeOn)
             {
                 clr = mouseEnterColor;
             }

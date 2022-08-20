@@ -366,6 +366,22 @@ namespace MissionPlanner.GCSViews
         }
 
         private string _myWarning = "No Warns";
+
+        public string myModeDisplay {
+            get { return _myModeDisplay; } 
+            private set {
+                if (value == _myModeDisplay)
+                    return;
+                _myModeDisplay = value;
+                //"QLAND"
+                btnNavToCmd.ModeOn  = _myModeDisplay == "Guided";
+                btnLoiterCmd.ModeOn = _myModeDisplay == "Loiter";
+                btnRtlCmd.ModeOn    = (_myModeDisplay == "QRTL" || _myModeDisplay == "RTL") && !btnLandPressed;
+                btnLandEnable.ModeOn = (_myModeDisplay == "QRTL" || _myModeDisplay == "QLAND") && btnLandPressed;
+
+            } 
+        }
+
         private string myWarning
         {
             get { return _myWarning; }
@@ -2834,8 +2850,7 @@ namespace MissionPlanner.GCSViews
                  btnLandCmd.Visible = false;
                  altCmdDisplay      = false;
                  iasCmdDisplay      = false;
-             });
-                 
+             });           
         }
 
         private void myNavTo(double lat, double lng)
@@ -4146,6 +4161,7 @@ namespace MissionPlanner.GCSViews
             });
             updateGPSDisplay();
             updateBattStatus();
+            myModeDisplay = MainV2.comPort.MAV.cs.mode;
             myWarning = hud1.message;
         }
 
@@ -5930,6 +5946,9 @@ namespace MissionPlanner.GCSViews
         private float _lowBattVolt;
         private float _critBattVolt;
         private float _qrtlAltMeters;
+        private string _myModeDisplay = "";
+        //bool to distiguish between land and RTL btn pressed -in both cases we do QRTL but need to lit difrent button
+        private bool btnLandPressed = false;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6465,7 +6484,7 @@ namespace MissionPlanner.GCSViews
         }
 
         private void btnNavToCmd_Click(object sender, EventArgs e)
-        {
+        {            
             closeSecondaryButtons();
             setNavTo = !setNavTo;
             poiState = PoiStates.psNone;
@@ -6473,6 +6492,7 @@ namespace MissionPlanner.GCSViews
 
         private void btnRtlCmd_Click(object sender, EventArgs e)
         {
+            btnLandPressed = false;
             closeSecondaryButtons();
         //    _resetEnabled = true;
             myModeCommand("RTL");
@@ -6485,8 +6505,8 @@ namespace MissionPlanner.GCSViews
 
         private void btnLandCmd_Click(object sender, EventArgs e)
         {
-         //   _resetEnabled = true;
-
+            //   _resetEnabled = true;
+            btnLandPressed = true;
             //igal Q_RTL_ALT
             //planer alt 
             float planeAltMeters = (float)(MainV2.comPort.MAV.cs.alt / CurrentState.multiplieralt);
@@ -6839,11 +6859,17 @@ namespace MissionPlanner.GCSViews
         private void updateManPointtoVisibillity(bool vis)
         {
             if (vis) {
-                txbManPointToLat.Text = "0.0";
-                txbManPointToLng.Text = "0.0";
-                lblManPointto.Text = "";
+                txbManPointToLat.BeginInvokeIfRequired(() =>
+                {
+                    txbManPointToLat.Text = "0.0";
+                    txbManPointToLng.Text = "0.0";
+                    lblManPointto.Text = "";
+                });
             }
-            gbPointToMan.Visible = vis;
+            gbPointToMan.BeginInvokeIfRequired(() =>
+            {
+                gbPointToMan.Visible = vis;
+            });
         }
 
         private void btnManPoinToOk_Click(object sender, EventArgs e)
