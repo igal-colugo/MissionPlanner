@@ -199,9 +199,9 @@ namespace MissionPlanner.GCSViews
             {
                 if (value == _poiState) return;
                 _poiState = value;
-                btnAddPoi.Visible = _poiState != PoiStates.psNone;
+                btnAddPoi.Visible     = _poiState != PoiStates.psNone;
                 btnDeletePois.Visible = _poiState != PoiStates.psNone;
-                btnLoadPois.Visible = _poiState != PoiStates.psNone;
+                btnLoadPois.Visible   = _poiState != PoiStates.psNone;
                 btnSaveAllPoi.Visible = _poiState != PoiStates.psNone;
             }
         }
@@ -312,6 +312,7 @@ namespace MissionPlanner.GCSViews
                     return;
                 }
                 _camGuideMode = value;
+                
                 tmrCamGuide.Enabled = _camGuideMode;
 
                 //in any case - start with safe mode...
@@ -373,10 +374,11 @@ namespace MissionPlanner.GCSViews
                     return;
                 _myModeDisplay = value;
                 //"QLAND"
-                btnNavToCmd.ModeOn  = _myModeDisplay == "Guided";
-                btnLoiterCmd.ModeOn = _myModeDisplay == "Loiter";
-                btnRtlCmd.ModeOn    = (_myModeDisplay == "QRTL" || _myModeDisplay == "RTL") && !btnLandPressed;
-                btnLandEnable.ModeOn = (_myModeDisplay == "QRTL" || _myModeDisplay == "QLAND") && btnLandPressed;
+                btnNavToCmd.ModeOn    = _myModeDisplay == "Guided" && !camGuideMode;
+                btnCamGuideCmd.ModeOn = _myModeDisplay == "Guided" && camGuideMode;
+                btnLoiterCmd.ModeOn   = _myModeDisplay == "Loiter";
+                btnRtlCmd.ModeOn      = (_myModeDisplay == "QRTL" || _myModeDisplay == "RTL") && !btnLandPressed;
+                btnLandEnable.ModeOn  = (_myModeDisplay == "QRTL" || _myModeDisplay == "QLAND") && btnLandPressed;
 
             } 
         }
@@ -2784,7 +2786,7 @@ namespace MissionPlanner.GCSViews
             {
                 setNavTo = false;
                 resetPointToLayer();
-                clearInitialeTORoute();
+            //    clearInitialeTORoute();
                 myNavTo(MouseDownStart.Lat, MouseDownStart.Lng);
             }
 
@@ -4212,8 +4214,7 @@ namespace MissionPlanner.GCSViews
             if(gpsStatus != txtGpsStatus.Text)
                     txtGpsStatus.Text = gpsStatus;
             });
-     //       lblGpsStatus.Parent.ResumeLayout();
-       
+     //       lblGpsStatus.Parent.ResumeLayout();       
         }
 
         private void updateBattStatus()
@@ -6398,6 +6399,7 @@ namespace MissionPlanner.GCSViews
         private void btnCamGuideCmd_Click(object sender, EventArgs e)
         {
             closeSecondaryButtons();
+            myModeDisplay = "";
             camGuideMode = !camGuideMode;
         }
 
@@ -6485,10 +6487,11 @@ namespace MissionPlanner.GCSViews
         }
 
         private void btnNavToCmd_Click(object sender, EventArgs e)
-        {            
-            closeSecondaryButtons();
-            setNavTo = !setNavTo;
-            poiState = PoiStates.psNone;
+        {
+            // closeSecondaryButtons();
+            doPreCommandCleanUp();
+             setNavTo = !setNavTo;
+           // poiState = PoiStates.psNone;
         }
 
         private void btnRtlCmd_Click(object sender, EventArgs e)
@@ -6557,20 +6560,13 @@ namespace MissionPlanner.GCSViews
 
         private void myModeCommand(string modeName)
         {
-            closeSecondaryButtons();
-            //safety...
-            camGuideMode = false;
-
-            //targets anull
-            poiState = PoiStates.psNone;
+            doPreCommandCleanUp();
 
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
-
-            clearInitialeTORoute();
             try
             {
-                resetPointToLayer();
+                
                 MainV2.comPort.setMode(modeName);
             }
             catch (Exception ex)
@@ -6583,6 +6579,19 @@ namespace MissionPlanner.GCSViews
 
             }
 
+        }
+
+        private void doPreCommandCleanUp()
+        {
+            //force reset of myModeDisplay so similar commands like qrtl display and navto display will be updated... correctly if similar buttons are clicked
+            myModeDisplay = "";
+            closeSecondaryButtons();
+            //safety...
+            camGuideMode = false;
+            //targets anull
+            poiState = PoiStates.psNone;
+            clearInitialeTORoute();
+            resetPointToLayer();
         }
 
         private void clearInitialeTORoute()
