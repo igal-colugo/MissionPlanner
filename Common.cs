@@ -3,6 +3,7 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using log4net;
 using MissionPlanner.ArduPilot;
+using MissionPlanner.GCSViews;
 using MissionPlanner.Maps;
 using MissionPlanner.MyCode;
 using MissionPlanner.Utilities;
@@ -93,6 +94,12 @@ namespace MissionPlanner
                 {
                     stats += "IAS: " + (int)MAV.cs.airspeed + " " +CurrentState.SpeedUnit + "\r\n";
                     string sMode = (MAV.cs.mode.ToLower().Equals("loiter") ? "Hold" : MAV.cs.mode)  +"\r\n";
+                    if (sMode.ToLower().Contains("rtl")) {
+                        if (FlightData.instance.btnLandPressed) {
+                            sMode = "QLAND" + "\r\n";
+                        }
+                    }
+
                     stats += "MODE: " + sMode;
                     stats += "Heading: " + (int)MAV.cs.yaw;
                 }

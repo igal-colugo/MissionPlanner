@@ -418,6 +418,17 @@ namespace MissionPlanner.GCSViews
             }
         }
 
+        //bool to distiguish between land and RTL btn pressed -in both cases we do QRTL but need to lit difrent button
+        private bool _btnLandPressed = false;
+        public bool btnLandPressed { get {
+                return _btnLandPressed;
+            }
+            private set { 
+                if(value != _btnLandPressed)    
+                    _btnLandPressed = value;
+            } 
+        }
+
         private Dictionary<int, string> NIC_table = new Dictionary<int, string>()
         {
             {0, "UNKNOWN" },
@@ -5948,9 +5959,7 @@ namespace MissionPlanner.GCSViews
         private float _lowBattVolt;
         private float _critBattVolt;
         private float _qrtlAltMeters;
-        private string _myModeDisplay = "";
-        //bool to distiguish between land and RTL btn pressed -in both cases we do QRTL but need to lit difrent button
-        private bool btnLandPressed = false;
+        private string _myModeDisplay = "";        
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
