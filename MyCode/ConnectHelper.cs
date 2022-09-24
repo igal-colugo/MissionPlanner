@@ -17,10 +17,10 @@ namespace MissionPlanner.MyCode
             if (File.Exists(connetPath))
             {
                 string[] lines = File.ReadAllLines(connetPath);
-                Regex tcp = new Regex("(.+)=tcp://(.*):([0-9]+)");
-                Regex udp = new Regex("(.+)=udp://(.*):([0-9]+)");
-                Regex udpcl = new Regex("(.+)=udpcl://(.*):([0-9]+)");
-                Regex serial = new Regex("(.+)=serial:(.*):([0-9]+)");
+                Regex tcp = new Regex("(.+)=tcp://(.*):([0-9]+):([0-9]+)");
+                Regex udp = new Regex("(.+)=udp://(.*):([0-9]+):([0-9]+)");
+                Regex udpcl = new Regex("(.+)=udpcl://(.*):([0-9]+):([0-9]+)");
+                Regex serial = new Regex("(.+)=serial:(.*):([0-9]+):([0-9]+)");
 
 
                 connectContainer.Height = lines.Length * 28 + 30;
@@ -100,5 +100,7 @@ namespace MissionPlanner.MyCode
             container.Controls.Add(connect);
 
         }
+
+       
     }
 }

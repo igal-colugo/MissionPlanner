@@ -513,6 +513,8 @@ namespace MissionPlanner
             }
             }
 
+        public ushort currentSysIdToDisplay { get; internal set; }
+
         /// <summary>
         /// controls the main serial reader thread
         /// </summary>
@@ -773,10 +775,7 @@ namespace MissionPlanner
             //Init Theme table and load BurntKermit as a default
             ThemeManager.thmColor = new ThemeColorTable(); //Init colortable
             ThemeManager.thmColor.InitColors(); //This fills up the table with BurntKermit defaults.
-            ThemeManager.thmColor
-                .SetTheme(); //Set the colors, this need to handle the case when not all colors are defined in the theme file
-
-
+            ThemeManager.thmColor.SetTheme(); //Set the colors, this need to handle the case when not all colors are defined in the theme file
 
             if (Settings.Instance["theme"] == null)
             {

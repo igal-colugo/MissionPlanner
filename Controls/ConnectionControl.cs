@@ -1,4 +1,5 @@
-﻿using MissionPlanner.Comms;
+﻿using AltitudeAngelWings.Models;
+using MissionPlanner.Comms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -77,10 +78,11 @@ namespace MissionPlanner.Controls
         public void UpdateSysIDS()
         {
             cmb_sysid.SelectedIndexChanged -= CMB_sysid_SelectedIndexChanged;
-
+         //   GCSViews.FlightData.instance.cmbxPlanes.SelectedIndexChanged -= CMB_sysid_SelectedIndexChanged;
             var oldidx = cmb_sysid.SelectedIndex;
 
             cmb_sysid.Items.Clear();
+            GCSViews.FlightData.instance.cmbxPlanes.Items.Clear();
 
             int selectidx = -1;
 
@@ -93,7 +95,8 @@ namespace MissionPlanner.Controls
                     var temp = new port_sysid() { compid = (item % 256), sysid = (item / 256), port = port };
 
                     var idx = cmb_sysid.Items.Add(temp);
-
+                    GCSViews.FlightData.instance.cmbxPlanes.Items.Add(temp.sysid);
+                    GCSViews.FlightData.instance.cmbxPlanes.Visible = GCSViews.FlightData.instance.cmbxPlanes.Items.Count > 1;
                     if (temp.port == MainV2.comPort && temp.sysid == MainV2.comPort.sysidcurrent && temp.compid == MainV2.comPort.compidcurrent)
                     {
                         selectidx = idx;
@@ -107,6 +110,7 @@ namespace MissionPlanner.Controls
             }
 
             cmb_sysid.SelectedIndexChanged += CMB_sysid_SelectedIndexChanged;
+          //  GCSViews.FlightData.instance.cmbxPlanes.SelectedIndexChanged += CMB_sysid_SelectedIndexChanged;
         }
 
         internal struct port_sysid
@@ -172,6 +176,11 @@ namespace MissionPlanner.Controls
                     e.Value = temp.port.BaseStream.PortName + "-" + ((int)temp.sysid) + "-" + mavComponentString.Replace("_", " ");
                 }
             }
+        }
+
+        internal void SetSysID(int newIdx)
+        {
+            cmb_sysid.SelectedIndex = newIdx;
         }
     }
 }

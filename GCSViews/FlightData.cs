@@ -76,7 +76,8 @@ namespace MissionPlanner.GCSViews
         private readonly int _cruiseSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).CruiseSpd;
         private readonly int _maxSpd = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).MaxSpd;
         private readonly int _altIcrement = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).AltIncrement;
-        private readonly bool _EnableWarns = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).EnableWarns;         
+        private readonly bool _EnableWarns = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).EnableWarns;
+        private readonly bool _EnableCG = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).EnableCG;
 
         //end my code
 
@@ -688,7 +689,8 @@ namespace MissionPlanner.GCSViews
         {
             if (File.Exists(myConnectionsPath))
             {
-                new ConnectHelper().decorateGui(myConnectionsPath, pnlConnectList, handleMyConnect);
+                ConnectHelper ch = new ConnectHelper();
+                ch.decorateGui(myConnectionsPath, pnlConnectList, handleMyConnect);
             }
             _myRuller = new MyRullerhelper(_rullerOverlay, lblRullerDistance);
             setNavTo = false;
@@ -702,6 +704,9 @@ namespace MissionPlanner.GCSViews
                 object ls = ((RadioButton)sender).Tag;
                 ((RadioButton)sender).Checked = false;
                 List<string> connectData = (List<string>)ls;
+
+                MainV2.instance.currentSysIdToDisplay = UInt16.Parse(connectData[4]);
+
                 var mav = new MAVLinkInterface();
 
                 if (connectData[0] == "tcp")
@@ -732,6 +737,7 @@ namespace MissionPlanner.GCSViews
                 {
                     MainV2.instance.myConnect("Udp", connectData[2], connectData[3]);
                 }
+
             }
             catch (Exception ex)
             {
@@ -6317,7 +6323,7 @@ namespace MissionPlanner.GCSViews
                 btnLoiterCmd.Enabled       = connectState == connectStates.csInFlight;
                 btnPoinToLatlngCmd.Enabled = connectState == connectStates.csInFlight;
                 btnPointToCmd.Enabled      = connectState == connectStates.csInFlight;
-                btnCamGuideCmd.Enabled     = connectState == connectStates.csInFlight;
+                btnCamGuideCmd.Enabled     = connectState == connectStates.csInFlight && _EnableCG;
             });
 
 
@@ -7018,7 +7024,10 @@ namespace MissionPlanner.GCSViews
             txtBatDebugVlt.Text = sbarDebugBatVlt.Value + " v";
         }
 
-       
+        private void cmbxPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MainV2._connectionControl.SetSysID(cmbxPlanes.SelectedIndex);
+        }
     }
 }
 
