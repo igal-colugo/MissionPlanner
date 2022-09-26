@@ -95,8 +95,9 @@ namespace MissionPlanner.Controls
                     var temp = new port_sysid() { compid = (item % 256), sysid = (item / 256), port = port };
 
                     var idx = cmb_sysid.Items.Add(temp);
-                    GCSViews.FlightData.instance.cmbxPlanes.Items.Add(temp.sysid);
-                    GCSViews.FlightData.instance.cmbxPlanes.Visible = GCSViews.FlightData.instance.cmbxPlanes.Items.Count > 1;
+                    
+                    GCSViews.FlightData.instance.cmbxPlanes.Items.Add(temp.port.MAV.aptype);
+                    GCSViews.FlightData.instance.cmbxPlanes.Visible = GCSViews.FlightData.instance.cmbxPlanes.Items.Count > 1 && MainV2.instance.myDebug;
                     if (temp.port == MainV2.comPort && temp.sysid == MainV2.comPort.sysidcurrent && temp.compid == MainV2.comPort.compidcurrent)
                     {
                         selectidx = idx;

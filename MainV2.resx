@@ -887,7 +887,7 @@
 </value>
   </data>
   <data name="toolStripConnectionControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 47</value>
+    <value>181, 47</value>
   </data>
   <data name="MenuArduPilot.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -973,6 +973,9 @@
   <data name="status1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 42</value>
   </data>
+  <data name="status1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="status1.Size" type="System.Drawing.Size, System.Drawing">
     <value>923, 4</value>
   </data>
@@ -1028,7 +1031,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>46</value>
+    <value>283</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>

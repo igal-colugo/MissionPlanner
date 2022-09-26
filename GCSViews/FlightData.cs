@@ -36,6 +36,7 @@ using MissionPlanner.MyCode;
 using System.Net.Sockets;
 using MissionPlanner.Controls.PreFlight;
 using MissionPlanner.Comms;
+using static MissionPlanner.Controls.ConnectionControl;
 
 // written by michael oborne
 
@@ -2873,8 +2874,8 @@ namespace MissionPlanner.GCSViews
 
         private void myNavTo(double lat, double lng)
         {
-            float alt = MainV2.comPort.MAV.cs.alt == 0 ? 100 : MainV2.comPort.MAV.cs.alt / CurrentState.multiplieralt;
-            MainV2.comPort.MAV.GuidedMode.z = alt;
+            float myTargetAlt = MainV2.comPort.MAV.cs.targetalt == 0 ? 100 : MainV2.comPort.MAV.cs.targetalt / CurrentState.multiplieralt;
+            MainV2.comPort.MAV.GuidedMode.z = myTargetAlt;
 
             Locationwp gotohere = new Locationwp();
 
@@ -3446,7 +3447,7 @@ namespace MissionPlanner.GCSViews
                             log.Error(ex);
                         }
                     }
-
+                   
                     tracklast = tracklast.AddMilliseconds(ts - act);
                     tunning = tunning.AddMilliseconds(ts - act);
 
@@ -4144,9 +4145,36 @@ namespace MissionPlanner.GCSViews
                 {
                     BeginInvoke((Action)updateTransponder);
                 }
+                tryToSwitchToCorrectSysId();
             }
-
+           
             Console.WriteLine("FD Main loop exit");
+        }
+
+        private void tryToSwitchToCorrectSysId()
+        {
+            if(MainV2.instance.currentSysIdToDisplay > 0)
+        //    if (MainV2.comPort.MAV.sysid == 4)//debug
+            {
+                int planeIdx = -1;
+                ComboBox sysIdsCombo = MainV2._connectionControl.cmb_sysid;
+                // foreach (var item in sysIdsCombo)
+             //   int selected = -1;
+                for (int i = 0; i < sysIdsCombo.Items.Count; i++)
+                {
+                    port_sysid yy = (port_sysid)sysIdsCombo.Items[i];
+                       if(MainV2.instance.currentSysIdToDisplay == yy.port.MAV.sysid)
+                 //   if (12 == yy.port.MAV.sysid)//debug
+                    {
+                        planeIdx = i;                     
+                    }
+                }
+                if(planeIdx > -1)
+                    MainV2._connectionControl.cmb_sysid.BeginInvokeIfRequired(() =>
+                    { 
+                        MainV2._connectionControl.cmb_sysid.SelectedIndex = planeIdx;
+                    });
+            }
         }
 
         private void updateMyData()
@@ -6698,14 +6726,14 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                //go to qloiter mode
+                //go to loiter mode
 
 
                 // arm the MAV
                 try
                 {
-                    if (MainV2.comPort.MAV.cs.mode.ToUpper() != "QLOITER")
-                        MainV2.comPort.setMode("QLOITER");
+                    if (MainV2.comPort.MAV.cs.mode.ToUpper() != "LOITER")
+                        MainV2.comPort.setMode("LOITER");
                 }
                 catch (Exception)
                 {
