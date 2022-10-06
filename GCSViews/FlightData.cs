@@ -1003,6 +1003,7 @@ namespace MissionPlanner.GCSViews
                     tracklog.Value = 0;
                     tracklog.Minimum = 0;
                     tracklog.Maximum = 100;
+                    updateBattLimits();
                 }
                 catch
                 {
@@ -4153,28 +4154,36 @@ namespace MissionPlanner.GCSViews
 
         private void tryToSwitchToCorrectSysId()
         {
-            if(MainV2.instance.currentSysIdToDisplay > 0)
-        //    if (MainV2.comPort.MAV.sysid == 4)//debug
+            try
             {
                 int planeIdx = -1;
                 ComboBox sysIdsCombo = MainV2._connectionControl.cmb_sysid;
-                // foreach (var item in sysIdsCombo)
-             //   int selected = -1;
                 for (int i = 0; i < sysIdsCombo.Items.Count; i++)
                 {
-                    port_sysid yy = (port_sysid)sysIdsCombo.Items[i];
-                       if(MainV2.instance.currentSysIdToDisplay == yy.port.MAV.sysid)
-                 //   if (12 == yy.port.MAV.sysid)//debug
+                    port_sysid planeName = (port_sysid)sysIdsCombo.Items[i];
+                    if (planeName.port.MAV.aptype == MAVLink.MAV_TYPE.FIXED_WING)
                     {
-                        planeIdx = i;                     
+                        planeIdx = i;
                     }
                 }
-                if(planeIdx > -1)
+                if (planeIdx > -1)
                     MainV2._connectionControl.cmb_sysid.BeginInvokeIfRequired(() =>
-                    { 
-                        MainV2._connectionControl.cmb_sysid.SelectedIndex = planeIdx;
+                    {
+                        if (MainV2._connectionControl.cmb_sysid.SelectedIndex != planeIdx
+                        && MainV2._connectionControl.cmb_sysid.Items.Count > planeIdx)
+                        {
+                            MainV2._connectionControl.cmb_sysid.SelectedIndex = planeIdx;
+                        }
+
                     });
             }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+            
+                
+            
         }
 
         private void updateMyData()
@@ -4267,7 +4276,7 @@ namespace MissionPlanner.GCSViews
             int imageNum  = 9;            
             double batVlt = MainV2.instance.myDebug ? sbarDebugBatVlt.Value : MainV2.comPort.MAV.cs.battery_voltage;
             float normalbarStep = (50 - _lowBattVolt) / 4;
-            float lowbarStep = (_lowBattVolt - _critBattVolt) / 2;
+            float lowbarStep =  (_lowBattVolt - _critBattVolt) / 2;
 
 
             if (batVlt == 0)//somthing is fucke...
@@ -7052,10 +7061,6 @@ namespace MissionPlanner.GCSViews
             txtBatDebugVlt.Text = sbarDebugBatVlt.Value + " v";
         }
 
-        private void cmbxPlanes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MainV2._connectionControl.SetSysID(cmbxPlanes.SelectedIndex);
-        }
     }
 }
 

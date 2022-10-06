@@ -82,7 +82,6 @@ namespace MissionPlanner.Controls
             var oldidx = cmb_sysid.SelectedIndex;
 
             cmb_sysid.Items.Clear();
-            GCSViews.FlightData.instance.cmbxPlanes.Items.Clear();
 
             int selectidx = -1;
 
@@ -96,8 +95,6 @@ namespace MissionPlanner.Controls
 
                     var idx = cmb_sysid.Items.Add(temp);
                     
-                    GCSViews.FlightData.instance.cmbxPlanes.Items.Add(temp.port.MAV.aptype);
-                    GCSViews.FlightData.instance.cmbxPlanes.Visible = GCSViews.FlightData.instance.cmbxPlanes.Items.Count > 1 && MainV2.instance.myDebug;
                     if (temp.port == MainV2.comPort && temp.sysid == MainV2.comPort.sysidcurrent && temp.compid == MainV2.comPort.compidcurrent)
                     {
                         selectidx = idx;

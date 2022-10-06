@@ -193,7 +193,6 @@ namespace MissionPlanner.GCSViews
             this.bindingSourceStatusTab = new System.Windows.Forms.BindingSource(this.components);
             this.ilMyImages = new System.Windows.Forms.ImageList(this.components);
             this.pnlMap = new System.Windows.Forms.Panel();
-            this.cmbxPlanes = new System.Windows.Forms.ComboBox();
             this.pnlBatDebug = new System.Windows.Forms.Panel();
             this.txtBatDebugVlt = new System.Windows.Forms.TextBox();
             this.sbarDebugBatVlt = new System.Windows.Forms.HScrollBar();
@@ -2272,7 +2271,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 3060D;
+            this.windDir1.Direction = 3240D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -2468,7 +2467,7 @@ namespace MissionPlanner.GCSViews
             // 
             // pnlMap
             // 
-            this.pnlMap.Controls.Add(this.cmbxPlanes);
+            resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Controls.Add(this.pnlBatDebug);
             this.pnlMap.Controls.Add(this.pnlWarnings);
             this.pnlMap.Controls.Add(this.txtGpsStatus);
@@ -2515,15 +2514,7 @@ namespace MissionPlanner.GCSViews
             this.pnlMap.Controls.Add(this.btnMyConnect);
             this.pnlMap.Controls.Add(this.crdsMy);
             this.pnlMap.Controls.Add(this.gMapControl1);
-            resources.ApplyResources(this.pnlMap, "pnlMap");
             this.pnlMap.Name = "pnlMap";
-            // 
-            // cmbxPlanes
-            // 
-            this.cmbxPlanes.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbxPlanes, "cmbxPlanes");
-            this.cmbxPlanes.Name = "cmbxPlanes";
-            this.cmbxPlanes.SelectedIndexChanged += new System.EventHandler(this.cmbxPlanes_SelectedIndexChanged);
             // 
             // pnlBatDebug
             // 
@@ -3815,6 +3806,5 @@ namespace MissionPlanner.GCSViews
         private Panel pnlBatDebug;
         private HScrollBar sbarDebugBatVlt;
         private TextBox txtBatDebugVlt;
-        public ComboBox cmbxPlanes;
     }
 }
