@@ -661,7 +661,7 @@ namespace MissionPlanner.GCSViews
             toolStripMenuItem6.Image = ilMyTargets.Images[4];
             toolStripMenuItem7.Image = ilMyTargets.Images[5];
 
-            //ig debug pnlMap.Dock = DockStyle.Fill;
+            pnlMap.Dock = DockStyle.Fill;
             btnNavToCmd.Visible = !_balloonModeOn;
             btnLoiterCmd.Visible = !_balloonModeOn;
             btnCamGuideCmd.Visible = !_balloonModeOn;           
@@ -4156,20 +4156,15 @@ namespace MissionPlanner.GCSViews
         {
             try
             {
-
                 MainV2._connectionControl.cmb_sysid.BeginInvokeIfRequired(() =>
                 {
                     int planeIdx = -1;
                     ComboBox sysIdsCombo = MainV2._connectionControl.cmb_sysid;
-                    //  MainV2._connectionControl.cmb_sysid.GetItemText(MainV2._connectionControl.cmb_sysid.Items[i]);
                     if (sysIdsCombo.Items.Count > 1)
                     {
                         for (int i = 0; i < sysIdsCombo.Items.Count; i++)
                         {
                             string str = MainV2._connectionControl.cmb_sysid.GetItemText(MainV2._connectionControl.cmb_sysid.Items[i]);
-                            //     log.Info(str);
-                            //  MissionPlanner.Controls.ConnectionControl.port_sysid planeName = (MissionPlanner.Controls.ConnectionControl.port_sysid)sysIdsCombo.Items[i];
-                            //   if (planeName.port.MAV.aptype == MAVLink.MAV_TYPE.FIXED_WING)
                             if (str.Contains("FIXED WING"))
                             {
                                 planeIdx = i;
