@@ -111,7 +111,7 @@ namespace MissionPlanner.Controls
           //  GCSViews.FlightData.instance.cmbxPlanes.SelectedIndexChanged += CMB_sysid_SelectedIndexChanged;
         }
 
-        internal struct port_sysid
+        public struct port_sysid
         {
             internal MAVLinkInterface port;
             internal int sysid;
