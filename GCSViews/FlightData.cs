@@ -79,6 +79,7 @@ namespace MissionPlanner.GCSViews
         private readonly int _altIcrement = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).AltIncrement;
         private readonly bool _EnableWarns = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).EnableWarns;
         private readonly bool _EnableCG = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).EnableCG;
+        private readonly bool _disablePlaneSwitchWA = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME).DisablePlaneSwitchWA;
 
         //end my code
 
@@ -2626,11 +2627,11 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-                    modifyandSetSpeed.Value = (decimal)((float)MainV2.comPort.MAV.param["WP_SPEED_MAX"] / 100.0);
+                //    modifyandSetSpeed.Value = (decimal)((float)MainV2.comPort.MAV.param["WP_SPEED_MAX"] / 100.0);
                 }
                 catch
                 {
-                    modifyandSetSpeed.Enabled = false;
+                 //   modifyandSetSpeed.Enabled = false;
                 }
             }
             // plane 3.7 and below with airspeed, uses ARSPD_ENABLE:
@@ -2652,7 +2653,7 @@ namespace MissionPlanner.GCSViews
                 }
                 catch
                 {
-                    modifyandSetSpeed.Enabled = false;
+               //     modifyandSetSpeed.Enabled = false;
                 }
             } // plane without airspeed
             else if (MainV2.comPort.MAV.param.ContainsKey("TRIM_THROTTLE") &&
@@ -2661,15 +2662,15 @@ namespace MissionPlanner.GCSViews
             {
                 try
                 {
-                    modifyandSetSpeed.Value = (decimal)(float)MainV2.comPort.MAV.param["TRIM_THROTTLE"];
+            //        modifyandSetSpeed.Value = (decimal)(float)MainV2.comPort.MAV.param["TRIM_THROTTLE"];
                 }
                 catch
                 {
-                    modifyandSetSpeed.Enabled = false;
+              //      modifyandSetSpeed.Enabled = false;
                 }
 
                 // percent
-                modifyandSetSpeed.ButtonText = Strings.ChangeThrottle;
+            //    modifyandSetSpeed.ButtonText = Strings.ChangeThrottle;
             }
 
             try
@@ -4154,6 +4155,9 @@ namespace MissionPlanner.GCSViews
 
         private void tryToSwitchToCorrectSysId()
         {
+            if (_disablePlaneSwitchWA) {
+                return;
+            }
             try
             {
                 MainV2._connectionControl.cmb_sysid.BeginInvokeIfRequired(() =>
@@ -4173,9 +4177,14 @@ namespace MissionPlanner.GCSViews
                         if (planeIdx > -1)
                         {
                             if (MainV2._connectionControl.cmb_sysid.SelectedIndex != planeIdx
-                            && MainV2._connectionControl.cmb_sysid.Items.Count > planeIdx)
+                                && MainV2._connectionControl.cmb_sysid.Items.Count > planeIdx 
+                                //we are not in the middle of param download...
+                                && (MainV2.comPort.MAV.param.TotalReceived >= MainV2.comPort.MAV.param.TotalReported)
+                                && lastTimePlaneChanged < DateTime.Now.AddSeconds(-5)
+                                )
                             {
                                 MainV2._connectionControl.cmb_sysid.SelectedIndex = planeIdx;
+                                lastTimePlaneChanged = DateTime.Now;
                             }
                         }
                     }
@@ -6003,7 +6012,8 @@ namespace MissionPlanner.GCSViews
         private float _lowBattVolt;
         private float _critBattVolt;
         private float _qrtlAltMeters;
-        private string _myModeDisplay = "";        
+        private string _myModeDisplay = "";
+        private DateTime lastTimePlaneChanged = DateTime.Now;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {

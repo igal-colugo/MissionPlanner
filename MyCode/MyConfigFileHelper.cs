@@ -41,6 +41,7 @@ using System.Web.Script.Serialization;
         public int ScndWpAlt { get; set; } = 88;
         public int DistToScndWp { get; set; } = 145;
         public bool DisableVideo { get; set; } = false;
+        public bool DisablePlaneSwitchWA { get; set; } = false;
 }
    //   }
       
