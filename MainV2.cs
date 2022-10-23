@@ -1647,6 +1647,8 @@ namespace MissionPlanner
                                 new BufferedStream(File.Open(rlog, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None));
                             log.Info("creating logfile " + dt + ".tlog");
                         }
+
+                     //   mav.
                     }
                     catch (Exception exp2)
                     {

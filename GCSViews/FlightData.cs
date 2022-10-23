@@ -37,6 +37,8 @@ using System.Net.Sockets;
 using MissionPlanner.Controls.PreFlight;
 using MissionPlanner.Comms;
 using static MissionPlanner.Controls.ConnectionControl;
+using static IronPython.Modules.MmapModule;
+using static MAVLink;
 
 // written by michael oborne
 
@@ -4133,8 +4135,11 @@ namespace MissionPlanner.GCSViews
 
                         tracklast = DateTime.Now;
                     }
-                    updateMyData();                    
+                    updateMyData();
+                    tryToSwitchToPlaneMav();
                     
+                    Debug.WriteLine("current type: " + MainV2.comPort.MAV.aptype);
+                    Debug.WriteLine("mav count: " + MainV2.comPort.MAVlist.Count);
                 }
                 catch (Exception ex)
                 {
@@ -4147,23 +4152,49 @@ namespace MissionPlanner.GCSViews
                 {
                     BeginInvoke((Action)updateTransponder);
                 }
-                tryToSwitchToCorrectSysId();
+                
             }
            
             Console.WriteLine("FD Main loop exit");
         }
 
-        private void tryToSwitchToCorrectSysId()
+        private void tryToSwitchToPlaneMav()
         {
             if (_disablePlaneSwitchWA) {
                 return;
             }
+            if(MainV2.comPort.MAVlist.Count > 1 && MainV2.comPort.MAV.aptype != MAV_TYPE.FIXED_WING)
+            {
+                foreach (MAVState myMAV in MainV2.comPort.MAVlist)
+                {
+                    if (myMAV.aptype == MAV_TYPE.FIXED_WING)
+                    {
+                        // MainV2.comPort.MAV = myMAV;
+                        MainV2.comPort.sysidcurrent = myMAV.sysid;
+                        MainV2.comPort.compidcurrent = myMAV.compid;
+
+                        if (MainV2.comPort.MAV.param.Count == 0)
+                        {
+                            MainV2.comPort.getParamList();
+                        }
+                        MainV2.View.Reload();
+                        break;
+                    }
+                }
+            }
+            
+
+
+
+            /*
             try
             {
                 MainV2._connectionControl.cmb_sysid.BeginInvokeIfRequired(() =>
                 {
                     int planeIdx = -1;
-                    ComboBox sysIdsCombo = MainV2._connectionControl.cmb_sysid;
+                   // MainV2._connectionControl.beginup
+                   ComboBox sysIdsCombo = MainV2._connectionControl.cmb_sysid;
+                    sysIdsCombo.BeginUpdate();
                     if (sysIdsCombo.Items.Count > 1)
                     {
                         for (int i = 0; i < sysIdsCombo.Items.Count; i++)
@@ -4179,7 +4210,7 @@ namespace MissionPlanner.GCSViews
                             if (MainV2._connectionControl.cmb_sysid.SelectedIndex != planeIdx
                                 && MainV2._connectionControl.cmb_sysid.Items.Count > planeIdx 
                                 //we are not in the middle of param download...
-                                && (MainV2.comPort.MAV.param.TotalReceived >= MainV2.comPort.MAV.param.TotalReported)
+                              //  && (MainV2.comPort.MAV.param.TotalReceived >= MainV2.comPort.MAV.param.TotalReported)
                                 && lastTimePlaneChanged < DateTime.Now.AddSeconds(-5)
                                 )
                             {
@@ -4188,12 +4219,16 @@ namespace MissionPlanner.GCSViews
                             }
                         }
                     }
+                    sysIdsCombo.EndUpdate();
                 });
+                
             }
+            
             catch (Exception ex)
             {
                 log.Error(ex);
             }
+            */
         }
 
         private void updateMyData()
