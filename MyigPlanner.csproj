@@ -366,9 +366,9 @@
     <PackageReference Include="DotSpatial.Topology" version="1.9" targetFramework="net462" />
     <PackageReference Include="Flurl" version="3.0.2" targetFramework="net462" />
     <PackageReference Include="Flurl.Http" version="3.2.0" targetFramework="net462" />
-    <PackageReference Include="GDAL" Version="2.3.2" />
+    <PackageReference Include="GDAL" Version="3.6.4" />
     <PackageReference Include="GDAL.Native">
-      <Version>2.3.2</Version>
+      <Version>3.6.4</Version>
     </PackageReference>
     <PackageReference Include="GeoidHeightsDotNet">
       <Version>1.0.1</Version>
@@ -379,7 +379,7 @@
     <PackageReference Include="JetBrains.Profiler.SelfApi">
       <Version>2.0.2</Version>
     </PackageReference>
-    <PackageReference Include="log4net" version="2.0.12" targetFramework="net462" />
+    <PackageReference Include="log4net" version="2.0.15" targetFramework="net462" />
     <PackageReference Include="Meziantou.Analyzer">
       <Version>1.0.663</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
