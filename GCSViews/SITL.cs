@@ -144,7 +144,8 @@ namespace MissionPlanner.GCSViews
 
             try
             {
-                PointLatLng home = new PointLatLng(31.8986651, 34.7405023);
+                //  PointLatLng home = new PointLatLng(31.8986651, 34.7405023);
+                PointLatLng home = new PointLatLng(35.0483179, 32.6025243);
 
                 StartSITL(await exepath, "quadplane",
                     BuildHomeLocation(home, (int)NUM_heading.Value), "",
