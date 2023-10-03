@@ -384,7 +384,6 @@ namespace MissionPlanner.GCSViews
                 btnLoiterCmd.ModeOn   = _myModeDisplay == "Loiter";
                 btnRtlCmd.ModeOn      = (_myModeDisplay == "QRTL" || _myModeDisplay == "RTL") && !btnLandPressed;
                 btnLandEnable.ModeOn  = (_myModeDisplay == "QRTL" || _myModeDisplay == "QLAND") && btnLandPressed;
-
             } 
         }
 
@@ -4263,6 +4262,23 @@ namespace MissionPlanner.GCSViews
             updateBattStatus();
             myModeDisplay = MainV2.comPort.MAV.cs.mode;
             myWarning = hud1.message;
+            updateIasDisplay();
+        }
+
+        private void updateIasDisplay()
+        {
+            //speed command colored
+            if (MainV2.comPort.MAV.param.Count > 0)
+            {
+                if (MainV2.comPort.MAV.param.ContainsKey("TRIM_ARSPD_CM"))
+                {
+                    int iasCmd = (int)((int)(MainV2.comPort.MAV.param["TRIM_ARSPD_CM"]) * 0.01);
+                    bntLowSpd.ModeOn    = _minSpd == iasCmd;
+                    btnCruiseSpd.ModeOn = _cruiseSpd == iasCmd;
+                    btnMaxSpd.ModeOn    = _maxSpd == iasCmd;
+                }
+
+            }
         }
 
         private void updateGPSDisplay()
