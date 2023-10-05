@@ -4344,8 +4344,9 @@ namespace MissionPlanner.GCSViews
             {
                 return;
             }
-                
-             if(batVlt < _critBattVolt) //One bar...
+               string vDisplay = string.Format("{0,3:#0.0 v}", batVlt);
+         //   string vDisplay = string.Format("{0,3:#0.0 v}", 33.556);
+            if (batVlt < _critBattVolt) //One bar...
             {
                 imageNum = 8;
             }
@@ -4377,6 +4378,7 @@ namespace MissionPlanner.GCSViews
             btnBatDispaly.BeginInvokeIfRequired(() =>
             {
                 btnBatDispaly.ImageIndex = imageNum;
+                btnBatDispaly.Text = vDisplay;
             });           
         }
 
@@ -6367,10 +6369,11 @@ namespace MissionPlanner.GCSViews
             if (ModifierKeys == (Keys.Shift | Keys.Control))
 
             {
-                MainV2.instance.myDebug = !MainV2.instance.myDebug;
-                btnEditCl.Visible = MainV2.instance.myDebug;
+                MainV2.instance.myDebug     = !MainV2.instance.myDebug;
+                btnEditCl.Visible            = MainV2.instance.myDebug;
                 btnForceEnableclDone.Visible = MainV2.instance.myDebug;
-                pnlBatDebug.Visible = MainV2.instance.myDebug;
+                pnlBatDebug.Visible          = MainV2.instance.myDebug;
+                cbAvoidparams.Visible        = MainV2.instance.myDebug;
                 //    clcPreFlight.BUT_edit.Visible = MainV2.instance.myDebug;
 
             }
@@ -6883,8 +6886,9 @@ namespace MissionPlanner.GCSViews
 
         private void btnAltCmd_Click(object sender, EventArgs e)
         {
+            bool isDisplayed = altCmdDisplay;
             closeSecondaryButtons();
-            altCmdDisplay = !altCmdDisplay;
+            altCmdDisplay = !isDisplayed;
         }
 
         private void btnAltup_Click(object sender, EventArgs e)
@@ -6920,8 +6924,9 @@ namespace MissionPlanner.GCSViews
 
         private void btnIasCmd_Click(object sender, EventArgs e)
         {
+            bool isDisplayed = iasCmdDisplay;
             closeSecondaryButtons();
-            iasCmdDisplay = !iasCmdDisplay;
+            iasCmdDisplay = !isDisplayed;
         }
 
        

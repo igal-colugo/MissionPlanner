@@ -1660,7 +1660,9 @@ namespace MissionPlanner
                     connecttime = DateTime.Now;
 
                     // do the connect
-                    mav.Open(true, bSkipConnectCheck, true);
+                    //  mav.Open(true, bSkipConnectCheck, true);
+                    //igal test
+                    mav.Open(!FlightData.cbAvoidparams.Checked, bSkipConnectCheck, true);
 
                     if (!mav.BaseStream.IsOpen)
                     {
