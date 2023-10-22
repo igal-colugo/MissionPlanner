@@ -702,6 +702,7 @@ namespace MissionPlanner.GCSViews
         private void handleMyConnect(object sender, EventArgs e)
         {
             pnlConnectList.Visible = false;
+            bool getParams = MainV2.instance.myDebug ? !cbAvoidparams.Checked : _ShouldGetParams;
             try
             {
                 object ls = ((RadioButton)sender).Tag;
@@ -733,12 +734,12 @@ namespace MissionPlanner.GCSViews
 
                 else if (connectData[0] == "udpcl")
                 {   
-                    MainV2.instance.myConnect("UdpCl", connectData[2], connectData[3]);
+                    MainV2.instance.myConnect("UdpCl", connectData[2], connectData[3], getParams);
                 }
 
                 else if (connectData[0] == "udp")
                 {
-                    MainV2.instance.myConnect("Udp", connectData[2], connectData[3]);
+                    MainV2.instance.myConnect("Udp", connectData[2], connectData[3], getParams);
                 }
 
             }
@@ -4410,7 +4411,6 @@ namespace MissionPlanner.GCSViews
             if (MainV2.comPort.BaseStream.IsOpen && !MainV2.comPort.MAV.cs.armed)
             {
                 myModeCommand("QSTABILIZE");
-
             }
         }
 
@@ -6067,6 +6067,7 @@ namespace MissionPlanner.GCSViews
         private float _qrtlAltMeters;
         private string _myModeDisplay = "";
         private DateTime lastTimePlaneChanged = DateTime.Now;
+        private bool _ShouldGetParams = true;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6398,6 +6399,7 @@ namespace MissionPlanner.GCSViews
                     MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
                 {
                     MainV2.instance.doDisconnect(MainV2.comPort);
+                    _ShouldGetPrams = true;think about it
                 }
                     
             }

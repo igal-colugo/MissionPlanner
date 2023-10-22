@@ -1557,7 +1557,7 @@ namespace MissionPlanner
 
 
         
-        public void myConnect(string cnnctType, string host, string port)
+        public void myConnect(string cnnctType, string host, string port, bool getParams)
         {
             bool bSkipConnectCheck = false;
             var mav = new MAVLinkInterface();
@@ -1662,7 +1662,9 @@ namespace MissionPlanner
                     // do the connect
                     //  mav.Open(true, bSkipConnectCheck, true);
                     //igal test
-                    mav.Open(!FlightData.cbAvoidparams.Checked, bSkipConnectCheck, true);
+                    //   mav.Open(!FlightData.cbAvoidparams.Checked, bSkipConnectCheck, true);
+                    mav.Open(getParams, bSkipConnectCheck, true);
+                    
 
                     if (!mav.BaseStream.IsOpen)
                     {
