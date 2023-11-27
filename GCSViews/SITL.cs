@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using MissionPlanner.ArduPilot;
+using MissionPlanner.MyCode;
 
 namespace MissionPlanner.GCSViews
 {
@@ -144,12 +145,20 @@ namespace MissionPlanner.GCSViews
 
             try
             {
-                //  PointLatLng home = new PointLatLng(31.8986651, 34.7405023);
-                PointLatLng home = new PointLatLng(35.0483179, 32.6025243);
+                // PointLatLng home = new PointLatLng(31.8986651, 34.7405023);
+                //   PointLatLng home = new PointLatLng(35.0483179, 32.6025243);
 
+                //    StartSITL(await exepath, "quadplane",
+                //   BuildHomeLocation(home, (int)NUM_heading.Value), "",
+                //     (int)num_simspeed.Value);
+                MyGeneralConfigFileHelper fh = MyGeneralConfigFileHelper.Load(Path.Combine(MySettings.myBasePath, "general\\") + MyGeneralConfigFileHelper.DEFAULT_FILENAME);
+                string homeLoc = String.Format("{0},{1},{2},{3}", fh.simHomeLat.ToString(CultureInfo.InvariantCulture),
+                                                                fh.simHomeLng.ToString(CultureInfo.InvariantCulture),
+                                                                fh.simHomeAlt.ToString(CultureInfo.InvariantCulture), fh.simHomeDir.ToString(CultureInfo.InvariantCulture));
+                
                 StartSITL(await exepath, "quadplane",
-                    BuildHomeLocation(home, (int)NUM_heading.Value), "",
-                    (int)num_simspeed.Value);
+                       homeLoc, "",
+                     (int)num_simspeed.Value);
             }
             catch (Exception ex)
             {

@@ -6399,7 +6399,7 @@ namespace MissionPlanner.GCSViews
                     MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
                 {
                     MainV2.instance.doDisconnect(MainV2.comPort);
-                    _ShouldGetPrams = true;think about it
+                //    _ShouldGetPrams = true;think about it
                 }
                     
             }

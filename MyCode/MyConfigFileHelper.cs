@@ -42,6 +42,11 @@ using System.Web.Script.Serialization;
         public int DistToScndWp { get; set; } = 145;
         public bool DisableVideo { get; set; } = false;
         public bool DisablePlaneSwitchWA { get; set; } = false;
+        public float simHomeLat { get; set; } = 31.5f;
+        public float simHomeLng { get; set; } = 34.5f;
+        public int simHomeAlt { get; set; } = 31;
+        public float simHomeDir { get; set; } = 45;
+
 }
    //   }
       
