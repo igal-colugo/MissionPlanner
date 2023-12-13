@@ -2148,6 +2148,9 @@ namespace MissionPlanner
                     //Add HUD custom items source
                     HUD.Custom.src = MainV2.comPort.MAV.cs;
 
+                    //my code get params if need.....
+                  //  updateParamsIfneeded(MainV2.comPort.MAV.cs.armed);
+
                     // set connected icon
                     this.MenuConnect.Image = displayicons.disconnect;
                 });
@@ -2171,6 +2174,28 @@ namespace MissionPlanner
             }
         }
 
+        public void updateParamsIfneeded()
+        {
+            if (MainV2.comPort.MAV.cs.armed) { 
+                //load from file or do nothing?
+            }
+            else {
+                //get params
+                try
+                {
+                   // Thread.Sleep(500);
+                    comPort.getParamList();
+                    MyView.ShowScreen(MyView.current.Name);
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Exception getting param list", ex);
+                    CustomMessageBox.Show(Strings.ErrorReceivingParams, Strings.ERROR);
+                }
+
+                //save to temp file mayb
+            }
+        }
 
         private void MenuConnect_Click(object sender, EventArgs e)
         {

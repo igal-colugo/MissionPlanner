@@ -701,6 +701,7 @@ namespace MissionPlanner.GCSViews
 
         private void handleMyConnect(object sender, EventArgs e)
         {
+            _checkIfParamsNeeded = true;
             pnlConnectList.Visible = false;
             bool getParams = MainV2.instance.myDebug ? !cbAvoidparams.Checked : _ShouldGetParams;
             try
@@ -724,8 +725,8 @@ namespace MissionPlanner.GCSViews
 
                 else if (connectData[0] == "serial")
                 {
-
-                    MainV2.instance.doConnect(mav, connectData[2], connectData[3]);
+                    //igal check if armed after connection is done
+                    MainV2.instance.doConnect(mav, connectData[2], connectData[3], false, false);
 
                     MainV2.Comports.Add(mav);
 
@@ -4233,6 +4234,10 @@ namespace MissionPlanner.GCSViews
 
         private void updateMyData()
         {
+            if (_checkIfParamsNeeded && MainV2.comPort.BaseStream.IsOpen) {
+                MainV2.instance.updateParamsIfneeded();
+                _checkIfParamsNeeded = false;
+            }
            // if (connectState >= connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && _resetEnabled)
            //if we where airborne - and landed - go to connected state again
            if(connectState > connectStates.csLaunched && !MainV2.comPort.MAV.cs.armed && MainV2.comPort.MAV.cs.landed)
@@ -6068,6 +6073,7 @@ namespace MissionPlanner.GCSViews
         private string _myModeDisplay = "";
         private DateTime lastTimePlaneChanged = DateTime.Now;
         private bool _ShouldGetParams = true;
+        private bool _checkIfParamsNeeded = true;
 
         private void undockDockToolStripMenuItem_Click(object sender, EventArgs e)
         {

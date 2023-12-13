@@ -703,6 +703,8 @@ namespace MissionPlanner.GCSViews
                 await Task.Delay(200);
 
                 MainV2.instance.doConnect(MainV2.comPort, "preset", "5760");
+             //todo   checked this line ig
+              //  MainV2.instance.doConnect(MainV2.comPort, "preset", "5760",false, false);
             }
             catch
             {
