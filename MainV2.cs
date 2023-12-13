@@ -2183,9 +2183,9 @@ namespace MissionPlanner
                 //get params
                 try
                 {
-                   // Thread.Sleep(500);
+                    Thread.Sleep(1500);
                     comPort.getParamList();
-                    MyView.ShowScreen(MyView.current.Name);
+                //    MyView.ShowScreen(MyView.current.Name);
                 }
                 catch (Exception ex)
                 {
