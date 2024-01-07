@@ -258,12 +258,15 @@ namespace MissionPlanner.GCSViews
                     btnRtlCmd.Visible     = _connectState >= connectStates.csLaunched && !_balloonModeOn;
                     btnLandEnable.Visible = _connectState >= connectStates.csLaunched && !_balloonModeOn;
                 });
-
+                
                 if (pnlCheckList.Visible)
                 {
+                    pnlCheckList.BeginInvokeIfRequired(() => { 
                     pnlCheckList.Visible = _connectState == connectStates.csConnected;
-                }
-                updateRightBtnsDisplay();
+                });
+            }
+            
+            updateRightBtnsDisplay();
             }
         }
 
