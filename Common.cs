@@ -92,7 +92,7 @@ namespace MissionPlanner
                 string stats = "ALT: " + (int)MAV.cs.alt +" "+ CurrentState.AltUnit + "\r\n";
                 if (!_balloonModeOn)
                 {
-                    stats += "IAS: " + (int)MAV.cs.airspeed + " " +CurrentState.SpeedUnit + "\r\n";
+                    stats += "IAS: " + $"({MAV.cs.targetairspeed:F1})" + (int)MAV.cs.airspeed + " " +CurrentState.SpeedUnit + "\r\n";
                     string sMode = (MAV.cs.mode.ToLower().Equals("loiter") ? "Hold" : MAV.cs.mode)  +"\r\n";
                     if (sMode.ToLower().Contains("rtl")) {
                         if (FlightData.instance.btnLandPressed) {

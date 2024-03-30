@@ -4277,10 +4277,11 @@ namespace MissionPlanner.GCSViews
         private void updateIasDisplay()
         {
             //speed command colored
+            /*
             if (MainV2.comPort.MAV.param.Count > 0)
             {
                 if (MainV2.comPort.MAV.param.ContainsKey("TRIM_ARSPD_CM"))
-                {
+                { bntLowSpd
                     int iasCmd = (int)((int)(MainV2.comPort.MAV.param["TRIM_ARSPD_CM"]) * 0.01);
                     bntLowSpd.ModeOn    = _minSpd == iasCmd;
                     btnCruiseSpd.ModeOn = _cruiseSpd == iasCmd;
@@ -4288,6 +4289,13 @@ namespace MissionPlanner.GCSViews
                 }
 
             }
+            */
+            int iasCmd = (int)MainV2.comPort.MAV.cs.targetairspeed;
+            bntLowSpd.BeginInvokeIfRequired(() => {
+                bntLowSpd.ModeOn = _minSpd == iasCmd;
+                btnCruiseSpd.ModeOn = _cruiseSpd == iasCmd;
+                btnMaxSpd.ModeOn = _maxSpd == iasCmd;
+            });
         }
 
         private void updateGPSDisplay()
@@ -6941,7 +6949,7 @@ namespace MissionPlanner.GCSViews
         }
 
        
-
+        /*
         private void mySpeedCmd(int spdCmd)
         {
             myIasCmd = spdCmd;
@@ -6979,7 +6987,7 @@ namespace MissionPlanner.GCSViews
                 }
             }
         }
-
+        */
         private void btnEditCl_Click(object sender, EventArgs e)
         {
             checkListControl2.EditChecklist();
@@ -7088,19 +7096,30 @@ namespace MissionPlanner.GCSViews
             btnLandCmd.Visible = !btnLandCmd.Visible;
         }
 
-        private void bntLowSpd_Click(object sender, EventArgs e)
+        private void bntLowSpd_Click(object sender, EventArgs e) => mydoChangeSpeedCmd(_minSpd);
+
+        private async void mydoChangeSpeedCmd(int newSpd)
         {
-            mySpeedCmd(_minSpd);
+            try
+            {
+                await MainV2.comPort.doCommandAsync(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                        MAVLink.MAV_CMD.DO_CHANGE_SPEED, 0, (float)newSpd, 0, 0, 0, 0, 0)
+                    .ConfigureAwait(true);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.ErrorCommunicating, Strings.ERROR);
+            }
         }
 
-        private void btnCruiseSpd_Click(object sender, EventArgs e)
+        private async void btnCruiseSpd_Click(object sender, EventArgs e)
         {
-            mySpeedCmd(_cruiseSpd);
+            mydoChangeSpeedCmd(_cruiseSpd);
         }
 
-        private void btnMaxSpd_Click(object sender, EventArgs e)
+        private async void btnMaxSpd_Click(object sender, EventArgs e)
         {
-            mySpeedCmd(_maxSpd);
+            mydoChangeSpeedCmd(_maxSpd);
         }
 
         private void btnAltdwn_Click(object sender, EventArgs e)
